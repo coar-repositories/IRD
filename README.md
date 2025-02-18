@@ -31,11 +31,11 @@
 This is the base image and should not need to be built frequently. It is the base image for the application image. It is built with the following command:
 
 replace:
-- `0.29` with the correct version number
+- `0.1` with the correct version number
 - `antleaf/ird_app` with your Docker Hub username and repository name
 
 ```bash
-docker buildx build -f DockerfileBase --platform linux/amd64 --push -t antleaf/ird_base:0.30 .
+docker buildx build -f DockerfileBase --platform linux/amd64 --push -t antleaf/ird_base:0.1 .
 ```
 
 Whenever the base image is updated with a new tag, this tag needs to be referenced correctly in the application image Docker file: `DockerfileApp`.
@@ -54,11 +54,11 @@ Ensure the base image tag is referenced correctly in the application image Docke
 
 ##### Manual Build
 replace:
-- `0.99` with the correct version number
+- `0.01` with the correct version number
 - `antleaf/ird_app` with your Docker Hub username and repository name
 
 ```bash
-export IRD_APP_VERSION=0.99 && \
+export IRD_APP_VERSION=0.01 && \
   docker buildx build -f DockerfileApp --platform linux/amd64 --build-arg IRD_APP_VERSION=$IRD_APP_VERSION --push -t antleaf/ird_app:$IRD_APP_VERSION .
 ```
 
