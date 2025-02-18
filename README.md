@@ -35,7 +35,7 @@ replace:
 - `antleaf/ird_app` with your Docker Hub username and repository name
 
 ```bash
-docker buildx build -f DockerfileBase --platform linux/amd64 --push -t antleaf/ird_base:0.29 .
+docker buildx build -f DockerfileBase --platform linux/amd64 --push -t antleaf/ird_base:0.30 .
 ```
 
 Whenever the base image is updated with a new tag, this tag needs to be referenced correctly in the application image Docker file: `DockerfileApp`.
