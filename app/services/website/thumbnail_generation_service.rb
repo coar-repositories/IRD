@@ -25,7 +25,7 @@ module Website
             wait = Selenium::WebDriver::Wait.new
             wait.until { revealed.displayed? }
             driver.manage.timeouts.script_timeout = 5
-            driver.manage.timeouts.page_load = 60
+            driver.manage.timeouts.page_load = 30
             Rails.logger.debug "Navigating to website..."
             driver.navigate.to(system.url)
             Rails.logger.debug "Navigated to website OK"
