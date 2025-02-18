@@ -7,7 +7,7 @@ shared:
     platform: <%= ENV["DEFAULT_PLATFORM"] %>
   network_check_failure:
     error_count_threshold: 2
-    earliest_error: 10 #days
+    earliest_error: 30 #days
     most_recent_error: 2 #days
   repoid_schemes:
     ird:
