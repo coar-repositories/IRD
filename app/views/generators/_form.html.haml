@@ -1,0 +1,34 @@
+= form_for @generator do |f|
+  - if @generator.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@generator.errors.count, "error")} prohibited this generator from being saved:"
+      %ul
+        - @generator.errors.full_messages.each do |message|
+          %li= message
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      = f.label :name, :class=>"form-label"
+    %div.col
+      = f.text_field :name, :class=>"form-control"
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.generator.platform') # this lets i18n-tasks know the key is used
+      = f.label :platform, :class=>"form-label"
+    %div.col
+      = f.collection_select :platform_id, Platform.order('lower(name)'), :id, :name, :class=>"form-select form-control"
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.generator.version') # this lets i18n-tasks know the key is used
+      = f.label :version, :class=>"form-label"
+    %div.col
+      = f.text_field :version, :class=>"form-control"
+  -# .field
+  -#   = f.label :name
+  -#   = f.text_field :name
+  -# .field
+  -#   = f.label :platform
+  -#   = f.text_field :platform
+  -# .field
+  -#   = f.label :version
+  -#   = f.text_field :version
+  = render '_shared/record_form_buttons', form: f,model_instance: @generator

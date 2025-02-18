@@ -1,0 +1,47 @@
+---
+es:
+  about_page:
+    about_page_text: |-
+      ### Acerca del servicio
+
+      El Directorio Internacional de Repositorios (IRD) está gestionado por la [Confederación de Repositorios de Acceso Abierto (COAR)](https://www.coar-repositories.org/).
+
+      #### Criterios de inclusión
+
+      Cada repositorio de este directorio cumple los siguientes criterios:
+
+      - La mayoría de su contenido es totalmente de acceso abierto
+      - Es compatible con OAI-PMH
+
+      #### Gestión de los datos
+      Los metadatos de este directorio se obtienen de los propios repositorios y se actualizan periódicamente. Algunos de los metadatos se actualizan automáticamente, pero los registros de metadatos también son conservados por organizaciones denominadas "Organizaciones Responsables" que asignan personas y recursos para mantener la precisión y la actualidad de los metadatos.
+
+      #### Licencia
+      Los datos del IRD pueden reutilizarse sin restricciones. Más formalmente, está licenciado bajo la [Licencia CC0](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1).
+
+      #### Desarrollo y mantenimiento de software
+      El software para el IRD es desarrollado, implementado y mantenido por [Antleaf](https://www.antleaf.com/). El [código de fuente abierta](https://github.com/coar-repositories/IRD) para este software está licenciado bajo la [Licencia MIT](https://opensource.org/license/mit).
+
+      ### Agradecimientos
+
+      #### Registro de Organizaciones de Investigación (ROR)
+      El IRD utiliza datos descargados, con permiso, del [Registro de Organizaciones de Investigación (ROR)](https://ror.org/).
+      El IRD utiliza el ROR para desambiguar los nombres de las organizaciones en el directorio, cuando sea posible.
+
+      #### Otras fuentes de información
+      Se han utilizado algunos registros, directorios y listas de terceros para identificar candidatos para su inclusión en el IRD. Entre ellos se incluyen (entre otros):
+
+      - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
+      - [Re3data](https://www.re3data.org/)
+      - [Información de colaboración colectiva sobre instalaciones de Dataverse](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
+      - [Hyku Commons](https://hykucommons.org/)
+      - [Lista de repositorios de NII (Japón)](https://irdb.nii.ac.jp/en/repositorylist)
+
+      También agradecemos a las siguientes personas que han proporcionado información sobre los repositorios:
+
+      - Bram Luyten, [Atmire](https://www.atmire.com)
+      - Jon Hackney, [Tribu laboral](https://www.worktribe.com)
+      - Heather Greer-Klein [Samvera](https://samvera.org/)
+    data_curation_text: |-
+      ### Organizaciones responsables
+      La responsabilidad de la conservación de los registros de este directorio recae en las *Organizaciones responsables*:

@@ -1,0 +1,5 @@
+---
+ja:
+  footer:
+    footer_license_statement: データのライセンスは
+    footer_text: IRD システム %{version} は、[COAR](https://www.coar-repositories.org/) 用に [Antleaf](https://www.antleaf.com/) によって開発されました。

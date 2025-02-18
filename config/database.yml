@@ -1,0 +1,78 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  timeout: 5000
+  host: <%= ENV.fetch('IRD_DB_HOST') %>
+  port: <%= ENV.fetch('IRD_DB_PORT') %>
+  username: <%= ENV.fetch('IRD_DB_USERNAME') %>
+  password: <%= ENV.fetch('IRD_DB_PASSWORD') %>
+  pool: <%= ENV.fetch('IRD_DB_CONNECTION_POOL') %>
+development:
+  primary:
+    <<: *default
+    database: ird_development
+  cache:
+    adapter: sqlite3
+    timeout: 5000
+    database: storage/ird_development_cache.sqlite3
+    pool: <%= ENV.fetch('IRD_DB_CONNECTION_POOL') %>
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *default
+    database: ird_development_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    adapter: sqlite3
+    timeout: 5000
+    database: storage/ird_development_cable.sqlite3
+    pool: <%= ENV.fetch('IRD_DB_CONNECTION_POOL') %>
+    migrations_paths: db/cable_migrate
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  primary:
+    <<: *default
+    database: ird_test
+  cache:
+    adapter: sqlite3
+    timeout: 5000
+    database: storage/ird_test_cache.sqlite3
+    pool: <%= ENV.fetch('IRD_DB_CONNECTION_POOL') %>
+    migrations_paths: db/cache_migrate
+  queue:
+    adapter: sqlite3
+    timeout: 5000
+    database: storage/ird_test_queue.sqlite3
+    migrations_paths: db/queue_migrate
+  cable:
+    adapter: sqlite3
+    timeout: 5000
+    database: storage/ird_test_cable.sqlite3
+    pool: <%= ENV.fetch('IRD_DB_CONNECTION_POOL') %>
+    migrations_paths: db/cable_migrate
+
+
+# Store production database in the storage/ directory, which by default
+# is mounted as a persistent Docker volume in config/deploy.yml.
+production:
+  primary:
+    <<: *default
+    database: ird_production
+  cache:
+    adapter: sqlite3
+    timeout: 5000
+    database: storage/ird_production_cache.sqlite3
+    pool: <%= ENV.fetch('IRD_DB_CONNECTION_POOL') %>
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *default
+    database: ird_production_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    adapter: sqlite3
+    timeout: 5000
+    database: storage/ird_production_cable.sqlite3
+    pool: <%= ENV.fetch('IRD_DB_CONNECTION_POOL') %>
+    migrations_paths: db/cable_migrate

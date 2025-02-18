@@ -1,0 +1,28 @@
+%div.filter
+  %div.filter-title
+    = title
+  %div.filter-values
+    %div.row
+      %div.col
+        %ul.selected
+          - facet['buckets'].each do |filter|
+            - if params[filter_name].try(:include?, filter["key"])
+              %li
+                = check_box_tag "#{filter_name}[]",
+                  filter['key'],
+                  true,
+                  onclick: "javascript: $('#search_form').submit();"
+                -# i18n-tasks-use t('activerecord.attributes.system.subcategory_list.#{subcategory}') # this lets i18n-tasks know the key is used
+                = "#{System.translated_subcategory filter['key']} (#{filter['doc_count']})"
+      %div.row
+        %div.col
+          %ul.selectable
+            - facet['buckets'].each do |filter|
+              - unless params[filter_name].try(:include?, filter["key"])
+                %li
+                  = check_box_tag "#{filter_name}[]",
+                      filter['key'],
+                      false,
+                      onclick: "javascript: $('#search_form').submit();"
+                  -# i18n-tasks-use t('activerecord.attributes.system.subcategory_list.#{subcategory}') # this lets i18n-tasks know the key is used
+                  = "#{System.translated_subcategory filter['key']} (#{filter['doc_count']})"

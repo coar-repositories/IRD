@@ -1,0 +1,23 @@
+= form_for @country do |f|
+  - if @country.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@country.errors.count, "error")} prohibited this country from being saved:"
+      %ul
+        - @country.errors.full_messages.each do |message|
+          %li= message
+  %div.row.field
+    %div.col-2.field-name
+      .form-label ID
+    %div.col
+      = f.text_field :id
+  %div.row.field
+    %div.col-2.field-name
+      .form-label Name
+    %div.col
+      = f.text_field :name
+  %div.row.field
+    %div.col-2.field-name
+      .form-label Continent
+    %div.col
+      = f.text_field :continent
+  = render '_shared/record_form_buttons', form: f,model_instance: @country

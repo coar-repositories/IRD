@@ -1,0 +1,44 @@
+
+= print_field_name_and_value2(t('attributes.name'),@system.name)
+= print_field_name_and_value2(t('attributes.short_name'),@system.short_name)
+= print_field_name_and_value2(t('attributes.aliases'),@system.aliases.join(', '))
+= print_field_name_and_value2(t(:homepage),link_to(@system.url,@system.url))
+= print_field_name_and_value2(t(:contact),mail_to(@system.contact,@system.contact)) unless @system.contact.nil?
+
+%div.row
+  %div.col-md-6
+    -# i18n-tasks-use t('activerecord.attributes.system.subcategory_list.#{subcategory}') # this lets i18n-tasks know the key is used
+    = print_field_name_and_value2(t(:repository_scope),System.translated_subcategory(@system.subcategory))
+    -# i18n-tasks-use t('activerecord.attributes.system.primary_subject_list.#{subject}') # this lets i18n-tasks know the key is used
+    = print_field_name_and_value2(t(:primary_subject),System.translated_primary_subject(@system.primary_subject))
+  %div.col-md-6
+    %div.property
+      %h5.property-name Content Types
+      %div.property-value
+        - if !@system.media.empty?
+          %ul
+            - @system.media.each do |medium|
+              %li= medium.name
+        -else
+          =t(:none)
+
+
+
+%div.property
+  %h5.property-name= t('activerecord.models.country.one')
+  %div.property-value
+    - unless @system.country.nil?
+      -# = @system.country.name
+      = link_to t(@system.country.id,scope: :countries_list),@system.country
+      = image_tag "flags/#{@system.country.id.downcase}.svg", :alt => @system.country.id, :class => 'flag-tiny-facet'
+
+= print_field_name_and_value2(t('attributes.description'),@system.description)
+
+
+
+= print_field_name_and_value2(t('activerecord.attributes.system.owner'),(link_to(@system.owner.name, @system.owner)unless @system.owner.nil?),true)
+-# = print_field_name_and_value('Owner',(@system.owner.name unless @system.owner.nil?),true)
+
+
+
+

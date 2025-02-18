@@ -1,0 +1,17 @@
+-# = form_with url: "/organisations/add_existing_user_as_agent", method: :post do |f|
+-#   %div.modal.fade#addExistingUserAsAgentModal{tabindex:"-1", role:"dialog","aria-labelledby":"addExistingUserAsAgentModal","aria-hidden":"true"}
+-#     %div.modal-dialog{role:"document"}
+-#       %div.modal-content
+-#         %div.modal-header
+-#           %h5.modal-title Lookup existing user to add as an Agent
+-#           %button.close{type:"button", "data-bs-dismiss": "modal", "aria-label":"Close"}
+-#             %span{"aria-hidden":"true"}
+-#               &times;
+-#         %div.modal-body
+-#           = f.hidden_field :id, value: @organisation.id
+-#           = f.hidden_field :user_id
+-#           = text_field_tag 'autocomplete_organisation_agent', nil, id: 'autocomplete_organisation_agent',:class=>"form-control",autocomplete: 'off',placeholder: 'Search for email'
+-#         %div.modal-footer
+-#           .actions
+-#             -# = link_to 'Cancel', @system, :class => 'btn btn-primary btn-sm'
+-#             = f.submit 'Save', :class => 'btn btn-primary'

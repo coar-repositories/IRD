@@ -1,0 +1,57 @@
+%div.row
+  %div.col-2.field-name
+    %div.form-label
+      Net. checks
+  %div.col
+    = link_to t('buttons.check_urls'), admin_path(request.query_parameters.except(:lang).merge({operation: 'check_urls'})), class: 'btn btn-primary btn-sm operations-button'
+    = link_to t('buttons.oai_pmh_identify'), admin_path(request.query_parameters.except(:lang).merge({operation: 'check_oai_identify'})), class: 'btn btn-primary btn-sm operations-button'
+    = link_to t('buttons.oai_pmh_metadata_formats'), admin_path(request.query_parameters.except(:lang).merge({operation: 'check_oai_formats'})), class: 'btn btn-primary btn-sm operations-button'
+    = link_to t('buttons.get_thumbnails'), admin_path(request.query_parameters.except(:lang).merge({operation: 'scrape_websites'})), class: 'btn btn-primary btn-sm operations-button'
+  %div.row
+    %div.col-2.field-name
+      %div.form-label
+        Resp. Parties
+    %div.col
+      %div.dropdown
+        %button.btn.btn-primary.btn-sm.dropdown-toggle{type:"button","data-bs-toggle":"dropdown","aria-expanded":"false"}
+          =t('buttons.choose_rp')
+        %ul.dropdown-menu
+          - Organisation.rps.each do |org|
+            %li
+              = link_to org.display_name, admin_path(request.query_parameters.except(:lang).merge({operation: 'allocate_rp', rp_id: org.id}))
+      = link_to t('buttons.allocate_rp_by_country'), admin_path(request.query_parameters.except(:lang).merge({operation: 'allocate_rps_by_country'})), class: 'btn btn-primary btn-sm operations-button'
+  -# %div.row
+  -#   %div.col-2.field-name
+  -#     %div.form-label
+  -#       Generators
+  -#   %div.col
+  -#     = link_to "Remove Unused Generators", admin_path(request.query_parameters.except(:lang).merge({operation: 'purge_unused_generators'})), class: 'btn btn-danger btn-sm operations-button'
+
+  %div.row
+    %div.col-2.field-name
+      %div.form-label
+        Record Status
+    %div.col
+      = link_to t('buttons.publish_record'), admin_path(request.query_parameters.except(:lang).merge({operation: 'publish'})), class: 'btn btn-success btn-sm operations-button'
+      = link_to t('buttons.archive_record'), admin_path(request.query_parameters.except(:lang).merge({operation: 'archive'})), class: 'btn btn-danger btn-sm operations-button'
+      = link_to t('buttons.make_record_under_review'), admin_path(request.query_parameters.except(:lang).merge({operation: 'make_record_under_review'})), class: 'btn btn-warning btn-sm operations-button'
+      = link_to t('buttons.make_record_draft'), admin_path(request.query_parameters.except(:lang).merge({operation: 'make_draft'})), class: 'btn btn-secondary btn-sm operations-button'
+      %br
+      = link_to t('buttons.archive_record'), admin_path(request.query_parameters.except(:lang).merge({operation: 'set_record_reviewed'})), class: 'btn btn-primary btn-sm operations-button'
+  %div.row
+    %div.col-2.field-name
+      %div.form-label
+        Annotations
+    %div.col
+      - Annotation.unrestricted.each do |annotation|
+        = link_to "✔︎ #{t(annotation.id, scope: :annotation_names)}", admin_path(request.query_parameters.except(:lang).merge({operation: 'annotate',annotation_to_process: annotation.id, add_or_remove: 'add'})), class: 'btn btn-outline-success btn-sm operations-button'
+      %br
+      - Annotation.unrestricted.each do |annotation|
+        = link_to "✘ #{t(annotation.id, scope: :annotation_names)}", admin_path(request.query_parameters.except(:lang).merge({operation: 'annotate',annotation_to_process: annotation.id, add_or_remove: 'remove'})), class: 'btn btn-outline-danger btn-sm operations-button'
+  %div.row
+    %div.col-2.field-name
+      %div.form-label
+        Other
+    %div.col
+      = link_to t('buttons.purge_thumbnails'), admin_path(request.query_parameters.except(:lang).merge({operation: 'purge_thumbnails'})), class: 'btn btn-danger btn-sm operations-button'
+      = link_to t('buttons.auto_curate'), admin_path(request.query_parameters.except(:lang).merge({operation: 'auto_curate'})), class: 'btn btn-primary btn-sm operations-button'

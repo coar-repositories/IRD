@@ -1,0 +1,30 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+system:
+  id: 0250c637-4053-4427-a939-a96360cb85b2
+  fore_name: IRD
+  last_name: System
+  email: ird-system@antleaf.com
+  verified: true
+  access_revoked: false
+administrator:
+  id: ae0cfb35-5d96-4522-bf07-e7294028fcca
+  fore_name: PW
+  last_name: Admin
+  email: paul+admin@antleaf.com
+  verified: true
+  access_revoked: false
+superuser:
+  id: 63e1c8df-6b30-4a52-80ab-4aa4e84c049c
+  fore_name: Paul
+  last_name: Walk
+  email: paul@antleaf.com
+  verified: true
+  access_revoked: false
+user:
+  id: 193c102a-4a8a-453c-9a88-5be4b937b2c0
+  fore_name: Paul
+  last_name: Walk
+  email: paul@paulwalk.net
+  verified: true
+  access_revoked: false

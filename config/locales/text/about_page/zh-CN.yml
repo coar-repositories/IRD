@@ -1,0 +1,47 @@
+---
+zh-CN:
+  about_page:
+    about_page_text: |-
+      ### 关于服务
+
+      国际存储库目录 (IRD) 由 [开放存取存储库联盟 (COAR)](https://www.coar-repositories.org/) 管理。
+
+      #### 纳入标准
+
+      此目录中的每个存储库都满足以下标准：
+
+      - 其大部分内容完全开放存取
+      - 它支持 OAI-PMH
+
+      #### 数据管理
+      此目录中的元数据是从存储库本身收集的，并定期更新。一些元数据会自动更新，但元数据记录也由称为“负责组织”的组织管理，这些组织分配人员和资源以维护元数据的准确性和及时性。
+
+      #### 许可证
+      IRD 中的数据可以不受限制地重复使用。更正式地说，它是根据 [CC0 许可证](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1) 授权的。
+
+      #### 软件开发和维护
+      IRD 的软件由 [Antleaf](https://www.antleaf.com/) 开发、部署和维护。此软件的 [开源代码](https://github.com/coar-repositories/IRD) 根据 [MIT 许可证](https://opensource.org/license/mit) 授权。
+
+      ### 致谢
+
+      #### 研究组织注册表 (ROR)
+      IRD 使用经许可从 [研究组织注册表 (ROR)](https://ror.org/) 下载的数据。
+      IRD 使用 ROR 尽可能消除目录中组织名称的歧义。
+
+      #### 其他信息来源
+      一些第三方注册中心/目录/列表已用于识别纳入 IRD 的候选人。其中包括：
+
+      - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
+      - [Re3data](https://www.re3data.org/)
+      - [有关 Dataverse 安装的众包信息](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
+      - [Hyku Commons](https://hykucommons.org/)
+      - [NII（日本）存储库列表](https://irdb.nii.ac.jp/en/repositorylist)
+
+      还要感谢以下提供有关存储库信息的个人：
+
+      - Bram Luyten，[Atmire](https://www.atmire.com)
+      - Jon Hackney， [Worktribe](https://www.worktribe.com)
+      - Heather Greer-Klein [Samvera](https://samvera.org/)
+    data_curation_text: |-
+      ### 负责组织
+      本目录中记录的管理责任由*负责组织*承担：

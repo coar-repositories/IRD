@@ -1,0 +1,7 @@
+---
+zh-CN:
+  errors:
+    access_revoked_text: 您对此系统的特权访问权限已被撤销。如果您认为这是错误的，请通过电子邮件联系 COAR 办公室：office@coar-repositories.org
+    forbidden_text: 您无权访问此页面。
+    internal_server_error_text: 发生意外错误。系统管理员已收到通知并将进行调查。请稍后重试。
+    not_found_text: 您所查找的页面在该系统上不存在。

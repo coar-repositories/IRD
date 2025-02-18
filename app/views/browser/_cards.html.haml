@@ -1,0 +1,5 @@
+%div.row
+  - @systems.each do |system|
+    %div.col-lg-6.col-md-12
+      - cache [system,I18n.locale] do
+        = render 'card', system: system

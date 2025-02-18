@@ -1,0 +1,47 @@
+---
+tr:
+  about_page:
+    about_page_text: |-
+      ### Hizmet hakkında
+
+      Uluslararası Depolar Dizini (IRD), [Açık Erişim Depoları Konfederasyonu (COAR)](https://www.coar-repositories.org/) tarafından yönetilir.
+
+      #### Dahil Etme Kriterleri
+
+      Bu dizindeki her depo aşağıdaki kriterleri karşılar:
+
+      - İçeriğinin büyük çoğunluğu tamamen Açık Erişimdir
+      - OAI-PMH'yi destekler
+
+      #### Verilerin Yönetimi
+      Bu dizindeki meta veriler depoların kendisinden toplanır ve düzenli olarak güncellenir. Meta verilerin bir kısmı otomatik olarak güncellenir, ancak meta veri kayıtları ayrıca meta verilerin doğruluğunu ve zamanlamasını korumak için insanları ve kaynakları tahsis eden "Sorumlu Kuruluşlar" adı verilen kuruluşlar tarafından düzenlenir.
+
+      #### Lisans
+      IRD'deki veriler kısıtlama olmaksızın yeniden kullanılabilir. Daha resmi olarak, [CC0 Lisansı](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1) altında lisanslanmıştır.
+
+      #### Yazılım Geliştirme ve Bakımı
+      IRD için yazılım [Antleaf](https://www.antleaf.com/) tarafından geliştirilmekte, dağıtılmakta ve bakımı yapılmaktadır. Bu yazılımın [açık kaynak kodu](https://github.com/coar-repositories/IRD) [MIT Lisansı](https://opensource.org/license/mit) altında lisanslanmıştır.
+
+      ### Teşekkürler
+
+      #### Araştırma Kuruluşu Kaydı (ROR)
+      IRD, [Araştırma Kuruluşu Kaydı'ndan (ROR)](https://ror.org/) izin alınarak indirilen verileri kullanır.
+      IRD, mümkün olduğunda dizindeki kuruluşların adlarını belirsizleştirmek için ROR'u kullanır.
+
+      #### Diğer bilgi kaynakları
+      IRD'ye dahil edilecek adayları belirlemek için bazı üçüncü taraf kayıtları/dizinleri/listeleri kullanılmıştır. Bunlara (diğerlerinin yanı sıra) şunlar dahildir:
+
+      - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
+      - [Re3data](https://www.re3data.org/)
+      - [Dataverse kurulumları hakkında kalabalık kaynaklı bilgiler](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
+      - [Hyku Commons](https://hykucommons.org/)
+      - [NII (Japonya) Depoları Listesi](https://irdb.nii.ac.jp/en/repositorylist)
+
+      Depolar hakkında bilgi sağlayan aşağıdaki kişilere de teşekkürler:
+
+      - Bram Luyten, [Atmire](https://www.atmire.com)
+      - Jon Hackney, [Worktribe](https://www.worktribe.com)
+      - Heather Greer-Klein [Samvera](https://samvera.org/)
+    data_curation_text: |-
+      ### Sorumlu Kuruluşlar
+      Bu dizindeki kayıtların düzenlenmesine ilişkin sorumluluk *Sorumlu Kuruluşlara* dağıtılmıştır:

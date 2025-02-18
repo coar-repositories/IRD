@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+administrator:
+  id: administrator
+  name: Administrator
+superuser:
+  id: superuser
+  name: Superuser
+downloader:
+  id: downloader
+  name: Downloader
+profiler:
+  id: profiler
+  name: Profiler
+

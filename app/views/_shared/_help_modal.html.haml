@@ -1,0 +1,12 @@
+%div.modal.fade{id:"helpModal_#{section}", tabindex:"-1", role:"dialog","aria-labelledby":"helpModalLabel","aria-hidden":"true"}
+  %div.modal-dialog.modal-xl{role:"document"}
+    %div.modal-content
+      %div.modal-header
+        %h5.modal-title#helpModalLabel= t("help.#{section}.title")
+        %button.close{type:"button", "data-bs-dismiss": "modal", "aria-label":"Close"}
+          %span{"aria-hidden":"true"}
+            &times;
+      %div.modal-body
+        = process_translated_md_for_key("help.#{section}.body")
+      -# %div.modal-footer
+      -#   footer

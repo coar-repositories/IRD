@@ -1,0 +1,21 @@
+%ul.nav.nav-tabs#adminTab{role: "tablist"}
+  %li.nav-item{role: "presentation"}
+    %button.nav-link.active#browser-tab{"data-bs-toggle":"tab", "data-bs-target":"#browser-tab-pane", type:"button",role:"tab", "aria-controls":"browser-tab-pane", "aria-selected":"true"}
+      =t(:repository_browser)
+  %li.nav-item{role: "presentation"}
+    %button.nav-link#database-tab{"data-bs-toggle":"tab", "data-bs-target":"#database-tab-pane", type:"button",role:"tab", "aria-controls":"database-tab-pane", "aria-selected":"false"}
+      =t(:operations)
+%div.tab-content
+  %div.tab-pane.fade.show.active#browser-tab-pane{role:"tabpanel", "aria-labelledby":"browser-tab", tabindex:"0"}
+    = render 'show_browser'
+  %div.tab-pane.fade#database-tab-pane{role:"tabpanel", "aria-labelledby":"database-tab", tabindex:"0"}
+    %div.row
+      %div.col-md-6
+        %h4= t(:database)
+        = render 'show_database'
+      %div.col-md-6
+        %h4= t(:operations)
+        = render 'show_operations'
+
+
+

@@ -1,0 +1,3 @@
+class GeneratorPolicy < ApplicationPolicy
+
+end

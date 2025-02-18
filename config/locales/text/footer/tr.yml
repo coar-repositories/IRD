@@ -1,0 +1,5 @@
+---
+tr:
+  footer:
+    footer_license_statement: Veriler lisanslıdır
+    footer_text: "[Antleaf](https://www.antleaf.com/) tarafından [COAR](https://www.coar-repositories.org/) için geliştirilen IRD sistemi %{version}."

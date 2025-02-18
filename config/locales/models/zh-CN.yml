@@ -1,0 +1,114 @@
+---
+zh-CN:
+  activerecord:
+    attributes:
+      country:
+        code: 代码
+        continent: 大陆
+      generator:
+        platform: 软件平台
+        version: 软件版本
+      network_check:
+        network_check_type_list:
+          homepage_url: 主页网址
+          oai_pmh_identify: OAI-PMH 检查
+      organisation:
+        agents: 代理
+        latitude: 纬度
+        location: 地点
+        longitude: 经度
+        ror: 回流比
+      repoid:
+        identifier_scheme_list:
+          ird: 税务局
+          lyrasis: 莱拉西斯
+          oai: 办公室协助办公室
+          opendoar: 开放DOAR
+          re3data: 重新数据
+          roar: 吼
+      system:
+        annotations: 注解
+        authorised_curators: 授权策展人
+        media_type: 介质类型
+        oai_base_url: OAI-PMH 基本 URL
+        oai_status: OAI-PMH 状态
+        oai_status_list:
+          not_enabled: 未启用 OAI-PMH
+          offline: OAI-PMH 离线
+          online: OAI-PMH 在线
+          unknown: OAI-PMH 未知
+          unsupported: OAI-PMH 不受支持
+        owner: 所有者
+        platform: 平台
+        platform_version: 平台版本
+        primary_subject: 主要科目
+        primary_subject_list:
+          arts: 艺术
+          engineering: 工程
+          health_and_medicine: 健康与医学
+          humanities: 人文
+          law: 法律
+          mathematics: 数学
+          multidisciplinary: 多学科
+          science: 科学
+          social_sciences: 社会科学
+          technology: 技术
+          unknown: 未知
+        record_status: 记录状态
+        record_status_list:
+          archived: 已归档
+          draft: 草稿
+          published: 发布
+          under_review: 正在审核
+        responsible_party: 负责机构
+        subcategory: 范围
+        subcategory_list:
+          disciplinary_repository: 纪律
+          generalist_repository: 通才
+          governmental_repository: 政府
+          institutional_repository: 机构
+          unknown: 未分类
+        system_status: 系统状态
+        system_status_list:
+          missing: 未找到系统
+          offline: 系统离线
+          online: 系统上线
+          unknown: 系统状态未知
+        tags: 标签
+      user:
+        access_revoked: 访问权限被撤销
+        email: 电子邮件
+        fore_name: 名字
+        last_name: 姓
+    models:
+      country:
+        one: 国家
+        other: 国家
+      generator:
+        one: 发电机
+        other: 生成器
+      organisation:
+        one: 组织
+        other: 组织
+      platform:
+        one: 平台
+        other: 平台
+      role:
+        one: 角色
+        other: 角色
+      system:
+        one: 系统
+        other: 系统
+      user:
+        one: 用户
+        other: 用户
+  attributes:
+    aliases: 其他名称
+    country_id: 国家
+    description: 描述
+    identifiers: 标识符
+    name: 姓名
+    responsible_party: 负责机构
+    short_name: 简称
+    systems: 存储库
+    url: 网站

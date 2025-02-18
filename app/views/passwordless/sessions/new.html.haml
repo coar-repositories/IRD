@@ -1,0 +1,21 @@
+%h1.page-title=t(:login)
+%div.row
+  %div.col-md-5
+    %div.card
+      %div.card-header
+        =t(:registered_users)
+      %div.card-body
+        = form_with(model: @session, url: url_for(action: 'new'), data: { turbo: 'false' }) do |f|
+          -email_field_name = :"passwordless[#{email_field}]"
+          %div.row.align-items-center.field
+            %div.col-3.field-name
+              = f.label email_field_name, t("passwordless.sessions.new.email.label"), for: "passwordless_#{email_field}", :class=>"form-label"
+            %div.col
+              = email_field_tag email_field_name, params.fetch(email_field_name, nil), required: true, autofocus: true, placeholder: t("passwordless.sessions.new.email.placeholder"), :class=>"form-control"
+          .actions
+            = f.submit t("passwordless.sessions.new.submit"), :class=>"btn btn-primary"
+  %div.col-md-7
+    = process_md(t('login_page.login_page_intro_text'))
+
+- if ENV['ALLOW_TEST_USER_ACCOUNTS_WITHOUT_VERIFICATION'] == 'true'
+  =render '_shared/authentication_bypass'

@@ -1,0 +1,7 @@
+---
+ja:
+  errors:
+    access_revoked_text: このシステムへの特権アクセスは取り消されました。これが誤りであると思われる場合は、COAR オフィス (office@coar-repositories.org) に電子メールでご連絡ください。
+    forbidden_text: このページにアクセスする権限がありません。
+    internal_server_error_text: 予期しないエラーが発生しました。システム管理者に通知され、調査されます。しばらくしてからもう一度お試しください。
+    not_found_text: 探しているページはこのシステムには存在しません。

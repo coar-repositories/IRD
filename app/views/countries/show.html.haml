@@ -1,0 +1,18 @@
+= render '_shared/record_action_buttons', model_instance: @country
+
+= print_field_name_and_value2(t('activerecord.attributes.country.code'),@country.id)
+= print_field_name_and_value2(t('attributes.name'),@country.name)
+= print_field_name_and_value2(t('activerecord.attributes.country.continent'),@country.translated_continent)
+%div.property
+  %h5.property-name=t("attributes.systems")
+  %div.property-value
+  - if policy(@country).systems?
+    - if @country.systems.publicly_viewable.count > 0
+      = link_to @country.systems.publicly_viewable.count, country_instances_url(@country)
+  - else
+    = @country.systems.publicly_viewable.count
+%div.row
+  %div.col
+    = pie_chart @stats.get_system_status_graph_data,title: "System status for repositories in #{@country.name} (%)", colors: @stats.get_system_status_graph_colours
+  %div.col
+    = pie_chart @stats.get_oai_graph_data,title: "OAI-PMH status for repositories in #{@country.name} (%)", colors: @stats.get_oai_graph_colours

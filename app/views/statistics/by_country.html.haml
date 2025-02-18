@@ -1,0 +1,2 @@
+= column_chart @graph_and_table_data[:graph_data], xtitle: t('activerecord.models.country.one'), ytitle: t('repositories'),title: t('statistics_and_graphs.oai_status_for_top_20_countries_by_repository_count'), height: '600px', stacked: true
+=render 'stats_table', title: t('statistics_and_graphs.countries_with_one_or_more_repositories'), stats_set_collection: @graph_and_table_data[:stats_set_collection], name_column_header: t("activerecord.models.country.one"), data_downloadable: (true), ignore_platform: false

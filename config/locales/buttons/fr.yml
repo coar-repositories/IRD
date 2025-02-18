@@ -1,0 +1,46 @@
+---
+fr:
+  buttons:
+    allocate_rp_by_country: Attribuer les RP par pays
+    archive_record: Enregistrement d'archive
+    authorise_a_user: Autoriser un utilisateur
+    auto_curate: Auto-curation
+    cancel_operation: Annuler l'opération
+    check_oai: Vérifiez OAI-PMH
+    check_url: Consulter le site Web
+    check_urls: Vérifier les URL
+    choose_rp: Choisissez RP
+    create_record: Créer un enregistrement %{model}
+    delete: Supprimer
+    do_not_show_archived_records: Ne pas afficher les enregistrements archivés
+    edit: Modifier
+    generate_new_api_key: Générer une nouvelle clé API
+    get_thumbnail: Obtenir la miniature
+    get_thumbnails: Obtenir des vignettes
+    make_org_an_rp: Faire de l'organisation une organisation responsable
+    make_org_an_rp_for_country: Rendre l'organisation responsable de tous les dépôts dans ce pays
+    make_record_draft: Créer un brouillon d'enregistrement
+    make_record_under_review: Faire un enregistrement en cours de révision
+    mark_reviewed: Mark a examiné
+    oai_pmh_identify: Identifier OAI-PMH
+    oai_pmh_metadata_formats: Formats de métadonnées OAI-PMH
+    process_as_duplicate_of: Traiter comme un doublon de
+    publish_record: Publier un enregistrement
+    purge_duplicates: Purger les doublons
+    purge_statistics_cache: Purger le cache des statistiques
+    purge_thumbnail: Purger la vignette
+    purge_thumbnails: Purger les vignettes
+    purge_unused_generators: Purger les générateurs inutilisés
+    raise_issue: Créer un nouveau problème
+    reindex_systems: Systèmes de réindexation
+    remove_rp_status: Supprimer le statut d'organisation responsable
+    restore_access: Restaurer l'accès
+    review_this_record: Évaluer cet enregistrement
+    revoke_access: Révoquer l'accès
+    save_record: Enregistrer l'enregistrement
+    show_archived_records: Afficher les archives
+    show_duplicates: Afficher les doublons
+    start_background_network_checks: Vérifications du réseau
+    suggest_new_system: Proposer un nouveau référentiel
+    view_job_queue: Afficher la file d'attente des travaux
+    view_kanban: Voir Kanban

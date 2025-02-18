@@ -1,0 +1,59 @@
+%nav#navbar-ird.navbar.navbar-expand-lg.bg-body-tertiary
+  %div#header.container-fluid
+    %a.navbar-brand{href:"/"}
+      =link_to image_tag('ird-logo.png', id:"navbar-brand-image",class:"d-inline-block align-text-top"), root_url
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        -# %li.nav-item
+        -#   %a.nav-link{href:root_path}
+        -#     %span.icon.bi-house.navbar-text{title: t(:homepage)}
+        - if policy(:browser).index?
+          %li.nav-item
+            =link_to t(:repository_browser,scope: :page_titles), browser_path, class: 'nav-link'
+        - if policy(:statistics).index?
+          %li.nav-item
+            =link_to t(:statistics,scope: :page_titles), statistics_path, class: 'nav-link'
+        - if policy(:admin).index?
+          %li.nav-item
+            =link_to t(:admin), admin_path, class: 'nav-link'
+        %li.nav-item
+          =link_to t(:about,scope: :page_titles), about_path, class: 'nav-link'
+      %ul.navbar-nav.ms-auto.mb-2.mb-lg-0
+        - if policy(:admin).index?
+          %li.nav-item
+            %a.nav-link{href:"#search-panel",id:"searchButton",role:"button","data-bs-toggle":"collapse", "aria-expanded":"false", "aria-controls":"search-panel"}
+              %span.icon.bi-search.navbar-text{title: "Search"}
+        - if current_user
+          %li.nav-item
+            %a.nav-link{href:user_root_path}
+              = current_user.display_name
+        - else
+          %li.nav-item
+            %a.nav-link{href:users_sign_in_path}
+              %span.icon.bi-person-fill.navbar-text{title: t(:login)}
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{href:"#",id:"localeDropdown",role:"button","data-bs-toggle":"dropdown", "aria-expanded":"false"}
+            = image_tag "flags/#{Rails.application.config.ird.locales[I18n.locale][:flag]}.svg",class:"flag-locale",style:"display:inline-block;"
+            %span.navbar-text= Rails.application.config.ird.locales[I18n.locale][:language]
+          %ul.dropdown-menu{"aria-labelledby":"localeDropdown",style:"min-width:inherit;"}
+            - Rails.application.config.ird.locales.each do |k,v|
+              %li
+                %div.d-flex.flex-row
+                  = link_to (image_tag "flags/#{v[:flag]}.svg",class: "flag-locale"), url_for(lang: k), class: "nav-link", style:"margin: 3px; padding:3px;"
+                  = link_to v[:language], url_for(lang: k), class: "nav-link", style:"margin: 3px; padding:3px;"
+        -# - if current_user
+        -#   %li.nav-item
+        -#     %a.nav-link{href:help_url}
+        -#       %span.icon.bi-question-circle-fill.navbar-text{title: t('page_titles.help')}
+%div.row
+  %div.col-sm-8
+  %div.col-sm-4{style:"align-text: right;"}
+    %div.collapse#search-panel
+      %div.card.card-body
+        %form.d-flex{name:"search",action:search_path,method:'get',:role => "search"}
+          %input.form-control.me-2{name:"q",type:"search",placeholder:"#{t(:search)}...", "aria-label":"Search"}
+          %input{type:"hidden",name:"lang",value:I18n.locale}
+          %button.btn.btn-outline-success{:type => "submit"}
+            = t(:search)

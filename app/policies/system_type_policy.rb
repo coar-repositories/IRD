@@ -1,0 +1,3 @@
+class SystemTypePolicy < ApplicationPolicy
+
+end

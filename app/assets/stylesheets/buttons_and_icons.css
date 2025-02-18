@@ -1,0 +1,72 @@
+
+.btn-sm {
+    /*padding: .4rem .4rem !important;*/
+    /*line-height: .5 !important;*/
+    margin: 3px;
+}
+
+.record-action-buttons {
+/ / text-align: right;
+    margin-bottom: 10px;
+}
+
+.data-download-buttons {
+/ / text-align: right;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.data-download-buttons span.title {
+    font-size: 1.5em;
+/ / font-weight: bold;
+}
+
+.btn-dark {
+    background-color: #23527c !important;
+}
+
+span.icon {
+    color: #23527c;
+}
+
+span.download-icon {
+/ / font-size: 1.5 em;
+}
+
+a.icon {
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+span.green-icon {
+    color: green;
+}
+
+span.red-icon {
+    color: red;
+}
+
+span.orange-icon {
+    color: orange;
+}
+
+span.yellow-icon {
+    color: yellow;
+}
+
+span.sortable-hidden {
+    visibility: hidden;
+}
+
+.badge-count {
+    margin-left: 5px;
+}
+
+.operations-button {
+    margin-bottom: 5px;
+}
+
+.decoration-external-link {
+    font-size: 0.7em;
+    vertical-align: baseline;
+}

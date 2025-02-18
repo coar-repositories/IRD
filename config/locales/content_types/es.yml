@@ -1,0 +1,15 @@
+---
+es:
+  content_types_labels:
+    Books: Libros
+    Conference Papers: Ponencias de congresos
+    Images: Imágenes
+    Learning Objects: Objetos de aprendizaje
+    Multimedia: Multimedia
+    Other: Otro
+    Patents: Patentes
+    Research Articles: Artículos de investigación
+    Research Data: Conjuntos de datos
+    Software: Software
+    Text: Texto
+    Theses: Tesis

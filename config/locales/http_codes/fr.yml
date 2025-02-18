@@ -1,0 +1,91 @@
+---
+fr:
+  http_codes:
+    '0': Aucune réponse HTTP
+    '100': 100 Continue
+    '101': 101 Protocoles de commutation
+    '102': 102 Traitement
+    '103': 103 premiers indices
+    '104': 104 Prise en charge de la reprise du téléchargement
+    '200': 200 d'accord
+    '201': 201 Créé
+    '202': 202 Accepté
+    '203': 203 Informations non autorisées
+    '204': 204 Aucun contenu
+    '205': 205 Réinitialiser le contenu
+    '206': 206 Contenu partiel
+    '207': 207 Multi-Statut
+    '208': 208 déjà signalés
+    '226': 226 IM Utilisé
+    '300': 300 choix multiples
+    '301': 301 Déplacé définitivement
+    '302': 302 trouvés
+    '303': 303 Voir Autre
+    '304': 304 Non modifié
+    '305': 305 Utiliser un proxy
+    '306': 306 Commutateur proxy
+    '307': 307 Redirection temporaire
+    '308': 308 Redirection permanente
+    '400': 400 Mauvaise requête
+    '401': 401 Non autorisé
+    '402': 402 Paiement requis
+    '403': 403 Non autorisé
+    '404': 404 non trouvé
+    '405': Méthode 405 non autorisée
+    '406': 406 Non acceptable
+    '407': 407 Authentification proxy requise
+    '408': 408 Délai d'expiration de la demande
+    '409': 409 Conflit
+    '410': 410 disparu
+    '411': 411 Longueur requise
+    '412': 412 Échec de la condition préalable
+    '413': 413 Contenu trop volumineux
+    '414': 414 URI trop long
+    '415': 415 Type de média non pris en charge
+    '416': Plage 416 non satisfaisante
+    '417': 417 Attente échouée
+    '420': 420 Échec de la méthode
+    '421': 421 Demande mal acheminée
+    '422': 422 Contenu non traitable
+    '423': 423 Verrouillé
+    '424': 424 Dépendance échouée
+    '425': 425 Trop tôt
+    '426': 426 Mise à niveau requise
+    '427': 427 Non attribué
+    '428': 428 Précondition requise
+    '429': 429 Trop de demandes
+    '430': 430 Non attribué
+    '431': 431 Champs d'en-tête de requête trop grands
+    '440': 440 Délai de connexion expiré
+    '444': 444 Aucune réponse
+    '449': 449 Réessayer avec
+    '450': 450 bloqué par le contrôle parental de Windows
+    '451': 451 Indisponible pour des raisons juridiques
+    '494': 494 L'en-tête de la requête est trop volumineux
+    '495': Erreur de certificat SSL 495
+    '496': Certificat SSL 496 requis
+    '497': 497 Requête HTTP envoyée au port HTTPS
+    '498': 498 Jeton non valide
+    '499': 499 Demande de clôture du client
+    '500': Erreur interne du serveur 500
+    '501': 501 non implémenté
+    '502': 502 Mauvaise passerelle
+    '503': Service 503 indisponible
+    '504': 504 Délai d'expiration de la passerelle
+    '505': 505 Version HTTP non prise en charge
+    '506': La variante 506 négocie également
+    '507': 507 Stockage insuffisant
+    '508': Boucle 508 détectée
+    '509': 509 Limite de bande passante dépassée
+    '510': 510 non prolongé
+    '511': Authentification réseau 511 requise
+    '520': Erreur 520 inconnue
+    '521': 521 Le serveur Web est en panne
+    '522': 522 La connexion a expiré
+    '523': 523 Origine inaccessible
+    '524': 524 Un dépassement de délai s'est produit
+    '525': 525 Échec de la négociation SSL
+    '526': 526 Certificat SSL non valide
+    '527': Erreur 527 Railgun
+    '530': Erreur DNS d'origine 530 / Le site est gelé
+    '598': 598 (Convention informelle) Erreur de dépassement de délai de lecture du réseau

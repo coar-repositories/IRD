@@ -1,0 +1,78 @@
+---
+fr:
+  admin: Administrateur
+  agencies: Agences
+  all_fields_must_be_completed: Tous les champs doivent être complétés
+  annotations: Annotations
+  are_you_sure_question: Es-tu sûr?
+  authorise_a_user: Autoriser un utilisateur
+  authorised_curator_for_these_repositories: Conservateur agréé pour ces dépôts
+  authorised_curators: Conservateurs agréés
+  check_repository_functionality: Vérifier la fonctionnalité du référentiel
+  contact: Contact
+  continents: Continents
+  curation_issues: Problèmes de conservation
+  database: Base de données
+  email: E-mail
+  filter: Filtre
+  fore_name: Prénom
+  harvested: Récolté
+  has_thumbnail: A une miniature ?
+  homepage: Page d'accueil
+  identifiers: Identifiants
+  ird_metadata_record: Enregistrement de métadonnées IRD
+  last_name: Nom de famille
+  login: Se connecter
+  logout: Déconnexion
+  managing_agent_for_these_organisations: Agent de gestion pour ces organisations
+  media_type: Type de média
+  metadata: Métadonnées
+  name: Nom
+  needs_review: Besoin d'un examen
+  network_checks: Vérifications du réseau
+  none: Aucun
+  not_yet_reviewed: Pas encore évalué
+  oai_status: Statut OAI-PMH
+  operations: Opérations
+  owner: Propriétaire
+  owner_identified: Propriétaire identifié ?
+  page_titles:
+    about: À propos de l'IRD
+    admin: Administrateur
+    dashboard_for: Tableau de bord pour %{name}
+    help: Aide du système
+    repositories_in_country: Dépôts dans %{country}
+    repositories_running_on_platform: Référentiels fonctionnant sur %{platform}
+    repository_browser: Navigateur de référentiel
+    search: Recherche
+    statistics: Statistiques
+    welcome: Bienvenue dans l'annuaire des référentiels internationaux (IRD)
+  platform_identified: Plateforme logicielle identifiée ?
+  primary_subject: Matière principale
+  record_source: Source de l'enregistrement
+  record_status: Statut de l'enregistrement
+  records_in_ird: Enregistrements dans l'IRD
+  registered_users: Utilisateurs enregistrés
+  repositories: Dépôts
+  repository_browser: Navigateur de référentiel
+  repository_scope: Portée du référentiel
+  repository_scope_short: Portée
+  repository_status: Statut du dépôt
+  required: Requis
+  reset: Réinitialiser
+  responsible_organisation: Organisation responsable
+  responsible_organisations: Organisations responsables
+  reviewed: Révisé
+  roles: Rôles
+  search: Recherche
+  search_by_name: Recherche par nom
+  software: Logiciel
+  status: Statut
+  suggest_a_new_repository: Proposer un nouveau référentiel
+  support_for_oai_pmh: Soutien à OAI-PMH
+  systems: Systèmes
+  tags: Mots clés
+  total_results: Résultats totaux
+  user_access: Accès utilisateur
+  verified: Vérifié
+  website_url: URL du site Web

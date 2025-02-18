@@ -1,0 +1,18 @@
+.property {
+    margin-bottom: 10px;
+    /*border: 1px solid #efefef;*/
+    /*border-bottom: 1px solid #efefef;*/
+    padding: 5px;
+}
+
+h5.property-name {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+.property-value {
+    margin-left: 10px;
+    padding-top: 0;
+    margin-top: 0;
+}

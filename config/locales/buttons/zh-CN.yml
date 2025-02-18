@@ -1,0 +1,46 @@
+---
+zh-CN:
+  buttons:
+    allocate_rp_by_country: 按国家分配 RP
+    archive_record: 档案记录
+    authorise_a_user: 授权用户
+    auto_curate: 自动策划
+    cancel_operation: 取消操作
+    check_oai: 检查OAI-PMH
+    check_url: 查看网站
+    check_urls: 检查 URL
+    choose_rp: 选择RP
+    create_record: 创建 %{model} 记录
+    delete: 删除
+    do_not_show_archived_records: 不显示存档记录
+    edit: 编辑
+    generate_new_api_key: 生成新的 API 密钥
+    get_thumbnail: 获取缩略图
+    get_thumbnails: 获取缩略图
+    make_org_an_rp: 让组织成为一个负责任的组织
+    make_org_an_rp_for_country: 让组织负责该国的所有存储库
+    make_record_draft: 制作记录草稿
+    make_record_under_review: 使记录接受审查
+    mark_reviewed: 标记已审核
+    oai_pmh_identify: OAI-PMH识别
+    oai_pmh_metadata_formats: OAI-PMH 元数据格式
+    process_as_duplicate_of: 处理为
+    publish_record: 发布记录
+    purge_duplicates: 清除重复项
+    purge_statistics_cache: 清除统计缓存
+    purge_thumbnail: 清除缩略图
+    purge_thumbnails: 清除缩略图
+    purge_unused_generators: 清除未使用的发电机
+    raise_issue: 创建新问题
+    reindex_systems: 重建索引系统
+    remove_rp_status: 删除负责组织状态
+    restore_access: 恢复访问
+    review_this_record: 审阅此记录
+    revoke_access: 撤销访问权限
+    save_record: 保存记录
+    show_archived_records: 显示存档记录
+    show_duplicates: 显示重复项
+    start_background_network_checks: 网络检查
+    suggest_new_system: 建议新的存储库
+    view_job_queue: 查看作业队列
+    view_kanban: 查看看板

@@ -1,0 +1,56 @@
+<% rows_break_point = calculate_facet_rows_breakpoint(facet['buckets'].count,2) %>
+<div class="filter">
+  <div class="filter-title">
+    <%= title %>
+  </div>
+  <div class="filter-values">
+    <div class="row">
+      <div class="col">
+        <ul class="selected">
+          <% facet['buckets'].sort_by{ |b| b["key"] }.each_with_index do |filter,i| %>
+            <% if (i+1)>1 && (i+1) % rows_break_point == 1 %>
+              </ul>
+              </div>
+              <div class="col">
+                <ul class="selected">
+            <% end %>
+            <% if params[filter_name].try(:include?, filter["key"]) %>
+              <li>
+                <%= check_box_tag "#{filter_name}[]",
+                                  filter['key'],
+                                  true,
+                                  onclick: "javascript: $('#search_form').submit();"
+                %>
+                <%= "#{filter['key']} (#{filter['doc_count']})" %>
+              </li>
+            <% end  %>
+          <% end %>
+          </ul>
+          </div>
+          </div>
+    <div class="row">
+      <div class="col">
+        <ul class="selectable">
+          <% facet['buckets'].sort_by{ |b| b["key"] }.each_with_index do |filter,i| %>
+            <% if (i+1)>1 && (i+1) % rows_break_point == 1 %>
+              </ul>
+              </div>
+              <div class="col">
+                <ul class="selectable">
+            <% end %>
+            <% unless params[filter_name].try(:include?, filter["key"]) %>
+              <li>
+                <%= check_box_tag "#{filter_name}[]",
+                                  filter['key'],
+                                  false,
+                                  onclick: "javascript: $('#search_form').submit();"
+                %>
+                <%= "#{filter['key']} (#{filter['doc_count']})" %>
+              </li>
+            <% end  %>
+          <% end %>
+          </ul>
+          </div>
+          </div>
+  </div>
+</div>

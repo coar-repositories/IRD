@@ -1,0 +1,242 @@
+%div.row
+  %div.col-9
+    = form_for @system do |f|
+      - if @system.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@system.errors.count, "error")} prohibited this system from being saved:"
+          %ul
+            - @system.errors.full_messages.each do |message|
+              %li= message
+
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('attributes.name') # this lets i18n-tasks know the key is used
+          = f.label :name, :class=>"form-label"
+        %div.col
+          = f.text_field :name, :class=>"form-control"
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('attributes.short_name') # this lets i18n-tasks know the key is used
+          = f.label :short_name, :class=>"form-label"
+        %div.col
+          = f.text_field :short_name, :class=>"form-control"
+      %div.row.align-items-top.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('attributes.aliases') # this lets i18n-tasks know the key is used
+          = f.label :aliases, :class=>"form-label"
+        %div.col
+          - if @system.aliases
+            - @system.aliases.each do |other_name|
+              = f.text_field :aliases, :name => 'system[aliases][]',:class=>"form-control", :value => other_name
+          = f.text_field :aliases, :name => 'system[aliases][]',:class=>"form-control", :value => ''
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('attributes.url') # this lets i18n-tasks know the key is used
+          = f.label :url, :class=>"form-label"
+        %div.col
+          = f.text_field :url, :class=>"form-control"
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('attributes.description') # this lets i18n-tasks know the key is used
+          = f.label :description, :class=>"form-label"
+        %div.col
+          = f.text_field :description, :class=>"form-control"
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('activerecord.attributes.system.subcategory') # this lets i18n-tasks know the key is used
+          = f.label :subcategory, :class=>"form-label"
+        %div.col
+          -# = f.collection_select :system_type_id, SystemType.order('lower(name)'), :id, :name, :class=>"form-select form-control"
+          = f.select :subcategory, options_for_select(System.translated_subcategories.map { |translation, k, _v| [translation, k] },@system.subcategory), :class=>"form-control"
+      %div.row.align-items-top.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('activerecord.attributes.system.media_type') # this lets i18n-tasks know the key is used
+          = f.label :media_type, :class=>"form-label"
+        %div.col
+          = f.collection_check_boxes :medium_ids, Medium.all, :id, :name do |b|
+            = b.label(class: "check_box") do
+              = b.check_box(class: "check_box")
+              = b.object.name
+            %br
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('activerecord.attributes.system.primary_subject') # this lets i18n-tasks know the key is used
+          = f.label :primary_subject, :class=>"form-label"
+        %div.col
+          -# i18n-tasks-use t('activerecord.attributes.system.primary_subject_list.#{subject}') # this lets i18n-tasks know the key is used
+          = f.select :primary_subject, options_for_select(System.translated_primary_subjects.map { |translation, k, _v| [translation, k] },@system.primary_subject), :class=>"form-control"
+      - if policy(@system).change_system_status?
+        %div.row.align-items-center.field
+          %div.col-2.field-name
+            -# i18n-tasks-use t('activerecord.attributes.system.system_status') # this lets i18n-tasks know the key is used
+            = f.label :system_status, :class=>"form-label"
+          %div.col
+            -# i18n-tasks-use t('activerecord.attributes.system.system_status_list.#{status}') # this lets i18n-tasks know the key is used
+            = f.select :system_status, options_for_select(System.translated_system_statuses.map { |translation, k, _v| [translation, k] },@system.system_status), :class=>"form-control"
+      - if policy(@system).annotate?
+        %div.row.align-items-top.field
+          %div.col-2.field-name
+            -# i18n-tasks-use t('activerecord.attributes.system.annotations') # this lets i18n-tasks know the key is used
+            = f.label :annotations, :class=>"form-label"
+          %div.col
+            = f.collection_check_boxes :annotation_ids, Annotation.unrestricted, :id, :name do |b|
+              = b.label(class: "check_box") do
+                = b.check_box(class: "check_box")
+                = b.object.name
+              %br
+      - if policy(@system).tag?
+        %div.row.align-items-top.field
+          %div.col-2.field-name
+            -# i18n-tasks-use t('activerecord.attributes.system.tags') # this lets i18n-tasks know the key is used
+            = f.label :tags, :class=>"form-label"
+          %div.col
+            = f.text_field :tag_list, :class=>"form-control"
+
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('activerecord.attributes.system.platform') # this lets i18n-tasks know the key is used
+          = f.label :platform, :class=>"form-label"
+        %div.col
+          = f.collection_select :platform_id, Platform.order('lower(name)'), :id, :name, :class=>"form-select form-control"
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('activerecord.attributes.system.platform_version') # this lets i18n-tasks know the key is used
+          = f.label :platform_version, :class=>"form-label"
+        %div.col
+          = f.text_field :platform_version, :class=>"form-control"
+      - if policy(@system).change_record_status?
+        %div.row.align-items-center.field
+          %div.col-2.field-name
+            -# i18n-tasks-use t('activerecord.attributes.system.record_status') # this lets i18n-tasks know the key is used
+            = f.label :record_status, :class=>"form-label"
+          %div.col
+            -# i18n-tasks-use t('activerecord.attributes.system.record_status_list.#{status}') # this lets i18n-tasks know the key is used
+            = f.select :record_status, options_for_select(System.translated_record_statuses.map { |translation, k, _v| [translation, k] }, @system.record_status), :class=>"form-control"
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('activerecord.attributes.system.owner') # this lets i18n-tasks know the key is used
+          = f.label :owner,:class=>"form-label"
+        %div.col
+          = f.hidden_field :owner_id
+          - if @system && @system.owner
+            = text_field_tag 'autocomplete_system_owner', @system.owner.name, id: 'autocomplete_system_owner',:class=>"form-control"
+          - else
+            = text_field_tag 'autocomplete_system_owner', nil, id: 'autocomplete_system_owner',:class=>"form-control"
+          -# %a{onclick:"document.getElementById('system_owner_id').value = ''",class:'btn btn-danger',href:''}
+          -#   Clear
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('attributes.country_id') # this lets i18n-tasks know the key is used
+          = f.label :country_id,:class=>"form-label"
+        %div.col
+          = f.collection_select :country_id, Country.order(:name), :id, :name, {prompt: true}
+      - if policy(@system).change_rp?
+        %div.row.align-items-center.field
+          %div.col-2.field-name
+            -# i18n-tasks-use t('activerecord.attributes.system.responsible_party') # this lets i18n-tasks know the key is used
+            = f.label :responsible_party, :class=>"form-label"
+          %div.col
+            = f.collection_select :rp_id, Organisation.rps.order('lower(name)'), :id, :name, :include_blank => true,:class=>"form-select form-control"
+            -# - elsif @system.rp
+            -#   %span.form-control= @system.rp.name
+
+      - if policy(@system).add_repo_id?
+        %div.row.field
+          %div.col-2.field-name
+            -# i18n-tasks-use t('attributes.identifiers') # this lets i18n-tasks know the key is used
+            = f.label :identifiers, :class=>"form-label"
+          %div.col
+            = f.fields_for :repoids do |repoid_form|
+              %div.row
+                %div.col-2.field-name
+                  Scheme
+                %div.col
+                  = repoid_form.text_field :identifier_scheme, :class=>"form-control"
+              %div.row
+                %div.col-2.field-name
+                  Value
+                %div.col
+                  = repoid_form.text_field :identifier_value, :class=>"form-control"
+              %div.row
+                %div.col-2.field-name
+                  Delete
+                %div.col
+                  = repoid_form.checkbox :_destroy
+              %br
+
+      -#       %div.col
+      -#         -# = f.fields_for :repo_ids, OpenStruct.new(f.object.repo_ids) do |p|
+      -#         -#   - System.repo_id_schemes.each do |repo_id_scheme|
+      -#         -#     %div.row
+      -#         -#       %div.col-2.field-name
+      -#         -#         %span= "#{repo_id_scheme}:"
+      -#         -#       %div.col
+      -#         -#         = p.text_field repo_id_scheme, :class=>"form-control"
+      -#         -#         %br
+
+
+      %div.row.align-items-center.field
+        %div.col-2.field-name
+          -# i18n-tasks-use t('activerecord.attributes.system.oai_base_url') # this lets i18n-tasks know the key is used
+          = f.label :oai_base_url, :class=>"form-label"
+        %div.col
+          = f.text_field :oai_base_url, :class=>"form-control"
+      - if policy(@system).change_oai_status?
+        %div.row.align-items-center.field
+          %div.col-2.field-name
+            -# i18n-tasks-use t('activerecord.attributes.system.oai_status') # this lets i18n-tasks know the key is used
+            = f.label :oai_status, :class=>"form-label"
+          %div.col
+            -# i18n-tasks-use t('activerecord.attributes.system.oai_status_list.#{status}') # this lets i18n-tasks know the key is used
+            = f.select :oai_status, options_for_select(System.translated_oai_statuses.map { |translation, k, _v| [translation, k] },@system.oai_status), :class=>"form-control"
+
+
+      - if policy(@system).authorise_user? && @system.users.count > 0
+        %div.row.align-items-top.field
+          %div.col-2.field-name
+            -# i18n-tasks-use t('activerecord.attributes.system.authorised_curators') # this lets i18n-tasks know the key is used
+            = f.label :authorised_curators, :class=>"form-label"
+          %div.col
+            = f.collection_check_boxes :user_ids, @system.users, :id, :email do |b|
+              = b.label(class: "check_box") do
+                = b.check_box(class: "check_box")
+                = "#{b.object.name} (#{b.object.email})"
+              %br
+
+      -# = render '_shared/record_form_buttons', form: f,model_instance: @system
+      .actions
+        = link_to 'Cancel', @system, :class => 'btn btn-danger'
+        = f.submit 'Save', :class => 'btn btn-success',onclick:"if(document.getElementById('autocomplete_system_owner').value == '') {document.getElementById('system_owner_id').value = null;};"
+
+
+  %div.col-3
+    %h5 Curation Issues
+    -unless @system.issues.empty?
+      %ul
+        - @system.issues.each do |issue|
+          %li.curation-issue
+            = issue_priority_flags(issue)
+    - else
+      %p No curation issues
+    - if policy(@system).admin?
+      %h5 Network Checks
+      - if @system.network_checks.count > 0
+        %ul
+          - @system.network_checks.each do |nc|
+            %li
+              -# i18n-tasks-use t('activerecord.attributes.network_check.network_check_type_list.#{network_check_type}') # this lets i18n-tasks know the key is used
+              = "#{network_check_result_flags(nc)} #{nc.translated_network_check_type}"
+              - unless nc.passed
+                - if nc.http_code && nc.http_code > 0
+                  = "HTTP #{nc.http_code}"
+                - if nc.description
+                  = "(#{nc.description})"
+      - if @system.metadata
+        -unless @system.metadata.empty?
+          %br
+          %h5 Metadata from home webpage
+          %ul
+            - @system.metadata.each do |k,v|
+              %li
+                %b="#{k}: "
+                =v

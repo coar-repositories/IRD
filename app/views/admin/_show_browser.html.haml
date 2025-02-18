@@ -1,0 +1,19 @@
+%div.row
+  %div.col-md-5.col-lg-4
+    %div.search-filter-sidebar
+      %div.reset-filter-button
+        =link_to t(:reset), admin_url, class: 'btn btn-primary btn-sm form-button'
+      %h5= t(:search_by_name)
+      = render 'search_form', "@facets": @facets
+  %div.col-md-7.col-lg-8
+    - if policy(:admin).perform_batch_operations?
+      = render(:partial => 'batch_operations_buttons')
+    %div{style:"font-size: 1.5em;"}
+      = render '_shared/download_machine_readable_data_buttons', formats: [:json,:csv]
+    = render '_shared/paginator'
+    -# = render '_shared/download_machine_readable_data_buttons'
+    %div.row
+      - @systems.each do |system|
+        %div.col-lg-6.col-md-12
+          = render 'card', system: system
+    = render '_shared/paginator'

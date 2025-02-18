@@ -1,0 +1,78 @@
+---
+en:
+  admin: Admin
+  agencies: Agencies
+  all_fields_must_be_completed: All fields must be completed
+  annotations: Annotations
+  are_you_sure_question: Are you sure?
+  authorise_a_user: Authorise a User
+  authorised_curator_for_these_repositories: Authorised Curator for these repositories
+  authorised_curators: Authorised Curators
+  check_repository_functionality: Check Repository Functionality
+  contact: Contact
+  continents: Continents
+  curation_issues: Curation Issues
+  database: Database
+  email: Email
+  filter: Filter
+  fore_name: First Name
+  harvested: Harvested
+  has_thumbnail: Has Thumbnail?
+  homepage: Homepage
+  identifiers: Identifiers
+  ird_metadata_record: IRD Metadata Record
+  last_name: Last Name
+  login: Login
+  logout: Logout
+  managing_agent_for_these_organisations: Managing Agent for these Organisations
+  media_type: Media-type
+  metadata: Metadata
+  name: Name
+  needs_review: Needs Review
+  network_checks: Network Checks
+  none: None
+  not_yet_reviewed: Not yet reviewed
+  oai_status: OAI-PMH Status
+  operations: Operations
+  owner: Owner
+  owner_identified: Owner Identified?
+  page_titles:
+    about: About IRD
+    admin: Admin
+    dashboard_for: Dashboard for %{name}
+    help: System Help
+    repositories_in_country: Repositories in %{country}
+    repositories_running_on_platform: Repositories running on %{platform}
+    repository_browser: Repository Browser
+    search: Search
+    statistics: Statistics
+    welcome: Welcome to the International Repositories Directory (IRD)
+  platform_identified: Software Platform Identified?
+  primary_subject: Primary Subject
+  record_source: Record Source
+  record_status: Record Status
+  records_in_ird: Records in IRD
+  registered_users: Registered Users
+  repositories: Repositories
+  repository_browser: Repository Browser
+  repository_scope: Repository Scope
+  repository_scope_short: Scope
+  repository_status: Repository Status
+  required: Required
+  reset: Reset
+  responsible_organisation: Responsible Organisation
+  responsible_organisations: Responsible Organisations
+  reviewed: Reviewed
+  roles: Roles
+  search: Search
+  search_by_name: Search by Name
+  software: Software
+  status: Status
+  suggest_a_new_repository: Suggest a New Repository
+  support_for_oai_pmh: Support for OAI-PMH
+  systems: Systems
+  tags: Tags
+  total_results: Total Results
+  user_access: User Access
+  verified: Verified
+  website_url: Website URL

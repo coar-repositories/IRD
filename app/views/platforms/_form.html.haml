@@ -1,0 +1,60 @@
+= form_for @platform do |f|
+  - if @platform.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@platform.errors.count, "error")} prohibited this platform from being saved:"
+      %ul
+        - @platform.errors.full_messages.each do |message|
+          %li= message
+  %table.invisible-layout-table
+    %tr
+      %td.field-name
+        Name:
+      %td.field-value
+        = f.text_field :name
+    %tr
+      %td.field-name
+        URL:
+      %td.field-value
+        = f.text_field :url
+    %tr
+      %td.field-name
+        Trusted:
+      %td.field-value
+        = f.check_box :trusted
+
+
+    %tr
+      %td.field-name
+        Matchers:
+      %td.field-value
+        - if @platform.matchers
+          - @platform.matchers.each do |matcher|
+            = f.text_field :matchers, :name => 'platform[matchers][]',:class=>"form-control", :value => matcher
+        = f.text_field :matchers, :name => 'platform[matchers][]',:class=>"form-control", :value => ''
+    %tr
+      %td.field-name
+        Generator Patterns:
+      %td.field-value
+        - if @platform.generator_patterns
+          - @platform.generator_patterns.each do |pattern|
+            = f.text_field :generator_patterns, :name => 'platform[generator_patterns][]',:class=>"form-control", :value => pattern
+        = f.text_field :generator_patterns, :name => 'platform[generator_patterns][]',:class=>"form-control", :value => ''
+    %tr
+      %td.field-name
+        Match Order:
+      %td.field-value
+        = f.number_field :match_order, :step => "0.01"
+
+
+
+    %tr
+      %td.field-name
+        OAI-PMH Support:
+      %td.field-value
+        = f.check_box :oai_support
+        %tr
+    %td.field-name
+      OAI-PMH Base URL Suffix:
+    %td.field-value
+      = f.text_field :oai_suffix
+  = render '_shared/record_form_buttons', form: f,model_instance: @platform

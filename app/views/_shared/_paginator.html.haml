@@ -1,0 +1,6 @@
+- if @pagy && @pagy.pages > 1
+  %div.coar-catalogue-pagination.d-flex.justify-content-end
+    = pagy_bootstrap_nav(@pagy).html_safe
+- if @record_count
+  %div.d-flex.justify-content-end.total-results
+    %i= "(#{t(:total_results)}: #{@record_count})"

@@ -1,0 +1,2 @@
+= column_chart @graph_and_table_data[:graph_data], xtitle: t('activerecord.attributes.country.continent'), ytitle: t('repositories'),title: t('statistics_and_graphs.oai_status_by_continent'), height: '600px', stacked: true
+=render 'stats_table', title: t('continents'), stats_set_collection: @graph_and_table_data[:stats_set_collection], name_column_header: t('activerecord.attributes.country.continent'), data_downloadable: (true), ignore_platform: false

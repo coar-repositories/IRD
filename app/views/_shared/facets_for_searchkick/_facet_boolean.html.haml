@@ -1,0 +1,28 @@
+%div.filter
+  %div.filter-title
+    = title
+  %div.filter-values
+    %div.row
+      %div.col
+        %ul.selected
+          - facet['buckets'].each do |filter|
+            - facet_value = boolean_facet_value_from_integer(filter['key'])
+            - if params[filter_name].try(:include?, facet_value.to_s)
+              %li
+                = check_box_tag "#{filter_name}[]",
+                  boolean_facet_value_from_integer(filter['key']),
+                  true,
+                  onclick: "javascript: $('#search_form').submit();"
+                = "#{facet_value.to_s} (#{filter['doc_count']})"
+      %div.row
+        %div.col
+          %ul.selectable
+            - facet['buckets'].each do |filter|
+              - facet_value = boolean_facet_value_from_integer(filter['key'])
+              - unless params[filter_name].try(:include?, facet_value.to_s)
+                %li
+                  = check_box_tag "#{filter_name}[]",
+                      boolean_facet_value_from_integer(filter['key']),
+                      false,
+                      onclick: "javascript: $('#search_form').submit();"
+                  = "#{facet_value.to_s} (#{filter['doc_count']})"

@@ -1,0 +1,71 @@
+div#header {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/*img#header-image {*/
+/*  max-width: 700px;*/
+/*  width: 100%;*/
+/*  height: auto;*/
+/*}*/
+
+div#footer p {
+  font-size: small;
+  padding: 0;
+  margin: 0;
+}
+
+div#footer {
+  margin-bottom: 0px;
+  border-top: 0.5px solid #666666;
+  padding-top: 10px;
+  text-align: right;
+  margin-top: 40px;
+}
+
+nav#navbar-ird {
+  border-bottom: 1px solid #666666;
+  margin-bottom: 20px;
+}
+
+img#header-logo {
+  max-width: 100px;
+}
+
+div.header_banner_message p {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+div#test-accounts {
+  text-align: left;
+  font-size: 80%;
+}
+
+div#user-controls-panel {
+  text-align: left;
+}
+
+.login-email-input {
+  margin-bottom: 10px;
+}
+
+div.messages {
+  margin-top: 10px;
+}
+
+a.nav-link {
+  color: #000000 !important;
+  font-weight: bold;
+}
+
+a.nav-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.navbar-text {
+  color: #000000 !important;
+}

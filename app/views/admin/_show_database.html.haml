@@ -1,0 +1,32 @@
+%a{href:countries_url,:class => 'btn btn-primary btn-sm'}
+  = t('activerecord.models.country.other')
+  %span.badge.bg-secondary.badge-count= Country.count
+%br
+%a{href:generators_url,:class => 'btn btn-primary btn-sm'}
+  = t('activerecord.models.generator.other')
+  %span.badge.bg-secondary.badge-count= Generator.count
+%a{href:platforms_url,:class => 'btn btn-primary btn-sm'}
+  = t('activerecord.models.platform.other')
+  %span.badge.bg-secondary.badge-count= Platform.count
+%br
+%a{href:roles_url,:class => 'btn btn-primary btn-sm'}
+  = t('activerecord.models.role.other')
+  %span.badge.bg-secondary.badge-count= Role.count
+%a{href:users_url,:class => 'btn btn-primary btn-sm'}
+  = t('activerecord.models.user.other')
+  %span.badge.bg-secondary.badge-count= User.count
+%br
+%a{href:organisations_url,:class => 'btn btn-primary btn-sm'}
+  = t('activerecord.models.organisation.other')
+  %span.badge.bg-secondary.badge-count= Organisation.count
+%a{href:organisation_search_url,:class => 'btn btn-primary btn-sm'}
+  %span.icon.bi-search.navbar-text{title: "Search"}
+%a{href:responsible_parties_url,:class => 'btn btn-primary btn-sm'}
+  = t('responsible_organisations')
+  %span.badge.bg-secondary.badge-count= Organisation.rps.count
+%br
+%a{href:systems_url,:class => 'btn btn-primary btn-sm'}
+  = t('activerecord.models.system.other')
+  %span.badge.bg-secondary.badge-count= System.count
+%a{href:system_search_url,:class => 'btn btn-primary btn-sm'}
+  %span.icon.bi-search.navbar-text{title: "Search"}

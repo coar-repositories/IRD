@@ -1,0 +1,515 @@
+---
+ja:
+  countries_labels:
+    "--": グローバル
+    Afghanistan: アフガニスタン
+    Albania: アルバニア
+    Algeria: アルジェリア
+    American Samoa: アメリカ領サモア
+    Andorra: アンドラ
+    Angola: アンゴラ
+    Anguilla: アンギラ
+    Antarctica: 南極大陸
+    Antigua and Barbuda: アンティグア・バーブーダ
+    Argentina: アルゼンチン
+    Armenia: アルメニア
+    Aruba: アルバ
+    Australia: オーストラリア
+    Austria: オーストリア
+    Azerbaijan: アゼルバイジャン
+    Bahamas: バハマ
+    Bahrain: バーレーン
+    Bangladesh: バングラデシュ
+    Barbados: バルバドス
+    Belarus: ベラルーシ
+    Belgium: ベルギー
+    Belize: ベリーズ
+    Benin: ベナン
+    Bermuda: バミューダ
+    Bhutan: ブータン
+    Bolivia: ボリビア
+    Bonaire: ボネール島
+    Bosnia and Herzegovina: ボスニア・ヘルツェゴビナ
+    Botswana: ボツワナ
+    Bouvet Island: ブーベ島
+    Brazil: ブラジル
+    British Indian Ocean Territory: イギリス領インド洋地域
+    British Virgin Islands: イギリス領ヴァージン諸島
+    Brunei: ブルネイ
+    Bulgaria: ブルガリア
+    Burkina Faso: ブルキナファソ
+    Burundi: ブルンジ
+    Cambodia: カンボジア
+    Cameroon: カメルーン
+    Canada: カナダ
+    Cape Verde: カーボベルデ
+    Cayman Islands: ケイマン諸島
+    Central African Republic: 中央アフリカ共和国
+    Chad: チャド
+    Chile: チリ
+    China: 中国
+    Christmas Island: クリスマス島
+    Cocos [Keeling] Islands: ココス諸島（キーリング諸島）
+    Colombia: コロンビア
+    Comoros: コモロ
+    Cook Islands: クック諸島
+    Costa Rica: コスタリカ
+    Croatia: クロアチア
+    Cuba: キューバ
+    Curacao: キュラソー
+    Cyprus: キプロス
+    Czechia: チェコ
+    Democratic Republic of the Congo: コンゴ民主共和国
+    Denmark: デンマーク
+    Djibouti: ジブチ
+    Dominica: ドミニカ
+    Dominican Republic: ドミニカ共和国
+    East Timor: 東ティモール
+    Ecuador: エクアドル
+    Egypt: エジプト
+    El Salvador: エルサルバドル
+    Equatorial Guinea: 赤道ギニア
+    Eritrea: エリトリア
+    Estonia: エストニア
+    Ethiopia: エチオピア
+    European Union: 欧州連合
+    Falkland Islands: フォークランド諸島
+    Faroe Islands: フェロー諸島
+    Fiji: フィジー
+    Finland: フィンランド
+    France: フランス
+    French Guiana: フランス領ギアナ
+    French Polynesia: フランス領ポリネシア
+    French Southern Territories: フランス領南方領土
+    Gabon: ガボン
+    Gambia: ガンビア
+    Gaza Strip: ガザ地区
+    Georgia: ジョージア
+    Germany: ドイツ
+    Ghana: ガーナ
+    Gibraltar: ジブラルタル
+    Global: グローバル
+    Greece: ギリシャ
+    Greenland: グリーンランド
+    Grenada: グレナダ
+    Guadeloupe: グアドループ
+    Guam: グアム
+    Guatemala: グアテマラ
+    Guernsey: ガーンジー島
+    Guinea: ギニア
+    Guinea-Bissau: ギニアビサウ
+    Guyana: ガイアナ
+    Haiti: ハイチ
+    Heard Island and McDonald Islands: ハード島とマクドナルド諸島
+    Honduras: ホンジュラス
+    Hong Kong: 香港
+    Hungary: ハンガリー
+    Iceland: アイスランド
+    India: インド
+    Indonesia: インドネシア
+    Iran: イラン
+    Iraq: イラク
+    Ireland: アイルランド
+    Isle of Man: マン島
+    Israel: イスラエル
+    Italy: イタリア
+    Ivory Coast: コートジボワール
+    Jamaica: ジャマイカ
+    Japan: 日本
+    Jersey: ジャージー
+    Jordan: ヨルダン
+    Kazakhstan: カザフスタン
+    Kenya: ケニア
+    Kiribati: キリバス
+    Kosovo: コソボ
+    Kuwait: クウェート
+    Kyrgyzstan: キルギスタン
+    Laos: ラオス
+    Latvia: ラトビア
+    Lebanon: レバノン
+    Lesotho: レソト
+    Liberia: リベリア
+    Libya: リビア
+    Liechtenstein: リヒテンシュタイン
+    Lithuania: リトアニア
+    Luxembourg: ルクセンブルク
+    Macao: マカオ
+    Macedonia: マケドニア
+    Madagascar: マダガスカル
+    Malawi: マラウイ
+    Malaysia: マレーシア
+    Maldives: モルディブ
+    Mali: マリ
+    Malta: マルタ
+    Marshall Islands: マーシャル諸島
+    Martinique: マルティニーク
+    Mauritania: モーリタニア
+    Mauritius: モーリシャス
+    Mayotte: マヨット
+    Mexico: メキシコ
+    Micronesia: ミクロネシア
+    Moldova: モルドバ
+    Monaco: モナコ
+    Mongolia: モンゴル
+    Montenegro: モンテネグロ
+    Montserrat: モントセラト
+    Morocco: モロッコ
+    Mozambique: モザンビーク
+    Myanmar [Burma]: ミャンマー[ビルマ]
+    Namibia: ナミビア
+    Nauru: ナウル
+    Nepal: ネパール
+    Netherlands: オランダ
+    Netherlands Antilles: オランダ領アンティル諸島
+    New Caledonia: ニューカレドニア
+    New Zealand: ニュージーランド
+    Nicaragua: ニカラグア
+    Niger: ニジェール
+    Nigeria: ナイジェリア
+    Niue: ニウエ
+    Norfolk Island: ノーフォーク島
+    North Korea: 北朝鮮
+    Northern Mariana Islands: 北マリアナ諸島
+    Norway: ノルウェー
+    Oman: オマーン
+    Pakistan: パキスタン
+    Palau: パラオ
+    Palestine: パレスチナ
+    Panama: パナマ
+    Papua New Guinea: パプアニューギニア
+    Paraguay: パラグアイ
+    Peru: ペルー
+    Philippines: フィリピン
+    Pitcairn Islands: ピトケアン諸島
+    Poland: ポーランド
+    Portugal: ポルトガル
+    Puerto Rico: プエルトリコ
+    Qatar: カタール
+    Republic of the Congo: コンゴ共和国
+    Romania: ルーマニア
+    Russia: ロシア
+    Rwanda: ルワンダ
+    Réunion: 再会
+    Saint Barthélemy: サン・バルテルミー島
+    Saint Helena: セントヘレナ
+    Saint Kitts and Nevis: セントクリストファー・ネイビス
+    Saint Lucia: セントルシア
+    Saint Martin: セント・マーチン
+    Saint Pierre and Miquelon: サンピエール島とミクロン島
+    Saint Vincent and the Grenadines: セントビンセントおよびグレナディーン諸島
+    Samoa: サモア
+    San Marino: サンマリノ
+    Saudi Arabia: サウジアラビア
+    Senegal: セネガル
+    Serbia: セルビア
+    Serbia and Montenegro: セルビア・モンテネグロ
+    Seychelles: セイシェル
+    Sierra Leone: シエラレオネ
+    Singapore: シンガポール
+    Sint Maarten: シント・マールテン
+    Slovakia: スロバキア
+    Slovenia: スロベニア
+    Solomon Islands: ソロモン諸島
+    Somalia: ソマリア
+    South Africa: 南アフリカ
+    South Georgia and the South Sandwich Islands: サウスジョージア島およびサウスサンドウィッチ諸島
+    South Korea: 韓国
+    South Sudan: 南スーダン
+    Spain: スペイン
+    Sri Lanka: スリランカ
+    Sudan: スーダン
+    Suriname: スリナム
+    Svalbard and Jan Mayen: スヴァールバル諸島とヤンマイエン島
+    Swaziland: スワジランド
+    Sweden: スウェーデン
+    Switzerland: スイス
+    Syria: シリア
+    São Tomé and Príncipe: サントメ・プリンシペ
+    Taiwan: 台湾
+    Tajikistan: タジキスタン
+    Tanzania: タンザニア
+    Thailand: タイ
+    Togo: 持ち帰り
+    Tokelau: トケラウ
+    Tonga: トンガ
+    Trinidad and Tobago: トリニダード・トバゴ
+    Tunisia: チュニジア
+    Turkey: 七面鳥
+    Turkmenistan: トルクメニスタン
+    Turks and Caicos Islands: タークス・カイコス諸島
+    Tuvalu: ツバル
+    US Minor Outlying Islands: 米国の領有小離島
+    US Virgin Islands: アメリカ領ヴァージン諸島
+    Uganda: ウガンダ
+    Ukraine: ウクライナ
+    United Arab Emirates: アラブ首長国連邦
+    United Kingdom: イギリス
+    United States: アメリカ合衆国
+    Uruguay: ウルグアイ
+    Uzbekistan: ウズベキスタン
+    Vanuatu: バヌアツ
+    Vatican City: バチカン市国
+    Venezuela: ベネズエラ
+    Vietnam: ベトナム
+    Wallis and Futuna: ウォリス・フツナ
+    Western Sahara: 西サハラ
+    Yemen: イエメン
+    Zambia: ザンビア
+    Zimbabwe: ジンバブエ
+    Åland: オーランド諸島
+  countries_list:
+    "--": グローバル
+    AD: アンドラ
+    AE: アラブ首長国連邦
+    AF: アフガニスタン
+    AG: アンティグア・バーブーダ
+    AI: アンギラ
+    AL: アルバニア
+    AM: アルメニア
+    AN: オランダ領アンティル諸島
+    AO: アンゴラ
+    AQ: 南極大陸
+    AR: アルゼンチン
+    AS: アメリカ領サモア
+    AT: オーストリア
+    AU: オーストラリア
+    AW: アルバ
+    AX: 土地
+    AZ: アゼルバイジャン
+    BA: ボスニア・ヘルツェゴビナ
+    BB: バルバドス
+    BD: バングラデシュ
+    BE: ベルギー
+    BF: ブルキナファソ
+    BG: ブルガリア
+    BH: バーレーン
+    BI: ブルンジ
+    BJ: ベナン
+    BL: サン・バルテルミー島
+    BM: バミューダ
+    BN: ブルネイ
+    BO: ボリビア
+    BQ: ボネール島
+    BR: ブラジル
+    BS: バハマ
+    BT: ブータン
+    BV: ブーベ島
+    BW: ボツワナ
+    BY: ベラルーシ
+    BZ: ベリーズ
+    CA: カナダ
+    CC: ココス諸島（キーリング諸島）
+    CD: コンゴ民主共和国
+    CF: 中央アフリカ共和国
+    CG: コンゴ共和国
+    CH: スイス
+    CI: コートジボワール
+    CK: クック諸島
+    CL: チリ
+    CM: カメルーン
+    CN: 中国
+    CO: コロンビア
+    CR: コスタリカ
+    CS: セルビア・モンテネグロ
+    CU: キューバ
+    CV: カーボベルデ
+    CW: キュラソー
+    CX: クリスマス島
+    CY: キプロス
+    CZ: チェコ
+    DE: ドイツ
+    DJ: ジブチ
+    DK: デンマーク
+    DM: ドミニカ
+    DO: ドミニカ共和国
+    DZ: アルジェリア
+    EC: エクアドル
+    EE: エストニア
+    EG: エジプト
+    EH: 西サハラ
+    ER: エリトリア
+    ES: スペイン
+    ET: エチオピア
+    EU: 欧州連合
+    FI: フィンランド
+    FJ: フィジー
+    FK: フォークランド諸島
+    FM: ミクロネシア
+    FO: フェロー諸島
+    FR: フランス
+    GA: ガボン
+    GB: イギリス
+    GD: グレナダ
+    GE: ジョージア
+    GF: フランス領ギアナ
+    GG: ガーンジー島
+    GH: ガーナ
+    GI: ジブラルタル
+    GL: グリーンランド
+    GM: ガンビア
+    GN: ギニア
+    GP: グアドループ
+    GQ: 赤道ギニア
+    GR: ギリシャ
+    GS: サウスジョージア島およびサウスサンドウィッチ諸島
+    GT: グアテマラ
+    GU: グアム
+    GW: ギニアビサウ
+    GY: ガイアナ
+    GZ: ガザ地区
+    HK: 香港
+    HM: ハード島とマクドナルド諸島
+    HN: ホンジュラス
+    HR: クロアチア
+    HT: ハイチ
+    HU: ハンガリー
+    ID: インドネシア
+    IE: アイルランド
+    IL: イスラエル
+    IM: マン島
+    IN: インド
+    IO: イギリス領インド洋地域
+    IQ: イラク
+    IR: イラン
+    IS: アイスランド
+    IT: イタリア
+    JE: ジャージー
+    JM: ジャマイカ
+    JO: ヨルダン
+    JP: 日本
+    KE: ケニア
+    KG: キルギスタン
+    KH: カンボジア
+    KI: キリバス
+    KM: コモロ
+    KN: セントクリストファー・ネイビス
+    KP: 北朝鮮
+    KR: 韓国
+    KW: クウェート
+    KY: ケイマン諸島
+    KZ: カザフスタン
+    LA: ラオス
+    LB: レバノン
+    LC: セントルシア
+    LI: リヒテンシュタイン
+    LK: スリランカ
+    LR: リベリア
+    LS: レソト
+    LT: リトアニア
+    LU: ルクセンブルク
+    LV: ラトビア
+    LY: リビア
+    MA: モロッコ
+    MC: モナコ
+    MD: モルドバ
+    ME: モンテネグロ
+    MF: セント・マーチン
+    MG: マダガスカル
+    MH: マーシャル諸島
+    MK: マケドニア
+    ML: マリ
+    MM: ミャンマー[ビルマ]
+    MN: モンゴル
+    MO: マカオ
+    MP: 北マリアナ諸島
+    MQ: マルティニーク
+    MR: モーリタニア
+    MS: モントセラト
+    MT: マルタ
+    MU: モーリシャス
+    MV: モルディブ
+    MW: マラウイ
+    MX: メキシコ
+    MY: マレーシア
+    MZ: モザンビーク
+    NA: ナミビア
+    NC: ニューカレドニア
+    NE: ニジェール
+    NF: ノーフォーク島
+    NG: ナイジェリア
+    NI: ニカラグア
+    NL: オランダ
+    'NO': ノルウェー
+    NP: ネパール
+    NR: ナウル
+    NU: ニウエ
+    NZ: ニュージーランド
+    OM: オマーン
+    PA: パナマ
+    PE: ペルー
+    PF: フランス領ポリネシア
+    PG: パプアニューギニア
+    PH: フィリピン
+    PK: パキスタン
+    PL: ポーランド
+    PM: サンピエール島とミクロン島
+    PN: ピトケアン諸島
+    PR: プエルトリコ
+    PS: パレスチナ
+    PT: ポルトガル
+    PW: パラオ
+    PY: パラグアイ
+    QA: カタール
+    RE: 再会
+    RO: ルーマニア
+    RS: セルビア
+    RU: ロシア
+    RW: ルワンダ
+    SA: サウジアラビア
+    SB: ソロモン諸島
+    SC: セイシェル
+    SD: スーダン
+    SE: スウェーデン
+    SG: シンガポール
+    SH: セントヘレナ
+    SI: スロベニア
+    SJ: スヴァールバル諸島とヤンマイエン島
+    SK: スロバキア
+    SL: シエラレオネ
+    SM: サンマリノ
+    SN: セネガル
+    SO: ソマリア
+    SR: スリナム
+    SS: 南スーダン
+    ST: サントメ・プリンシペ
+    SV: エルサルバドル
+    SX: シント・マールテン
+    SY: シリア
+    SZ: スワジランド
+    TC: タークス・カイコス諸島
+    TD: チャド
+    TF: フランス領南方領土
+    TG: 持ち帰り
+    TH: タイ
+    TJ: タジキスタン
+    TK: トケラウ
+    TL: 東ティモール
+    TM: トルクメニスタン
+    TN: チュニジア
+    TO: トンガ
+    TR: 七面鳥
+    TT: トリニダード・トバゴ
+    TV: ツバル
+    TW: 台湾
+    TZ: タンザニア
+    UA: ウクライナ
+    UG: ウガンダ
+    UM: 米国の領有小離島
+    US: アメリカ
+    UY: ウルグアイ
+    UZ: ウズベキスタン
+    VA: バチカン市
+    VC: セントビンセントおよびグレナディーン諸島
+    VE: ベネズエラ
+    VG: イギリス領バージン諸島
+    VI: アメリカ領ヴァージン諸島
+    VN: ベトナム
+    VU: バヌアツ
+    WF: ウォリス・フツナ
+    WS: サモア
+    XK: コソボ
+    YE: イエメン
+    YT: マヨット
+    ZA: 南アフリカ
+    ZM: ザンビア
+    ZW: ジンバブエ

@@ -1,0 +1,46 @@
+---
+es:
+  buttons:
+    allocate_rp_by_country: Asignar RP por país
+    archive_record: Registro de archivo
+    authorise_a_user: Autorizar a un usuario
+    auto_curate: Curación automática
+    cancel_operation: Cancelar operación
+    check_oai: Consultar OAI-PMH
+    check_url: Consultar sitio web
+    check_urls: Comprobar URL
+    choose_rp: Elige RP
+    create_record: Crear registro %{model}
+    delete: Borrar
+    do_not_show_archived_records: No mostrar registros archivados
+    edit: Editar
+    generate_new_api_key: Generar nueva clave API
+    get_thumbnail: Obtener miniatura
+    get_thumbnails: Obtener miniaturas
+    make_org_an_rp: Hacer de la organización una organización responsable
+    make_org_an_rp_for_country: Hacer que la organización sea responsable de todos los repositorios en este país
+    make_record_draft: Hacer borrador de registro
+    make_record_under_review: Hacer registro bajo revisión
+    mark_reviewed: Marcar revisado
+    oai_pmh_identify: OAI-PMH Identificar
+    oai_pmh_metadata_formats: Formatos de metadatos OAI-PMH
+    process_as_duplicate_of: Proceso como Duplicado de
+    publish_record: Publicar registro
+    purge_duplicates: Purgar duplicados
+    purge_statistics_cache: Purgar la caché de estadísticas
+    purge_thumbnail: Purgar miniatura
+    purge_thumbnails: Purgar miniaturas
+    purge_unused_generators: Purgar generadores no utilizados
+    raise_issue: Crear un nuevo problema
+    reindex_systems: Reindexar sistemas
+    remove_rp_status: Eliminar el estado de organización responsable
+    restore_access: Restaurar acceso
+    review_this_record: Revisar este registro
+    revoke_access: Revocar acceso
+    save_record: Guardar registro
+    show_archived_records: Mostrar registros archivados
+    show_duplicates: Mostrar duplicados
+    start_background_network_checks: Comprobaciones de red
+    suggest_new_system: Sugerir un nuevo repositorio
+    view_job_queue: Ver cola de trabajos
+    view_kanban: Ver Kanban

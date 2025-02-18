@@ -1,0 +1,515 @@
+---
+en:
+  countries_labels:
+    "--": Global
+    Afghanistan: Afghanistan
+    Albania: Albania
+    Algeria: Algeria
+    American Samoa: American Samoa
+    Andorra: Andorra
+    Angola: Angola
+    Anguilla: Anguilla
+    Antarctica: Antarctica
+    Antigua and Barbuda: Antigua and Barbuda
+    Argentina: Argentina
+    Armenia: Armenia
+    Aruba: Aruba
+    Australia: Australia
+    Austria: Austria
+    Azerbaijan: Azerbaijan
+    Bahamas: Bahamas
+    Bahrain: Bahrain
+    Bangladesh: Bangladesh
+    Barbados: Barbados
+    Belarus: Belarus
+    Belgium: Belgium
+    Belize: Belize
+    Benin: Benin
+    Bermuda: Bermuda
+    Bhutan: Bhutan
+    Bolivia: Bolivia
+    Bonaire: Bonaire
+    Bosnia and Herzegovina: Bosnia and Herzegovina
+    Botswana: Botswana
+    Bouvet Island: Bouvet Island
+    Brazil: Brazil
+    British Indian Ocean Territory: British Indian Ocean Territory
+    British Virgin Islands: British Virgin Islands
+    Brunei: Brunei
+    Bulgaria: Bulgaria
+    Burkina Faso: Burkina Faso
+    Burundi: Burundi
+    Cambodia: Cambodia
+    Cameroon: Cameroon
+    Canada: Canada
+    Cape Verde: Cape Verde
+    Cayman Islands: Cayman Islands
+    Central African Republic: Central African Republic
+    Chad: Chad
+    Chile: Chile
+    China: China
+    Christmas Island: Christmas Island
+    Cocos [Keeling] Islands: Cocos [Keeling] Islands
+    Colombia: Colombia
+    Comoros: Comoros
+    Cook Islands: Cook Islands
+    Costa Rica: Costa Rica
+    Croatia: Croatia
+    Cuba: Cuba
+    Curacao: Curacao
+    Cyprus: Cyprus
+    Czechia: Czechia
+    Democratic Republic of the Congo: Democratic Republic of the Congo
+    Denmark: Denmark
+    Djibouti: Djibouti
+    Dominica: Dominica
+    Dominican Republic: Dominican Republic
+    East Timor: East Timor
+    Ecuador: Ecuador
+    Egypt: Egypt
+    El Salvador: El Salvador
+    Equatorial Guinea: Equatorial Guinea
+    Eritrea: Eritrea
+    Estonia: Estonia
+    Ethiopia: Ethiopia
+    European Union: European Union
+    Falkland Islands: Falkland Islands
+    Faroe Islands: Faroe Islands
+    Fiji: Fiji
+    Finland: Finland
+    France: France
+    French Guiana: French Guiana
+    French Polynesia: French Polynesia
+    French Southern Territories: French Southern Territories
+    Gabon: Gabon
+    Gambia: Gambia
+    Gaza Strip: Gaza Strip
+    Georgia: Georgia
+    Germany: Germany
+    Ghana: Ghana
+    Gibraltar: Gibraltar
+    Global: Global
+    Greece: Greece
+    Greenland: Greenland
+    Grenada: Grenada
+    Guadeloupe: Guadeloupe
+    Guam: Guam
+    Guatemala: Guatemala
+    Guernsey: Guernsey
+    Guinea: Guinea
+    Guinea-Bissau: Guinea-Bissau
+    Guyana: Guyana
+    Haiti: Haiti
+    Heard Island and McDonald Islands: Heard Island and McDonald Islands
+    Honduras: Honduras
+    Hong Kong: Hong Kong
+    Hungary: Hungary
+    Iceland: Iceland
+    India: India
+    Indonesia: Indonesia
+    Iran: Iran
+    Iraq: Iraq
+    Ireland: Ireland
+    Isle of Man: Isle of Man
+    Israel: Israel
+    Italy: Italy
+    Ivory Coast: Ivory Coast
+    Jamaica: Jamaica
+    Japan: Japan
+    Jersey: Jersey
+    Jordan: Jordan
+    Kazakhstan: Kazakhstan
+    Kenya: Kenya
+    Kiribati: Kiribati
+    Kosovo: Kosovo
+    Kuwait: Kuwait
+    Kyrgyzstan: Kyrgyzstan
+    Laos: Laos
+    Latvia: Latvia
+    Lebanon: Lebanon
+    Lesotho: Lesotho
+    Liberia: Liberia
+    Libya: Libya
+    Liechtenstein: Liechtenstein
+    Lithuania: Lithuania
+    Luxembourg: Luxembourg
+    Macao: Macao
+    Macedonia: Macedonia
+    Madagascar: Madagascar
+    Malawi: Malawi
+    Malaysia: Malaysia
+    Maldives: Maldives
+    Mali: Mali
+    Malta: Malta
+    Marshall Islands: Marshall Islands
+    Martinique: Martinique
+    Mauritania: Mauritania
+    Mauritius: Mauritius
+    Mayotte: Mayotte
+    Mexico: Mexico
+    Micronesia: Micronesia
+    Moldova: Moldova
+    Monaco: Monaco
+    Mongolia: Mongolia
+    Montenegro: Montenegro
+    Montserrat: Montserrat
+    Morocco: Morocco
+    Mozambique: Mozambique
+    Myanmar [Burma]: Myanmar [Burma]
+    Namibia: Namibia
+    Nauru: Nauru
+    Nepal: Nepal
+    Netherlands: Netherlands
+    Netherlands Antilles: Netherlands Antilles
+    New Caledonia: New Caledonia
+    New Zealand: New Zealand
+    Nicaragua: Nicaragua
+    Niger: Niger
+    Nigeria: Nigeria
+    Niue: Niue
+    Norfolk Island: Norfolk Island
+    North Korea: North Korea
+    Northern Mariana Islands: Northern Mariana Islands
+    Norway: Norway
+    Oman: Oman
+    Pakistan: Pakistan
+    Palau: Palau
+    Palestine: Palestine
+    Panama: Panama
+    Papua New Guinea: Papua New Guinea
+    Paraguay: Paraguay
+    Peru: Peru
+    Philippines: Philippines
+    Pitcairn Islands: Pitcairn Islands
+    Poland: Poland
+    Portugal: Portugal
+    Puerto Rico: Puerto Rico
+    Qatar: Qatar
+    Republic of the Congo: Republic of the Congo
+    Romania: Romania
+    Russia: Russia
+    Rwanda: Rwanda
+    Réunion: Réunion
+    Saint Barthélemy: Saint Barthélemy
+    Saint Helena: Saint Helena
+    Saint Kitts and Nevis: Saint Kitts and Nevis
+    Saint Lucia: Saint Lucia
+    Saint Martin: Saint Martin
+    Saint Pierre and Miquelon: Saint Pierre and Miquelon
+    Saint Vincent and the Grenadines: Saint Vincent and the Grenadines
+    Samoa: Samoa
+    San Marino: San Marino
+    Saudi Arabia: Saudi Arabia
+    Senegal: Senegal
+    Serbia: Serbia
+    Serbia and Montenegro: Serbia and Montenegro
+    Seychelles: Seychelles
+    Sierra Leone: Sierra Leone
+    Singapore: Singapore
+    Sint Maarten: Sint Maarten
+    Slovakia: Slovakia
+    Slovenia: Slovenia
+    Solomon Islands: Solomon Islands
+    Somalia: Somalia
+    South Africa: South Africa
+    South Georgia and the South Sandwich Islands: South Georgia and the South Sandwich Islands
+    South Korea: South Korea
+    South Sudan: South Sudan
+    Spain: Spain
+    Sri Lanka: Sri Lanka
+    Sudan: Sudan
+    Suriname: Suriname
+    Svalbard and Jan Mayen: Svalbard and Jan Mayen
+    Swaziland: Swaziland
+    Sweden: Sweden
+    Switzerland: Switzerland
+    Syria: Syria
+    São Tomé and Príncipe: São Tomé and Príncipe
+    Taiwan: Taiwan
+    Tajikistan: Tajikistan
+    Tanzania: Tanzania
+    Thailand: Thailand
+    Togo: Togo
+    Tokelau: Tokelau
+    Tonga: Tonga
+    Trinidad and Tobago: Trinidad and Tobago
+    Tunisia: Tunisia
+    Turkey: Turkey
+    Turkmenistan: Turkmenistan
+    Turks and Caicos Islands: Turks and Caicos Islands
+    Tuvalu: Tuvalu
+    US Minor Outlying Islands: US Minor Outlying Islands
+    US Virgin Islands: US Virgin Islands
+    Uganda: Uganda
+    Ukraine: Ukraine
+    United Arab Emirates: United Arab Emirates
+    United Kingdom: United Kingdom
+    United States: United States
+    Uruguay: Uruguay
+    Uzbekistan: Uzbekistan
+    Vanuatu: Vanuatu
+    Vatican City: Vatican City
+    Venezuela: Venezuela
+    Vietnam: Vietnam
+    Wallis and Futuna: Wallis and Futuna
+    Western Sahara: Western Sahara
+    Yemen: Yemen
+    Zambia: Zambia
+    Zimbabwe: Zimbabwe
+    Åland: Åland
+  countries_list:
+    "--": Global
+    AD: Andorra
+    AE: United Arab Emirates
+    AF: Afghanistan
+    AG: Antigua and Barbuda
+    AI: Anguilla
+    AL: Albania
+    AM: Armenia
+    AN: Netherlands Antilles
+    AO: Angola
+    AQ: Antarctica
+    AR: Argentina
+    AS: American Samoa
+    AT: Austria
+    AU: Australia
+    AW: Aruba
+    AX: Åland
+    AZ: Azerbaijan
+    BA: Bosnia and Herzegovina
+    BB: Barbados
+    BD: Bangladesh
+    BE: Belgium
+    BF: Burkina Faso
+    BG: Bulgaria
+    BH: Bahrain
+    BI: Burundi
+    BJ: Benin
+    BL: Saint Barthélemy
+    BM: Bermuda
+    BN: Brunei
+    BO: Bolivia
+    BQ: Bonaire
+    BR: Brazil
+    BS: Bahamas
+    BT: Bhutan
+    BV: Bouvet Island
+    BW: Botswana
+    BY: Belarus
+    BZ: Belize
+    CA: Canada
+    CC: Cocos [Keeling] Islands
+    CD: Democratic Republic of the Congo
+    CF: Central African Republic
+    CG: Republic of the Congo
+    CH: Switzerland
+    CI: Ivory Coast
+    CK: Cook Islands
+    CL: Chile
+    CM: Cameroon
+    CN: China
+    CO: Colombia
+    CR: Costa Rica
+    CS: Serbia and Montenegro
+    CU: Cuba
+    CV: Cape Verde
+    CW: Curacao
+    CX: Christmas Island
+    CY: Cyprus
+    CZ: Czechia
+    DE: Germany
+    DJ: Djibouti
+    DK: Denmark
+    DM: Dominica
+    DO: Dominican Republic
+    DZ: Algeria
+    EC: Ecuador
+    EE: Estonia
+    EG: Egypt
+    EH: Western Sahara
+    ER: Eritrea
+    ES: Spain
+    ET: Ethiopia
+    EU: European Union
+    FI: Finland
+    FJ: Fiji
+    FK: Falkland Islands
+    FM: Micronesia
+    FO: Faroe Islands
+    FR: France
+    GA: Gabon
+    GB: United Kingdom
+    GD: Grenada
+    GE: Georgia
+    GF: French Guiana
+    GG: Guernsey
+    GH: Ghana
+    GI: Gibraltar
+    GL: Greenland
+    GM: Gambia
+    GN: Guinea
+    GP: Guadeloupe
+    GQ: Equatorial Guinea
+    GR: Greece
+    GS: South Georgia and the South Sandwich Islands
+    GT: Guatemala
+    GU: Guam
+    GW: Guinea-Bissau
+    GY: Guyana
+    GZ: Gaza Strip
+    HK: Hong Kong
+    HM: Heard Island and McDonald Islands
+    HN: Honduras
+    HR: Croatia
+    HT: Haiti
+    HU: Hungary
+    ID: Indonesia
+    IE: Ireland
+    IL: Israel
+    IM: Isle of Man
+    IN: India
+    IO: British Indian Ocean Territory
+    IQ: Iraq
+    IR: Iran
+    IS: Iceland
+    IT: Italy
+    JE: Jersey
+    JM: Jamaica
+    JO: Jordan
+    JP: Japan
+    KE: Kenya
+    KG: Kyrgyzstan
+    KH: Cambodia
+    KI: Kiribati
+    KM: Comoros
+    KN: Saint Kitts and Nevis
+    KP: North Korea
+    KR: South Korea
+    KW: Kuwait
+    KY: Cayman Islands
+    KZ: Kazakhstan
+    LA: Laos
+    LB: Lebanon
+    LC: Saint Lucia
+    LI: Liechtenstein
+    LK: Sri Lanka
+    LR: Liberia
+    LS: Lesotho
+    LT: Lithuania
+    LU: Luxembourg
+    LV: Latvia
+    LY: Libya
+    MA: Morocco
+    MC: Monaco
+    MD: Moldova
+    ME: Montenegro
+    MF: Saint Martin
+    MG: Madagascar
+    MH: Marshall Islands
+    MK: Macedonia
+    ML: Mali
+    MM: Myanmar [Burma]
+    MN: Mongolia
+    MO: Macao
+    MP: Northern Mariana Islands
+    MQ: Martinique
+    MR: Mauritania
+    MS: Montserrat
+    MT: Malta
+    MU: Mauritius
+    MV: Maldives
+    MW: Malawi
+    MX: Mexico
+    MY: Malaysia
+    MZ: Mozambique
+    NA: Namibia
+    NC: New Caledonia
+    NE: Niger
+    NF: Norfolk Island
+    NG: Nigeria
+    NI: Nicaragua
+    NL: Netherlands
+    'NO': Norway
+    NP: Nepal
+    NR: Nauru
+    NU: Niue
+    NZ: New Zealand
+    OM: Oman
+    PA: Panama
+    PE: Peru
+    PF: French Polynesia
+    PG: Papua New Guinea
+    PH: Philippines
+    PK: Pakistan
+    PL: Poland
+    PM: Saint Pierre and Miquelon
+    PN: Pitcairn Islands
+    PR: Puerto Rico
+    PS: Palestine
+    PT: Portugal
+    PW: Palau
+    PY: Paraguay
+    QA: Qatar
+    RE: Réunion
+    RO: Romania
+    RS: Serbia
+    RU: Russia
+    RW: Rwanda
+    SA: Saudi Arabia
+    SB: Solomon Islands
+    SC: Seychelles
+    SD: Sudan
+    SE: Sweden
+    SG: Singapore
+    SH: Saint Helena
+    SI: Slovenia
+    SJ: Svalbard and Jan Mayen
+    SK: Slovakia
+    SL: Sierra Leone
+    SM: San Marino
+    SN: Senegal
+    SO: Somalia
+    SR: Suriname
+    SS: South Sudan
+    ST: São Tomé and Príncipe
+    SV: El Salvador
+    SX: Sint Maarten
+    SY: Syria
+    SZ: Swaziland
+    TC: Turks and Caicos Islands
+    TD: Chad
+    TF: French Southern Territories
+    TG: Togo
+    TH: Thailand
+    TJ: Tajikistan
+    TK: Tokelau
+    TL: East Timor
+    TM: Turkmenistan
+    TN: Tunisia
+    TO: Tonga
+    TR: Turkey
+    TT: Trinidad and Tobago
+    TV: Tuvalu
+    TW: Taiwan
+    TZ: Tanzania
+    UA: Ukraine
+    UG: Uganda
+    UM: US Minor Outlying Islands
+    US: United States
+    UY: Uruguay
+    UZ: Uzbekistan
+    VA: Vatican City
+    VC: Saint Vincent and the Grenadines
+    VE: Venezuela
+    VG: British Virgin Islands
+    VI: US Virgin Islands
+    VN: Vietnam
+    VU: Vanuatu
+    WF: Wallis and Futuna
+    WS: Samoa
+    XK: Kosovo
+    YE: Yemen
+    YT: Mayotte
+    ZA: South Africa
+    ZM: Zambia
+    ZW: Zimbabwe

@@ -1,0 +1,22 @@
+= print_field_name_and_value2(t(:responsible_organisation),(link_to(@system.rp.display_name, @system.rp) unless @system.rp.nil?),true)
+%div.property
+  %h5.property-name= t(:authorised_curators)
+  %div.property-value
+    -if @system.users && @system.users.count > 0
+      %ul
+        - @system.users.each do |user|
+          %li
+            = user.display_name
+    - else
+      =t(:none)
+
+%div.property
+  %h5.property-name= t(:curation_issues)
+  %div.property-value
+    -unless @system.issues.empty?
+      %ul
+        - @system.issues.each do |issue|
+          %li
+            = issue_priority_flags(issue)
+    - else
+      =t(:none)

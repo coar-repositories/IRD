@@ -1,0 +1,25 @@
+---
+pt:
+  statistics_and_graphs:
+    by_continent: Por Continente
+    by_country: Por país
+    by_software_platform: Por plataforma de software
+    countries_with_one_or_more_repositories: Países com um ou mais repositórios
+    currently_online: Atualmente Online
+    functioning_oai_pmh: Funcionamento OAI-PMH
+    oai_status_by_continent: Status OAI-PMH por continente
+    oai_status_for_platforms_with_10_or_more_repositories: Status OAI-PMH para plataformas com 10 ou mais repositórios
+    oai_status_for_top_20_countries_by_repository_count: Status do OAI-PMH para os 20 principais países por contagem de repositórios
+    oai_status_percentage_for_all_repositories: Status OAI-PMH (%) para todos os repositórios
+    records_published: Registros publicados
+    records_total: Total de registros
+    records_under_review: Registros sob revisão
+    repositories_count_by_continent: Repositórios (contagem) por continente
+    statistics: Estatísticas
+    statistics_by_continent: Estatísticas por Continente
+    statistics_by_country: Estatísticas por país
+    statistics_by_software_platform: Estatísticas por plataforma de software
+    system_status_percentage_for_all_repositories: Status do sistema (%) para todos os repositórios
+    total_repositories: Repositórios Totais
+    with_identified_owning_organisation: Com Organização Proprietária Identificada
+    with_identified_software_platform: Com plataforma de software identificada

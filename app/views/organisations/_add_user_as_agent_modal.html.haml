@@ -1,0 +1,31 @@
+= form_with url: "/organisations/add_user_as_agent", method: :post do |f|
+  %div.modal.fade#addUserAsAgentModal{tabindex:"-1", role:"dialog","aria-labelledby":"addUserAsAgentModal","aria-hidden":"true"}
+    %div.modal-dialog.modal-lg{role:"document"}
+      %div.modal-content
+        %div.modal-header
+          %h5.modal-title Add Agent
+          %button.close{type:"button", "data-bs-dismiss": "modal", "aria-label":"Close"}
+            %span{"aria-hidden":"true"}
+              &times;
+        %div.modal-body
+          (all fields must be completed)
+          = f.hidden_field :id, value: @organisation.id
+          %div.row.align-items-center.field
+            %div.col-3.field-name
+              = f.label :email, :class=>"form-label"
+            %div.col
+              = f.text_field :email, :class=>"form-control"
+          %div.row.align-items-center.field
+            %div.col-3.field-name
+              = f.label :fore_name, :class=>"form-label"
+            %div.col
+              = f.text_field :fore_name, :class=>"form-control"
+          %div.row.align-items-center.field
+            %div.col-3.field-name
+              = f.label :last_name, :class=>"form-label"
+            %div.col
+              = f.text_field :last_name, :class=>"form-control"
+        %div.modal-footer
+          .actions
+            -# = link_to 'Cancel', @system, :class => 'btn btn-primary btn-sm'
+            = f.submit 'Save', :class => 'btn btn-primary'

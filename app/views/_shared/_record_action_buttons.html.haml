@@ -1,0 +1,5 @@
+- if policy(model_instance).edit? || policy(model_instance).destroy?
+  - if policy(model_instance).edit?
+    = link_to t('buttons.edit'), "#{url_for([:edit,model_instance])}", :class => 'btn btn-primary btn-sm'
+  - if policy(model_instance).destroy?
+    = button_to t('buttons.delete'), model_instance, method: :delete, data: { confirm: t('are_you_sure_question') }, :class => 'btn btn-danger btn-sm'

@@ -1,0 +1,22 @@
+= render '_shared/record_new_button', model_sym: :role
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    Roles
+    = render '_shared/download_machine_readable_data_buttons', formats: [:json]
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th.number Users
+      %th.actions.no-sort &nbsp;
+
+  %tbody
+    - @roles.each do |role|
+      %tr
+        %td= link_to role.name, role
+        %td= role.description
+        %td.number= link_to role.users.count, role_instances_url(role)
+        = render '_shared/record_action_buttons_table', model_instance: role
+
+= render '_shared/paginator'

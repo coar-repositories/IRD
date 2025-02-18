@@ -1,0 +1,14 @@
+---
+fr:
+  passwordless:
+    mailer:
+      sign_in:
+        body: 'Utilisez ce lien pour vous connecter directement à l''IRD : %{magic_link} Lorsque vous cliquez sur ce lien, l''IRD installe un cookie - mais uniquement pour permettre le processus de connexion. L''IRD n''installe aucun autre cookie à d''autres fins.'
+    sessions:
+      create:
+        email_sent: Nous vous avons envoyé un e-mail avec un lien que vous pouvez utiliser pour vous connecter
+      new:
+        email:
+          label: Adresse e-mail
+          placeholder: utilisateur@exemple.com
+        submit: Se connecter

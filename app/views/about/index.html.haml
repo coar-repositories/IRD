@@ -1,0 +1,10 @@
+%div.row
+  %div.col-sm-8
+    -# = process_translated_md_for_key('about_page.about_page_text')
+    = process_md(t('about_page.about_page_text'))
+  %div.col-sm-4
+    = process_md(t('about_page.data_curation_text'))
+    - if policy(:organisation).index?
+      = render(:partial => 'list_rps')
+    - else
+      %i coming soon...

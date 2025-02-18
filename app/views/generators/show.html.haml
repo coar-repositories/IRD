@@ -1,0 +1,23 @@
+= render '_shared/record_action_buttons', model_instance: @generator
+
+%div.row.field
+  %div.col-2.field-name
+    .form-label Name
+  %div.col
+    = @generator.name
+%div.row.field
+  %div.col-2.field-name
+    .form-label Platform
+  %div.col
+    = link_to @generator.platform.name, @generator.platform
+%div.row.field
+  %div.col-2.field-name
+    .form-label Platform Version
+  %div.col
+    = @generator.version
+%div.row.field
+  %div.col-2.field-name
+    .form-label Systems
+  %div.col
+    = link_to @generator.systems.publicly_viewable.count, generator_instances_url(@generator)
+

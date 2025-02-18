@@ -1,0 +1,8 @@
+production:
+  clear_completed_jobs:
+    class: ClearCompletedJobsJob
+    schedule: at 5am every day
+development:
+  clear_completed_jobs:
+    class: ClearCompletedJobsJob
+    schedule: every hour

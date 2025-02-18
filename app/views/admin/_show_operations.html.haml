@@ -1,0 +1,16 @@
+= link_to t(:view_job_queue, scope: :buttons), '/jobs', :class => 'btn btn-primary btn-sm operations-button'
+%br
+%br
+= link_to t(:reindex_systems, scope: :buttons), admin_path(request.query_parameters.except(:lang).merge({operation: 'reindex_systems'})), class: 'btn btn-primary btn-sm operations-button'
+%br
+%br
+= link_to t(:show_duplicates, scope: :buttons), deduplication_path, class: 'btn btn-primary btn-sm operations-button'
+%br
+%br
+= link_to t(:purge_unused_generators, scope: :buttons), admin_path(request.query_parameters.except(:lang).merge({operation: 'purge_unused_generators'})), class: 'btn btn-danger btn-sm operations-button'
+%br
+= link_to t(:purge_duplicates, scope: :buttons), admin_path(request.query_parameters.except(:lang).merge({operation: 'purge_duplicates'})), class: 'btn btn-danger btn-sm operations-button'
+%br
+%br
+%a{href: 'https://github.com/users/antleaf/projects/7', class: 'btn btn-primary btn-sm',role:"button"}= t(:view_kanban, scope: :buttons)
+%a{href: 'https://github.com/antleaf/IRD/issues/new/choose', class: 'btn btn-success btn-sm'}= t(:raise_issue, scope: :buttons)

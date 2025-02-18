@@ -1,0 +1,28 @@
+%table.table.table-sm.table-striped.table-bordered.sortable-table
+  %caption
+    =title
+    - if data_downloadable
+      = render '_shared/download_machine_readable_data_buttons', formats: [:json,:csv]
+  %thead
+    %tr
+      %th= t(:email)
+      %th= t(:fore_name)
+      %th= t(:last_name)
+      %th= t(:roles)
+      %th= t(:agencies)
+      %th= t(:verified)
+      %th.actions &nbsp;
+
+  %tbody
+    - users.each do |user|
+      %tr
+        %td= link_to user.email, user
+        %td= user.fore_name
+        %td= user.last_name
+        %td= user.roles.map(&:name).join(', ')
+        %td=user.organisations.map{|org|link_to(org.display_name,org)}.join(', ').html_safe
+        %td= user.verified? ? '✅' : ''
+        = render '_shared/record_action_buttons_table', model_instance: user
+
+%br
+= render '_shared/paginator'

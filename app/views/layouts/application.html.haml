@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    = render "_shared/head", cache: true
+  %body
+    = render "_shared/header"
+    = render '_shared/page_title'
+    = yield
+    = render "_shared/footer", cache: true

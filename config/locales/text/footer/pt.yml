@@ -1,0 +1,5 @@
+---
+pt:
+  footer:
+    footer_license_statement: Os dados são licenciados com
+    footer_text: Sistema IRD %{version} desenvolvido por [Antleaf](https://www.antleaf.com/) para [COAR](https://www.coar-repositories.org/).

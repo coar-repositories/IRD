@@ -1,0 +1,48 @@
+= form_with url: admin_path, method: :get, id: 'search_form' do
+  = text_field_tag 'search', request.query_parameters[:search], class: 'form-control form-control-sm', placeholder: "#{t(:name)}...", style: 'margin-bottom: 10px;'
+  = hidden_field_tag 'lang', I18n.locale
+  = hidden_field_tag 'show_archived_records', request.query_parameters[:show_archived_records]
+  %div.form-button
+    %button.btn.btn-primary.btn-sm= t(:search)
+  %div.row
+    %div.col
+      %h5= t(:filter)
+      %div.row
+        %div.col
+          %div{style:"font-weight: bold; text-align: center;"}
+            - if request.query_parameters[:show_archived_records] == 'true'
+              = link_to "✘ #{t(:do_not_show_archived_records, scope: :buttons)}", admin_path(request.query_parameters.except(:lang).merge({show_archived_records: 'false'})), class: 'btn btn-danger btn-sm operations-button'
+            - else
+              = link_to "✔︎ #{t(:show_archived_records, scope: :buttons)}", admin_path(request.query_parameters.except(:lang).merge({show_archived_records: 'true'})), class: 'btn btn-success btn-sm operations-button'
+      %div.row
+        %div.col
+          = render(:partial => '_shared/facets_for_searchkick/facet_system_status',:locals => {filter_name: 'system_status', title: t('repository_status'),facet: @facets['system_status']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_oai_status',:locals => {filter_name: 'oai_status', title: t('oai_status'),facet: @facets['oai_status']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_record_status',:locals => {filter_name: 'record_status', title: t('record_status'),facet: @facets['record_status']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_subcategory',:locals => {filter_name: 'subcategory', title: t('repository_scope'),facet: @facets['subcategory']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'record_source', title: t('record_source'),facet: @facets['record_source']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_boolean',:locals => {filter_name: 'has_owner', title: t('owner_identified'),facet: @facets['has_owner']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_boolean',:locals => {filter_name: 'has_thumbnail', title: t('has_thumbnail'),facet: @facets['has_thumbnail']})
+        %div.col
+          = render(:partial => '_shared/facets_for_searchkick/facet_media_type',:locals => {filter_name: 'media', title: t('media_type'),facet: @facets['media']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_primary_subject',:locals => {filter_name: 'primary_subject', title: t('primary_subject'),facet: @facets['primary_subject']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'annotations', title: t('annotations'),facet: @facets['annotations']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'tags', title: t('tags'),facet: @facets['tags']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_http_codes',:locals => {filter_name: 'http_code', title: 'HTTP',facet: @facets['http_code']})
+      %div.row
+        %div.col
+          = render(:partial => '_shared/facets_for_searchkick/facet_rp',:locals => {filter_name: 'rp', title: t('responsible_organisations'),facet: @facets['rp']})
+      %div.row
+        %div.col
+          = render(:partial => '_shared/facets_for_searchkick/facet_platform',:locals => {filter_name: 'platform', title: t('activerecord.attributes.system.platform'),facet: @facets['platform']})
+      %div.row
+        %div.col
+          = render(:partial => '_shared/facets_for_searchkick/facet_continent',:locals => {filter_name: 'continent', title: t('activerecord.attributes.country.continent'),facet: @facets['continent']})
+      %div.row
+        %div.col
+          = render(:partial => '_shared/facets_for_searchkick/facet_country',:locals => {filter_name: 'country', title: t('activerecord.models.country.one'),facet: @facets['country']})
+
+
+
+
+

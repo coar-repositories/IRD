@@ -1,0 +1,44 @@
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    = title
+    - if data_downloadable
+      = render '_shared/download_machine_readable_data_buttons', formats: [:json,:csv]
+  %thead
+    %tr
+      %th Name
+      %th Country
+      %th.number Responsibilities
+      %th.number Ownerships
+      %th.number Active
+      %th.actions &nbsp;
+  %tbody
+    - organisations.each do |organisation|
+      %tr
+        %td= link_to organisation.display_name, organisation
+        %td
+          = image_tag "flags/#{organisation.country.id.downcase}.svg", :alt => organisation.country.id, :class => 'flag-small'
+          = link_to organisation.country.name,organisation.country
+        %td.number
+          - if organisation.responsibilities.publicly_viewable.count > 0
+            - if policy(organisation).responsibilities?
+              = link_to organisation.responsibilities.publicly_viewable.count, organisation_responsibilities_url(organisation)
+            - else
+              = organisation.responsibilities.publicly_viewable.count
+          - else
+            = organisation.responsibilities.publicly_viewable.count
+        %td.number
+          - if organisation.ownerships.publicly_viewable.count > 0
+            - if policy(organisation).ownerships?
+              = link_to organisation.ownerships.publicly_viewable.count, organisation_ownerships_url(organisation)
+            - else
+              = organisation.ownerships.publicly_viewable.count
+          - else
+            = organisation.ownerships.publicly_viewable.count
+        %td.number
+          - if organisation.responsibilities.publicly_viewable.count > 0
+            =  "#{percentage(organisation.responsibilities_active.publicly_viewable.count, organisation.responsibilities.publicly_viewable.count)}%" unless (organisation.responsibilities.publicly_viewable.count==0)
+          - else
+            0%
+        = render '_shared/record_action_buttons_table', model_instance: organisation
+= render '_shared/paginator'

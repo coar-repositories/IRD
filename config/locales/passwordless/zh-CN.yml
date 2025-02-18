@@ -1,0 +1,14 @@
+---
+zh-CN:
+  passwordless:
+    mailer:
+      sign_in:
+        body: 使用此链接直接登录 IRD：%{magic_link} 当您单击此链接时，IRD 将设置一个 cookie - 但仅用于启用登录过程。IRD 不会为任何其他目的设置任何其他 cookie。
+    sessions:
+      create:
+        email_sent: 我们已向您发送了一封电子邮件，其中包含一个链接，您可以使用该链接登录
+      new:
+        email:
+          label: 电子邮件地址
+          placeholder: 用户@example.com
+        submit: 登入

@@ -1,0 +1,14 @@
+---
+en:
+  passwordless:
+    mailer:
+      sign_in:
+        body: "Use this link to sign in directly to the IRD:\r\n%{magic_link}\r\nWhen you click on this link, the IRD will set a cookie - but only to enable the login process. IRD does not set any other cookies for any other purpose."
+    sessions:
+      create:
+        email_sent: We have sent you an email with a link which you can use to sign in
+      new:
+        email:
+          label: Email address
+          placeholder: user@example.com
+        submit: Sign in

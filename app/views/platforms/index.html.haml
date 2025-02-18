@@ -1,0 +1,36 @@
+= render '_shared/record_new_button', model_sym: :platform
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    Platforms
+    = render '_shared/download_machine_readable_data_buttons', formats: [:json,:csv]
+  %thead
+    %tr
+      %th Name
+      %th URL
+      %th OAI-PMH?
+      %th OAI-PMH BaseURL Suffix
+      %th Trusted?
+      %th Match Order
+      %th.number Systems
+      %th.actions.no-sort &nbsp;
+
+  %tbody
+    - @platforms.each do |platform|
+      %tr
+        %td= link_to platform.name, platform
+        %td= link_to platform.url,platform.url unless platform.url.blank?
+        %td= platform.oai_support
+        %td= platform.oai_suffix
+        %td= platform.trusted
+        %td= platform.match_order
+        %td.number
+          - if policy(platform).systems?
+            - if platform.systems.publicly_viewable.count > 0
+              = link_to platform.systems.publicly_viewable.count, platform_instances_url(platform)
+          - else
+            = platform.systems.publicly_viewable.count
+        -# %td.number= link_to platform.systems.count, platform_instances_url(platform)
+        = render '_shared/record_action_buttons_table', model_instance: platform
+
+= render '_shared/paginator'

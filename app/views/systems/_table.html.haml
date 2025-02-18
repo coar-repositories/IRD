@@ -1,0 +1,27 @@
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    = title
+    - if data_downloadable
+      = render '_shared/download_machine_readable_data_buttons', formats: [:json,:csv]
+  %thead
+    %tr
+      %th= t('attributes.name')
+      %th= t(:status)
+      %th= t(:software)
+      %th= t(:record_status)
+      %th= t('activerecord.attributes.system.owner')
+      %th.actions.no-sort &nbsp;
+
+  %tbody
+    - systems.each do |system|
+      %tr
+        %td= link_to system.display_name,system
+        %td= system_status_flags system.system_status
+        %td
+          = link_to system.platform.name, system.platform unless system.platform.nil?
+          = "#{system.platform_version}" unless system.platform_version.blank?
+        %td= record_status_flags system.record_status
+        %td= link_to system.owner.name,system.owner unless system.owner.nil?
+        = render '_shared/record_action_buttons_table', model_instance: system
+= render '_shared/paginator'

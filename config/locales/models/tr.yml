@@ -1,0 +1,114 @@
+---
+tr:
+  activerecord:
+    attributes:
+      country:
+        code: Kod
+        continent: Kıta
+      generator:
+        platform: Yazılım Platformu
+        version: Yazılım Sürümü
+      network_check:
+        network_check_type_list:
+          homepage_url: Ana sayfa URL'si
+          oai_pmh_identify: OAI-PMH Denetleme
+      organisation:
+        agents: Acenteler
+        latitude: Enlem
+        location: Konum
+        longitude: Boylam
+        ror: ROR
+      repoid:
+        identifier_scheme_list:
+          ird: IRD
+          lyrasis: Lirasis
+          oai: OAI
+          opendoar: AçıkDOAR
+          re3data: re3veri
+          roar: KÜKREME
+      system:
+        annotations: Açıklamalar
+        authorised_curators: Yetkili Küratörler
+        media_type: Medya Türü
+        oai_base_url: OAI-PMH Temel URL
+        oai_status: OAI-PMH Durumu
+        oai_status_list:
+          not_enabled: OAI-PMH etkin değil
+          offline: OAI-PMH çevrimdışı
+          online: OAI-PMH çevrimiçi
+          unknown: OAI-PMH bilinmiyor
+          unsupported: OAI-PMH desteklenmiyor
+        owner: Mal sahibi
+        platform: Platform
+        platform_version: Platform Sürümü
+        primary_subject: Birincil Ders
+        primary_subject_list:
+          arts: Sanatlar
+          engineering: Mühendislik
+          health_and_medicine: Sağlık ve Tıp
+          humanities: Beşeri bilimler
+          law: Kanun
+          mathematics: Matematik
+          multidisciplinary: Çok disiplinli
+          science: Bilim
+          social_sciences: Sosyal Bilimler
+          technology: Teknoloji
+          unknown: Bilinmeyen
+        record_status: Kayıt Durumu
+        record_status_list:
+          archived: Arşivlendi
+          draft: Taslak
+          published: Yayımlandı
+          under_review: İnceleniyor
+        responsible_party: Sorumlu Kuruluş
+        subcategory: Kapsam
+        subcategory_list:
+          disciplinary_repository: Disiplin
+          generalist_repository: Genelci
+          governmental_repository: Hükümetsel
+          institutional_repository: Kurumsal
+          unknown: Sınıflandırılmamış
+        system_status: Sistem Durumu
+        system_status_list:
+          missing: Sistem bulunamadı
+          offline: Sistem çevrimdışı
+          online: Sistem çevrimiçi
+          unknown: Sistem durumu bilinmiyor
+        tags: Etiketler
+      user:
+        access_revoked: Erişim İptal Edildi
+        email: E-posta
+        fore_name: Adı
+        last_name: Soyadı
+    models:
+      country:
+        one: Ülke
+        other: Ülkeler
+      generator:
+        one: Jeneratör
+        other: Jeneratörler
+      organisation:
+        one: Organizasyon
+        other: Kuruluşlar
+      platform:
+        one: Platform
+        other: Platformlar
+      role:
+        one: Rol
+        other: Roller
+      system:
+        one: Sistem
+        other: Sistemler
+      user:
+        one: Kullanıcı
+        other: Kullanıcılar
+  attributes:
+    aliases: Diğer İsimler
+    country_id: Ülke
+    description: Tanım
+    identifiers: Tanımlayıcılar
+    name: İsim
+    responsible_party: Sorumlu Kuruluş
+    short_name: Kısa İsim
+    systems: Depolar
+    url: Web sitesi

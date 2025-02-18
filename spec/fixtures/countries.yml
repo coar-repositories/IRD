@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% require 'csv' %>
+<% CSV.foreach(('./data/seed_data/countries.csv'), headers: true) do |row| %>
+  "<%= row['id'] %>":
+    id: "<%= row['id'] %>"
+    name: "<%= row['name'] %>"
+    continent: <%= row['continent'] %>
+<% end %>

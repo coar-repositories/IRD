@@ -1,0 +1,25 @@
+---
+ja:
+  statistics_and_graphs:
+    by_continent: 大陸別
+    by_country: 国別
+    by_software_platform: ソフトウェアプラットフォーム別
+    countries_with_one_or_more_repositories: 1つ以上のリポジトリを持つ国
+    currently_online: 現在オンライン
+    functioning_oai_pmh: 機能する OAI-PMH
+    oai_status_by_continent: 大陸別の OAI-PMH ステータス
+    oai_status_for_platforms_with_10_or_more_repositories: 10 以上のリポジトリを持つプラットフォームの OAI-PMH ステータス
+    oai_status_for_top_20_countries_by_repository_count: リポジトリ数による上位 20 か国の OAI-PMH ステータス
+    oai_status_percentage_for_all_repositories: すべてのリポジトリの OAI-PMH ステータス (%)
+    records_published: 公開された記録
+    records_total: 総記録数
+    records_under_review: 審査中の記録
+    repositories_count_by_continent: 大陸別のリポジトリ（数）
+    statistics: 統計
+    statistics_by_continent: 大陸別統計
+    statistics_by_country: 国別統計
+    statistics_by_software_platform: ソフトウェアプラットフォーム別の統計
+    system_status_percentage_for_all_repositories: すべてのリポジトリのシステムステータス (%)
+    total_repositories: リポジトリの合計
+    with_identified_owning_organisation: 所有組織が特定されている場合
+    with_identified_software_platform: 特定されたソフトウェアプラットフォーム

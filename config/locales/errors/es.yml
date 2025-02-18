@@ -1,0 +1,7 @@
+---
+es:
+  errors:
+    access_revoked_text: Se ha revocado su acceso privilegiado a este sistema. Si cree que se trata de un error, comuníquese con la oficina de COAR por correo electrónico a office@coar-repositories.org
+    forbidden_text: No estás autorizado para acceder a esta página.
+    internal_server_error_text: Se ha producido un error inesperado. Se ha notificado al administrador del sistema y lo investigará. Inténtelo de nuevo más tarde.
+    not_found_text: La página que estás buscando no existe en este sistema.

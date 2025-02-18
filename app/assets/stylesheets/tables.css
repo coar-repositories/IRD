@@ -1,0 +1,63 @@
+
+
+thead tr {
+    //background-color: #efefef;
+}
+
+caption {
+    font-size: 1.3em;
+    caption-side: top;
+    padding-bottom: 3px;
+    font-weight: bold;
+    color: #444444;
+}
+
+table, tr, th, td {
+    color: black;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+th {
+    font-weight: normal;
+}
+
+table.invisible-layout-table {
+    border: none;
+    width: auto;
+}
+
+table.invisible-layout-table tr, table.invisible-layout-table td {
+    border: none;
+}
+
+td.field-name {
+    text-align: right;
+    font-weight: bold;
+    white-space: nowrap;
+    vertical-align: text-top;
+}
+
+.more-details-link {
+    float: right;
+}
+
+th.number {
+    //text-align: right !important;
+}
+
+td.number {
+    text-align: right;
+    /*font-family: Courier, monospace;*/
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+td.nowrap {
+    white-space: nowrap;
+}
+
+td.actions {
+    text-align: right;
+    white-space: nowrap;
+}

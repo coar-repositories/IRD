@@ -1,0 +1,34 @@
+%div.property
+  %h5.property-name= t(:identifiers)
+  %div.property-value
+    - if !@system.repoids.empty?
+      %ul
+        - @system.repoids.each do |repoid|
+          %li
+            %b="#{Repoid.translated_identifier_scheme(repoid.identifier_scheme)}:"
+            =repoid.identifier_value
+    -else
+      =t(:none)
+
+%div.property
+  %h5.property-name= t(:software)
+  %div.property-value
+    = link_to @system.platform.name, @system.platform
+    - if @system.platform_version && !@system.platform_version.empty?
+      = surround '(', ')' do
+        =@system.platform_version
+
+= print_field_name_and_value2('OAI-PMH Base URL',@system.oai_base_url)
+
+-# %div.property
+-#   %h5.property-name= t(:metadata_formats)
+-#   %div.property-value
+-#     - if !@system.formats.empty?
+-#       %ul
+-#         - @system.formats.each_pair do |k,v|
+-#           %li
+-#             %b="#{k}: "
+-#             =v
+-#     -else
+-#       =t(:none)
+

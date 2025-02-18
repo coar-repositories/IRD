@@ -1,0 +1,48 @@
+%w[
+    ACTIVE_STORAGE_SERVICE
+    ALLOW_TEST_USER_ACCOUNTS_WITHOUT_VERIFICATION
+    APP_VERSION
+    DEFAULT_PLATFORM
+    GOOGLE_TRANSLATE_API_KEY
+    IRD_DB_CONNECTION_POOL
+    IRD_DB_HOST
+    IRD_DB_PORT
+    IRD_DB_USERNAME
+    JOBS_CONCURRENCY
+    JOBS_MAX_THREADS
+    LOCAL_DISK_STORAGE_ROOT
+    OPENSEARCH_BATCH_SIZE
+    OPENSEARCH_URL
+    PREVENT_PUBLIC_ACCESS_TO_DATA
+    RAILS_ENV
+    RAILS_FORCE_SSL
+    RAILS_LOG_LEVEL
+    RAILS_MASTER_KEY
+    RAILS_MAX_THREADS
+    RAILS_MIN_THREADS
+    RAILS_SERVER_BASE_URL
+    RAILS_SERVER_PORT
+    RP_FOR_ARCHIVED_RECORDS
+    RP_FOR_PUBLISHED_RECORDS
+    S3_ACCESS_KEY_ID
+    S3_BUCKET
+    S3_ENDPOINT
+    S3_REGION
+    S3_SECRET_ACCESS_KEY
+    SMTP_ADDRESS
+    SMTP_DOMAIN
+    SMTP_PASSWORD
+    SMTP_PORT
+    SMTP_USERNAME
+    TEST_USER_ACCOUNTS
+    WEB_CONCURRENCY
+    WEBSITE_THUMBNAIL_GENERATION_CONCURRENCY
+  ].each do |env_var|
+  # if !ENV.has_key?(env_var) || ENV[env_var].blank?
+  unless ENV.has_key?(env_var)
+    raise <<~EOL
+      Missing environment variable: #{env_var}
+      This ENV variable is listed in the initializer ('config/initializers/01_ensure_environment.rb') as a required variable.
+    EOL
+  end
+end

@@ -1,0 +1,91 @@
+---
+pt:
+  http_codes:
+    '0': Nenhuma resposta HTTP
+    '100': 100 Continuar
+    '101': 101 Protocolos de comutação
+    '102': 102 Processamento
+    '103': 103 dicas iniciais
+    '104': 104 Retomada de upload suportada
+    '200': 200 OK
+    '201': 201 Criado
+    '202': 202 Aceito
+    '203': 203 Informações não autorizadas
+    '204': 204 Nenhum conteúdo
+    '205': 205 Redefinir conteúdo
+    '206': 206 Conteúdo Parcial
+    '207': 207 Multi-Status
+    '208': 208 já relatados
+    '226': 226 IM Usado
+    '300': 300 Múltiplas Escolhas
+    '301': 301 Movido Permanentemente
+    '302': 302 encontrados
+    '303': 303 Ver outros
+    '304': 304 Não modificado
+    '305': 305 Usar proxy
+    '306': 306 Trocar Proxy
+    '307': 307 Redirecionamento temporário
+    '308': 308 Redirecionamento Permanente
+    '400': 400 Solicitação Ruim
+    '401': 401 Não autorizado
+    '402': 402 Pagamento necessário
+    '403': 403 Não Autorizado
+    '404': 404 Não Encontrado
+    '405': Método 405 não permitido
+    '406': 406 Não aceitável
+    '407': 407 Autenticação de proxy necessária
+    '408': 408 Solicitação de tempo limite
+    '409': 409 Conflito
+    '410': 410 desaparecido
+    '411': 411 Comprimento necessário
+    '412': 412 Pré-condição falhou
+    '413': 413 Conteúdo muito grande
+    '414': 414 URI muito longo
+    '415': 415 Tipo de mídia não suportado
+    '416': 416 Faixa não satisfatória
+    '417': 417 Expectativa falhou
+    '420': Falha do método 420
+    '421': 421 Solicitação mal direcionada
+    '422': 422 Conteúdo não processável
+    '423': 423 Bloqueado
+    '424': 424 Dependência com falha
+    '425': 425 Muito Cedo
+    '426': 426 Atualização necessária
+    '427': 427 Não atribuído
+    '428': 428 Pré-condição necessária
+    '429': 429 Muitas solicitações
+    '430': 430 Não atribuído
+    '431': 431 Campos de cabeçalho de solicitação muito grandes
+    '440': 440 Tempo limite de login
+    '444': 444 Sem resposta
+    '449': 449 Tentar novamente com
+    '450': 450 Bloqueado pelos Controles Parentais do Windows
+    '451': 451 Indisponível por motivos legais
+    '494': 494 Cabeçalho da solicitação muito grande
+    '495': Erro de certificado SSL 495
+    '496': 496 Certificado SSL necessário
+    '497': 497 Solicitação HTTP enviada para porta HTTPS
+    '498': 498 Token inválido
+    '499': 499 Solicitação encerrada pelo cliente
+    '500': Erro interno do servidor 500
+    '501': 501 Não implementado
+    '502': 502 Bad Gateway
+    '503': 503 Serviço indisponível
+    '504': 504 Tempo limite do gateway
+    '505': 505 Versão HTTP não suportada
+    '506': Variante 506 também negocia
+    '507': 507 Armazenamento insuficiente
+    '508': 508 Loop detectado
+    '509': 509 Limite de largura de banda excedido
+    '510': 510 Não Estendido
+    '511': 511 Autenticação de rede necessária
+    '520': 520 Erro Desconhecido
+    '521': 521 O servidor da Web está inativo
+    '522': 522 Tempo limite de conexão esgotado
+    '523': 523 A Origem É Inalcançável
+    '524': 524 Ocorreu um tempo limite
+    '525': 525 SSL Handshake falhou
+    '526': 526 Certificado SSL inválido
+    '527': Erro 527 do canhão elétrico
+    '530': 530 Erro de DNS de origem / Site congelado
+    '598': 598 (convenção informal) Erro de tempo limite de leitura de rede

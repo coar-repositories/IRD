@@ -1,0 +1,16 @@
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    = title
+    - if data_downloadable
+      = render '_shared/download_machine_readable_data_buttons', formats: [:json]
+  %thead
+    %tr
+      %th Name
+      %th.number Responsibilities
+  %tbody
+    - organisations.each do |organisation|
+      %tr
+        %td= link_to organisation.display_name, organisation
+        %td.number= link_to organisation.responsibilities.publicly_viewable.count, organisation_responsibilities_path(organisation)
+= render '_shared/paginator'

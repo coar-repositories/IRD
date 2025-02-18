@@ -1,0 +1,25 @@
+---
+tr:
+  statistics_and_graphs:
+    by_continent: Kıtaya Göre
+    by_country: Ülkeye Göre
+    by_software_platform: Yazılım Platformuna Göre
+    countries_with_one_or_more_repositories: Bir veya daha fazla depolama alanına sahip ülkeler
+    currently_online: Şu anda çevrimiçi
+    functioning_oai_pmh: İşleyen OAI-PMH
+    oai_status_by_continent: Kıtaya göre OAI-PMH durumu
+    oai_status_for_platforms_with_10_or_more_repositories: 10 veya daha fazla deposu olan platformlar için OAI-PMH durumu
+    oai_status_for_top_20_countries_by_repository_count: Depo sayısına göre ilk 20 ülke için OAI-PMH durumu
+    oai_status_percentage_for_all_repositories: Tüm Depolar için OAI-PMH Durumu (%)
+    records_published: Yayımlanmış Kayıtlar
+    records_total: Toplam Kayıtlar
+    records_under_review: İncelenen Kayıtlar
+    repositories_count_by_continent: Kıtaya Göre Depolar (sayı)
+    statistics: İstatistikler
+    statistics_by_continent: Kıtalara Göre İstatistikler
+    statistics_by_country: Ülkelere Göre İstatistikler
+    statistics_by_software_platform: Yazılım Platformuna Göre İstatistikler
+    system_status_percentage_for_all_repositories: Tüm Depolar için Sistem Durumu (%)
+    total_repositories: Toplam Depolar
+    with_identified_owning_organisation: Tanımlanmış Sahiplik Organizasyonuyla
+    with_identified_software_platform: Tanımlanmış Yazılım Platformuyla

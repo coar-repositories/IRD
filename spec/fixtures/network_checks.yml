@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+#one:
+#  passed: false
+#  network_check_type: 1
+#  http_code: 1
+#  description: MyString
+#  system: one
+#  failures: 1
+#  error_at: 2024-11-22 10:22:23
+
+#two:
+#  passed: false
+#  network_check_type: 1
+#  http_code: 1
+#  description: MyString
+#  system: two
+#  failures: 1
+#  error_at: 2024-11-22 10:22:23

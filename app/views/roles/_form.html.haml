@@ -1,0 +1,22 @@
+
+
+= form_for @role do |f|
+  - if @role.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@role.errors.count, "error")} prohibited this role from being saved:"
+      %ul
+        - @role.errors.full_messages.each do |message|
+          %li= message
+  %table.invisible-layout-table
+    %tr
+      %td.field-name
+        Name:
+      %td.field-value
+        = f.text_field :name
+    %tr
+      %td.field-name
+        Description:
+      %td.field-value
+        = f.text_field :description
+
+  = render '_shared/record_form_buttons', form: f,model_instance: @role

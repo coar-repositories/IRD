@@ -1,0 +1,34 @@
+- if current_user && current_user == @user
+  %div.text-end
+    = link_to t(:logout), users_sign_out_path, method: :delete, class: "btn btn-sm btn-danger"
+= render '_shared/record_action_buttons', model_instance: @user
+- if policy(@user).revoke_access?
+  - if @user.access_revoked?
+    = link_to t('buttons.restore_access'), restore_access_url(@user.id), :class => 'btn btn-success btn-sm'
+  - else
+    = link_to t('buttons.revoke_access'), revoke_access_url(@user.id), :class => 'btn btn-danger btn-sm'
+- if policy(@user).generate_api_key?
+  = link_to t('buttons.generate_new_api_key'), generate_api_key_url(@user.id), :class => 'btn btn-primary btn-sm'
+%div.row
+  %div.col.md-6
+    = print_field_name_and_value2('User ID',@user.id)
+    = print_field_name_and_value2(t(:email),@user.email)
+    -# = print_field_name_and_value2(t(:fore_name),@user.fore_name)
+    -# = print_field_name_and_value2(t(:last_name),@user.last_name)
+    - if policy(@user).inspect_user?
+      = print_field_name_and_value2(t(:verified),(@user.verified? ? 'yes' : ''))
+      = print_field_name_and_value2(t('activerecord.attributes.user.access_revoked'),@user.access_revoked?)
+      = print_field_name_and_value2(t(:roles),@user.roles.map(&:name).join(', '))
+  %div.col.md-6
+    -# - if @user.organisations.count > 0
+    = render 'table_organisations',title: t(:managing_agent_for_these_organisations), organisations: @user.organisations, data_downloadable: (true unless @user.organisations.blank?)
+
+= link_to t("buttons.suggest_new_system"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#suggestSystemModal"
+
+- authorised_systems = @user.systems.publicly_viewable
+- @user.organisations.each do |org|
+  - authorised_systems += org.responsibilities.publicly_viewable
+%br
+= render 'table_authorised_systems', title: t(:authorised_curator_for_these_repositories), systems: authorised_systems.uniq, data_downloadable: (true unless authorised_systems.blank?)
+
+= render 'suggest_system_modal'

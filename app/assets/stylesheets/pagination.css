@@ -1,0 +1,20 @@
+div.coar-catalogue-pagination {
+  margin-top: 5px;
+  //margin-bottom: 10px;
+}
+
+ul.pagination {
+  font-size: 0.75em !important;
+}
+
+div.total-results {
+  margin-bottom: 10px;
+}
+
+div.coar-catalogue-pagination a {
+  color: #23527c !important;
+}
+
+li.active a.page-link {
+  color: white !important;
+}

@@ -1,0 +1,13 @@
+%div.row
+  %div.col-lg-10
+    = process_md(t('home_page.home_page_text'))
+    = bar_chart @continent_graph_data,title: t('statistics_and_graphs.repositories_count_by_continent')
+  %div.col-lg-2
+    %h3= t(:records_in_ird)
+    = print_field_name_and_value2(t('statistics_and_graphs.records_total'),@stats.total)
+    = print_field_name_and_value2(t('statistics_and_graphs.records_published'),@stats.value(:record_status_published))
+    = print_field_name_and_value2(t('statistics_and_graphs.records_under_review'),@stats.value(:record_status_under_review))
+    -# %br
+    -# %h3= t(:repositories)
+    -# = print_field_name_and_value2(t('statistics_and_graphs.currently_online'),"#{@stats.value(:status_online)} (#{@stats.value_percentage(:status_online)}%)")
+    -# = print_field_name_and_value2(t('statistics_and_graphs.functioning_oai_pmh'),"#{@stats.value(:oai_status_online)} (#{@stats.value_percentage(:oai_status_online)}%)")

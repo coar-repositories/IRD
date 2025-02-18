@@ -1,0 +1,15 @@
+---
+ja:
+  activerecord:
+    attributes:
+      country:
+        continent_list:
+          africa: アフリカ
+          antarctica: 南極大陸
+          asia: アジア
+          central_america: 中米
+          europe: ヨーロッパ
+          global: グローバル
+          north_america: 北米
+          oceania: オセアニア
+          south_america: 南アメリカ

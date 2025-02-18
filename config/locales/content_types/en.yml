@@ -1,0 +1,15 @@
+---
+en:
+  content_types_labels:
+    Books: Books
+    Conference Papers: Conference Papers
+    Images: Images
+    Learning Objects: Learning Objects
+    Multimedia: Multimedia
+    Other: Other
+    Patents: Patents
+    Research Articles: Research Articles
+    Research Data: Datasets
+    Software: Software
+    Text: Text
+    Theses: Theses

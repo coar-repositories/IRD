@@ -1,0 +1,39 @@
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    Countries
+    = render '_shared/download_machine_readable_data_buttons', formats: [:json,:csv]
+  %thead
+    %tr
+      -# i18n-tasks-use t('activerecord.attributes.country.code') # this lets i18n-tasks know the key is used
+      %th= t('activerecord.attributes.country.code')
+      -# i18n-tasks-use t('attributes.name') # this lets i18n-tasks know the key is used
+      %th= t('attributes.name')
+      -# i18n-tasks-use t('activerecord.attributes.country.continent') # this lets i18n-tasks know the key is used
+      %th= t('activerecord.attributes.country.continent')
+      -# i18n-tasks-use t('attributes.systems') # this lets i18n-tasks know the key is used
+      %th= t('attributes.systems')
+      -# i18n-tasks-use t('attributes.responsible_party') # this lets i18n-tasks know the key is used
+      %th= t('attributes.responsible_party')
+      %th.actions.no-sort &nbsp;
+  %tbody
+    - countries.each do |country|
+      - cache country do
+        %tr
+          %td
+            = image_tag "flags/#{country.id.downcase}.svg", :alt => country.id, :class => 'flag-small'
+            = link_to country.id,country
+          %td= t(country.id, scope: 'countries_list')
+          %td= country.translated_continent
+          %td.number
+            - if policy(country).systems?
+              - if country.systems.publicly_viewable.count > 0
+                = link_to country.systems.publicly_viewable.count, country_instances_url(country)
+            - else
+              = country.systems.publicly_viewable.count
+          %td
+            - country.responsible_parties.each do |responsible_party|
+              = link_to responsible_party.display_name, responsible_party
+              = ', ' unless responsible_party == country.responsible_parties.last
+          = render '_shared/record_action_buttons_table', model_instance: country
+= render '_shared/paginator'

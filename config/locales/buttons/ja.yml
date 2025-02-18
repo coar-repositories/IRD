@@ -1,0 +1,46 @@
+---
+ja:
+  buttons:
+    allocate_rp_by_country: 国別にRPを割り当てる
+    archive_record: アーカイブ記録
+    authorise_a_user: ユーザーを承認する
+    auto_curate: 自動キュレーション
+    cancel_operation: 操作をキャンセル
+    check_oai: OAI-PMH を確認する
+    check_url: ウェブサイトを確認する
+    check_urls: URLを確認する
+    choose_rp: RPを選択
+    create_record: "%{model} レコードを作成"
+    delete: 消去
+    do_not_show_archived_records: アーカイブされたレコードを表示しない
+    edit: 編集
+    generate_new_api_key: 新しいAPIキーを生成する
+    get_thumbnail: サムネイルを取得
+    get_thumbnails: サムネイルを取得
+    make_org_an_rp: 組織を責任ある組織にする
+    make_org_an_rp_for_country: この国のすべてのリポジトリの責任を組織に負わせる
+    make_record_draft: 記録ドラフトを作成する
+    make_record_under_review: 記録をレビュー中
+    mark_reviewed: レビュー済みをマーク
+    oai_pmh_identify: OAI-PMH 識別
+    oai_pmh_metadata_formats: OAI-PMH メタデータ形式
+    process_as_duplicate_of: 複製として処理
+    publish_record: レコードを公開
+    purge_duplicates: 重複を消去
+    purge_statistics_cache: 統計キャッシュを消去
+    purge_thumbnail: サムネイルを消去
+    purge_thumbnails: サムネイルを消去
+    purge_unused_generators: 未使用のジェネレータを消去する
+    raise_issue: 新しい問題を作成する
+    reindex_systems: システムの再インデックス
+    remove_rp_status: 責任組織のステータスを削除
+    restore_access: アクセスを復元
+    review_this_record: この記録を確認する
+    revoke_access: アクセスを取り消す
+    save_record: 記録を保存
+    show_archived_records: アーカイブされたレコードを表示
+    show_duplicates: 重複を表示
+    start_background_network_checks: ネットワークチェック
+    suggest_new_system: 新しいリポジトリを提案する
+    view_job_queue: ジョブキューの表示
+    view_kanban: カンバンを表示

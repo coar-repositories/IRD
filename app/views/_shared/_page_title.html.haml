@@ -1,0 +1,4 @@
+- if (!@page_title || @page_title.blank?) && Rails.env.development?
+  -# %h1.page-title-missing "### #{t(:untitled, scope: :page_titles)} ###"
+- else
+  %h1.page-title= @page_title

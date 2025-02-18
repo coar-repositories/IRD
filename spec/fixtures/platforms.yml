@@ -1,0 +1,12 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% require 'csv' %>
+<% CSV.foreach(('./data/export_production_csv/platforms.csv'), headers: true) do |row| %>
+  "<%= row['id'] %>":
+    id: "<%= row['id'] %>"
+    name: "<%= row['name'] %>"
+    url: "<%= row['url'] %>"
+    trusted: <%= row['trusted'] == "true" %>
+    oai_support: <%= row['oai_support']  == "true" %>
+    oai_suffix: "<%= row['oai_suffix'] %>"
+<% end %>

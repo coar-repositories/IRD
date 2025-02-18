@@ -1,0 +1,5 @@
+---
+zh-CN:
+  footer:
+    footer_license_statement: 数据已获得许可
+    footer_text: "[Antleaf](https://www.antleaf.com/) 为 [COAR](https://www.coar-repositories.org/) 开发的 IRD 系统 %{version}。"

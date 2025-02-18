@@ -1,0 +1,7 @@
+---
+tr:
+  errors:
+    access_revoked_text: Bu sisteme ayrıcalıklı erişiminiz iptal edildi. Bunun bir hata olduğunu düşünüyorsanız lütfen COAR ofisiyle office@coar-repositories.org adresinden e-posta yoluyla iletişime geçin.
+    forbidden_text: Bu sayfaya erişim yetkiniz yok.
+    internal_server_error_text: Beklenmeyen bir hata oluştu. Sistem yöneticisi bilgilendirildi ve araştırılacak. Lütfen daha sonra tekrar deneyin.
+    not_found_text: Aradığınız sayfa bu sistemde bulunmamaktadır.

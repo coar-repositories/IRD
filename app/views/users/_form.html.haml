@@ -1,0 +1,43 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |message|
+          %li= message
+  %table.invisible-layout-table
+    %tr
+      %td.field-name
+        -# i18n-tasks-use t('activerecord.attributes.user.email') # this lets i18n-tasks know the key is used
+        = f.label :email, :class=>"form-label"
+      %td.field-value
+        = f.text_field :email
+    %tr
+      %td.field-name
+        -# i18n-tasks-use t('activerecord.attributes.user.fore_name') # this lets i18n-tasks know the key is used
+        = f.label :fore_name, :class=>"form-label"
+      %td.field-value
+        = f.text_field :fore_name
+    %tr
+      %td.field-name
+        -# i18n-tasks-use t('activerecord.attributes.user.last_name') # this lets i18n-tasks know the key is used
+        = f.label :last_name, :class=>"form-label"
+      %td.field-value
+        = f.text_field :last_name
+    - if policy(@user).revoke_access?
+      %tr
+        %td.field-name
+          -# i18n-tasks-use t('activerecord.attributes.user.access_revoked') # this lets i18n-tasks know the key is used
+          = f.label :access_revoked, :class=>"form-label"
+        %td.field-value
+          = f.check_box :access_revoked
+    - if policy(@user).update_roles?
+      %tr
+        %td.field-name
+          Roles:
+        %td.field-value
+          = collection_check_boxes(:user, :role_ids, Role.where.not(id: :administrator), :id, :name) do |c|
+            = c.check_box
+            = c.label
+            %br
+  = render '_shared/record_form_buttons', form: f,model_instance: @user

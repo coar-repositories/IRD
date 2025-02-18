@@ -1,0 +1,83 @@
+%div.card.system-search-result-card
+  %div.card-header
+    -# =truncate system.name,{length: title_truncation_length, separator: ' '}
+    =image_tag("flags/#{system.country.id.downcase}.svg",class: 'flag-tiny-card-header') unless system.country.nil?
+    = link_to system.display_name, system
+  %div.card-body
+    %div.row
+      %div.col-7
+        %div.card-system-details
+          %ul
+            %li
+              %b= "#{t(:repository_scope_short)}:"
+              -# i18n-tasks-use t('activerecord.attributes.system.subcategory_list.#{subcategory}') # this lets i18n-tasks know the key is used
+              = System.translated_subcategory(system.subcategory)
+            %li
+              %b= "#{t('activerecord.models.platform.one')}: "
+              = system.platform.name
+              =  "(#{system.platform_version})" unless system.platform_version.blank?
+            %li
+              %b= "#{t(:owner)}:"
+              = system.owner.display_name unless system.owner.nil?
+            %li
+              %b= "#{t(:primary_subject)}:"
+              -# i18n-tasks-use t('activerecord.attributes.system.primary_subject_list.#{subject}') # this lets i18n-tasks know the key is used
+              = System.translated_primary_subject(system.primary_subject)
+            %li
+              %b= "#{t(:identifiers)}:"
+              %ul
+                - system.repoids.each do |repoid|
+                  - unless repoid.identifier_scheme == 'ird'
+                    %li
+                      -# i18n-tasks-use t('activerecord.attributes.repoid.identifier_scheme_list.#{identifier_scheme}') # this lets i18n-tasks know the key is use
+                      %b= "#{Repoid.translated_identifier_scheme(repoid.identifier_scheme)}:"
+                      =repoid.identifier_value
+            %li
+              %b= "#{t(:tags)}:"
+              - system.tag_list.each do |tag|
+                = tag_flags(tag)
+      %div.col-5
+        = image_tag(rails_blob_url(system.thumbnail),:class=>"website-thumbnail-search-results shadowed") if system.thumbnail.attached?
+        = link_to t('buttons.edit'), url_for([:edit,system]),:class=>"btn btn-primary btn-sm"
+        - if system.record_status_published?
+          = link_to t('buttons.mark_reviewed'), mark_reviewed_url(system.id), :class => 'btn btn-success btn-sm'
+          = link_to t('buttons.archive_record'), archive_url(system.id), :class => 'btn btn-danger btn-sm'
+          = link_to t('buttons.make_record_draft'), make_draft_url(system.id), :class => 'btn btn-secondary btn-sm'
+        - elsif system.record_status_draft?
+          = link_to t('buttons.publish_record'), publish_url(system.id), :class => 'btn btn-success btn-sm'
+          = link_to t('buttons.archive_record'), archive_url(system.id), :class => 'btn btn-danger btn-sm'
+        - else
+          = link_to t('buttons.make_record_draft'),  make_draft_url(system.id), :class => 'btn btn-secondary btn-sm'
+    %div.row
+      %div.col
+        = render '_shared/annotation_buttons', system: system
+    %div.row
+      %div.col
+        = link_to t('buttons.check_url'), check_website_url(system.id), :class => 'btn btn-primary btn-sm'
+        = link_to t('buttons.oai_pmh_identify'), check_oai_identify_url(system.id), :class => 'btn btn-primary btn-sm'
+        = link_to t('buttons.oai_pmh_metadata_formats'), check_oai_formats_url(system.id), :class => 'btn btn-primary btn-sm'
+        - if system.thumbnail.attached?
+          = link_to t('buttons.purge_thumbnail'), remove_thumbnail_url(system.id), :class => 'btn btn-danger btn-sm'
+        - else
+          = link_to t('buttons.get_thumbnail'), get_thumbnail_url(system.id), :class => 'btn btn-success btn-sm'
+    %div.row
+      %div.col
+        %div.card-system-details-right
+          - if system.reviewed
+            %b= "#{t(:reviewed)}:"
+            = system.reviewed.strftime('%Y-%m-%d')
+          - else
+            =t(:not_yet_reviewed)
+  %div.card-footer
+    %div.card-footer-status-bar
+      = record_status_flags system.record_status
+      = system_status_flags system.system_status
+      = oai_status_flags system.oai_status
+      - if local_assigns[:duplicate_system_id_array].present?
+        %div.row{style:"text-align: left;"}
+          %div.col-3.field-name
+            %div.form-label{style:"font-size:0.9em;"}
+              DeDuplicate
+          %div.col
+            - duplicate_system_id_array.each do |duplicate_id|
+              = link_to "#{t('buttons.process_as_duplicate_of')} #{duplicate_id}", process_as_duplicate_path(system,request.query_parameters.except(:lang).merge({target_system_id: duplicate_id})),:class=>"btn btn-primary btn-sm"

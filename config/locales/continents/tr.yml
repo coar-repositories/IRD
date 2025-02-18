@@ -1,0 +1,15 @@
+---
+tr:
+  activerecord:
+    attributes:
+      country:
+        continent_list:
+          africa: Afrika
+          antarctica: Antarktika
+          asia: Asya
+          central_america: Orta Amerika
+          europe: Avrupa
+          global: Küresel
+          north_america: Kuzey Amerika
+          oceania: Okyanusya
+          south_america: Güney Amerika

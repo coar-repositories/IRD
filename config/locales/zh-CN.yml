@@ -1,0 +1,78 @@
+---
+zh-CN:
+  admin: 行政
+  agencies: 机构
+  all_fields_must_be_completed: 所有字段必须填写
+  annotations: 注解
+  are_you_sure_question: 你确定吗？
+  authorise_a_user: 授权用户
+  authorised_curator_for_these_repositories: 这些存储库的授权管理员
+  authorised_curators: 授权策展人
+  check_repository_functionality: 检查存储库功能
+  contact: 接触
+  continents: 大洲
+  curation_issues: 策展问题
+  database: 数据库
+  email: 电子邮件
+  filter: 筛选
+  fore_name: 名
+  harvested: 收割
+  has_thumbnail: 有缩略图吗？
+  homepage: 主页
+  identifiers: 标识符
+  ird_metadata_record: IRD 元数据记录
+  last_name: 姓
+  login: 登录
+  logout: 登出
+  managing_agent_for_these_organisations: 这些组织的管理代理
+  media_type: 媒體類型
+  metadata: 元数据
+  name: 姓名
+  needs_review: 需要审核
+  network_checks: 网络检查
+  none: 没有任何
+  not_yet_reviewed: 尚未审核
+  oai_status: OAI-PMH 状态
+  operations: 运营
+  owner: 所有者
+  owner_identified: 主人已确认？
+  page_titles:
+    about: 关于税务局
+    admin: 行政
+    dashboard_for: "%{name} 的仪表板"
+    help: 系统帮助
+    repositories_in_country: "%{country} 中的存储库"
+    repositories_running_on_platform: 在 %{platform} 上运行的存储库
+    repository_browser: 存储库浏览器
+    search: 搜索
+    statistics: 统计数据
+    welcome: 欢迎来到国际存储库目录 (IRD)
+  platform_identified: 软件平台已识别？
+  primary_subject: 主要科目
+  record_source: 记录源
+  record_status: 记录状态
+  records_in_ird: 税务局记录
+  registered_users: 注册用户
+  repositories: 存储库
+  repository_browser: 存储库浏览器
+  repository_scope: 存储库范围
+  repository_scope_short: 范围
+  repository_status: 存储库状态
+  required: 必需的
+  reset: 重置
+  responsible_organisation: 负责机构
+  responsible_organisations: 负责组织
+  reviewed: 已审核
+  roles: 角色
+  search: 搜索
+  search_by_name: 按名称搜索
+  software: 软件
+  status: 地位
+  suggest_a_new_repository: 建议新的存储库
+  support_for_oai_pmh: 支持 OAI-PMH
+  systems: 系统
+  tags: 标签
+  total_results: 总结果
+  user_access: 用户访问
+  verified: 已验证
+  website_url: 网站网址

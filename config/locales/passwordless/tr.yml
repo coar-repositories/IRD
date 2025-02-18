@@ -1,0 +1,14 @@
+---
+tr:
+  passwordless:
+    mailer:
+      sign_in:
+        body: 'Doğrudan IRD''ye giriş yapmak için bu bağlantıyı kullanın: %{magic_link} Bu bağlantıya tıkladığınızda, IRD bir çerez ayarlayacaktır - ancak yalnızca giriş sürecini etkinleştirmek için. IRD başka hiçbir amaç için başka hiçbir çerez ayarlamaz.'
+    sessions:
+      create:
+        email_sent: Size oturum açmak için kullanabileceğiniz bağlantıyı içeren bir e-posta gönderdik
+      new:
+        email:
+          label: E-posta adresi
+          placeholder: kullanıcı@example.com
+        submit: Kayıt olmak

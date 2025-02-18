@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
+
+html {
+  background-color: white;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 2%;
+}
+
+body {
+  background-color: white;
+}
+
+body, p, ol, ul, td {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: lighter;
+  color: black;
+  font-size: 18px;
+}
+
+pre {
+  padding: 15px;
+  background-color: #F7F7F7;
+  //font-size: 80%;
+}
+
+code, span.monospace {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+  font-size: 80% !important;
+  color: #990055;
+}
+
+a {
+  color: #23527c;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a.inverted-decoration {
+  text-decoration: none;
+}
+
+a.inverted-decoration:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/*//a.a-img:link,*/
+/*//a.a-img:link:focus,*/
+/*//a.a-img:link:hover,*/
+/*//a.a-img:link:active {*/
+/*//  text-underline: none;*/
+/*//}*/
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  text-decoration: none;
+  color: #444444;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  color: #444444;
+}
+
+h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
+  color: #444444;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: normal;
+  color: #444444;
+}
+
+h1 {
+  border-bottom: 0.5px solid #555555;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.6em
+}
+
+h3 {
+  font-size: 1.4em
+}
+
+h4 {
+  font-size: 1.2em
+}
+
+h5 {
+  font-size: 1.1em
+}
+
+h6 {
+  font-size: 1.0em
+}
+
+
+
+blockquote {
+  font-style: italic;
+  margin-left: 20px;
+  padding: 10px;
+  margin-right: 20px;
+  border-left: 3px solid #cdcdcd;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+div.right-aligned {
+  text-align: right;
+}
+
+.invisible {
+  display: inline-block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  position: absolute;
+  width: 0;
+}
+
+mark {
+  background-color: yellow;
+}
+
+p.read-more {
+  text-align: right;
+}
+
+.page-title {
+  margin-top: 10px;
+  text-align: center;
+  /*border-top: 1px solid #cdcdcd;*/
+  /*border-bottom: 1px solid #cdcdcd;*/
+  padding-bottom: 3px;
+  color: #555555;
+  /*background-color: #eeeeee;*/
+}
+
+.page-title-missing {
+  margin-top: 10px;
+  text-align: center;
+  border-top: 1px solid red;
+  border-bottom: 1px solid red;
+  padding-bottom: 3px;
+  color: red;
+  background-color: #eeeeee;
+}
+
+div.right-aligned {
+  text-align: right;
+}
+
+li.curation-issue {
+  margin-bottom: 5px;
+}
+
+/*//a.external-link {*/
+/*//  padding-right: 1.25em;*/
+/*//}*/
+
+a.external-link::after {
+  position: absolute;
+  content: '\F1C5';
+  justify-content: flex-end;
+  font-family: "bootstrap-icons", serif;
+  margin-left: 0.25em;
+  font-size: 0.7em;
+}

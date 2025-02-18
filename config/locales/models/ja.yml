@@ -1,0 +1,114 @@
+---
+ja:
+  activerecord:
+    attributes:
+      country:
+        code: コード
+        continent: 大陸
+      generator:
+        platform: ソフトウェアプラットフォーム
+        version: ソフトウェアバージョン
+      network_check:
+        network_check_type_list:
+          homepage_url: ホームページURL
+          oai_pmh_identify: OAI-PMH 検査
+      organisation:
+        agents: エージェント
+        latitude: 緯度
+        location: 位置
+        longitude: 経度
+        ror: ROR
+      repoid:
+        identifier_scheme_list:
+          ird: 国際開発庁
+          lyrasis: リラシス
+          oai: オーアイ
+          opendoar: オープンドア
+          re3data: re3データ
+          roar: 轟音
+      system:
+        annotations: 注釈
+        authorised_curators: 認定キュレーター
+        media_type: メディアタイプ
+        oai_base_url: OAI-PMH ベース URL
+        oai_status: OAI-PMH ステータス
+        oai_status_list:
+          not_enabled: OAI-PMH が有効になっていません
+          offline: OAI-PMH オフライン
+          online: OAI-PMHオンライン
+          unknown: OAI-PMH 不明
+          unsupported: OAI-PMH はサポートされていません
+        owner: 所有者
+        platform: プラットフォーム
+        platform_version: プラットフォームバージョン
+        primary_subject: 主な科目
+        primary_subject_list:
+          arts: 芸術
+          engineering: エンジニアリング
+          health_and_medicine: 健康と医療
+          humanities: 人文科学
+          law: 法
+          mathematics: 数学
+          multidisciplinary: 多分野にわたる
+          science: 科学
+          social_sciences: 社会科学
+          technology: テクノロジー
+          unknown: 未知
+        record_status: レコードステータス
+        record_status_list:
+          archived: アーカイブ済み
+          draft: 下書き
+          published: 公開済み
+          under_review: 審査中
+        responsible_party: 責任組織
+        subcategory: 範囲
+        subcategory_list:
+          disciplinary_repository: 懲戒処分
+          generalist_repository: ジェネラリスト
+          governmental_repository: 政府
+          institutional_repository: 機関
+          unknown: 非公開
+        system_status: システムステータス
+        system_status_list:
+          missing: システムが見つかりません
+          offline: システムがオフライン
+          online: システムオンライン
+          unknown: システムステータス不明
+        tags: タグ
+      user:
+        access_revoked: アクセスが取り消されました
+        email: メール
+        fore_name: 名
+        last_name: 姓
+    models:
+      country:
+        one: 国
+        other: 国
+      generator:
+        one: ジェネレータ
+        other: 発電機
+      organisation:
+        one: 組織
+        other: 組織
+      platform:
+        one: プラットフォーム
+        other: プラットフォーム
+      role:
+        one: 役割
+        other: 役割
+      system:
+        one: システム
+        other: システム
+      user:
+        one: ユーザー
+        other: ユーザー
+  attributes:
+    aliases: その他の名前
+    country_id: 国
+    description: 説明
+    identifiers: 識別子
+    name: 名前
+    responsible_party: 責任組織
+    short_name: 短縮名
+    systems: リポジトリ
+    url: Webサイト

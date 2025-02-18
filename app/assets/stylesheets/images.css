@@ -1,0 +1,58 @@
+.action-icon {
+  margin: 1px;
+}
+
+img#navbar-brand-image {
+  max-width: 150px;
+}
+
+img.flag {
+  border: 5px solid #cdcdcd;
+  float: right;
+  max-width: 120px;
+}
+
+img.flag-small {
+  max-width: 25px;
+}
+
+img.flag-locale {
+  width: 20px;
+}
+
+img.flag-tiny-facet {
+  max-width: 20px;
+  margin-bottom: 3px;
+}
+
+img.flag-tiny-card-header {
+  max-width: 25px;
+  //margin-bottom: 3px;
+  float: right;
+}
+
+img.flag-search-facet {
+  max-width: 15px;
+}
+
+img.website-thumbnail {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+img.website-thumbnail-search-results {
+  max-width: 100%;
+  float: right;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+
+img.shadowed {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.image-credit {
+  font-size: 0.6em;
+  text-align: right;
+}

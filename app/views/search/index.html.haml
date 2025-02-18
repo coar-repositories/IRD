@@ -1,0 +1,16 @@
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    Search Results
+  %thead
+    %tr
+      %th Type
+      %th= t('attributes.name')
+      %th.actions.no-sort &nbsp;
+  %tbody
+    -@search_result.each do |sr|
+      %tr
+        %td= sr.class.name
+        %td= link_to sr.display_name,sr
+        = render '_shared/record_action_buttons_table', model_instance: sr
+= render '_shared/paginator'

@@ -1,0 +1,91 @@
+---
+tr:
+  http_codes:
+    '0': HTTP yanıtı yok
+    '100': 100 Devam
+    '101': 101 Anahtarlama Protokolü
+    '102': 102 İşleme
+    '103': 103 Erken İpuçları
+    '104': 104 Yükleme Devam Ettirme Destekleniyor
+    '200': 200 Tamam
+    '201': 201 Oluşturuldu
+    '202': 202 Kabul Edildi
+    '203': 203 Yetkisiz Bilgiler
+    '204': 204 İçerik Yok
+    '205': 205 İçeriği Sıfırla
+    '206': 206 Kısmi İçerik
+    '207': 207 Çoklu Durum
+    '208': 208 Zaten Bildirildi
+    '226': 226 IM Kullanıldı
+    '300': 300 Çoktan Seçmeli
+    '301': 301 Kalıcı Olarak Taşındı
+    '302': 302 Bulundu
+    '303': 303 Diğerlerine Bakın
+    '304': 304 Değiştirilmemiş
+    '305': 305 Proxy Kullan
+    '306': 306 Anahtar Proxy
+    '307': 307 Geçici Yönlendirme
+    '308': 308 Kalıcı Yönlendirme
+    '400': 400 Kötü İstek
+    '401': 401 Yetkisiz
+    '402': 402 Ödeme Gerekli
+    '403': 403 Yetkilendirilmemiş
+    '404': 404 Bulunamadı
+    '405': 405 Yöntemine İzin Verilmiyor
+    '406': 406 Kabul Edilemez
+    '407': 407 Proxy Kimlik Doğrulaması Gerekli
+    '408': 408 İstek Zaman Aşımı
+    '409': 409 Çatışma
+    '410': 410 Gitti
+    '411': 411 Gerekli Uzunluk
+    '412': 412 Ön Koşul Başarısız Oldu
+    '413': 413 İçerik Çok Büyük
+    '414': 414 URI Çok Uzun
+    '415': 415 Desteklenmeyen Medya Türü
+    '416': 416 Aralık Karşılanamıyor
+    '417': 417 Beklenti Başarısız Oldu
+    '420': 420 Yöntem Başarısızlığı
+    '421': 421 Yanlış Yönlendirilmiş İstek
+    '422': 422 İşlenemeyen İçerik
+    '423': 423 Kilitli
+    '424': 424 Başarısız Bağımlılık
+    '425': 425 Çok Erken
+    '426': 426 Yükseltme Gerekli
+    '427': 427 Atanmamış
+    '428': 428 Ön Koşul Gerekli
+    '429': 429 Çok Fazla İstek
+    '430': 430 Atanmamış
+    '431': 431 İstek Başlık Alanları Çok Büyük
+    '440': 440 Giriş Zaman Aşımı
+    '444': 444 Yanıt Yok
+    '449': 449 Tekrar Dene
+    '450': 450 Windows Ebeveyn Denetimleri Tarafından Engellendi
+    '451': 451 Yasal Nedenlerden Dolayı Kullanılamıyor
+    '494': 494 İstek başlığı çok büyük
+    '495': 495 SSL Sertifika Hatası
+    '496': 496 SSL Sertifikası Gerekli
+    '497': 497 HTTP İsteği HTTPS Portuna Gönderildi
+    '498': 498 Geçersiz Jeton
+    '499': 499 Müşteri Kapalı İstek
+    '500': 500 Dahili Sunucu Hatası
+    '501': 501 Uygulanmadı
+    '502': 502 sunucu hatası
+    '503': 503 Hizmet Kullanılamıyor
+    '504': 504 Ağ Geçidi Zaman Aşımı
+    '505': 505 HTTP Sürümü Desteklenmiyor
+    '506': 506 Varyantı da Pazarlık Yapıyor
+    '507': 507 Yetersiz Depolama
+    '508': 508 Döngü Algılandı
+    '509': 509 Bant Genişliği Sınırı Aşıldı
+    '510': 510 Uzatılmamış
+    '511': 511 Ağ Kimlik Doğrulaması Gerekli
+    '520': 520 Bilinmeyen Hata
+    '521': 521 Web Sunucusu Kapalı
+    '522': 522 Bağlantı Zaman Aşımına Uğradı
+    '523': 523 Origin'e Ulaşılamıyor
+    '524': 524 Zaman Aşımı Meydana Geldi
+    '525': 525 SSL El Sıkışma Başarısız Oldu
+    '526': 526 Geçersiz SSL Sertifikası
+    '527': 527 Railgun Hatası
+    '530': 530 Origin DNS Hatası / Site donmuş
+    '598': 598 (Gayri resmi sözleşme) Ağ okuma zaman aşımı hatası

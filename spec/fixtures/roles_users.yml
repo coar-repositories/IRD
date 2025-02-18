@@ -1,0 +1,15 @@
+system_administrator:
+  role_id: administrator
+  user_id: 0250c637-4053-4427-a939-a96360cb85b2
+  created_at: 2024-07-09 11:16:23.923555
+  updated_at: 2024-07-09 11:16:23.923555
+administrator_administrator:
+  role_id: administrator
+  user_id: ae0cfb35-5d96-4522-bf07-e7294028fcca
+  created_at: 2024-07-09 11:16:23.923555
+  updated_at: 2024-07-09 11:16:23.923555
+superuser_superuser:
+  role_id: superuser
+  user_id: 63e1c8df-6b30-4a52-80ab-4aa4e84c049c
+  created_at: 2024-07-09 11:16:23.923555
+  updated_at: 2024-07-09 11:16:23.923555

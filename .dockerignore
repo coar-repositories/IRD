@@ -1,0 +1,64 @@
+# See https://docs.docker.com/engine/reference/builder/#dockerignore-file for more about ignoring files.
+
+/.idea
+.DS_Store
+.nova
+
+# Ignore git directory.
+/.git/
+/.gitignore
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all environment files.
+/.env*
+
+# Ignore all default key files.
+/config/master.key
+/config/credentials/*.key
+
+/data/*
+!/data/ingest/.keep
+!/data/reports/.keep
+!/data/dump/.keep
+!/data/export_production_csv/.keep
+!/data/seed_data/annotations.csv
+!/data/seed_data/countries.csv
+!/data/seed_data/media.csv
+!/data/seed_data/roles.csv
+
+# Ignore all logfiles and tempfiles.
+# Ignore pidfiles, but keep the directory.
+/log/*
+!/log/.keep
+/tmp/*
+!/tmp/.keep
+!/tmp/pids/.keep
+!/tmp/storage/.keep
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+
+# Ignore assets.
+/node_modules/
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/public/assets
+
+# Ignore CI service files.
+/.github
+
+# Ignore development files
+/.devcontainer
+
+# Ignore Docker-related files
+/.dockerignore
+/Dockerfile*
+
+/DEV_NOTES/
+/lib/tasks/scratch_tasks.thor
+/.run/
+/lib/paper_pledges/

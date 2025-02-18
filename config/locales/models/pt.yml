@@ -1,0 +1,114 @@
+---
+pt:
+  activerecord:
+    attributes:
+      country:
+        code: Código
+        continent: Continente
+      generator:
+        platform: Plataforma de software
+        version: Versão do software
+      network_check:
+        network_check_type_list:
+          homepage_url: URL da página inicial
+          oai_pmh_identify: Inspeção OAI-PMH
+      organisation:
+        agents: Agentes
+        latitude: Latitude
+        location: Localização
+        longitude: Longitude
+        ror: ROR
+      repoid:
+        identifier_scheme_list:
+          ird: IRD
+          lyrasis: Lirásis
+          oai: OAI
+          opendoar: OpenDOAR
+          re3data: re3dados
+          roar: RUGIDO
+      system:
+        annotations: Anotações
+        authorised_curators: Curadores Autorizados
+        media_type: Tipo de mídia
+        oai_base_url: URL base OAI-PMH
+        oai_status: Status OAI-PMH
+        oai_status_list:
+          not_enabled: OAI-PMH não habilitado
+          offline: OAI-PMH offline
+          online: OAI-PMH online
+          unknown: OAI-PMH desconhecido
+          unsupported: OAI-PMH não suportado
+        owner: Proprietário
+        platform: Plataforma
+        platform_version: Versão da plataforma
+        primary_subject: Assunto primário
+        primary_subject_list:
+          arts: Artes
+          engineering: Engenharia
+          health_and_medicine: Saúde e Medicina
+          humanities: Humanidades
+          law: Lei
+          mathematics: Matemática
+          multidisciplinary: Multidisciplinar
+          science: Ciência
+          social_sciences: Ciências Sociais
+          technology: Tecnologia
+          unknown: Desconhecido
+        record_status: Status do registro
+        record_status_list:
+          archived: Arquivado
+          draft: Rascunho
+          published: Publicado
+          under_review: Em revisão
+        responsible_party: Organização Responsável
+        subcategory: Escopo
+        subcategory_list:
+          disciplinary_repository: Disciplinar
+          generalist_repository: Generalista
+          governmental_repository: Governamental
+          institutional_repository: Institucional
+          unknown: Não classificado
+        system_status: Status do sistema
+        system_status_list:
+          missing: Sistema não encontrado
+          offline: Sistema offline
+          online: Sistema online
+          unknown: Status do sistema desconhecido
+        tags: Etiquetas
+      user:
+        access_revoked: Acesso revogado
+        email: E-mail
+        fore_name: Nome Próprio
+        last_name: Sobrenome
+    models:
+      country:
+        one: País
+        other: Países
+      generator:
+        one: Gerador
+        other: Geradores
+      organisation:
+        one: Organização
+        other: Organizações
+      platform:
+        one: Plataforma
+        other: Plataformas
+      role:
+        one: Papel
+        other: Funções
+      system:
+        one: Sistema
+        other: Sistemas
+      user:
+        one: Usuário
+        other: Usuários
+  attributes:
+    aliases: Outros nomes
+    country_id: País
+    description: Descrição
+    identifiers: Identificadores
+    name: Nome
+    responsible_party: Organização Responsável
+    short_name: Nome curto
+    systems: Repositórios
+    url: Site

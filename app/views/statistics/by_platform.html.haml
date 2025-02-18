@@ -1,0 +1,2 @@
+= column_chart @graph_and_table_data[:graph_data], xtitle: t('activerecord.models.platform.one'), ytitle: t('repositories'),title: t('statistics_and_graphs.oai_status_for_platforms_with_10_or_more_repositories'), height: '600px', stacked: true
+=render 'stats_table', title: t('activerecord.models.platform.other'), stats_set_collection: @graph_and_table_data[:stats_set_collection], name_column_header: t("activerecord.models.platform.one"),  data_downloadable: (true), ignore_platform: true

@@ -1,0 +1,4 @@
+- if current_user&.access_revoked?
+  %div.alert.show.alert-danger{role:"alert"}
+    = t('errors.access_revoked_text')
+=t("errors.forbidden_text")

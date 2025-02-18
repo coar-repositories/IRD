@@ -1,0 +1,14 @@
+---
+pt:
+  passwordless:
+    mailer:
+      sign_in:
+        body: 'Use este link para entrar diretamente no IRD: %{magic_link} Ao clicar neste link, o IRD definirá um cookie - mas apenas para habilitar o processo de login. O IRD não define nenhum outro cookie para nenhuma outra finalidade.'
+    sessions:
+      create:
+        email_sent: Enviamos a você um e-mail com um link que você pode usar para fazer login
+      new:
+        email:
+          label: Endereço de email
+          placeholder: usuário@exemplo.com
+        submit: Entrar

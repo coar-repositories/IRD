@@ -1,0 +1,49 @@
+%div.card.system-search-result-card
+  %div.card-header
+    -# =truncate system.name,{length: title_truncation_length, separator: ' '}
+    =image_tag("flags/#{system.country.id.downcase}.svg",class: 'flag-tiny-card-header') unless system.country.nil?
+    = link_to system.display_name, system
+  %div.card-body
+    %div.row
+      %div.col-7
+        %div.card-system-details
+          %ul
+            %li
+              %b= "#{t(:repository_scope_short)}:"
+              -# i18n-tasks-use t('activerecord.attributes.system.subcategory_list.#{subcategory}') # this lets i18n-tasks know the key is used
+              = System.translated_subcategory(system.subcategory)
+            %li
+              %b= "#{t(:software)}:"
+              = system.platform.name
+              =  "(#{system.platform_version})" unless system.platform_version.blank?
+            %li
+              %b= "#{t('activerecord.attributes.system.owner')}:"
+              = system.owner.display_name unless system.owner.nil?
+            %li
+              %b= "#{t(:primary_subject)}:"
+              -# i18n-tasks-use t('activerecord.attributes.system.primary_subject_list.#{subject}') # this lets i18n-tasks know the key is used
+              = System.translated_primary_subject(system.primary_subject)
+            %li
+              - system.annotations.each do |annotation|
+                = annotation_flags(annotation)
+            %li
+              %b= "#{t(:reviewed)}:"
+              - if system.reviewed
+                = system.reviewed.strftime('%Y-%m-%d')
+              - else
+                =t(:not_yet_reviewed)
+          -# = truncate system.description,{length: 150, separator: ' '}
+      %div.col-5
+        = image_tag(rails_blob_url(system.thumbnail),:class=>"website-thumbnail-search-results shadowed") if system.thumbnail.attached?
+    -# %div.row
+    -#   %div.col
+    -#     %div.card-system-details-right
+    -#       - if system.reviewed
+    -#         %b= "#{t(:reviewed)}:"
+    -#         = system.reviewed.strftime('%Y-%m-%d')
+    -#       - else
+    -#         =t(:not_yet_reviewed)
+  -# %div.card-footer
+  -#   %div.card-footer-status-bar
+  -#     = system_status_flags system.system_status
+  -#     = oai_status_flags system.oai_status

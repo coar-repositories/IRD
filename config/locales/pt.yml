@@ -1,0 +1,78 @@
+---
+pt:
+  admin: Administrador
+  agencies: Agências
+  all_fields_must_be_completed: Todos os campos devem ser preenchidos
+  annotations: Anotações
+  are_you_sure_question: Tem certeza?
+  authorise_a_user: Autorizar um usuário
+  authorised_curator_for_these_repositories: Curador autorizado para esses repositórios
+  authorised_curators: Curadores Autorizados
+  check_repository_functionality: Verifique a funcionalidade do repositório
+  contact: Contato
+  continents: Continentes
+  curation_issues: Questões de curadoria
+  database: Banco de dados
+  email: E-mail
+  filter: Filtro
+  fore_name: Primeiro nome
+  harvested: Colhido
+  has_thumbnail: Tem miniatura?
+  homepage: Página inicial
+  identifiers: Identificadores
+  ird_metadata_record: Registro de metadados do IRD
+  last_name: Sobrenome
+  login: Conecte-se
+  logout: Sair
+  managing_agent_for_these_organisations: Agente de gestão para estas organizações
+  media_type: Tipo de mídia
+  metadata: Metadados
+  name: Nome
+  needs_review: Precisa de revisão
+  network_checks: Verificações de rede
+  none: Nenhum
+  not_yet_reviewed: Ainda não revisado
+  oai_status: Status OAI-PMH
+  operations: Operações
+  owner: Proprietário
+  owner_identified: Proprietário identificado?
+  page_titles:
+    about: Sobre o IRD
+    admin: Administrador
+    dashboard_for: Painel para %{name}
+    help: Ajuda do sistema
+    repositories_in_country: Repositórios em %{country}
+    repositories_running_on_platform: Repositórios em execução no %{platform}
+    repository_browser: Navegador de repositório
+    search: Procurar
+    statistics: Estatísticas
+    welcome: Bem-vindo ao Diretório de Repositórios Internacionais (IRD)
+  platform_identified: Plataforma de software identificada?
+  primary_subject: Assunto primário
+  record_source: Fonte de registro
+  record_status: Status do registro
+  records_in_ird: Registros no IRD
+  registered_users: Usuários Registrados
+  repositories: Repositórios
+  repository_browser: Navegador de repositório
+  repository_scope: Escopo do Repositório
+  repository_scope_short: Escopo
+  repository_status: Status do repositório
+  required: Obrigatório
+  reset: Reiniciar
+  responsible_organisation: Organização Responsável
+  responsible_organisations: Organizações Responsáveis
+  reviewed: Revisado
+  roles: Funções
+  search: Procurar
+  search_by_name: Pesquisar por nome
+  software: Programas
+  status: Status
+  suggest_a_new_repository: Sugira um novo repositório
+  support_for_oai_pmh: Apoio ao OAI-PMH
+  systems: Sistemas
+  tags: Etiquetas
+  total_results: Resultados totais
+  user_access: Acesso do usuário
+  verified: Verificado
+  website_url: URL do site

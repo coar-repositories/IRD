@@ -1,0 +1,7 @@
+---
+en:
+  errors:
+    access_revoked_text: Your privileged access to this system has been revoked. If you believe this is in error, please contact the COAR office by email at office@coar-repositories.org
+    forbidden_text: You are not authorized to access this page.
+    internal_server_error_text: An unexpected error has occurred. The system administrator has been notified and will investigate. Please try again later.
+    not_found_text: The page you were looking for does not exist on this system.

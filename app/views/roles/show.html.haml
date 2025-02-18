@@ -1,0 +1,14 @@
+= render '_shared/record_action_buttons', model_instance: @role
+
+%div.row.field
+  %div.col-2.field-name
+    .form-label Name
+  %div.col
+    = @role.name
+%div.row.field
+  %div.col-2.field-name
+    .form-label Description
+  %div.col
+    = @role.description
+
+= render 'users/table', users: @role.users, title: "Users with role #{@role.name}", data_downloadable: true

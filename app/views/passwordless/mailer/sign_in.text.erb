@@ -1,0 +1,1 @@
+<%= t("passwordless.mailer.sign_in.body", token: @token, magic_link: Utilities::UrlUtility.get_url_string_with_port_80_removed(@magic_link)) %>

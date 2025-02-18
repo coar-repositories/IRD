@@ -1,0 +1,82 @@
+= form_for @organisation do |f|
+  - if @organisation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@organisation.errors.count, "error")} prohibited this organisation from being saved:"
+      %ul
+        - @organisation.errors.full_messages.each do |message|
+          %li= message
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      = f.label :name, :class=>"form-label"
+    %div.col
+      = f.text_field :name, :class=>"form-control"
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      = f.label :short_name, :class=>"form-label"
+    %div.col
+      = f.text_field :short_name, :class=>"form-control"
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      %label.form-label Website
+    %div.col
+      = f.text_field :website, :class=>"form-control"
+  %div.row.align-items-top.field
+    %div.col-2.field-name
+      %label.form-label Other Names
+    %div.col
+      - if @organisation.aliases
+        - @organisation.aliases.each do |other_name|
+          = f.text_field :aliases, :name => 'organisation[aliases][]',:class=>"form-control", :value => other_name
+      = f.text_field :aliases, :name => 'organisation[aliases][]',:class=>"form-control", :value => ''
+
+  -# %div.row.align-items-center.field
+  -#   %div.col-2.field-name
+  -#     %label.form-label Responsible Party?
+  -#   %div.col
+  -#     = f.check_box :rp
+
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.organisation.ror') # this lets i18n-tasks know the key is used
+      = f.label :ror, :class=>"form-label"
+    %div.col
+      = f.text_field :ror, :class=>"form-control"
+
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.organisation.location') # this lets i18n-tasks know the key is used
+      = f.label :location, :class=>"form-label"
+    %div.col
+      = f.text_field :location, :class=>"form-control"
+
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.organisation.latitude') # this lets i18n-tasks know the key is used
+      = f.label :latitude, :class=>"form-label"
+    %div.col
+      = f.text_field :latitude, :class=>"form-control"
+
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.organisation.longitude') # this lets i18n-tasks know the key is used
+      = f.label :longitude, :class=>"form-label"
+    %div.col
+      = f.text_field :longitude, :class=>"form-control"
+
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      %label.form-label Country
+    %div.col
+      = f.collection_select :country_id, Country.order(:name), :id, :name, {prompt: true}
+  %div.row.align-items-top.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.organisation.agents') # this lets i18n-tasks know the key is used
+      = f.label :agents, :class=>"form-label"
+    %div.col
+      = f.collection_check_boxes :user_ids, @organisation.users, :id, :email do |b|
+        = b.label(class: "check_box") do
+          = b.check_box(class: "check_box")
+          = "#{b.object.name} (#{b.object.email})"
+        %br
+
+  = render '_shared/record_form_buttons', form: f,model_instance: @organisation

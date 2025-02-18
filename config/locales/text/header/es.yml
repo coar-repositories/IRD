@@ -1,0 +1,4 @@
+---
+es:
+  header_messages:
+    demonstration_only_text: 'Esta es una demostración **solamente**: los datos NO se guardarán'

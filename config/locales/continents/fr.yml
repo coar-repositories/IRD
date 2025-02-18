@@ -1,0 +1,15 @@
+---
+fr:
+  activerecord:
+    attributes:
+      country:
+        continent_list:
+          africa: Afrique
+          antarctica: Antarctique
+          asia: Asie
+          central_america: Amérique centrale
+          europe: L'Europe 
+          global: Mondial
+          north_america: Amérique du Nord
+          oceania: Océanie
+          south_america: Amérique du Sud

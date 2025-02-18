@@ -1,0 +1,22 @@
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    Organisations
+    - if data_downloadable
+      = render '_shared/download_machine_readable_data_buttons', formats: [:json]
+  %thead
+    %tr
+      %th Name
+      %th Country
+      -# %th Repositories
+      %th.actions &nbsp;
+  %tbody
+    - @organisations.each do |organisation|
+      %tr
+        %td= link_to organisation.display_name, organisation
+        %td
+          = image_tag "flags/#{organisation.country.id.downcase}.svg", :alt => organisation.country.id, :class => 'flag-small'
+          = link_to organisation.country.name,organisation.country
+        -# %td= filter_unpublished(organisation.ownerships).count
+        = render '_shared/record_action_buttons_table', model_instance: organisation
+= render '_shared/paginator'

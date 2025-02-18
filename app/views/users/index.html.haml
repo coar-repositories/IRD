@@ -1,0 +1,2 @@
+= render '_shared/record_new_button', model_sym: :user
+= render 'users/table', users: @users, title: 'Users', data_downloadable: (true unless @users.blank?)

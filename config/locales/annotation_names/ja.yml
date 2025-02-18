@@ -1,0 +1,7 @@
+---
+ja:
+  annotation_names:
+    defunct: 廃止
+    duplicate: 重複
+    flag: フラグ付き
+    out-of-scope: 範囲外

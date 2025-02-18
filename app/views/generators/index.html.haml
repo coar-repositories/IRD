@@ -1,0 +1,23 @@
+= render '_shared/record_new_button', model_sym: :generator
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    Generators
+    = render '_shared/download_machine_readable_data_buttons', formats: [:json]
+  %thead
+    %tr
+      %th Name
+      %th Platform
+      %th Version
+      %th Systems
+      %th.actions &nbsp;
+  %tbody
+    - @generators.each do |generator|
+      %tr
+        %td= link_to generator.name, generator
+        %td= link_to generator.platform.name,generator.platform unless generator.platform.nil?
+        %td= generator.version
+        %td= generator.systems.count
+        = render '_shared/record_action_buttons_table', model_instance: generator
+
+= render '_shared/paginator'

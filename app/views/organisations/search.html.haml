@@ -1,0 +1,6 @@
+= form_with url: organisation_search_path, method: :get, id: 'organisation_search_form' do
+  = text_field_tag 'search', request.query_parameters[:search], class: 'form-control form-control-sm', placeholder: 'Name...', style: 'margin-bottom: 10px;'
+  = hidden_field_tag 'lang', I18n.locale
+  %div.form-button
+    %button.btn.btn-primary= t(:search)
+=render 'table', title: 'Organisations', organisations: @organisations, data_downloadable: (true unless @organisations.blank?)

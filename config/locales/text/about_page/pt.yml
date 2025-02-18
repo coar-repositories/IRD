@@ -1,0 +1,47 @@
+---
+pt:
+  about_page:
+    about_page_text: |-
+      ### Sobre o serviço
+
+      O International Repositories Directory (IRD) é gerenciado pela [Confederation of Open Access Repositories (COAR)](https://www.coar-repositories.org/).
+
+      #### Critérios para inclusão
+
+      Cada repositório neste diretório atende aos seguintes critérios:
+
+      - A maioria de seu conteúdo é totalmente Open Access
+      - Ele suporta OAI-PMH
+
+      #### Gerenciamento dos dados
+      Os metadados neste diretório são coletados dos próprios repositórios e são atualizados regularmente. Alguns dos metadados são atualizados automaticamente, mas os registros de metadados também são curados por organizações chamadas "Organizações Responsáveis", que alocam pessoas e recursos para manter a precisão e a pontualidade dos metadados.
+
+      #### Licença
+      Os dados no IRD podem ser reutilizados sem restrições. Mais formalmente, ele é licenciado sob a [Licença CC0](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1).
+
+      #### Desenvolvimento e Manutenção de Software
+      O software para o IRD é desenvolvido, implantado e mantido pela [Antleaf](https://www.antleaf.com/). O [código de código aberto](https://github.com/coar-repositories/IRD) para este software é licenciado sob a [Licença MIT](https://opensource.org/license/mit).
+
+      ### Agradecimentos
+
+      #### Research Organization Registry (ROR)
+      O IRD usa dados baixados, com permissão, do [Research Organization Registry (ROR)](https://ror.org/).
+      O IRD usa o ROR para desambiguar os nomes das organizações no diretório, sempre que possível.
+
+      #### Outras fontes de informação
+      Alguns registros/diretórios/listas de terceiros foram usados para identificar candidatos para inclusão no IRD. Isso inclui (entre outros):
+
+      - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
+      - [Re3data](https://www.re3data.org/)
+      - [Informações de crowdsourcing sobre instalações do Dataverse](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
+      - [Hyku Commons](https://hykucommons.org/)
+      - [Lista de repositórios do NII (Japão)](https://irdb.nii.ac.jp/en/repositorylist)
+
+      Agradecemos também às seguintes pessoas que forneceram informações sobre repositórios:
+
+      - Bram Luyten, [Atmire](https://www.atmire.com)
+      - Jon Hackney, [Worktribe](https://www.worktribe.com)
+      - Heather Greer-Klein [Samvera](https://samvera.org/)
+    data_curation_text: |-
+      ### Organizações Responsáveis
+      A responsabilidade pela curadoria de registros neste diretório é distribuída para *Organizações Responsáveis*:

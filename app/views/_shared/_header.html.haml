@@ -1,0 +1,30 @@
+- if ENV['HEADER_BANNER_MESSAGE'].present?
+  %div.header_banner_message
+    -# i18n-tasks-use t('header_messages.#{message}') # this lets i18n-tasks know the key is used
+    %b= process_md(t("header_messages.#{ENV['HEADER_BANNER_MESSAGE']}"))
+-# %div#header-image
+-#   =link_to image_tag('header3.png', id:"header-image"), root_url
+=render '_shared/navbar'
+- if flash.any?
+  %div.row.messages
+    %div.col
+      - flash.each do |type, msg|
+        - case type
+        - when 'error'
+          %div.alert.alert-dismissible.fade.show.alert-danger{role:"alert"}
+            %button.btn-close{type:"button","data-bs-dismiss": "alert", "aria-label": "Close"}
+            = msg.html_safe
+        - when 'alert'
+          %div.alert.alert-dismissible.fade.show.alert-warning.auto-fade{role:"alert"}
+            = msg.html_safe
+        - when 'message'
+          %div.alert.alert-dismissible.fade.show.alert-success{role:"alert"}
+            %button.btn-close{type:"button","data-bs-dismiss": "alert", "aria-label": "Close"}
+            = msg.html_safe
+        - else
+          %div.alert.alert-dismissible.fade.show.alert-success.auto-fade{role:"alert"}
+            = msg.html_safe
+
+
+-# = render '_shared/help_modal_trigger', section: 'general'
+-# = render '_shared/help_modal', section: 'general'

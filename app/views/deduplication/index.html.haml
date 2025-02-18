@@ -1,0 +1,17 @@
+= link_to "De-duplicate Systems", deduplicate_path, class: 'btn btn-danger btn-sm operations-button'
+- duplicated_system_count = 0
+- @potential_duplicates.each do |potential_duplicate|
+  %div.row
+    - systems = Normalid.where(url: potential_duplicate.url).extract_associated(:system)
+    - already_annotated_duplicate = []
+    - systems.each {|system| if system.annotations.include? Annotation.find('duplicate') then already_annotated_duplicate << system end}
+    - if (systems.count - already_annotated_duplicate.count) > 1
+      - duplicated_system_count += 1
+      - duplicate_system_id_array = systems.map(&:id)
+      - systems.each do |system|
+        %div.col
+          = render 'card', system: system, duplicate_system_id_array: duplicate_system_id_array.excluding(system.id)
+      %hr.duplicate-card-row-separator
+%hr
+= duplicated_system_count
+duplicates found

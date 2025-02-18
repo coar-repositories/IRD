@@ -1,0 +1,46 @@
+---
+en:
+  buttons:
+    allocate_rp_by_country: Allocate RP by Country
+    archive_record: Archive Record
+    authorise_a_user: Authorise a User
+    auto_curate: Auto-Curate
+    cancel_operation: Cancel Operation
+    check_oai: Check OAI-PMH
+    check_url: Check Website
+    check_urls: Check URLs
+    choose_rp: Choose RP
+    create_record: Create %{model} Record
+    delete: Delete
+    do_not_show_archived_records: Do Not Show Archived Records
+    edit: Edit
+    generate_new_api_key: Generate New API Key
+    get_thumbnail: Get Thumbnail
+    get_thumbnails: Get Thumbnails
+    make_org_an_rp: Make Organisation a Responsible Organisation
+    make_org_an_rp_for_country: Make Organisation Responsible for all Repositories in this Country
+    make_record_draft: Make Record Draft
+    make_record_under_review: Make Record Under Review
+    mark_reviewed: Mark Reviewed
+    oai_pmh_identify: OAI-PMH Identify
+    oai_pmh_metadata_formats: OAI-PMH Metadata Formats
+    process_as_duplicate_of: Process as Duplicate of
+    publish_record: Publish Record
+    purge_duplicates: Purge Duplicates
+    purge_statistics_cache: Purge Statistics Cache
+    purge_thumbnail: Purge Thumbnail
+    purge_thumbnails: Purge Thumbnails
+    purge_unused_generators: Purge Unused Generators
+    raise_issue: Create a New Issue
+    reindex_systems: Reindex Systems
+    remove_rp_status: Remove Responsible Organisation Status
+    restore_access: Restore Access
+    review_this_record: Review this record
+    revoke_access: Revoke Access
+    save_record: Save record
+    show_archived_records: Show Archived Records
+    show_duplicates: Show Duplicates
+    start_background_network_checks: Network Checks
+    suggest_new_system: Suggest a New Repository
+    view_job_queue: View Job Queue
+    view_kanban: View Kanban

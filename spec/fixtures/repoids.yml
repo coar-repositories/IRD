@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+#one:
+#  id_scheme: 1
+#  id_value: MyString
+#  system: one
+
+#two:
+#  id_scheme: 1
+#  id_value: MyString
+#  system: two

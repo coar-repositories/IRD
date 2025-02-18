@@ -1,0 +1,47 @@
+---
+ja:
+  about_page:
+    about_page_text: |-
+      ### サービスについて
+
+      国際リポジトリ ディレクトリ (IRD) は、[オープン アクセス リポジトリ連合 (COAR)](https://www.coar-repositories.org/) によって管理されています。
+
+      #### 包含基準
+
+      このディレクトリ内の各リポジトリは、次の基準を満たしています:
+
+      - コンテンツの大部分が完全にオープン アクセスです
+      - OAI-PMH をサポートしています
+
+      #### データの管理
+      このディレクトリ内のメタデータは、リポジトリ自体から収集され、定期的に更新されます。メタデータの一部は自動的に更新されますが、メタデータ レコードは、メタデータの正確性と適時性を維持するために人材とリソースを割り当てる「責任組織」と呼ばれる組織によっても管理されます。
+
+      #### ライセンス
+      IRD 内のデータは、制限なく再利用できます。より正式には、[CC0 ライセンス](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1) に基づいてライセンスされています。
+
+      #### ソフトウェアの開発とメンテナンス
+      IRD のソフトウェアは、[Antleaf](https://www.antleaf.com/) によって開発、展開、およびメンテナンスされています。このソフトウェアの [オープンソース コード](https://github.com/coar-repositories/IRD) は、[MIT ライセンス](https://opensource.org/license/mit) に基づいてライセンスされています。
+
+      ### 謝辞
+
+      #### 研究組織レジストリ (ROR)
+      IRD は、[研究組織レジストリ (ROR)](https://ror.org/) から許可を得てダウンロードしたデータを使用します。
+      IRD は、可能な場合は、ディレクトリ内の組織名の曖昧さを解消するために ROR を使用します。
+
+      #### その他の情報源
+      IRD への登録候補を特定するために、サードパーティのレジストリ/ディレクトリ/リストがいくつか使用されています。これらには以下が含まれます (他にもいくつかあります):
+
+      - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
+      - [Re3data](https://www.re3data.org/)
+      - [Dataverse インストールに関するクラウドソーシング情報](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
+      - [Hyku Commons](https://hykucommons.org/)
+      - [NII (日本) リポジトリ リスト](https://irdb.nii.ac.jp/en/repositorylist)
+
+      リポジトリに関する情報を提供してくださった以下の方々にも感謝いたします:
+
+      - Bram Luyten、[Atmire](https://www.atmire.com)
+      - Jon Hackney、 [Worktribe](https://www.worktribe.com)
+      - Heather Greer-Klein [Samvera](https://samvera.org/)
+    data_curation_text: |-
+      ### 責任組織
+      このディレクトリ内のレコードのキュレーションの責任は、*責任組織*に分散されています。

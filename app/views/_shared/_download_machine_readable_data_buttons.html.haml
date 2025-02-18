@@ -1,0 +1,6 @@
+- if formats.include?(:json) && policy(:application).download_json?
+  %a.icon{href:stuff_protocol_into_url(request.original_url,'json')}
+    %span.icon.download-icon.bi-filetype-json{title: "Download data in JSON format"}
+- if formats.include?(:csv) && policy(:application).download_csv?
+  %a.icon{href:stuff_protocol_into_url(request.original_url,'csv')}
+    %span.icon.download-icon.bi-filetype-csv{title: "Download data in CSV format"}

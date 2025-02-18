@@ -1,0 +1,7 @@
+%td.actions
+  - if policy(model_instance).edit?
+    %a.icon{href:"#{url_for([:edit,model_instance])}"}
+      %span.icon.bi.bi-pencil{title: t('buttons.edit'),"data-bs-toggle":"tooltip"}
+  -# - if policy(model_instance).destroy?
+  -#   = link_to(model_instance, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'icon') do
+  -#     %span.icon.bi-trash{title: "Delete this record","data-bs-toggle":"tooltip"}

@@ -1,0 +1,52 @@
+textarea, input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+}
+
+textarea {
+    color: #555555;
+    border: .5px solid #cdcdcd;
+}
+
+div.actions {
+    text-align: center;
+/ / border-top: 1 px #efefef solid;
+/ / padding-top: 3 px;
+}
+
+a.btn {
+    text-decoration: none;
+    /*color: white !important;*/
+}
+
+.editorial-comment-field {
+    background-color: #ffdf7e;
+}
+
+.field {
+    margin-bottom: 10px;
+}
+
+.field-name {
+    text-align: right;
+}
+
+.field-section {
+    text-align: right;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.form-label {
+    font-weight: bold;
+    vertical-align: top;
+    text-transform: capitalize;
+}
+
+label.required:before {
+    content: "*";
+}
+
+.form-label::after {
+    content: ": ";
+}

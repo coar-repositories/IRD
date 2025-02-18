@@ -1,0 +1,4 @@
+- if policy(model_sym).new?
+  %div.record-action-buttons
+    -# = link_to "Create New #{model_sym.to_s.titleize}", eval("new_#{model_sym.to_s}_path"), :class => 'btn btn-primary'
+    = link_to t(:create_record, scope: :buttons, model: model_sym.to_s.titleize), eval("new_#{model_sym.to_s}_path"), :class => 'btn btn-primary'

@@ -1,0 +1,26 @@
+= render '_shared/record_action_buttons', model_instance: @platform
+
+%div.row
+  %div.col
+    = print_field_name_and_value2(t('attributes.name'),@platform.name)
+    = print_field_name_and_value2('URL',@platform.url) unless @platform.url.blank?
+    = print_field_name_and_value2("#{t(:support_for_oai_pmh)}?",@platform.oai_support)
+    - if policy(@platform).superuser?
+      = print_field_name_and_value2('OAI-PMH Base URL Suffix',@platform.oai_suffix)
+      = print_field_name_and_value2('Trusted?',@platform.trusted)
+      = print_field_name_and_value2('Matchers',@platform.matchers.join(', ')) if @platform.matchers
+      = print_field_name_and_value2('Generator Patterns',@platform.generator_patterns.join(', ')) if @platform.generator_patterns
+      = print_field_name_and_value2('Match Order?',@platform.match_order)
+    %div.property
+      %h5.property-name=t("attributes.systems")
+      %div.property-value
+        - if policy(@platform).systems?
+          - if @platform.systems.publicly_viewable.count > 0
+            = link_to @platform.systems.publicly_viewable.count, platform_instances_url(@platform)
+        - else
+          = @platform.systems.publicly_viewable.count
+
+  %div.col
+    -#   = pie_chart @stats.get_system_status_graph_data,title: "System status for repositories running on #{@platform.name} (%)", colors: @stats.get_system_status_graph_colours
+    = pie_chart @stats.get_oai_graph_data,title: "OAI-PMH status for repositories running on #{@platform.name} (%)", colors: @stats.get_oai_graph_colours
+

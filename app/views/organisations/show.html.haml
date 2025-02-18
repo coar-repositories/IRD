@@ -1,0 +1,68 @@
+%div.record-action-buttons
+  = render '_shared/record_action_buttons', model_instance: @organisation
+  - if policy(@organisation).add_user_as_agent?
+    = link_to 'Add agent',nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#addUserAsAgentModal"
+  - if @organisation.is_rp?
+    - if policy(@organisation).remove_rp_status? && @organisation.rp
+      = link_to t('buttons.remove_rp_status'), remove_rp_status_url(@organisation.id), :class => 'btn btn-danger btn-sm'
+  - else
+    - if policy(@organisation).make_rp?
+      = link_to t('buttons.make_org_an_rp'), make_rp_url(@organisation.id), :class => 'btn btn-primary btn-sm'
+    - if policy(@organisation).make_rp_for_country?
+      = link_to t('buttons.make_org_an_rp_for_country'), make_rp_for_country_url(@organisation.id), :class => 'btn btn-primary btn-sm'
+
+= print_field_name_and_value(t('attributes.name'),@organisation.name)
+-# = print_field_name_and_value(t('attributes.short_name'),@organisation.short_name)
+= print_field_name_and_value(t('attributes.aliases'),@organisation.aliases.join(', '))
+%div.row.field
+  %div.col-3.field-name
+    .form-label Website
+  %div.col
+    = link_to(@organisation.website,@organisation.website, class: "external-link") unless @organisation.website.blank?
+%div.row.field
+  %div.col-3.field-name
+    .form-label ROR
+  %div.col
+    = link_to(@organisation.ror,@organisation.ror, class: "external-link") unless @organisation.ror.blank?
+
+= print_field_name_and_value('Location',@organisation.location)
+= print_field_name_and_value('Country',@organisation.country.name)
+
+
+%div.row.field
+  %div.col-3.field-name
+    .form-label Repositories owned
+  %div.col
+    - if policy(@organisation).systems?
+      - if @organisation.ownerships.publicly_viewable.count > 0
+        = link_to @organisation.ownerships.publicly_viewable.count, organisation_ownerships_url
+    - else
+      = @organisation.ownerships.publicly_viewable.count
+
+%div.row.field
+  %div.col-3.field-name
+    .form-label= "#{t('attributes.responsible_party')}?"
+  %div.col
+    - if @organisation.rp
+      yes -
+      - if @organisation.responsibilities.publicly_viewable.count > 0
+        - if policy(@organisation).responsibilities?
+          = link_to @organisation.responsibilities.publicly_viewable.count, organisation_responsibilities_url(@organisation)
+        - else
+          = @organisation.responsibilities.publicly_viewable.count
+      - else
+        = @organisation.responsibilities.publicly_viewable.count
+
+- if @organisation.rp
+  %div.row.field
+    %div.col-3.field-name
+      .form-label Agents
+    %div.col
+      %ul
+        - @organisation.users.each do |user|
+          %li
+            - if policy(user).show?
+              = link_to user.display_name,user
+            - else
+              = user.display_name
+= render 'add_user_as_agent_modal'

@@ -1,0 +1,25 @@
+---
+zh-CN:
+  statistics_and_graphs:
+    by_continent: 按大洲
+    by_country: 按国家
+    by_software_platform: 按软件平台
+    countries_with_one_or_more_repositories: 拥有一个或多个存储库的国家
+    currently_online: 目前在线
+    functioning_oai_pmh: 运作良好的 OAI-PMH
+    oai_status_by_continent: 各大洲的 OAI-PMH 状态
+    oai_status_for_platforms_with_10_or_more_repositories: 拥有 10 个或更多存储库的平台的 OAI-PMH 状态
+    oai_status_for_top_20_countries_by_repository_count: 按存储库数量排名前 20 的国家/地区的 OAI-PMH 状态
+    oai_status_percentage_for_all_repositories: 所有存储库的 OAI-PMH 状态 (%)
+    records_published: 已出版记录
+    records_total: 总记录数
+    records_under_review: 正在审查的记录
+    repositories_count_by_continent: 各大洲的存储库（数量）
+    statistics: 统计数据
+    statistics_by_continent: 各大洲统计数据
+    statistics_by_country: 各国统计数字
+    statistics_by_software_platform: 软件平台统计
+    system_status_percentage_for_all_repositories: 所有存储库的系统状态 (%)
+    total_repositories: 总存储库
+    with_identified_owning_organisation: 拥有确定的所有权组织
+    with_identified_software_platform: 具有已识别的软件平台

@@ -1,0 +1,21 @@
+%div#test-accounts
+%table.table.table-sm.table-striped.table-bordered.sortable-table
+  %caption
+    Test Accounts
+  %thead
+    %tr
+      %th &nbsp;
+      %th= t(:email)
+      %th= t(:fore_name)
+      %th= t(:last_name)
+      %th= t(:roles)
+      %th= t(:agencies)
+  %tbody
+    - User.where(email: test_user_account_email_addresses).each do |user|
+      %tr
+        %td= link_to 'Login!', "/admin/authenticate_as?email=#{CGI.escape(user.email)}"
+        %td= user.email
+        %td= user.fore_name
+        %td= user.last_name
+        %td= user.roles.map(&:name).join(', ')
+        %td=user.organisations.map{|org|link_to(org.display_name,org)}.join(', ').html_safe

@@ -1,0 +1,17 @@
+%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+%title IRD
+%meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}
+%meta{:content => "yes", :name => "apple-mobile-web-app-capable"}
+%meta{:content => "yes", :name => "mobile-web-app-capable"}
+= csrf_meta_tags
+= csp_meta_tag
+-# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!)
+-# %link{rel:"manifest", href:pwa_manifest_path(format: :json)}
+%link{rel:"preconnect", href:"https://fonts.googleapis.com"}
+%link{rel:"preconnect", href:"https://fonts.gstatic.com", crossorigin:"true"}
+
+-# = stylesheet_link_tag :app, "data-turbo-track": "reload"
+= stylesheet_link_tag :app
+= javascript_importmap_tags
+
+= favicon_link_tag asset_path('coar-favicon.png'),rel: "apple-touch-icon"

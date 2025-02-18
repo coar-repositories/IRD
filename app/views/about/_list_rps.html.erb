@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col">
+    <% i = 0 %>
+    <% Organisation.rps.where.not(id: Organisation.default_rp_for_archived_records_id).order(:country_id).each do |rp| %>
+      <% if i > 0 && (i % 30 == 0) %>
+        </div>
+        <div class="col">
+      <% end %>
+      <%= image_tag "flags/#{rp.country_id.downcase}.svg", :alt => rp.country_id, :class => 'flag-tiny-facet' %>
+      <% if policy(:organisation).index? %>
+        <%= link_to "#{t(rp.country.id, scope: :countries_list)}: #{rp.display_name}", rp, class: "inverted-decoration" %>
+      <% else %>
+        <%= rp.display_name %>
+      <% end %>
+      <br/>
+      <% i += 1 %>
+    <% end %>
+    </div>
+  </div>

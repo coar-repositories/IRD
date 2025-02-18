@@ -1,0 +1,23 @@
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    =title
+    - if data_downloadable
+      = render '_shared/download_machine_readable_data_buttons', formats: [:csv]
+  %thead
+    %tr
+      %th= name_column_header
+      %th= t('repositories')
+      %th= "#{System.translated_system_status(:online)} (%)"
+      %th= "#{System.translated_oai_status(:online)} (%)"
+      - unless ignore_platform
+        %th= "#{t('platform_identified')} (%)"
+  %tbody
+    - stats_set_collection.each do |stats|
+      - if stats.total > 0
+        %tr
+          %td= stats.stats_set_name
+          %td= stats.total
+          %td= "#{stats.value_percentage(:status_online,1)}%"
+          %td= "#{stats.value_percentage(:oai_status_online,1)}%"
+          - unless ignore_platform
+            %td= "#{stats.value_percentage(:have_platform,1)}%"
