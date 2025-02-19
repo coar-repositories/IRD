@@ -153,35 +153,19 @@ class System < ApplicationRecord
   end
 
   def add_annotation(annotation)
-    begin
-      self.annotations << annotation
-    rescue
-      # LOGGER.warn e.message
-    end
+    self.annotations << annotation unless self.annotations.include? annotation
   end
 
   def remove_annotation(annotation)
-    begin
-      self.annotations.delete(annotation)
-    rescue
-      # LOGGER.warn e.message
-    end
+    self.annotations.delete(annotation) if  self.annotations.include? annotation
   end
 
   def add_medium(medium)
-    begin
-      self.media << medium unless self.media.include? medium
-    rescue Exception => e
-      # LOGGER.warn e.message
-    end
+    self.media << medium unless self.media.include? medium
   end
 
   def remove_medium(medium)
-    begin
-      self.media.delete(medium)
-    rescue
-      # LOGGER.warn e.message
-    end
+    self.media.delete(medium) if self.media.include? medium
   end
 
   def add_repo_id(repo_id_scheme, repo_id_value)
@@ -247,10 +231,6 @@ class System < ApplicationRecord
 
   def unknown_platform?
     !self.platform || self.platform.id == Platform.default_platform_id
-  end
-
-  def has_homepage_url_failures_past_threshold?
-    !self.network_checks.homepage_url_failed.failures_past_threshold.blank?
   end
 
   def has_oai_pmh_identify_failures_past_threshold?

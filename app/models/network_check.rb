@@ -9,14 +9,6 @@ class NetworkCheck < ApplicationRecord
   before_create :set_id
   before_save :update_error_status
 
-  def self.earliest_error
-    Rails.application.config.ird[:network_check_failure][:earliest_error].to_i.days.ago
-  end
-
-  def self.most_recent_error
-    Rails.application.config.ird[:network_check_failure][:most_recent_error].to_i.days.ago
-  end
-
   def self.error_count_threshold
     Rails.application.config.ird[:network_check_failure][:error_count_threshold].to_i
   end
@@ -25,8 +17,14 @@ class NetworkCheck < ApplicationRecord
   scope :failures, -> { where passed: false }
   scope :homepage_url_failed, -> { where network_check_type: :homepage_url, passed: false}
   scope :oai_pmh_identify_failed, -> { where network_check_type: :oai_pmh_identify, passed: false}
-  scope :failures_past_threshold, -> { where "failures > ? AND error_at < ? AND updated_at > ?", self.error_count_threshold, self.earliest_error, self.most_recent_error }
   scope :failures_no_network_connection, -> { where http_code: 0 }
+
+  def error_duration
+    if self.error_at.nil?
+      return 0
+    end
+    ((self.updated_at - self.error_at) / 1.day).floor
+  end
 
   private
   def set_id

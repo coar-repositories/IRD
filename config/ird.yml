@@ -6,9 +6,8 @@ shared:
     rp_for_archived_records: <%= ENV["RP_FOR_ARCHIVED_RECORDS"] %> #IRD System
     platform: <%= ENV["DEFAULT_PLATFORM"] %>
   network_check_failure:
-    error_count_threshold: 2
-    earliest_error: 30 #days
-    most_recent_error: 2 #days
+    error_count_threshold: <%= ENV.fetch("ERROR_COUNT_THRESHOLD",3).to_i %>
+    error_duration_threshold: <%= ENV.fetch("ERROR_DURATION_THRESHOLD",30).to_i %> #days
   repoid_schemes:
     ird:
       http_prefix: https://ird.coar-repositories.org/systems/
