@@ -8,6 +8,11 @@ fr:
       generator:
         platform: Plateforme logicielle
         version: Version du logiciel
+      metadata_format:
+        canonical_schema: Schéma
+        match_order: Ordre de match
+        matchers: Les allumeurs
+        version: Version
       network_check:
         network_check_type_list:
           homepage_url: URL de la page d'accueil
@@ -87,6 +92,9 @@ fr:
       generator:
         one: Générateur
         other: Générateurs
+      metadata_format:
+        one: Format des métadonnées
+        other: Formats de métadonnées
       organisation:
         one: Organisation
         other: Organisations

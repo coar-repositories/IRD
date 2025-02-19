@@ -12,6 +12,10 @@ en:
         network_check_type_list:
           homepage_url: Homepage URL
           oai_pmh_identify: OAI-PMH Inspect
+      metadata_format:
+        canonical_schema: Schema
+        matchers: Matchers
+        match_order: Match Order
       organisation:
         agents: Agents
         latitude: Latitude
@@ -87,6 +91,9 @@ en:
       generator:
         one: Generator
         other: Generators
+      metadata_format:
+        one: Metadata Format
+        other: Metadata Formats
       organisation:
         one: Organisation
         other: Organisations

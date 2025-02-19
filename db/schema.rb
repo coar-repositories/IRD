@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_06_093832) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_19_160513) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -97,6 +97,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_093832) do
     t.index ["medium_id", "system_id"], name: "index_media_systems_on_medium_id_and_system_id", unique: true
     t.index ["medium_id"], name: "index_media_systems_on_medium_id"
     t.index ["system_id"], name: "index_media_systems_on_system_id"
+  end
+
+  create_table "metadata_formats", id: { type: :string, limit: 36 }, force: :cascade do |t|
+    t.string "name"
+    t.string "canonical_schema"
+    t.string "matchers", array: true
+    t.float "match_order", default: 100.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_order"], name: "index_metadata_formats_on_match_order"
+  end
+
+  create_table "metadata_formats_systems", id: false, force: :cascade do |t|
+    t.string "system_id", limit: 36, null: false
+    t.string "metadata_format_id", limit: 36, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["metadata_format_id"], name: "index_metadata_formats_systems_on_metadata_format_id"
+    t.index ["system_id", "metadata_format_id"], name: "idx_on_system_id_metadata_format_id_e48ddf6a6b", unique: true
+    t.index ["system_id"], name: "index_metadata_formats_systems_on_system_id"
   end
 
   create_table "network_checks", id: { type: :string, limit: 36 }, force: :cascade do |t|
@@ -306,6 +326,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_093832) do
   add_foreign_key "generators", "platforms"
   add_foreign_key "media_systems", "media"
   add_foreign_key "media_systems", "systems"
+  add_foreign_key "metadata_formats_systems", "metadata_formats"
+  add_foreign_key "metadata_formats_systems", "systems"
   add_foreign_key "network_checks", "systems"
   add_foreign_key "normalids", "systems"
   add_foreign_key "organisations", "countries"

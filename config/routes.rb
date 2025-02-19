@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :metadata_formats
 
   # Defines the root path route ("/")
   root "home#index"

@@ -1,0 +1,5 @@
+= render '_shared/record_action_buttons', model_instance: @metadata_format
+
+= print_field_name_and_value2(t('attributes.name'),@metadata_format.name)
+= print_field_name_and_value2('Schema',@metadata_format.canonical_schema)
+= print_field_name_and_value2('Matchers',@metadata_format.matchers.join(', ')) if @metadata_format.matchers

@@ -1,0 +1,37 @@
+= form_for @metadata_format do |f|
+  - if @metadata_format.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@metadata_format.errors.count, "error")} prohibited this metadata_format from being saved:"
+      %ul
+        - @metadata_format.errors.full_messages.each do |message|
+          %li= message
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('attributes.name') # this lets i18n-tasks know the key is used
+      = f.label :name, :class=>"form-label"
+    %div.col
+      = f.text_field :name, :class=>"form-control"
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.metadata_format.canonical_schema') # this lets i18n-tasks know the key is used
+      = f.label :canonical_schema, :class=>"form-label"
+    %div.col
+      = f.text_field :canonical_schema, :class=>"form-control"
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.metadata_format.matchers') # this lets i18n-tasks know the key is used
+      = f.label :matchers, :class=>"form-label"
+    %div.col
+      - if @metadata_format.matchers
+        - @metadata_format.matchers.each do |matcher|
+          = f.text_field :matchers, :name => 'metadata_format[matchers][]',:class=>"form-control", :value => matcher
+      = f.text_field :matchers, :name => 'metadata_format[matchers][]',:class=>"form-control", :value => ''
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.metadata_format.match_order') # this lets i18n-tasks know the key is used
+      = f.label :match_order, :class=>"form-label"
+    %div.col
+      = f.number_field :match_order, :step => "0.01"
+  = render '_shared/record_form_buttons', form: f,model_instance: @metadata_format
+
+

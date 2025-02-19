@@ -8,6 +8,11 @@ es:
       generator:
         platform: Plataforma de software
         version: Versión del software
+      metadata_format:
+        canonical_schema: Esquema
+        match_order: Orden de partido
+        matchers: Comparadores
+        version: Versión
       network_check:
         network_check_type_list:
           homepage_url: URL de la página de inicio
@@ -87,6 +92,9 @@ es:
       generator:
         one: Generador
         other: Generadores
+      metadata_format:
+        one: Formato de metadatos
+        other: Formatos de metadatos
       organisation:
         one: Organización
         other: Organizaciones

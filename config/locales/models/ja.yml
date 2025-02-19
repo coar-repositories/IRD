@@ -8,6 +8,11 @@ ja:
       generator:
         platform: ソフトウェアプラットフォーム
         version: ソフトウェアバージョン
+      metadata_format:
+        canonical_schema: スキーマ
+        match_order: 試合順
+        matchers: マッチャー
+        version: バージョン
       network_check:
         network_check_type_list:
           homepage_url: ホームページURL
@@ -87,6 +92,9 @@ ja:
       generator:
         one: ジェネレータ
         other: 発電機
+      metadata_format:
+        one: メタデータ形式
+        other: メタデータ形式
       organisation:
         one: 組織
         other: 組織

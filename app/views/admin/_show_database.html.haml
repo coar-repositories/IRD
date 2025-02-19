@@ -30,3 +30,7 @@
   %span.badge.bg-secondary.badge-count= System.count
 %a{href:system_search_url,:class => 'btn btn-primary btn-sm'}
   %span.icon.bi-search.navbar-text{title: "Search"}
+%br
+%a{href:metadata_formats_url,:class => 'btn btn-primary btn-sm'}
+  = t('activerecord.models.metadata_format.other')
+  %span.badge.bg-secondary.badge-count= MetadataFormat.count

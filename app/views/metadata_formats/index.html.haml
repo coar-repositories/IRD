@@ -1,0 +1,19 @@
+= render '_shared/record_new_button', model_sym: :metadata_format
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    = @page_title
+    = render '_shared/download_machine_readable_data_buttons', formats: [:json,:csv]
+  %thead
+    %tr
+      %th Name
+      %th Scheme
+      %th.actions.no-sort &nbsp;
+  %tbody
+    - @metadata_formats.each do |metadata_format|
+      %tr
+        %td= link_to metadata_format.name, metadata_format
+        %td= metadata_format.canonical_schema
+        = render '_shared/record_action_buttons_table', model_instance: metadata_format
+
+= render '_shared/paginator'
