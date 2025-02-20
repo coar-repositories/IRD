@@ -1,0 +1,51 @@
+{{- if .Values.postgresbackup.enabled }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "ird.postgresbackup.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "ird.postgresbackup.name" . }}
+    helm.sh/chart: {{ include "ird.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  schedule: {{ .Values.postgresbackup.schedule }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: {{ include "ird.postgresbackup.name" . }}
+              image: "{{ .Values.postgresbackup.image.repository }}:{{ .Values.postgresbackup.image.tag }}"
+              imagePullPolicy: {{ .Values.postgresbackup.image.pullPolicy }}
+              command: ["/bin/sh"]
+              args: ["-c", "/backup.sh && /cleanup.sh"]
+              env:
+                - name: S3_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-keys-linode-secret
+                      key: S3_ACCESS_KEY
+                - name: S3_SECRET_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-keys-linode-secret
+                      key: S3_SECRET_KEY
+                - name: DB_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: ird-secrets
+                      key: IRD_DB_PASSWORD
+            {{- range $key, $val := .Values.postgresbackup.env }}
+                - name: {{ $key }}
+                  value: {{ $val | quote }}
+            {{- end}}
+          restartPolicy: Never
+      podFailurePolicy:
+        rules:
+        - action: FailJob
+          onExitCodes:
+            containerName: {{ include "ird.postgresbackup.name" . }}
+            operator: In
+            values: [1]
+{{- end }}
