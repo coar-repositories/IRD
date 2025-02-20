@@ -43,6 +43,7 @@ tr:
     help: Sistem Yardımı
     repositories_in_country: "%{country}'daki depolar"
     repositories_running_on_platform: "%{platform} üzerinde çalışan depolar"
+    repositories_supporting_metadata_format: "%{metadata_format}'ı destekleyen depolar"
     repository_browser: Depo Tarayıcısı
     search: Aramak
     statistics: İstatistikler

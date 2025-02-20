@@ -12,7 +12,6 @@ pt:
         canonical_schema: Esquema
         match_order: Ordem de correspondência
         matchers: Combinadores
-        version: Versão
       network_check:
         network_check_type_list:
           homepage_url: URL da página inicial

@@ -43,6 +43,7 @@ fr:
     help: Aide du système
     repositories_in_country: Dépôts dans %{country}
     repositories_running_on_platform: Référentiels fonctionnant sur %{platform}
+    repositories_supporting_metadata_format: Référentiels prenant en charge %{metadata_format}
     repository_browser: Navigateur de référentiel
     search: Recherche
     statistics: Statistiques

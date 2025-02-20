@@ -43,6 +43,7 @@ es:
     help: Ayuda del sistema
     repositories_in_country: Repositorios en %{country}
     repositories_running_on_platform: Repositorios que se ejecutan en %{platform}
+    repositories_supporting_metadata_format: Repositorios que admiten %{metadata_format}
     repository_browser: Navegador de repositorios
     search: Buscar
     statistics: Estadística

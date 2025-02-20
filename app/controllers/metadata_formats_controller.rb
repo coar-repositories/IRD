@@ -1,6 +1,23 @@
 class MetadataFormatsController < ApplicationController
-  before_action :set_metadata_format, only: %i[ show edit update destroy ]
+  before_action :set_metadata_format, only: %i[ show edit update destroy systems]
   after_action :verify_authorized
+
+
+  def systems
+    authorize @metadata_format
+    @page_title = I18n.t(:repositories_supporting_metadata_format, scope: :page_titles, metadata_format: @metadata_format.name)
+    @pagy, @systems = pagy(@metadata_format.systems.publicly_viewable.order(:name))
+    respond_to do |format|
+      format.html do
+        @record_count = @pagy.count
+      end
+      format.json
+      format.csv do
+        @systems = @metadata_format.systems.publicly_viewable.order(:name)
+        send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
+      end
+    end
+  end
 
   # GET /metadata_formats or /metadata_formats.json
   def index

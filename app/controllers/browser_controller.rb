@@ -18,11 +18,12 @@ class BrowserController < ApplicationController
     conditions[:subcategory] = params[:subcategory] if params[:subcategory].present?
     conditions[:media] = params[:media] if params[:media].present?
     conditions[:primary_subject] = params[:primary_subject] if params[:primary_subject].present?
+    conditions[:metadata_formats] = params[:metadata_formats] if params[:metadata_formats].present?
 
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country,:continent,:platform,:system_status,:oai_status,:subcategory,:media,:primary_subject,:annotations]
+    facets = [:country,:continent,:platform,:system_status,:oai_status,:subcategory,:media,:primary_subject,:annotations, :metadata_formats]
 
     @unpaginated_systems = System.search(
       search_terms,
@@ -31,7 +32,7 @@ class BrowserController < ApplicationController
       body_options: {
         track_total_hits: true
       },
-      includes: [:network_checks,:repoids,:media,:annotations,:users]
+      includes: [:network_checks,:repoids,:media,:annotations,:users, :metadata_formats]
     )
 
     @systems = System.search(
@@ -41,7 +42,7 @@ class BrowserController < ApplicationController
       aggs: facets,
       page: page,
       per_page: per_page,
-      includes: [:network_checks,:repoids,:media,:annotations,:users]
+      includes: [:network_checks,:repoids,:media,:annotations,:users, :metadata_formats]
       )
 
     @facets = @systems.aggs

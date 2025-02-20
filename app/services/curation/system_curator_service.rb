@@ -14,6 +14,8 @@ module Curation
         system = service_result.payload if service_result.success?
         service_result = Curation::SystemCandidateDefunctCheckerService.call(system)
         system = service_result.payload if service_result.success?
+        service_result = Curation::SystemMetadataFormatAssociationService.call(system)
+        system = service_result.payload if service_result.success?
         success system
       rescue Exception => e
         Rails.logger.error("Error in SystemCuratorService: #{e.message}")

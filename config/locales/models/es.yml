@@ -12,7 +12,6 @@ es:
         canonical_schema: Esquema
         match_order: Orden de partido
         matchers: Comparadores
-        version: Versión
       network_check:
         network_check_type_list:
           homepage_url: URL de la página de inicio

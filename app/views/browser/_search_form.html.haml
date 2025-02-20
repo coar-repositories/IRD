@@ -14,6 +14,8 @@
           = render(:partial => '_shared/facets_for_searchkick/facet_media_type',:locals => {filter_name: 'media', title: t('media_type'),facet: @facets['media']})
         %div.col
           = render(:partial => '_shared/facets_for_searchkick/facet_primary_subject',:locals => {filter_name: 'primary_subject', title: t('primary_subject'),facet: @facets['primary_subject']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'metadata_formats', title: t('activerecord.models.metadata_format.other'),facet: @facets['metadata_formats']})
+
       %div.row
         %div.col
           = render(:partial => '_shared/facets_for_searchkick/facet_platform',:locals => {filter_name: 'platform', title: t('activerecord.attributes.system.platform'),facet: @facets['platform']})

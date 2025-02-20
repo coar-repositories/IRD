@@ -43,6 +43,7 @@ zh-CN:
     help: 系统帮助
     repositories_in_country: "%{country} 中的存储库"
     repositories_running_on_platform: 在 %{platform} 上运行的存储库
+    repositories_supporting_metadata_format: 支持 %{metadata_format} 的存储库
     repository_browser: 存储库浏览器
     search: 搜索
     statistics: 统计数据

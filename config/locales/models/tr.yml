@@ -12,7 +12,6 @@ tr:
         canonical_schema: Şema
         match_order: Maç Sırası
         matchers: Eşleştiriciler
-        version: Sürüm
       network_check:
         network_check_type_list:
           homepage_url: Ana sayfa URL'si

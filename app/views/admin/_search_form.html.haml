@@ -23,12 +23,13 @@
           = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'record_source', title: t('record_source'),facet: @facets['record_source']})
           = render(:partial => '_shared/facets_for_searchkick/facet_boolean',:locals => {filter_name: 'has_owner', title: t('owner_identified'),facet: @facets['has_owner']})
           = render(:partial => '_shared/facets_for_searchkick/facet_boolean',:locals => {filter_name: 'has_thumbnail', title: t('has_thumbnail'),facet: @facets['has_thumbnail']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_http_codes',:locals => {filter_name: 'http_code', title: 'HTTP',facet: @facets['http_code']})
         %div.col
           = render(:partial => '_shared/facets_for_searchkick/facet_media_type',:locals => {filter_name: 'media', title: t('media_type'),facet: @facets['media']})
           = render(:partial => '_shared/facets_for_searchkick/facet_primary_subject',:locals => {filter_name: 'primary_subject', title: t('primary_subject'),facet: @facets['primary_subject']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'metadata_formats', title: t('activerecord.models.metadata_format.other'),facet: @facets['metadata_formats']})
           = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'annotations', title: t('annotations'),facet: @facets['annotations']})
           = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'tags', title: t('tags'),facet: @facets['tags']})
-          = render(:partial => '_shared/facets_for_searchkick/facet_http_codes',:locals => {filter_name: 'http_code', title: 'HTTP',facet: @facets['http_code']})
       %div.row
         %div.col
           = render(:partial => '_shared/facets_for_searchkick/facet_rp',:locals => {filter_name: 'rp', title: t('responsible_organisations'),facet: @facets['rp']})

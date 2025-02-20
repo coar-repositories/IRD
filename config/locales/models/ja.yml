@@ -12,7 +12,6 @@ ja:
         canonical_schema: スキーマ
         match_order: 試合順
         matchers: マッチャー
-        version: バージョン
       network_check:
         network_check_type_list:
           homepage_url: ホームページURL

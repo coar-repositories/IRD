@@ -8,14 +8,14 @@ en:
       generator:
         platform: Software Platform
         version: Software Version
+      metadata_format:
+        canonical_schema: Schema
+        match_order: Match Order
+        matchers: Matchers
       network_check:
         network_check_type_list:
           homepage_url: Homepage URL
           oai_pmh_identify: OAI-PMH Inspect
-      metadata_format:
-        canonical_schema: Schema
-        matchers: Matchers
-        match_order: Match Order
       organisation:
         agents: Agents
         latitude: Latitude

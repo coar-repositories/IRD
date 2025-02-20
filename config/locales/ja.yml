@@ -43,6 +43,7 @@ ja:
     help: システムヘルプ
     repositories_in_country: "%{country} のリポジトリ"
     repositories_running_on_platform: "%{platform} で実行されているリポジトリ"
+    repositories_supporting_metadata_format: "%{metadata_format} をサポートするリポジトリ"
     repository_browser: リポジトリブラウザ
     search: 検索
     statistics: 統計

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "metadata_formats/:id/systems", to: "metadata_formats#systems", as: "metadata_format_instances"
   resources :metadata_formats
 
   # Defines the root path route ("/")

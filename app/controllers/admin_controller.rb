@@ -22,6 +22,7 @@ class AdminController < ApplicationController
     conditions[:has_owner] = params[:has_owner] if params[:has_owner].present?
     conditions[:rp] = params[:rp] if params[:rp].present?
     conditions[:http_code] = params[:http_code] if params[:http_code].present?
+    conditions[:metadata_formats] = params[:metadata_formats] if params[:metadata_formats].present?
     unless params[:show_archived_records] == 'true'
       conditions[:_not] = { record_status: 'archived' }
     end
@@ -29,7 +30,7 @@ class AdminController < ApplicationController
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :media, :primary_subject, :annotations, :tags, :rp, :http_code, :has_thumbnail, :has_owner]
+    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :media, :primary_subject, :annotations, :tags, :rp, :http_code, :has_thumbnail, :has_owner, :metadata_formats]
 
     @unpaginated_systems = System.search(
       search_terms,
@@ -38,7 +39,7 @@ class AdminController < ApplicationController
       body_options: {
         track_total_hits: true
       },
-      includes: [:network_checks,:repoids,:media,:annotations,:users]
+      includes: [:network_checks,:repoids,:media,:annotations,:users, :metadata_formats]
     )
 
     @systems = System.search(
@@ -48,7 +49,7 @@ class AdminController < ApplicationController
       aggs: facets,
       page: page,
       per_page: per_page,
-      includes: [:network_checks,:repoids,:media,:annotations,:users]
+      includes: [:network_checks,:repoids,:media,:annotations,:users, :metadata_formats]
     )
 
     @facets = @systems.aggs

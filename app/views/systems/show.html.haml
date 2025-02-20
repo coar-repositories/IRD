@@ -9,9 +9,9 @@
       - if @system.thumbnail.attached?
         = image_tag(rails_blob_url(@system.thumbnail),class:"website-thumbnail shadowed")
         %br
-        %br
-        = system_status_flags @system.system_status
-        = oai_status_flags @system.oai_status
+      %br
+      = system_status_flags @system.system_status
+      = oai_status_flags @system.oai_status
     - if policy(@system).curate?
       = render 'show_curation', "@system": @system
     - if policy(@system).admin?
@@ -34,6 +34,8 @@
           - elsif @system.record_status_draft? || @system.record_status_under_review?
             - if policy(@system).publish?
               = link_to "#{t('buttons.publish_record')}!", publish_url(@system.id), :class => 'btn btn-success btn-sm'
+            - if policy(@system).mark_reviewed?
+              = link_to 'Mark as reviewed!', mark_reviewed_url(@system.id), :class => 'btn btn-success btn-sm'
             - if policy(@system).archive?
               = link_to 'Archive!', archive_url(@system.id), :class => 'btn btn-danger btn-sm'
           - else

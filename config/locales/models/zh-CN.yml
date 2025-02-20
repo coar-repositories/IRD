@@ -12,7 +12,6 @@ zh-CN:
         canonical_schema: 架构
         match_order: 匹配顺序
         matchers: 匹配器
-        version: 版本
       network_check:
         network_check_type_list:
           homepage_url: 主页网址

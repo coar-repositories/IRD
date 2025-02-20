@@ -27,6 +27,7 @@ class System < ApplicationRecord
       has_thumbnail: thumbnail.attached?,
       has_owner: owner.present?,
       http_code: network_checks.url_checks.first&.http_code,
+      metadata_formats: metadata_formats.map(&:name)
     }
   end
 
@@ -99,7 +100,8 @@ class System < ApplicationRecord
                                                                   MachineReadableAttribute.new(:oai_status, "entity.oai_status"),
                                                                   MachineReadableAttribute.new(:media, "entity.media.collect(&:name)"),
                                                                   MachineReadableAttribute.new(:primary_subject, "entity.primary_subject"),
-                                                                  MachineReadableAttribute.new(:reviewed, "entity.reviewed")
+                                                                  MachineReadableAttribute.new(:reviewed, "entity.reviewed"),
+                                                                  MachineReadableAttribute.new(:metadata_formats, "entity.metadata_formats.collect(&:name)")
                                                                 # MachineReadableAttribute.new(:created, "entity.created_at"),
                                                                 # MachineReadableAttribute.new(:updated, "entity.updated_at")
                                                                 ])

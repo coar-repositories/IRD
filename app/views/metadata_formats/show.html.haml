@@ -1,5 +1,15 @@
 = render '_shared/record_action_buttons', model_instance: @metadata_format
+= link_to "Metadata Formats", metadata_formats_url
 
 = print_field_name_and_value2(t('attributes.name'),@metadata_format.name)
 = print_field_name_and_value2('Schema',@metadata_format.canonical_schema)
-= print_field_name_and_value2('Matchers',@metadata_format.matchers.join(', ')) if @metadata_format.matchers
+- if policy(@metadata_format).superuser?
+  = print_field_name_and_value2('Matchers',@metadata_format.matchers.join(', ')) if @metadata_format.matchers
+%div.property
+  %h5.property-name=t("attributes.systems")
+  %div.property-value
+    - if policy(@metadata_format).systems?
+      - if @metadata_format.systems.publicly_viewable.count > 0
+        = link_to @metadata_format.systems.publicly_viewable.count, metadata_format_instances_url(@metadata_format)
+    - else
+      = @metadata_format.systems.publicly_viewable.count
