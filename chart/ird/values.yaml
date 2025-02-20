@@ -1,7 +1,7 @@
 replicaCount: 1
 revisionHistoryLimit: 3
 allow_user_accounts_without_verification: false
-test_user_accounts: "paul+admin@antleaf.com,paul@antleaf.com,paul@paulwalk.net,m.kathleen.shearer@gmail.com"
+test_user_accounts: ""
 # banner_message: "demonstration_only_text"
 banner_message: ""
 webapp:
