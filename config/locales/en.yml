@@ -1,6 +1,7 @@
 ---
 en:
   admin: Admin
+  additional_authorised_curators: Additional Authorised Curators
   agencies: Agencies
   all_fields_must_be_completed: All fields must be completed
   annotations: Annotations
@@ -11,11 +12,13 @@ en:
   check_repository_functionality: Check Repository Functionality
   contact: Contact
   continents: Continents
+  curation: Curation
   curation_issues: Curation Issues
   database: Database
   email: Email
   filter: Filter
   fore_name: First Name
+  general_information: General Information
   harvested: Harvested
   has_thumbnail: Has Thumbnail?
   homepage: Homepage
@@ -24,6 +27,7 @@ en:
   last_name: Last Name
   login: Login
   logout: Logout
+  managing_agents_for: Managing Agents for %{rp}
   managing_agent_for_these_organisations: Managing Agent for these Organisations
   media_type: Media-type
   metadata: Metadata
@@ -73,6 +77,7 @@ en:
   support_for_oai_pmh: Support for OAI-PMH
   systems: Systems
   tags: Tags
+  technical_information: Technical Information
   total_results: Total Results
   user_access: User Access
   verified: Verified

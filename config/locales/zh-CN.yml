@@ -1,5 +1,6 @@
 ---
 zh-CN:
+  additional_authorised_curators: 额外的授权策展人
   admin: 行政
   agencies: 机构
   all_fields_must_be_completed: 所有字段必须填写
@@ -11,11 +12,13 @@ zh-CN:
   check_repository_functionality: 检查存储库功能
   contact: 接触
   continents: 大洲
+  curation: 策展
   curation_issues: 策展问题
   database: 数据库
   email: 电子邮件
   filter: 筛选
   fore_name: 名
+  general_information: 一般信息
   harvested: 收割
   has_thumbnail: 有缩略图吗？
   homepage: 主页
@@ -25,6 +28,7 @@ zh-CN:
   login: 登录
   logout: 登出
   managing_agent_for_these_organisations: 这些组织的管理代理
+  managing_agents_for: 管理 %{rp} 的代理
   media_type: 媒體類型
   metadata: 元数据
   name: 姓名
@@ -73,6 +77,7 @@ zh-CN:
   support_for_oai_pmh: 支持 OAI-PMH
   systems: 系统
   tags: 标签
+  technical_information: 技术信息
   total_results: 总结果
   user_access: 用户访问
   verified: 已验证

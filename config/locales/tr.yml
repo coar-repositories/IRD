@@ -1,5 +1,6 @@
 ---
 tr:
+  additional_authorised_curators: Ek Yetkili Küratörler
   admin: Yönetici
   agencies: Acenteler
   all_fields_must_be_completed: Tüm alanların doldurulması zorunludur
@@ -11,11 +12,13 @@ tr:
   check_repository_functionality: Depo İşlevselliğini Kontrol Et
   contact: Temas etmek
   continents: Kıtalar
+  curation: Küratörlük
   curation_issues: Küratörlük Sorunları
   database: Veritabanı
   email: E-posta
   filter: Filtre
   fore_name: İlk adı
+  general_information: Genel bilgi
   harvested: Hasat edildi
   has_thumbnail: Küçük resim var mı?
   homepage: Ana sayfa
@@ -25,6 +28,7 @@ tr:
   login: Giriş yapmak
   logout: Çıkış Yap
   managing_agent_for_these_organisations: Bu Kuruluşlar için Yönetici Temsilci
+  managing_agents_for: "%{rp} için Aracıları Yönetme"
   media_type: Medya türü
   metadata: Meta veri
   name: İsim
@@ -73,6 +77,7 @@ tr:
   support_for_oai_pmh: OAI-PMH'ye Destek
   systems: Sistemler
   tags: Etiketler
+  technical_information: Teknik Bilgiler
   total_results: Toplam Sonuçlar
   user_access: Kullanıcı Erişimi
   verified: Doğrulandı

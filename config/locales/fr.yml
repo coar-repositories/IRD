@@ -1,5 +1,6 @@
 ---
 fr:
+  additional_authorised_curators: Curateurs autorisés supplémentaires
   admin: Administrateur
   agencies: Agences
   all_fields_must_be_completed: Tous les champs doivent être complétés
@@ -11,11 +12,13 @@ fr:
   check_repository_functionality: Vérifier la fonctionnalité du référentiel
   contact: Contact
   continents: Continents
+  curation: Conservation
   curation_issues: Problèmes de conservation
   database: Base de données
   email: E-mail
   filter: Filtre
   fore_name: Prénom
+  general_information: Informations générales
   harvested: Récolté
   has_thumbnail: A une miniature ?
   homepage: Page d'accueil
@@ -25,6 +28,7 @@ fr:
   login: Se connecter
   logout: Déconnexion
   managing_agent_for_these_organisations: Agent de gestion pour ces organisations
+  managing_agents_for: Gestion des agents pour %{rp}
   media_type: Type de média
   metadata: Métadonnées
   name: Nom
@@ -73,6 +77,7 @@ fr:
   support_for_oai_pmh: Soutien à OAI-PMH
   systems: Systèmes
   tags: Mots clés
+  technical_information: Informations techniques
   total_results: Résultats totaux
   user_access: Accès utilisateur
   verified: Vérifié

@@ -1,5 +1,6 @@
 ---
 ja:
+  additional_authorised_curators: 追加の公認キュレーター
   admin: 管理者
   agencies: 代理店
   all_fields_must_be_completed: すべてのフィールドを入力する必要があります
@@ -11,11 +12,13 @@ ja:
   check_repository_functionality: リポジトリの機能を確認する
   contact: 接触
   continents: 大陸
+  curation: キュレーション
   curation_issues: キュレーションの問題
   database: データベース
   email: メール
   filter: フィルター
   fore_name: ファーストネーム
+  general_information: 一般情報
   harvested: 収穫された
   has_thumbnail: サムネイルはありますか？
   homepage: ホームページ
@@ -25,6 +28,7 @@ ja:
   login: ログイン
   logout: ログアウト
   managing_agent_for_these_organisations: これらの組織の管理エージェント
+  managing_agents_for: "%{rp} のエージェントの管理"
   media_type: メディアタイプ
   metadata: メタデータ
   name: 名前
@@ -73,6 +77,7 @@ ja:
   support_for_oai_pmh: OAI-PMH のサポート
   systems: システム
   tags: タグ
+  technical_information: 技術情報
   total_results: 合計結果
   user_access: ユーザーアクセス
   verified: 検証済み

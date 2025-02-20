@@ -1,0 +1,9 @@
+.system_view_panel {
+    /*border-bottom: 1px solid #cdcdcd;*/
+    /*margin-bottom: 15px;*/
+    /*padding: 5px;*/
+}
+
+div.system_view_panel h2 {
+    border-bottom: 0.5px solid #cdcdcd;
+}

@@ -1,39 +1,37 @@
--# = print_field_name_and_value2('Record Source',@system.record_source)
-%div.property
-  %h5.property-name= Generator
-  %div.property-value
-    - if @system.generator
-      = link_to @system.generator.name, @system.generator
-    -else
-      =t(:none)
-
-%div.property
-  %h5.property-name= "#{t(:metadata)} (#{t(:harvested)})"
-  %div.property-value
-    - if !@system.metadata.empty?
-      %ul
-        - @system.metadata.each do |k,v|
-          %li
-            %b="#{k}: "
-            =v
-    - else
-      =t(:none)
-
-%div.property
-  %h5.property-name= t(:network_checks)
-  %div.property-value
-    - if !@system.network_checks.empty?
-      %ul
-        - @system.network_checks.each do |nc|
-          %li
-            -# i18n-tasks-use t('activerecord.attributes.network_check.network_check_type_list.#{network_check_type}') # this lets i18n-tasks know the key is used
-            = "#{network_check_result_flags(nc)} #{nc.translated_network_check_type}"
-            - unless nc.passed
-              - if nc.http_code && nc.http_code > 0
-                = "HTTP #{nc.http_code}"
-              - if nc.description
-                = "(#{nc.description})"
-    - else
-      =t(:none)
-
-= render 'add_repository_id_modal'
+%div.system_view_panel
+  %h2= t(:admin)
+  -# = print_field_name_and_value2('Record Source',@system.record_source)
+  %div.property
+    %h5.property-name Generator
+    %div.property-value
+      - if @system.generator
+        = link_to @system.generator.name, @system.generator
+      -else
+        =t(:none)
+  %div.property
+    %h5.property-name= t(:network_checks)
+    %div.property-value
+      - if !@system.network_checks.empty?
+        %ul
+          - @system.network_checks.each do |nc|
+            %li
+              -# i18n-tasks-use t('activerecord.attributes.network_check.network_check_type_list.#{network_check_type}') # this lets i18n-tasks know the key is used
+              = "#{network_check_result_flags(nc)} #{nc.translated_network_check_type}"
+              - unless nc.passed
+                - if nc.http_code && nc.http_code > 0
+                  = "HTTP #{nc.http_code}"
+                - if nc.description
+                  = "(#{nc.description})"
+      - else
+        =t(:none)
+  %div.property
+    %h5.property-name= "#{t(:metadata)} (#{t(:harvested)})"
+    %div.property-value
+      - if !@system.metadata.empty?
+        %ul
+          - @system.metadata.each do |k,v|
+            %li
+              %b="#{k}: "
+              =v
+      - else
+        =t(:none)
