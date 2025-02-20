@@ -1,0 +1,27 @@
+name: Deploy to Cluster
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+      - name: Configure Kubeconfig
+        uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+      - name: Deploy the Helm chart
+        run: |
+          helm upgrade ird \
+            --install \
+            --set-literal secrets.SMTP_PASSWORD=${{ secrets.ANTLEAF_ROBOT_SMTP_PASSWORD }} \
+            --set-literal secrets.IRD_DB_PASSWORD=${{ secrets.IRD_DB_PASSWORD}} \
+            --set-literal secrets.S3_ACCESS_KEY_ID=${{ secrets.ANTLEAF_S3_ACCESS_KEY}} \
+            --set-literal secrets.S3_SECRET_ACCESS_KEY=${{ secrets.ANTLEAF_S3_SECRET_KEY}} \
+            --set-literal secrets.RAILS_MASTER_KEY=${{ secrets.IRD_RAILS_MASTER_KEY}} ./chart/ird
