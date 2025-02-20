@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module Reports
   class ReportHarvestedMetadataFormatsService < ReportService
-    require "FileUtils"
+    require "fileutils"
 
     def call
       begin
