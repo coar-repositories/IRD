@@ -49,6 +49,7 @@ env:
   JOBS_MAX_THREADS: 3
   LOCAL_DISK_STORAGE_ROOT: ./storage
   OPENSEARCH_BATCH_SIZE: 1000
+  PLAUSIBLE_ANALYTICS: ird.coar-repositories.org
   PREVENT_PUBLIC_ACCESS_TO_DATA: false
   RAILS_ENV: production
   RAILS_FORCE_SSL: false
