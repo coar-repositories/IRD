@@ -9,7 +9,6 @@ ja:
   authorise_a_user: ユーザーを承認する
   authorised_curator_for_these_repositories: これらのリポジトリの公認キュレーター
   authorised_curators: 認定キュレーター
-  check_repository_functionality: リポジトリの機能を確認する
   contact: 接触
   continents: 大陸
   curation: キュレーション
@@ -23,7 +22,6 @@ ja:
   has_thumbnail: サムネイルはありますか？
   homepage: ホームページ
   identifiers: 識別子
-  ird_metadata_record: IRD メタデータ レコード
   last_name: 苗字
   login: ログイン
   logout: ログアウト
@@ -79,6 +77,5 @@ ja:
   tags: タグ
   technical_information: 技術情報
   total_results: 合計結果
-  user_access: ユーザーアクセス
   verified: 検証済み
   website_url: ウェブサイトURL

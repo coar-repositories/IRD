@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Roles", type: :request do
   describe "GET /index" do
-    fixtures :users, :roles
     it "renders the roles page" do
       passwordless_sign_in(users(:administrator))
       get roles_url

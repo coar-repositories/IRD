@@ -9,7 +9,6 @@ tr:
   authorise_a_user: Bir Kullanıcıyı Yetkilendirin
   authorised_curator_for_these_repositories: Bu depolar için Yetkili Küratör
   authorised_curators: Yetkili Küratörler
-  check_repository_functionality: Depo İşlevselliğini Kontrol Et
   contact: Temas etmek
   continents: Kıtalar
   curation: Küratörlük
@@ -23,7 +22,6 @@ tr:
   has_thumbnail: Küçük resim var mı?
   homepage: Ana sayfa
   identifiers: Tanımlayıcılar
-  ird_metadata_record: IRD Meta Veri Kaydı
   last_name: Soy isim
   login: Giriş yapmak
   logout: Çıkış Yap
@@ -79,6 +77,5 @@ tr:
   tags: Etiketler
   technical_information: Teknik Bilgiler
   total_results: Toplam Sonuçlar
-  user_access: Kullanıcı Erişimi
   verified: Doğrulandı
   website_url: Web sitesi URL'si

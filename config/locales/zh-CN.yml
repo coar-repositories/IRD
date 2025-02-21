@@ -9,7 +9,6 @@ zh-CN:
   authorise_a_user: 授权用户
   authorised_curator_for_these_repositories: 这些存储库的授权管理员
   authorised_curators: 授权策展人
-  check_repository_functionality: 检查存储库功能
   contact: 接触
   continents: 大洲
   curation: 策展
@@ -23,7 +22,6 @@ zh-CN:
   has_thumbnail: 有缩略图吗？
   homepage: 主页
   identifiers: 标识符
-  ird_metadata_record: IRD 元数据记录
   last_name: 姓
   login: 登录
   logout: 登出
@@ -79,6 +77,5 @@ zh-CN:
   tags: 标签
   technical_information: 技术信息
   total_results: 总结果
-  user_access: 用户访问
   verified: 已验证
   website_url: 网站网址

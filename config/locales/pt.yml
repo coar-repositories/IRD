@@ -9,7 +9,6 @@ pt:
   authorise_a_user: Autorizar um usuário
   authorised_curator_for_these_repositories: Curador autorizado para esses repositórios
   authorised_curators: Curadores Autorizados
-  check_repository_functionality: Verifique a funcionalidade do repositório
   contact: Contato
   continents: Continentes
   curation: Curadoria
@@ -23,7 +22,6 @@ pt:
   has_thumbnail: Tem miniatura?
   homepage: Página inicial
   identifiers: Identificadores
-  ird_metadata_record: Registro de metadados do IRD
   last_name: Sobrenome
   login: Conecte-se
   logout: Sair
@@ -79,6 +77,5 @@ pt:
   tags: Etiquetas
   technical_information: Informações técnicas
   total_results: Resultados totais
-  user_access: Acesso do usuário
   verified: Verificado
   website_url: URL do site

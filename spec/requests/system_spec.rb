@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe SystemsController, type: :request do
-  fixtures :systems
   describe "GET /systems/" do
     it "does not render the systems index page for public users, but redirects to error page" do
       passwordless_sign_out

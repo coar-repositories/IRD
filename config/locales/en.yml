@@ -1,7 +1,7 @@
 ---
 en:
-  admin: Admin
   additional_authorised_curators: Additional Authorised Curators
+  admin: Admin
   agencies: Agencies
   all_fields_must_be_completed: All fields must be completed
   annotations: Annotations
@@ -9,7 +9,6 @@ en:
   authorise_a_user: Authorise a User
   authorised_curator_for_these_repositories: Authorised Curator for these repositories
   authorised_curators: Authorised Curators
-  check_repository_functionality: Check Repository Functionality
   contact: Contact
   continents: Continents
   curation: Curation
@@ -23,12 +22,11 @@ en:
   has_thumbnail: Has Thumbnail?
   homepage: Homepage
   identifiers: Identifiers
-  ird_metadata_record: IRD Metadata Record
   last_name: Last Name
   login: Login
   logout: Logout
-  managing_agents_for: Managing Agents for %{rp}
   managing_agent_for_these_organisations: Managing Agent for these Organisations
+  managing_agents_for: Managing Agents for %{rp}
   media_type: Media-type
   metadata: Metadata
   name: Name
@@ -79,6 +77,5 @@ en:
   tags: Tags
   technical_information: Technical Information
   total_results: Total Results
-  user_access: User Access
   verified: Verified
   website_url: Website URL

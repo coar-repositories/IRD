@@ -9,7 +9,6 @@ fr:
   authorise_a_user: Autoriser un utilisateur
   authorised_curator_for_these_repositories: Conservateur agréé pour ces dépôts
   authorised_curators: Conservateurs agréés
-  check_repository_functionality: Vérifier la fonctionnalité du référentiel
   contact: Contact
   continents: Continents
   curation: Conservation
@@ -23,7 +22,6 @@ fr:
   has_thumbnail: A une miniature ?
   homepage: Page d'accueil
   identifiers: Identifiants
-  ird_metadata_record: Enregistrement de métadonnées IRD
   last_name: Nom de famille
   login: Se connecter
   logout: Déconnexion
@@ -79,6 +77,5 @@ fr:
   tags: Mots clés
   technical_information: Informations techniques
   total_results: Résultats totaux
-  user_access: Accès utilisateur
   verified: Vérifié
   website_url: URL du site Web
