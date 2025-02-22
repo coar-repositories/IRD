@@ -1,5 +1,21 @@
 ---
 fr:
+  activerecord:
+    errors:
+      models:
+        system:
+          attributes:
+            media:
+              missing: doit être sélectionné
+            primary_subject:
+              missing: doit être sélectionné
+            subcategory:
+              missing: doit être sélectionné
+      template:
+        body: 'Veuillez corriger les erreurs suivantes :'
+        header:
+          one: 1 erreur a empêché la sauvegarde de cet enregistrement
+          other: L'erreur %{count} a empêché la sauvegarde de cet enregistrement
   errors:
     access_revoked_text: Votre accès privilégié à ce système a été révoqué. Si vous pensez qu'il s'agit d'une erreur, veuillez contacter le bureau du COAR par e-mail à l'adresse office@coar-repositories.org
     forbidden_text: Vous n'êtes pas autorisé à accéder à cette page.

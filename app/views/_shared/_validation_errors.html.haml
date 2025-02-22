@@ -1,0 +1,9 @@
+%div#error_explanation_ird
+  - if record.errors.count == 1
+    %h2= t('activerecord.errors.template.header.one')
+  - else
+    %h2= t('activerecord.errors.template.header.other',:count => record.errors.count)
+  %b= t('activerecord.errors.template.body')
+  %ul
+    - record.errors.full_messages.each do |message|
+      %li= message

@@ -1,5 +1,21 @@
 ---
 en:
+  activerecord:
+    errors:
+      models:
+        system:
+          attributes:
+            media:
+              missing: needs to be selected
+            primary_subject:
+              missing: needs to be selected
+            subcategory:
+              missing: needs to be selected
+      template:
+        body: 'Please correct the following errors:'
+        header:
+          one: 1 error prevented this record from being saved
+          other: "%{count} error prevented this record from being saved"
   errors:
     access_revoked_text: Your privileged access to this system has been revoked. If you believe this is in error, please contact the COAR office by email at office@coar-repositories.org
     forbidden_text: You are not authorized to access this page.

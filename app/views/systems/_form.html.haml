@@ -2,12 +2,8 @@
   %div.col-9
     = form_for @system do |f|
       - if @system.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@system.errors.count, "error")} prohibited this system from being saved:"
-          %ul
-            - @system.errors.full_messages.each do |message|
-              %li= message
-
+        -# i18n-tasks-use t('activerecord.errors.template.header') # this lets i18n-tasks know the key is used
+        =render '_shared/validation_errors', record: @system
       %div.row.align-items-center.field
         %div.col-2.field-name
           -# i18n-tasks-use t('attributes.name') # this lets i18n-tasks know the key is used
@@ -43,6 +39,7 @@
           = f.text_field :description, :class=>"form-control"
       %div.row.align-items-center.field
         %div.col-2.field-name
+          -# i18n-tasks-use t('activerecord.errors.models.system.attributes.subcategory.missing') # this lets i18n-tasks know the key is used
           -# i18n-tasks-use t('activerecord.attributes.system.subcategory') # this lets i18n-tasks know the key is used
           = f.label :subcategory, :class=>"form-label"
         %div.col
@@ -50,16 +47,18 @@
           = f.select :subcategory, options_for_select(System.translated_subcategories.map { |translation, k, _v| [translation, k] },@system.subcategory), :class=>"form-control"
       %div.row.align-items-top.field
         %div.col-2.field-name
-          -# i18n-tasks-use t('activerecord.attributes.system.media_type') # this lets i18n-tasks know the key is used
-          = f.label :media_type, :class=>"form-label"
+          -# i18n-tasks-use t('activerecord.attributes.system.media') # this lets i18n-tasks know the key is used
+          -# i18n-tasks-use t('activerecord.errors.models.system.attributes.media.missing') # this lets i18n-tasks know the key is used
+          = f.label :media, :class=>"form-label"
         %div.col
-          = f.collection_check_boxes :medium_ids, Medium.all, :id, :name do |b|
+          = f.collection_check_boxes :medium_ids, Medium.order(:name), :id, :name do |b|
             = b.label(class: "check_box") do
               = b.check_box(class: "check_box")
               = b.object.name
             %br
       %div.row.align-items-center.field
         %div.col-2.field-name
+          -# i18n-tasks-use t('activerecord.errors.models.system.attributes.primary_subject.missing') # this lets i18n-tasks know the key is used
           -# i18n-tasks-use t('activerecord.attributes.system.primary_subject') # this lets i18n-tasks know the key is used
           = f.label :primary_subject, :class=>"form-label"
         %div.col

@@ -33,7 +33,7 @@ tr:
       system:
         annotations: Açıklamalar
         authorised_curators: Yetkili Küratörler
-        media_type: Medya Türü
+        media: Medya Türleri
         oai_base_url: OAI-PMH Temel URL
         oai_status: OAI-PMH Durumu
         oai_status_list:

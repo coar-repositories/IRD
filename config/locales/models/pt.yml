@@ -33,7 +33,7 @@ pt:
       system:
         annotations: Anotações
         authorised_curators: Curadores Autorizados
-        media_type: Tipo de mídia
+        media: Tipos de mídia
         oai_base_url: URL base OAI-PMH
         oai_status: Status OAI-PMH
         oai_status_list:

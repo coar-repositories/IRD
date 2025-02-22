@@ -1,5 +1,21 @@
 ---
 ja:
+  activerecord:
+    errors:
+      models:
+        system:
+          attributes:
+            media:
+              missing: 選択する必要があります
+            primary_subject:
+              missing: 選択する必要があります
+            subcategory:
+              missing: 選択する必要があります
+      template:
+        body: '次のエラーを修正してください:'
+        header:
+          one: 1 つのエラーにより、このレコードを保存できませんでした
+          other: "%{count} エラーによりこのレコードを保存できませんでした"
   errors:
     access_revoked_text: このシステムへの特権アクセスは取り消されました。これが誤りであると思われる場合は、COAR オフィス (office@coar-repositories.org) に電子メールでご連絡ください。
     forbidden_text: このページにアクセスする権限がありません。

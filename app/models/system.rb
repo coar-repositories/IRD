@@ -1,3 +1,17 @@
+class SystemValidator < ActiveModel::Validator
+  def validate(record)
+    if record.subcategory == "unknown"
+      record.errors.add :subcategory, :missing
+    end
+    if record.primary_subject == "unknown"
+      record.errors.add :primary_subject, :missing
+    end
+    if record.media.count == 0
+      record.errors.add :media, :missing
+    end
+  end
+end
+
 class System < ApplicationRecord
   include TranslateEnum
   include Curation
@@ -73,6 +87,7 @@ class System < ApplicationRecord
   scope :duplicates, -> { includes(:annotations).where(annotations: { id: 'duplicate' }) }
 
   validates :name, :url, presence: true
+  validates_with SystemValidator, on: :update
 
   before_validation :set_defaults
   before_save :set_id
@@ -344,5 +359,5 @@ class System < ApplicationRecord
     end
     self.owner_id = nil if self.owner_id == ''
   end
-
 end
+

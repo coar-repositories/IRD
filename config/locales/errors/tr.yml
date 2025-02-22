@@ -1,5 +1,21 @@
 ---
 tr:
+  activerecord:
+    errors:
+      models:
+        system:
+          attributes:
+            media:
+              missing: seçilmesi gerekiyor
+            primary_subject:
+              missing: seçilmesi gerekiyor
+            subcategory:
+              missing: seçilmesi gerekiyor
+      template:
+        body: 'Lütfen aşağıdaki hataları düzeltin:'
+        header:
+          one: 1 hata bu kaydın kaydedilmesini engelledi
+          other: "%{count} hatası bu kaydın kaydedilmesini engelledi"
   errors:
     access_revoked_text: Bu sisteme ayrıcalıklı erişiminiz iptal edildi. Bunun bir hata olduğunu düşünüyorsanız lütfen COAR ofisiyle office@coar-repositories.org adresinden e-posta yoluyla iletişime geçin.
     forbidden_text: Bu sayfaya erişim yetkiniz yok.

@@ -1,5 +1,21 @@
 ---
 es:
+  activerecord:
+    errors:
+      models:
+        system:
+          attributes:
+            media:
+              missing: Necesita ser seleccionado
+            primary_subject:
+              missing: Necesita ser seleccionado
+            subcategory:
+              missing: Necesita ser seleccionado
+      template:
+        body: 'Por favor corrija los siguientes errores:'
+        header:
+          one: 1 error impidió que se guardara este registro
+          other: El error %{count} impidió que se guardara este registro
   errors:
     access_revoked_text: Se ha revocado su acceso privilegiado a este sistema. Si cree que se trata de un error, comuníquese con la oficina de COAR por correo electrónico a office@coar-repositories.org
     forbidden_text: No estás autorizado para acceder a esta página.

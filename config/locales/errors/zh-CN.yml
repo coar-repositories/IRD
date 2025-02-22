@@ -1,5 +1,21 @@
 ---
 zh-CN:
+  activerecord:
+    errors:
+      models:
+        system:
+          attributes:
+            media:
+              missing: 需要选择
+            primary_subject:
+              missing: 需要选择
+            subcategory:
+              missing: 需要选择
+      template:
+        body: 请更正以下错误：
+        header:
+          one: 1 个错误导致此记录无法保存
+          other: "%{count} 错误导致此记录无法保存"
   errors:
     access_revoked_text: 您对此系统的特权访问权限已被撤销。如果您认为这是错误的，请通过电子邮件联系 COAR 办公室：office@coar-repositories.org
     forbidden_text: 您无权访问此页面。
