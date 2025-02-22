@@ -54,7 +54,7 @@ class SystemsController < ApplicationController
       target_system.save!
       @system.add_annotation(Annotation.find("duplicate"))
       @system.record_status = :archived
-      @system.save!(validate: false)
+      @system.save!
       redirect_back fallback_location: root_path, notice: "Processed as duplicate of #{params[:target_system_id]}"
     rescue Exception => e
       redirect_back fallback_location: root_path, flash: { error: "Unable to process as duplicate: #{e.message}" }

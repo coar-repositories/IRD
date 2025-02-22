@@ -1,13 +1,15 @@
-class SystemValidator < ActiveModel::Validator
+class PublishedSystemValidator < ActiveModel::Validator
   def validate(record)
-    if record.subcategory == "unknown"
-      record.errors.add :subcategory, :missing
-    end
-    if record.primary_subject == "unknown"
-      record.errors.add :primary_subject, :missing
-    end
-    if record.media.count == 0
-      record.errors.add :media, :missing
+    if record.record_status == "published"
+      if record.subcategory == "unknown"
+        record.errors.add :subcategory, :missing
+      end
+      if record.primary_subject == "unknown"
+        record.errors.add :primary_subject, :missing
+      end
+      if record.media.count == 0
+        record.errors.add :media, :missing
+      end
     end
   end
 end
@@ -87,7 +89,7 @@ class System < ApplicationRecord
   scope :duplicates, -> { includes(:annotations).where(annotations: { id: 'duplicate' }) }
 
   validates :name, :url, presence: true
-  validates_with SystemValidator, on: :update
+  validates_with PublishedSystemValidator
 
   before_validation :set_defaults
   before_save :set_id
@@ -175,7 +177,7 @@ class System < ApplicationRecord
   end
 
   def remove_annotation(annotation)
-    self.annotations.delete(annotation) if  self.annotations.include? annotation
+    self.annotations.delete(annotation) if self.annotations.include? annotation
   end
 
   def add_medium(medium)
