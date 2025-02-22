@@ -3,7 +3,7 @@ module SystemsHelper
   def full_identifier(scheme, id)
     scheme_config = Rails.application.config.ird[:repoid_schemes][scheme.to_sym]
     if scheme_config && scheme_config[:link_to_source]
-      scheme_config[:http_prefix] + id + scheme_config[:http_suffix]
+      "#{scheme_config[:http_prefix]}#{id}#{scheme_config[:http_suffix]}"
     else
       id
     end
@@ -13,9 +13,7 @@ module SystemsHelper
     returned_identifier = "<b>#{Repoid.translated_identifier_scheme(scheme)}:</b> "
     scheme_config = Rails.application.config.ird[:repoid_schemes][scheme.to_sym]
     if scheme_config && scheme_config[:link_to_source]
-      # returned_identifier += link_to id, "#{scheme_config[:http_prefix]}#{id}#{scheme_config[:http_suffix]}"
       returned_identifier += link_to id, full_identifier(scheme, id)
-
     else
       returned_identifier += id
     end
