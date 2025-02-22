@@ -12,7 +12,6 @@
         %h5.property-name= t('activerecord.models.country.one')
         %div.property-value
           - unless @system.country.nil?
-            -# = @system.country.name
             = link_to t(@system.country.id,scope: :countries_list),@system.country
             = image_tag "flags/#{@system.country.id.downcase}.svg", :alt => @system.country.id, :class => 'flag-tiny-facet'
 

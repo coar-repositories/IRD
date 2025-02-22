@@ -1,37 +1,25 @@
 module SystemsHelper
 
   def full_identifier(scheme, id)
-    scheme = scheme.to_sym
-    if Rails.application.config.ird.repo_id_schemes[scheme]
-      prefix = Rails.application.config.ird.repo_id_schemes[scheme][:prefix]
-      if prefix
-        prefix + id
-      else
-        id
-      end
+    scheme_config = Rails.application.config.ird[:repoid_schemes][scheme.to_sym]
+    if scheme_config && scheme_config[:link_to_source]
+      scheme_config[:http_prefix] + id + scheme_config[:http_suffix]
     else
       id
     end
   end
 
   def resolvable_identifier(scheme, id)
-    scheme = scheme.to_sym
-    if Rails.application.config.ird.repo_id_schemes[scheme]
-      if Rails.application.config.ird.repo_id_schemes[scheme][:url]
-        prefix = Rails.application.config.ird.repo_id_schemes[scheme][:url][:prefix]
-        suffix = Rails.application.config.ird.repo_id_schemes[scheme][:url][:suffix]
-        id_to_display = full_identifier(scheme, id)
-        if scheme == :IRD
-          "<a href=\"#{prefix}#{id}#{suffix}\">#{id_to_display}</a>".html_safe
-        else
-          "<a href=\"#{prefix}#{id}#{suffix}\">#{id_to_display}</a>".html_safe
-        end
-      else
-        id
-      end
+    returned_identifier = "<b>#{Repoid.translated_identifier_scheme(scheme)}:</b> "
+    scheme_config = Rails.application.config.ird[:repoid_schemes][scheme.to_sym]
+    if scheme_config && scheme_config[:link_to_source]
+      # returned_identifier += link_to id, "#{scheme_config[:http_prefix]}#{id}#{scheme_config[:http_suffix]}"
+      returned_identifier += link_to id, full_identifier(scheme, id)
+
     else
-      id
+      returned_identifier += id
     end
+    returned_identifier.html_safe
   end
 
   def annotation_flags(annotation)

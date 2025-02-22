@@ -16,9 +16,7 @@
           - if !@system.repoids.empty?
             %ul
               - @system.repoids.each do |repoid|
-                %li
-                  %b="#{Repoid.translated_identifier_scheme(repoid.identifier_scheme)}:"
-                  =repoid.identifier_value
+                %li= resolvable_identifier(repoid.identifier_scheme, repoid.identifier_value)
           -else
             =t(:none)
     %div.col-md-6

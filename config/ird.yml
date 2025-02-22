@@ -10,21 +10,27 @@ shared:
     error_duration_threshold: <%= ENV.fetch("ERROR_DURATION_THRESHOLD",30).to_i %> #days
   repoid_schemes:
     ird:
+      link_to_source: false
       http_prefix: https://ird.coar-repositories.org/systems/
       http_suffix:
     opendoar:
+      link_to_source: true
       http_prefix: https://v2.sherpa.ac.uk/id/repository/
       http_suffix:
     re3data:
+      link_to_source: true
       http_prefix: https://www.re3data.org/repository/
       http_suffix:
     roar:
+      link_to_source: false
       http_prefix: https://roar.eprints.org/
       http_suffix:
     lyrasis:
+      link_to_source: false
       http_prefix: https://registry.lyrasis.org/entry/
       http_suffix:
     oai:
+      link_to_source: false
       http_prefix:
       http_suffix:
   locales:
