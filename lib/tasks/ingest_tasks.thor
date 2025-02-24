@@ -2,7 +2,7 @@ class IngestTasks < Thor
 
   namespace "ingest"
   desc "systems", "Ingests systems data"
-  method_option :source, type: :string, required: true, :desc => "Source - e.g. Samvera"
+  method_option :source, type: :string, required: true, :desc => "Source - e.g. samvera"
   method_option :dryRun, type: :boolean, required: false, :desc => "Dry Run?"
   method_option :dataFile, type: :string, required: true, :desc => "Data file (CSV)?"
 

@@ -22,7 +22,7 @@ shared:
       http_prefix: https://www.re3data.org/repository/
       http_suffix:
     roar:
-      link_to_source: false
+      link_to_source: true
       http_prefix: https://roar.eprints.org/
       http_suffix:
     lyrasis:

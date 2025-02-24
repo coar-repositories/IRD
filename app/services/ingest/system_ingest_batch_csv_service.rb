@@ -18,14 +18,23 @@ module Ingest
         CSV.foreach(data_file_path, headers: true) do |row|
           begin
             proposed_system = ProposedSystem.new(record_source, row["local_id"], dry_run, nil)
-            proposed_system.system_category = row["system_category"].to_sym if row["system_category"]
+            proposed_system.system_category = row["system_category"] if row["system_category"]
+            proposed_system.name = row["name"] if row["name"]
+            proposed_system.url = row["url"] if row["url"]
+            proposed_system.url = row["oai_base_url"] if row["oai_base_url"]
             org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
             if org
               proposed_system.owner_id = org.id
             end
-
+            if row["identifiers"]
+              identifiers = row["identifiers"].split("|")
+              identifiers.each do |identifier|
+                scheme, value = identifier.split(":")
+                proposed_system.identifiers[scheme] = value
+              end
+            end
+            # puts proposed_system.inspect
             service_result = SystemIngestService.call(proposed_system)
-
             if service_result.failure?
               if service_result.error.is_a?(SystemExistsIngestException)
                 records_existing += 1
@@ -37,7 +46,7 @@ module Ingest
             end
             records_created += 1
             system = service_result.payload
-            Rails.logger.info(" Created system: #{system.id}")
+            Rails.logger.info(" Created system with ID: #{system.id}")
           rescue SystemExistsIngestException => e
             Rails.logger.warn "Found duplicate system: #{e.message}"
           rescue Exception => e
