@@ -47,6 +47,11 @@
         -#   %li.nav-item
         -#     %a.nav-link{href:help_url}
         -#       %span.icon.bi-question-circle-fill.navbar-text{title: t('page_titles.help')}
+        - if policy(:user).allow_feedback?
+          %li.nav-item
+            %a.nav-link{href:ENV["FEEDBACK_LINK"],role:"button",target:"_blank"}
+              %span.icon.bi-flag-fill.navbar-text{title: "Feedback",style: "color: purple !important;"}
+
 %div.row
   %div.col-sm-8
   %div.col-sm-4{style:"align-text: right;"}

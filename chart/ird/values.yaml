@@ -41,6 +41,7 @@ env:
   ACTIVE_STORAGE_SERVICE: linode
   ALLOW_TEST_USER_ACCOUNTS_WITHOUT_VERIFICATION: false
   DEFAULT_PLATFORM: "_unknown"
+  FEEDBACK_LINK: "https://github.com/coar-repositories/IRD/issues/new?template=early-feedback.md"
   IRD_DB_CONNECTION_POOL: 30
   IRD_DB_HOST: "postgres-postgresql"
   IRD_DB_PORT: 5432

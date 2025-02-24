@@ -10,6 +10,10 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def allow_feedback?
+    ENV["FEEDBACK_LINK"].present? && User.valid_user?(@user)
+  end
+
   def update_roles?
     User.valid_user?(@user)&& @user.has_role?(:administrator)
   end
