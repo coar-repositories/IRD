@@ -12,7 +12,7 @@ class IngestTasks < Thor
       want_to_continue = ask("Are you sure you want to continue? (y/n)")
       if want_to_continue.downcase == 'y'
         Rails.logger.info "Starting System Ingest process..."
-        Ingest::SystemIngestBatchService.call!(options.dataFile, options.source, options.dryRun)
+        Ingest::SystemIngestBatchCsvService.call!(options.dataFile, options.source, options.dryRun)
       end
     rescue Exception => e
       Rails.logger.error e.message

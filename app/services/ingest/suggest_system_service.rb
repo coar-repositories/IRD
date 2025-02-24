@@ -2,16 +2,15 @@
 
 module Ingest
   class SuggestSystemService < ApplicationService
+    require_relative "system_ingest_service"
 
     def call(params)
       begin
-        attributes = {
-          name: params[:name],
-          url: params[:url],
-          record_source: "user",
-          system_category: params[:system_category]
-        }
-        service_result = SystemIngestService.call(attributes, nil, false, "suggested-by-user")
+        suggested_system = ProposedSystem.new("user", nil, false, nil)
+        suggested_system.name = params[:name]
+        suggested_system.url = params[:url]
+        suggested_system.system_category = params[:system_category]
+        service_result = SystemIngestService.call(suggested_system)
         if service_result.failure?
           if service_result.error.is_a?(SystemExistsIngestException)
             system = System.find_by_id(service_result.error.message)
