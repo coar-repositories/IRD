@@ -29,7 +29,8 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def mark_reviewed?
-    update?
+    # update?
+    User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
   def publish?
@@ -42,7 +43,8 @@ class SystemPolicy < ApplicationPolicy
 
   def make_draft?
     # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record))
-    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
+    # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
+    User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
   def change_record_status_to_under_review?

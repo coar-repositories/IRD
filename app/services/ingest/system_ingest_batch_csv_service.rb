@@ -5,9 +5,10 @@ module Ingest
   class NoOrganisationMatchesException < StandardError; end
   class MultipleOrganisationsMatchException < StandardError; end
 
-  class SystemIngestBatchService < ApplicationService
-    require 'csv'
-    require 'fileutils'
+  class SystemIngestBatchCsvService < ApplicationService
+    require_relative "system_ingest_service"
+    require "csv"
+    require "fileutils"
 
     def call(data_file_path, record_source, dry_run)
       records_created = 0
@@ -16,35 +17,14 @@ module Ingest
       begin
         CSV.foreach(data_file_path, headers: true) do |row|
           begin
-            local_id = row['local_id']
-            org = find_organisation(row['owner_ror'], row['owner_url'], row['owner_name'])
-            aliases = []
-            aliases = row['aliases'].split('|') if row['aliases']
+            proposed_system = ProposedSystem.new(record_source, row["local_id"], dry_run, nil)
+            proposed_system.system_category = row["system_category"].to_sym if row["system_category"]
+            org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
+            if org
+              proposed_system.owner_id = org.id
+            end
 
-            primary_subject = :unknown
-            primary_subject = row['primary_subject'].to_sym if row['primary_subject']
-
-            system_category = :unknown
-            system_category = System.system_categories[row['system_category'].to_sym] if row['system_category']
-
-            subcategory = :unknown
-            subcategory = row['system_type'].to_sym if row['system_type']
-
-            attributes = {
-              name: row["name"],
-              url: row["url"],
-              record_source: record_source,
-              system_category: system_category,
-              oai_base_url: row['oai_base_url'],
-              description: row['description'],
-              aliases: aliases,
-              owner: org,
-              primary_subject: primary_subject,
-              subcategory: subcategory,
-              contact: row['contact'],
-              platform: Platform.find_by_id(row['platform'])
-            }
-            service_result = SystemIngestService.call(attributes, local_id, dry_run, nil)
+            service_result = SystemIngestService.call(proposed_system)
 
             if service_result.failure?
               if service_result.error.is_a?(SystemExistsIngestException)
@@ -57,11 +37,6 @@ module Ingest
             end
             records_created += 1
             system = service_result.payload
-            if row['media']
-              row['media'].split('|').each do |medium|
-                system.add_medium Medium.find(medium)
-              end
-            end
             Rails.logger.info(" Created system: #{system.id}")
           rescue SystemExistsIngestException => e
             Rails.logger.warn "Found duplicate system: #{e.message}"

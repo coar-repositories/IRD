@@ -160,6 +160,7 @@ class System < ApplicationRecord
 
   def archive!
     self.record_status = :archived
+    self.users.clear
     self.mark_reviewed!
   end
 
