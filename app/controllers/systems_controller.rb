@@ -172,16 +172,34 @@ class SystemsController < ApplicationController
 
   def check_url
     authorize @system
-    CheckUrlJob.perform_now(@system.id, true)
-    # redirect_to system_url(@system), notice: "URL check completed."
-    redirect_back fallback_location: root_path, notice: "URL check completed."
+    service_result = Website::UrlCheckerService.call(@system.id, true)
+    if service_result.success?
+      @system = service_result.payload
+      @system.save!
+      if @system.system_status_online?
+        redirect_back fallback_location: root_path, notice: "URL check completed successfully - system is online"
+      else
+        redirect_back fallback_location: root_path, flash: { error: "URL check completed: System status is #{@system.system_status}" }
+      end
+    else
+      redirect_back fallback_location: root_path, flash: { error: "URL check failed: #{service_result.error.message}" }
+    end
   end
 
   def check_oai_pmh_identify
     authorize @system
-    CheckOaiPmhIdentifyJob.perform_now(@system.id)
-    # redirect_to system_url(@system), notice: "OAI-PMH Identify completed."
-    redirect_back fallback_location: root_path, notice: "OAI-PMH Identify completed."
+    service_result = OaiPmh::OaiPmhIdentifyService.call(@system.id)
+    if service_result.success?
+      @system = service_result.payload
+      @system.save!
+      if @system.oai_status_online?
+        redirect_back fallback_location: root_path, notice: "OAI-PMH Identify check completed successfully - OAI-PMH is functioning correctly"
+      else
+        redirect_back fallback_location: root_path, flash: { error: "OAI-PMH Identify check completed: OAI-PMH status is #{@system.oai_status}" }
+      end
+    else
+      redirect_back fallback_location: root_path, flash: { error: "OAI-PMH Identify failed: #{service_result.error.message}" }
+    end
   end
 
   def check_oai_pmh_formats
