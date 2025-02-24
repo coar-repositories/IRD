@@ -33,6 +33,7 @@ en:
       system:
         annotations: Annotations
         authorised_curators: Authorised Curators
+        contact: Contact
         media: Media Types
         oai_base_url: OAI-PMH Base URL
         oai_status: OAI-PMH Status

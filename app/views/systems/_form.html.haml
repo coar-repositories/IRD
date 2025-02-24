@@ -33,6 +33,12 @@
           = f.text_field :url, :class=>"form-control"
       %div.row.align-items-center.field
         %div.col-2.field-name
+          -# i18n-tasks-use t('activerecord.attributes.system.contact') # this lets i18n-tasks know the key is used
+          = f.label :contact, :class=>"form-label"
+        %div.col
+          = f.text_field :contact, :class=>"form-control"
+      %div.row.align-items-center.field
+        %div.col-2.field-name
           -# i18n-tasks-use t('attributes.description') # this lets i18n-tasks know the key is used
           = f.label :description, :class=>"form-label"
         %div.col

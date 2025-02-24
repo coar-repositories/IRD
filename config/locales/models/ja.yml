@@ -33,6 +33,7 @@ ja:
       system:
         annotations: 注釈
         authorised_curators: 認定キュレーター
+        contact: 接触
         media: メディアタイプ
         oai_base_url: OAI-PMH ベース URL
         oai_status: OAI-PMH ステータス
