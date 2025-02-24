@@ -66,6 +66,7 @@ tr:
   responsible_organisation: Sorumlu Kuruluş
   responsible_organisations: Sorumlu Kuruluşlar
   reviewed: İncelendi
+  reviewed_on: 'En son incelendi olarak işaretlendi: %{date}'
   roles: Roller
   search: Aramak
   search_by_name: İsme Göre Arama

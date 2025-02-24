@@ -66,6 +66,7 @@ fr:
   responsible_organisation: Organisation responsable
   responsible_organisations: Organisations responsables
   reviewed: Révisé
+  reviewed_on: 'Le plus récemment marqué comme révisé : %{date}'
   roles: Rôles
   search: Recherche
   search_by_name: Recherche par nom

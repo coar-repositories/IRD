@@ -4,6 +4,9 @@
     %h5.property-name= t("activerecord.attributes.system.record_status")
     %div.property-value
       = record_status_flags @system.record_status
+      - if @system.reviewed
+        %br
+        = t(:reviewed_on, date: @system.reviewed.strftime('%Y-%m-%d'))
   %div.property
     %h5.property-name= t("activerecord.attributes.system.system_status")
     %div.property-value
@@ -48,7 +51,7 @@
         = render '_shared/record_action_buttons', model_instance: @system
 
         - if policy(@system).mark_reviewed?
-          = link_to 'Mark as reviewed!', mark_reviewed_url(@system.id), :class => 'btn btn-success btn-sm'
+          = link_to 'Mark as reviewed', mark_reviewed_url(@system.id), :class => 'btn btn-primary btn-sm'
         - if policy(@system).change_record_status_to_under_review? && !@system.record_status_under_review?
           = link_to 'Change to under review!', change_record_status_to_under_review_url(@system.id), :class => 'btn btn-sm btn-warning'
         - if policy(@system).archive? && !@system.record_status_archived?

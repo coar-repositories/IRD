@@ -66,6 +66,7 @@ en:
   responsible_organisation: Responsible Organisation
   responsible_organisations: Responsible Organisations
   reviewed: Reviewed
+  reviewed_on: 'Most recently marked as reviewed: %{date}'
   roles: Roles
   search: Search
   search_by_name: Search by Name

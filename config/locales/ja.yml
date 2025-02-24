@@ -66,6 +66,7 @@ ja:
   responsible_organisation: 責任組織
   responsible_organisations: 責任組織
   reviewed: レビュー済み
+  reviewed_on: '最近レビュー済みとしてマークされたもの: %{date}'
   roles: 役割
   search: 検索
   search_by_name: 名前で検索

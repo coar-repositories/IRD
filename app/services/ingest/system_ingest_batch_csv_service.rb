@@ -21,7 +21,7 @@ module Ingest
             proposed_system.system_category = row["system_category"] if row["system_category"]
             proposed_system.name = row["name"] if row["name"]
             proposed_system.url = row["url"] if row["url"]
-            proposed_system.url = row["oai_base_url"] if row["oai_base_url"]
+            proposed_system.oai_base_url = row["oai_base_url"] if row["oai_base_url"]
             org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
             if org
               proposed_system.owner_id = org.id

@@ -29,8 +29,8 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def mark_reviewed?
-    # update?
-    User.valid_user?(@user) && @user.has_role?(:administrator)
+    update?
+    # User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
   def publish?

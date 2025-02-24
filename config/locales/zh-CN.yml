@@ -66,6 +66,7 @@ zh-CN:
   responsible_organisation: 负责机构
   responsible_organisations: 负责组织
   reviewed: 已审核
+  reviewed_on: 最近标记为已审核：%{date}
   roles: 角色
   search: 搜索
   search_by_name: 按名称搜索
