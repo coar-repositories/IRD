@@ -31,6 +31,7 @@ es:
       #### Otras fuentes de información
       Se han utilizado algunos registros, directorios y listas de terceros para identificar candidatos para su inclusión en el IRD. Entre ellos se incluyen (entre otros):
 
+      - [ROAR](https://roar.eprints.org)
       - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
       - [Re3data](https://www.re3data.org/)
       - [Información de colaboración colectiva sobre instalaciones de Dataverse](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
@@ -40,7 +41,7 @@ es:
       También agradecemos a las siguientes personas que han proporcionado información sobre los repositorios:
 
       - Bram Luyten, [Atmire](https://www.atmire.com)
-      - Jon Hackney, [Tribu laboral](https://www.worktribe.com)
+      - Jon Hackney, [Worktribe](https://www.worktribe.com)
       - Heather Greer-Klein [Samvera](https://samvera.org/)
     data_curation_text: |-
       ### Organizaciones responsables

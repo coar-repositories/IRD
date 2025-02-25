@@ -29,8 +29,9 @@ zh-CN:
       IRD 使用 ROR 尽可能消除目录中组织名称的歧义。
 
       #### 其他信息来源
-      一些第三方注册中心/目录/列表已用于识别纳入 IRD 的候选人。其中包括：
+      一些第三方注册中心/目录/列表已用于识别纳入 IRD 的候选人。这些包括（但不限于）：
 
+      - [ROAR](https://roar.eprints.org)
       - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
       - [Re3data](https://www.re3data.org/)
       - [有关 Dataverse 安装的众包信息](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
@@ -39,8 +40,8 @@ zh-CN:
 
       还要感谢以下提供有关存储库信息的个人：
 
-      - Bram Luyten，[Atmire](https://www.atmire.com)
-      - Jon Hackney， [Worktribe](https://www.worktribe.com)
+      - Bram Luyten， [Atmire](https://www.atmire.com)
+      - Jon Hackney，[Worktribe](https://www.worktribe.com)
       - Heather Greer-Klein [Samvera](https://samvera.org/)
     data_curation_text: |-
       ### 负责组织
