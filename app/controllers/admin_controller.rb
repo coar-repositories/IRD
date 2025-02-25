@@ -23,6 +23,7 @@ class AdminController < ApplicationController
     conditions[:rp] = params[:rp] if params[:rp].present?
     conditions[:http_code] = params[:http_code] if params[:http_code].present?
     conditions[:metadata_formats] = params[:metadata_formats] if params[:metadata_formats].present?
+    conditions[:identifier_schemes] = params[:identifier_schemes] if params[:identifier_schemes].present?
     unless params[:show_archived_records] == 'true'
       conditions[:_not] = { record_status: 'archived' }
     end
@@ -30,7 +31,7 @@ class AdminController < ApplicationController
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :media, :primary_subject, :annotations, :tags, :rp, :http_code, :has_thumbnail, :has_owner, :metadata_formats]
+    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :media, :primary_subject, :annotations, :tags, :rp, :http_code, :has_thumbnail, :has_owner, :metadata_formats, :identifier_schemes]
 
     @unpaginated_systems = System.search(
       search_terms,

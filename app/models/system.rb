@@ -43,7 +43,8 @@ class System < ApplicationRecord
       has_thumbnail: thumbnail.attached?,
       has_owner: owner.present?,
       http_code: network_checks.url_checks.first&.http_code,
-      metadata_formats: metadata_formats.map(&:name)
+      metadata_formats: metadata_formats.map(&:name),
+      identifier_schemes: repoids.map(&:identifier_scheme).excluding("ird").uniq
     }
   end
 
