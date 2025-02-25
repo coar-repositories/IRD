@@ -126,7 +126,7 @@ class OrganisationsController < ApplicationController
   def responsible_parties
     authorize :organisation
     @page_title = "Responsible Parties"
-    @pagy, @organisations = pagy(Organisation.rps.order('lower(name)'), items: 100)
+    @pagy, @organisations = pagy(Organisation.rps.order('lower(name)'), limit: 100)
     # @organisations = Organisation.responsible_parties.order('lower(name)')
     respond_to do |format|
       format.html do

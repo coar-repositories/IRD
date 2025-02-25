@@ -105,6 +105,3 @@ new_active_record_logger = ActiveSupport::Logger.new(STDOUT)
 new_active_record_logger.formatter = CustomLoggerFormatter.new
 ActiveRecord::Base.logger = ActiveSupport::TaggedLogging.new(new_active_record_logger)
 ActiveRecord::Base.logger.level = :warn
-
-Rack::MiniProfiler.config.authorization_mode = :allow_all
-Rack::MiniProfiler.config.enable_advanced_debugging_tools = true

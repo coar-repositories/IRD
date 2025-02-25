@@ -69,20 +69,17 @@ module Ingest
       begin
         org = nil
         org = Organisation.find_by_ror(ror) unless ror.blank?
-        puts "GOT HERE 1 Org: #{org.inspect}"
         if org
           return org
         end
         unless url.blank?
           org = Organisation.find_by_website(url)
-          puts "GOT HERE 2 Org: #{org.inspect}"
           if org
             return org
           end
           orgs = Organisation.where(domain: Utilities::UrlUtility.get_domain_from_url(url))
           if orgs.count == 1
             org = orgs.first
-            puts "GOT HERE 3 Org: #{org.inspect}"
             return org
           elsif orgs.count > 1
             Rails.logger.warn("Multiple matches for organisation finder")
@@ -92,7 +89,6 @@ module Ingest
           orgs = Organisation.where("name = ?", name)
           if orgs.count == 1
             org = orgs.first
-            puts "GOT HERE 4 Org: #{org.inspect}"
             return org
           elsif orgs.count > 1
             Rails.logger.warn("Multiple matches for organisation finder")

@@ -222,7 +222,6 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    memory_profiler (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.4)
@@ -306,8 +305,6 @@ GEM
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.1.10)
-    rack-mini-profiler (3.3.1)
-      rack (>= 1.2.0)
     rack-session (2.1.0)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -543,7 +540,6 @@ DEPENDENCIES
   jbuilder
   kamal
   kramdown
-  memory_profiler
   mission_control-jobs
   nokogiri
   opensearch-ruby
@@ -554,7 +550,6 @@ DEPENDENCIES
   public_suffix
   puma (>= 5.0)
   pundit (~> 2.4)
-  rack-mini-profiler
   rails (~> 8.0.0)
   rails-controller-testing
   rspec-rails (~> 7.1.0)

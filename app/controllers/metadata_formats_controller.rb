@@ -26,11 +26,11 @@ class MetadataFormatsController < ApplicationController
     # @metadata_formats = MetadataFormat.all
     respond_to do |format|
       format.html do
-        @pagy, @metadata_formats = pagy(MetadataFormat.order(:name), items: 150)
+        @pagy, @metadata_formats = pagy(MetadataFormat.order(:name), limit: 150)
         @record_count = @pagy.count
       end
       format.json do
-        @pagy, @metadata_formats = pagy(MetadataFormat.order(:name), items: 150)
+        @pagy, @metadata_formats = pagy(MetadataFormat.order(:name), limit: 150)
       end
       format.csv do
         @metadata_formats = MetadataFormat.order(:name)

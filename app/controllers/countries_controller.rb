@@ -40,11 +40,11 @@ class CountriesController < ApplicationController
     @page_title = t("activerecord.models.country.other")
     respond_to do |format|
       format.html do
-        @pagy, @countries = pagy(Country.order(:name), items: 300)
+        @pagy, @countries = pagy(Country.order(:name), limit: 300)
         @record_count = @pagy.count
       end
       format.json do
-        @pagy, @countries = pagy(Country.order(:name), items: 300)
+        @pagy, @countries = pagy(Country.order(:name), limit: 300)
       end
       format.csv do
         @countries = Country.order(:name)

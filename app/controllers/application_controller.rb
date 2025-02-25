@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :configure_json_pretty_printing
   around_action :switch_locale
-  before_action :check_if_miniprofiler_should_be_rendered
 
   helper_method :current_user
 
@@ -46,12 +45,6 @@ class ApplicationController < ActionController::Base
       end
     rescue Exception => e
       nil
-    end
-  end
-
-  def check_if_miniprofiler_should_be_rendered
-    if current_user && current_user.has_role?(:profiler)
-      Rack::MiniProfiler.authorize_request
     end
   end
 

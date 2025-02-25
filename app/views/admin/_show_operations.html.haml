@@ -12,5 +12,8 @@
 = link_to t(:purge_duplicates, scope: :buttons), admin_path(request.query_parameters.except(:lang).merge({operation: 'purge_duplicates'})), class: 'btn btn-danger btn-sm operations-button'
 %br
 %br
-%a{href: 'https://github.com/users/antleaf/projects/7', class: 'btn btn-primary btn-sm',role:"button"}= t(:view_kanban, scope: :buttons)
-%a{href: 'https://github.com/antleaf/IRD/issues/new/choose', class: 'btn btn-success btn-sm'}= t(:raise_issue, scope: :buttons)
+%a{href: 'https://github.com/users/antleaf/projects/7', class: 'btn btn-primary btn-sm',role:"button"}= "#{t(:view_kanban, scope: :buttons)} (private - Antleaf)"
+%a{href: 'https://github.com/antleaf/IRD/issues/new/choose', class: 'btn btn-success btn-sm'}= "#{t(:raise_issue, scope: :buttons)} (private - Antleaf)"
+%br
+%br
+%a{href: 'https://github.com/orgs/coar-repositories/projects/2/views/1', class: 'btn btn-primary btn-sm',role:"button"}= "#{t(:view_kanban, scope: :buttons)} (public - COAR)"

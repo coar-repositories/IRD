@@ -10,7 +10,7 @@
 # You can set any pagy variable as a Pagy::DEFAULT. They can also be overridden per instance by just passing them to
 # Pagy.new|Pagy::Countless.new|Pagy::Calendar::*.new or any of the #pagy* controller methods
 # Here are the few that make more sense as DEFAULTs:
-# Pagy::DEFAULT[:limit]       = 20                    # default
+Pagy::DEFAULT[:limit]       = 20                    # default
 # Pagy::DEFAULT[:size]        = 7                     # default
 # Pagy::DEFAULT[:ends]        = true                  # default
 # Pagy::DEFAULT[:page_param]  = :page                 # default
@@ -73,11 +73,8 @@
 
 # Headers extra: http response headers (and other helpers) useful for API pagination
 # See https://ddnexus.github.io/pagy/docs/extras/headers
-# require 'pagy/extras/headers'
-# Pagy::DEFAULT[:headers] = { page: 'Current-Page',
-#                            limit: 'Page-Items',
-#                            count: 'Total-Count',
-#                            pages: 'Total-Pages' }     # default
+require 'pagy/extras/headers'
+Pagy::DEFAULT[:headers] = { page: 'Current-Page', limit: 'Page-Items', count: 'Total-Count', pages: 'Total-Pages' }     # default
 
 # Keyset extra: Paginate with the Pagy keyset pagination technique
 # See https://ddnexus.github.io/pagy/docs/extras/keyset

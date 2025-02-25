@@ -24,11 +24,11 @@ class PlatformsController < ApplicationController
     @page_title = t("activerecord.models.platform.other")
     respond_to do |format|
       format.html do
-        @pagy, @platforms = pagy(Platform.order(:name), items: 150)
+        @pagy, @platforms = pagy(Platform.order(:name), limit: 150)
         @record_count = @pagy.count
       end
       format.json do
-        @pagy, @platforms = pagy(Platform.order(:name), items: 150)
+        @pagy, @platforms = pagy(Platform.order(:name), limit: 150)
       end
       format.csv do
         @platforms = Platform.order(:name)

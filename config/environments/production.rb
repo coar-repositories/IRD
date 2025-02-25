@@ -108,5 +108,3 @@ new_active_record_logger = ActiveSupport::Logger.new(STDOUT)
 new_active_record_logger.formatter = CustomLoggerFormatter.new
 ActiveRecord::Base.logger = ActiveSupport::TaggedLogging.new(new_active_record_logger)
 ActiveRecord::Base.logger.level = ENV.fetch("RAILS_LOG_LEVEL", "error").to_sym
-
-Rack::MiniProfiler.config.authorization_mode = :allow_authorized
