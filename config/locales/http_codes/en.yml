@@ -61,6 +61,7 @@ en:
     '449': 449 Retry With
     '450': 450 Blocked by Windows Parental Controls
     '451': 451 Unavailable For Legal Reasons
+    '468': 468 Keyboard Required
     '494': 494 Request header too large
     '495': 495 SSL Certificate Error
     '496': 496 SSL Certificate Required
