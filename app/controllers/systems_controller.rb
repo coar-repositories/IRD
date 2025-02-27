@@ -1,7 +1,7 @@
 require "ostruct"
 
 class SystemsController < ApplicationController
-  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats get_thumbnail remove_thumbnail annotate flag_as_archived add_repo_id process_as_duplicate mark_reviewed publish archive make_draft auto_curate change_record_status_to_under_review]
+  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail annotate flag_as_archived add_repo_id process_as_duplicate mark_reviewed publish archive make_draft auto_curate change_record_status_to_under_review]
   after_action :verify_authorized
 
   def suggest_new_system
@@ -188,6 +188,28 @@ class SystemsController < ApplicationController
     end
   end
 
+  def check_oai_pmh_combined
+    authorize @system
+    service_result = OaiPmh::OaiPmhIdentifyService.call(@system.id)
+    if service_result.success?
+      @system = service_result.payload
+      @system.save!
+      service_result2 = OaiPmh::OaiPmhMetadataFormatsService.call(@system.id)
+      if service_result2.success?
+        @system = service_result2.payload
+        @system.save!
+        Curation::SystemMetadataFormatAssociationService.call(@system)
+        if @system.oai_status_online?
+          redirect_back fallback_location: root_path, notice: "OAI-PMH check completed successfully - OAI-PMH is functioning correctly"
+        else
+          redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check completed: OAI-PMH status is #{@system.oai_status}" }
+        end
+      end
+    else
+      redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check failed: #{service_result.error.message}" }
+    end
+  end
+
   def check_oai_pmh_identify
     authorize @system
     service_result = OaiPmh::OaiPmhIdentifyService.call(@system.id)
@@ -206,9 +228,18 @@ class SystemsController < ApplicationController
 
   def check_oai_pmh_formats
     authorize @system
-    CheckOaiPmhFormatsJob.perform_now(@system.id)
-    # redirect_to system_url(@system), notice: "OAI-PMH Metadata formats checked."
-    redirect_back fallback_location: root_path, notice: "OAI-PMH Metadata formats checked."
+    service_result = OaiPmh::OaiPmhMetadataFormatsService.call(@system.id)
+    if service_result.success?
+      @system = service_result.payload
+      @system.save!
+      if @system.oai_status_online?
+        redirect_back fallback_location: root_path, notice: "OAI-PMH Metadata Formats check completed successfully - OAI-PMH is functioning correctly"
+      else
+        redirect_back fallback_location: root_path, flash: { error: "OAI-PMH Metadata Formats  check completed: OAI-PMH status is #{@system.oai_status}" }
+      end
+    else
+      redirect_back fallback_location: root_path, flash: { error: "OAI-PMH Metadata Formats check failed: #{service_result.error.message}" }
+    end
   end
 
   def get_thumbnail

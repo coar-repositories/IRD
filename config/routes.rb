@@ -86,6 +86,7 @@ Rails.application.routes.draw do
   get "/systems/:id/remove_thumbnail", to: "systems#remove_thumbnail", as: "remove_thumbnail"
   get "/systems/:id/check_oai_pmh_formats", to: "systems#check_oai_pmh_formats", as: "check_oai_formats"
   get "/systems/:id/check_oai_pmh_identify", to: "systems#check_oai_pmh_identify", as: "check_oai_identify"
+  get "/systems/:id/check_oai_pmh_combined", to: "systems#check_oai_pmh_combined", as: "check_oai_combined"
   get "/systems/:id/flag_as_defunct", to: "systems#flag_as_defunct", as: "flag_as_defunct"
   get "/systems/:id/flag_as_archived", to: "systems#flag_as_archived", as: "flag_as_archived"
   get "/systems/:id/auto_curate", to: "systems#auto_curate", as: "auto_curate"

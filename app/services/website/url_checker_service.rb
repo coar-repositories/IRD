@@ -1,7 +1,4 @@
 # frozen_string_literal: true
-require "faraday"
-require "faraday/follow_redirects"
-require "faraday/retry"
 require "nokogiri"
 
 module Website
@@ -10,38 +7,14 @@ module Website
     def call(system_id, parse_metadata_flag, redirect_limit = 6)
       begin
         @system = System.includes(:network_checks,:repoids,:media,:annotations,:users).find(system_id)
-        new_url = @system.url
-        # Callback function for FaradayMiddleware::Retry will only be called if retry is needed
-        retry_options = {
-          max: 2,
-          interval: 0.05,
-          interval_randomness: 0.5,
-          backoff_factor: 2
-        }
-        # Callback function for FaradayMiddleware::FollowRedirects will only be called if redirected to another url
-        redirect_url_chain = []
-        redirects_opts = {}
-        redirects_opts[:callback] = proc do |old_response, new_response|
-          redirect_url_chain << old_response.url.to_s
-          new_url = new_response.url
-          Rails.logger.debug("redirected from #{old_response.url} to #{new_response.url}")
-        end
-        redirects_opts[:limit] = redirect_limit
-        ssl_options = { verify: false }
-        conn = Faraday.new(ssl: ssl_options, headers: { user_agent: "curl" }) do |faraday|
-          # faraday.use FaradayMiddleware::FollowRedirects, redirects_opts
-          faraday.response :follow_redirects, redirects_opts
-          faraday.request :retry, retry_options
-          faraday.response :raise_error # raise Faraday::Error on status code 4xx or 5xx
-          faraday.options.timeout = 30
-          faraday.adapter Faraday.default_adapter
-        end
+        original_url = @system.url
+        conn = Utilities::HttpClientConnectionWrapper.new(redirect_limit)
         response = conn.get(@system.url)
-        unless redirect_url_chain.empty?
-          redirect_url_chain.each { |prev_url| @system.add_normalid_for_url(prev_url) }
+        unless conn.redirect_url_chain.empty?
+          conn.redirect_url_chain.each { |prev_url| @system.add_normalid_for_url(prev_url) }
         end
-        if new_url.to_s != @system.url
-          @system.url = new_url.to_s
+        if conn.new_url.to_s != @system.url
+          @system.url = conn.new_url.to_s
         end
         @system.write_network_check(:homepage_url, true, "", response.status)
         @system.system_status = :online
@@ -49,39 +22,39 @@ module Website
           parse_metadata(response)
         end
       rescue Faraday::ResourceNotFound => e # 404
-        Rails.logger.warn("#{e} for URL #{new_url}")
+        Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, e.response[:status])
         @system.system_status = :missing
       rescue Faraday::ForbiddenError => e # 403
-        Rails.logger.warn("#{e} for URL #{new_url}")
+        Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, e.response[:status])
         @system.system_status = :unknown
       rescue Faraday::FollowRedirects::RedirectLimitReached => e
-        Rails.logger.warn("#{e} for URL #{new_url}")
+        Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :offline
       rescue Faraday::ClientError => e # 4xx
-        Rails.logger.warn("#{e} for URL #{new_url}")
+        Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, e.response[:status])
         @system.system_status = :unknown
       rescue Faraday::TimeoutError => e
-        Rails.logger.warn("#{e} for URL #{new_url}")
+        Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :offline
       rescue Faraday::NilStatusError => e
-        Rails.logger.warn("#{e} for OAI-PMH Identify #{new_url_with_verb}")
+        Rails.logger.warn("#{e} for OAI-PMH Identify #{original_url}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, 0)
         @system.oai_status = :unknown
       rescue Faraday::ServerError => e # 5xx
-        Rails.logger.warn("#{e} for URL #{new_url}")
+        Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, e.response[:status])
         @system.system_status = :offline
       rescue Faraday::SSLError => e
-        Rails.logger.warn("#{e} for URL #{new_url}")
+        Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :offline
       rescue Faraday::ConnectionFailed => e
-        Rails.logger.warn("#{e} for URL #{new_url}")
+        Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         case e.message
         when /getaddrinfo: Name or service not known/
@@ -102,11 +75,11 @@ module Website
           @system.system_status = :unknown
         end
       rescue Faraday::Error => e
-        Rails.logger.warn("#{e} for URL #{new_url}")
+        Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :unknown
       rescue StandardError => e
-        Rails.logger.error("#{e} for URL #{new_url}")
+        Rails.logger.error("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :unknown
       end

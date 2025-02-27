@@ -68,8 +68,8 @@
         %div.property-value
           - if policy(@system).check_url?
             = link_to t('buttons.check_url'), check_website_url(@system.id), :class => 'btn btn-primary btn-sm'
-          - if policy(@system).check_oai_pmh_identify?
-            = link_to t('buttons.check_oai'), check_oai_identify_url(@system.id), :class => 'btn btn-primary btn-sm'
+          - if policy(@system).check_oai_pmh_combined?
+            = link_to t('buttons.check_oai'), check_oai_combined_url(@system.id), :class => 'btn btn-primary btn-sm'
           -# - if policy(@system).check_oai_pmh_formats?
           -#   = link_to t('buttons.check_oai_formats'), check_oai_formats_url(@system.id), :class => 'btn btn-primary btn-sm'
           - if policy(@system).get_thumbnail?

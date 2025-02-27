@@ -79,6 +79,10 @@ class SystemPolicy < ApplicationPolicy
     curate?
   end
 
+  def check_oai_pmh_combined?
+    curate?
+  end
+
   def get_thumbnail?
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end
