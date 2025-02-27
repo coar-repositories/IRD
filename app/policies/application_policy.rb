@@ -21,11 +21,11 @@ class ApplicationPolicy
   end
 
   def download_json?
-    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.has_role?(:downloader))
+    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.has_role?(:downloader) || @user.has_role?(:api))
   end
 
   def download_csv?
-    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.has_role?(:downloader))
+    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.has_role?(:downloader) || @user.has_role?(:api))
   end
 
   def systems?

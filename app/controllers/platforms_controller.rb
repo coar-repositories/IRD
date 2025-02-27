@@ -10,8 +10,11 @@ class PlatformsController < ApplicationController
       format.html do
         @record_count = @pagy.count
       end
-      format.json
+      format.json do
+        authorize @platform, :download_json?
+      end
       format.csv do
+        authorize @platform, :download_csv?
         @systems = @platform.systems.publicly_viewable.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
@@ -28,9 +31,11 @@ class PlatformsController < ApplicationController
         @record_count = @pagy.count
       end
       format.json do
+        authorize :platform, :download_json?
         @pagy, @platforms = pagy(Platform.order(:name), limit: 150)
       end
       format.csv do
+        authorize :platform, :download_csv?
         @platforms = Platform.order(:name)
         send_data Platform.to_csv(@platforms), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end

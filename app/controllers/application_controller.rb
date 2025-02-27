@@ -61,6 +61,9 @@ class ApplicationController < ActionController::Base
       format.json do
         redirect_to(error_403_path(format: :json))
       end
+      format.csv do
+        redirect_to(error_403_path(format: :csv))
+      end
     end
   end
 end

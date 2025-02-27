@@ -10,4 +10,5 @@ class CountryPolicy < ApplicationPolicy
   def destroy?
     false
   end
+
 end

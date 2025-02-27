@@ -36,10 +36,12 @@ class SystemsController < ApplicationController
         @record_count = @pagy.count
       end
       format.json do
+        authorize :system, :download_json?
         @pagy = Pagy.new_from_searchkick(@search_result)
         @systems = @search_result.order(:name)
       end
       format.csv do
+        authorize :system, :download_csv?
         @systems = @search_result.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: "text/csv"
       end
@@ -263,8 +265,11 @@ class SystemsController < ApplicationController
       format.html do
         @record_count = @pagy.count
       end
-      format.json
+      format.json do
+        authorize :system, :download_json?
+      end
       format.csv do
+        authorize :system, :download_csv?
         @systems = System.all.publicly_viewable.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: "text/csv"
       end

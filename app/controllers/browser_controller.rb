@@ -52,9 +52,11 @@ class BrowserController < ApplicationController
         @record_count = @pagy.count
       end
       format.json do
+        authorize :browser, :download_json?
         @pagy = Pagy.new_from_searchkick(@systems)
       end
       format.csv do
+        authorize :browser, :download_csv?
         send_data System.to_csv(@unpaginated_systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
     end

@@ -11,7 +11,9 @@ class RolesController < ApplicationController
         format.html do
           @record_count = @pagy.count
         end
-        format.json
+        format.json do
+          authorize @role, :download_json?
+        end
       end
     end
   def index

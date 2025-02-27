@@ -27,6 +27,7 @@ class StatisticsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
+        authorize :statistics, :download_csv?
         send_data Stats::SystemSetStatsCollectionService.call(@graph_and_table_data[:stats_set_collection]).payload, filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
     end
@@ -39,6 +40,7 @@ class StatisticsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
+        authorize :statistics, :download_csv?
         send_data Stats::SystemSetStatsCollectionService.call(@graph_and_table_data[:stats_set_collection]).payload, filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
     end
@@ -51,6 +53,7 @@ class StatisticsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
+        authorize :statistics, :download_csv?
         send_data Stats::SystemSetStatsCollectionService.call(@graph_and_table_data[:stats_set_collection]).payload, filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
     end
