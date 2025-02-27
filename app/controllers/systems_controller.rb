@@ -211,9 +211,14 @@ class SystemsController < ApplicationController
 
   def get_thumbnail
     authorize @system
-    CreateWebsiteThumbnailJob.perform_now(@system.id, true)
-    # redirect_to system_url(@system), notice: "Website thumbnail retrieved."
-    redirect_back fallback_location: root_path, notice: "Website thumbnail retrieved."
+    # CreateWebsiteThumbnailJob.perform_now(@system.id, true)
+    service_result = Website::ThumbnailGenerationService.call(@system.id, true)
+    if service_result.success?
+      @system = service_result.payload
+      redirect_back fallback_location: root_path, notice: "Website thumbnail retrieved."
+    else
+      redirect_back fallback_location: root_path, flash: { error: "Website thumbnail not retrieved: #{service_result.error.message}" }
+    end
   end
 
   def remove_thumbnail
