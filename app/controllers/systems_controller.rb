@@ -245,14 +245,8 @@ class SystemsController < ApplicationController
 
   def get_thumbnail
     authorize @system
-    # CreateWebsiteThumbnailJob.perform_now(@system.id, true)
-    service_result = Website::ThumbnailGenerationService.call(@system.id, true)
-    if service_result.success?
-      @system = service_result.payload
-      redirect_back fallback_location: root_path, notice: "Website thumbnail retrieved."
-    else
-      redirect_back fallback_location: root_path, flash: { error: "Website thumbnail not retrieved: #{service_result.error.message}" }
-    end
+    CreateWebsiteThumbnailJob.perform_later(@system.id, true)
+    redirect_back fallback_location: root_path, notice: "Generating thumbnail as an asynchronous background process - check back in a few minutes"
   end
 
   def remove_thumbnail
