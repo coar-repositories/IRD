@@ -232,6 +232,7 @@ class SystemsController < ApplicationController
     if service_result.success?
       @system = service_result.payload
       @system.save!
+      Curation::SystemMetadataFormatAssociationService.call(@system)
       if @system.oai_status_online?
         redirect_back fallback_location: root_path, notice: "OAI-PMH Metadata Formats check completed successfully - OAI-PMH is functioning correctly"
       else
