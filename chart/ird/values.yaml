@@ -67,15 +67,9 @@ env:
   SMTP_DOMAIN: antleaf.com
   SMTP_PORT: 587
   SMTP_USERNAME: robot@antleaf.com
+  THUMBNAIL_GENERATOR_WAIT_SECONDS: 10
   WEB_CONCURRENCY: 2 # WEB_CONCURRENCY=0 for single mode, or WEB_CONCURRENCY=2 or more for cluster mode (i.e. WEB_CONCURRENCY=1 is generally a mistake)
   WEBSITE_THUMBNAIL_GENERATION_CONCURRENCY: 3
-
-# opensearch_env:
-#   OPENSEARCH_ENABLE_SECURITY: false
-#   OPENSEARCH_PASSWORD: dasdjasldna773gtFb
-#   OPENSEARCH_SKIP_TRANSPORT_TLS: true
-#   OPENSEARCH_ENABLE_REST_TLS: false
-#   OPENSEARCH_HEAP_SIZE: 512m
 
 secrets:
   RAILS_MASTER_KEY: ""
