@@ -108,7 +108,8 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def change_oai_status?
-    curate?
+    User.valid_user?(@user) && @user.has_role?(:administrator)
+    # should not need to be changed by curator since can be fully automatically tested and is not subject to robots problem
   end
 
   def change_rp?
