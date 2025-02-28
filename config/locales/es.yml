@@ -14,6 +14,7 @@ es:
   curation: Curación
   curation_issues: Problemas de curación
   database: Base de datos
+  edit: Editar
   email: Correo electrónico
   filter: Filtrar
   fore_name: Nombre de pila
@@ -33,6 +34,7 @@ es:
   name: Nombre
   needs_review: Necesita revisión
   network_checks: Comprobaciones de red
+  new: Nuevo
   none: Ninguno
   not_yet_reviewed: Aún no revisado
   oai_status: Estado de OAI-PMH

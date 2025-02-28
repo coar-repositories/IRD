@@ -14,6 +14,7 @@ tr:
   curation: Küratörlük
   curation_issues: Küratörlük Sorunları
   database: Veritabanı
+  edit: Düzenlemek
   email: E-posta
   filter: Filtre
   fore_name: İlk adı
@@ -33,6 +34,7 @@ tr:
   name: İsim
   needs_review: İncelemeye ihtiyaç var
   network_checks: Ağ Kontrolleri
+  new: Yeni
   none: Hiçbiri
   not_yet_reviewed: Henüz incelenmedi
   oai_status: OAI-PMH Durumu

@@ -14,6 +14,7 @@ pt:
   curation: Curadoria
   curation_issues: Questões de curadoria
   database: Banco de dados
+  edit: Editar
   email: E-mail
   filter: Filtro
   fore_name: Primeiro nome
@@ -33,6 +34,7 @@ pt:
   name: Nome
   needs_review: Precisa de revisão
   network_checks: Verificações de rede
+  new: Novo
   none: Nenhum
   not_yet_reviewed: Ainda não revisado
   oai_status: Status OAI-PMH

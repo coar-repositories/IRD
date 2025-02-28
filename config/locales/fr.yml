@@ -14,6 +14,7 @@ fr:
   curation: Conservation
   curation_issues: Problèmes de conservation
   database: Base de données
+  edit: Modifier
   email: E-mail
   filter: Filtre
   fore_name: Prénom
@@ -33,6 +34,7 @@ fr:
   name: Nom
   needs_review: Besoin d'un examen
   network_checks: Vérifications du réseau
+  new: Nouveau
   none: Aucun
   not_yet_reviewed: Pas encore évalué
   oai_status: Statut OAI-PMH

@@ -14,6 +14,7 @@ zh-CN:
   curation: 策展
   curation_issues: 策展问题
   database: 数据库
+  edit: 编辑
   email: 电子邮件
   filter: 筛选
   fore_name: 名
@@ -33,6 +34,7 @@ zh-CN:
   name: 姓名
   needs_review: 需要审核
   network_checks: 网络检查
+  new: 新的
   none: 没有任何
   not_yet_reviewed: 尚未审核
   oai_status: OAI-PMH 状态

@@ -14,6 +14,7 @@ en:
   curation: Curation
   curation_issues: Curation Issues
   database: Database
+  edit: Edit
   email: Email
   filter: Filter
   fore_name: First Name
@@ -33,6 +34,7 @@ en:
   name: Name
   needs_review: Needs Review
   network_checks: Network Checks
+  new: New
   none: None
   not_yet_reviewed: Not yet reviewed
   oai_status: OAI-PMH Status
