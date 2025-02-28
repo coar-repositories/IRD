@@ -116,6 +116,8 @@ module SystemsHelper
   end
 
   def issue_priority_flags(issue)
+    # i18n-tasks-use t("activerecord.attributes.annotation.priority_list.#{issue['priority']}") # this lets i18n-tasks know the key is used
+    # i18n-tasks-use t("curation-issues.#{issue['description']}.name") # this lets i18n-tasks know the key is used
     priority_sym = issue['priority'].to_sym
     case priority_sym
     when :high
@@ -127,7 +129,12 @@ module SystemsHelper
     else
       badge_class = 'bi-exclamation-triangle-fill'
     end
-    "<span class='#{badge_class}'></span> #{issue['description']}".html_safe
+    begin
+      description = t("curation-issues.#{issue['description']}.description")
+    rescue Exception => e
+      description = issue['description']
+    end
+    "<span class='#{badge_class}'></span> #{description}".html_safe
   end
 
 end

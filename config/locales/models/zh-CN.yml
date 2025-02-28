@@ -2,6 +2,12 @@
 zh-CN:
   activerecord:
     attributes:
+      annotation:
+        priority_list:
+          high: 高的
+          low: 低的
+          medium: 中等的
+          none: 没有任何
       country:
         code: 代码
         continent: 大陆
@@ -34,6 +40,7 @@ zh-CN:
         annotations: 注解
         authorised_curators: 授权策展人
         contact: 接触
+        issues: 策展问题
         media: 媒体类型
         oai_base_url: OAI-PMH 基本 URL
         oai_status: OAI-PMH 状态
@@ -86,6 +93,9 @@ zh-CN:
         fore_name: 名字
         last_name: 姓
     models:
+      annotation:
+        one: 注解
+        other: 注解
       country:
         one: 国家
         other: 国家

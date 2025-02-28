@@ -4,7 +4,6 @@ ja:
   admin: 管理者
   agencies: 代理店
   all_fields_must_be_completed: すべてのフィールドを入力する必要があります
-  annotations: 注釈
   are_you_sure_question: 本気ですか？
   authorise_a_user: ユーザーを承認する
   authorised_curator_for_these_repositories: これらのリポジトリの公認キュレーター
@@ -12,15 +11,12 @@ ja:
   contact: 接触
   continents: 大陸
   curation: キュレーション
-  curation_issues: キュレーションの問題
   database: データベース
-  edit: 編集
   email: メール
   filter: フィルター
   fore_name: ファーストネーム
   general_information: 一般情報
   harvested: 収穫された
-  has_thumbnail: サムネイルはありますか？
   homepage: ホームページ
   identifier_schemes: 識別子スキーム
   identifiers: 識別子
@@ -34,13 +30,11 @@ ja:
   name: 名前
   needs_review: レビューが必要
   network_checks: ネットワークチェック
-  new: 新しい
   none: なし
   not_yet_reviewed: まだレビューされていません
   oai_status: OAI-PMH ステータス
   operations: オペレーション
   owner: 所有者
-  owner_identified: 所有者は特定されていますか?
   page_titles:
     about: IRDについて
     admin: 管理者
@@ -67,7 +61,7 @@ ja:
   required: 必須
   reset: リセット
   responsible_organisation: 責任組織
-  responsible_organisations: 責任組織
+  responsible_organisations: 責任ある組織
   reviewed: レビュー済み
   reviewed_on: '最近レビュー済みとしてマークされたもの: %{date}'
   roles: 役割

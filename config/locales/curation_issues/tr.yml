@@ -1,0 +1,30 @@
+---
+tr:
+  curation-issues:
+    description-missing:
+      description: Açıklama eksik
+      name: Eksik açıklama
+    homepage-url-missing:
+      description: Ana sayfa URL'si eksik
+      name: Eksik ana sayfa URL'si
+    name-missing:
+      description: İsim eksik
+      name: Eksik isim
+    oai-base-url-missing:
+      description: OAI-PMH Temel URL'si eksik
+      name: Eksik OAI-PMH Temel URL'si
+    owner-missing:
+      description: Sahibi belirlenemedi
+      name: Kayıp sahibi
+    platform-may-be-incorrect:
+      description: Tanımlanan yazılım platformu yanlış olabilir
+      name: Platform yanlış olabilir
+    platform-missing:
+      description: Hiçbir platform tanımlanmadı
+      name: Eksik platform
+    platform-version-may-be-incorrect:
+      description: Tanımlanan yazılım platformu sürümü yanlış olabilir
+      name: Platform sürümü yanlış olabilir
+    thumbnail-missing:
+      description: Küçük resim eksik
+      name: Eksik küçük resim

@@ -1,7 +1,0 @@
----
-pt:
-  annotation_names:
-    defunct: Extinto
-    duplicate: Duplicado
-    flag: Sinalizado
-    out-of-scope: Fora do escopo

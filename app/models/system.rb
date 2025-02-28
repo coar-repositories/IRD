@@ -37,14 +37,14 @@ class System < ApplicationRecord
       subcategory: subcategory,
       media: media.map(&:name),
       primary_subject: primary_subject,
-      annotations: annotations.map(&:name),
+      annotations: annotations.map(&:id),
       tags: tags.map(&:name),
       rp: rp.display_name,
-      has_thumbnail: thumbnail.attached?,
-      has_owner: owner.present?,
       http_code: network_checks.url_checks.first&.http_code,
       metadata_formats: metadata_formats.map(&:name),
-      identifier_schemes: repoids.map(&:identifier_scheme).excluding("ird").uniq
+      identifier_schemes: repoids.map(&:identifier_scheme).excluding("ird").uniq,
+      # curation_issues: "name-missing"
+      curation_issues: issues.map {|issue| issue["description"]}
     }
   end
 
@@ -69,25 +69,25 @@ class System < ApplicationRecord
   translate_enum :primary_subject
 
   belongs_to :platform
-  belongs_to :owner, class_name: 'Organisation', optional: true
-  belongs_to :rp, class_name: 'Organisation', optional: true
+  belongs_to :owner, class_name: "Organisation", optional: true
+  belongs_to :rp, class_name: "Organisation", optional: true
   belongs_to :country, optional: true
   belongs_to :generator, optional: true
   has_many :network_checks, dependent: :delete_all, strict_loading: false
   has_many :normalids, dependent: :delete_all, strict_loading: false
   has_many :repoids, dependent: :delete_all, strict_loading: false # strict_loading: false because of the de-duplication code
   accepts_nested_attributes_for :repoids, allow_destroy: true, reject_if: lambda { |attributes| attributes["identifier_value"].blank? }
-  has_and_belongs_to_many :users, :join_table => 'systems_users', strict_loading: false
-  has_and_belongs_to_many :annotations, :join_table => 'annotations_systems', strict_loading: false
-  has_and_belongs_to_many :media, :join_table => 'media_systems', strict_loading: false
-  has_and_belongs_to_many :metadata_formats, :join_table => 'metadata_formats_systems', strict_loading: false
+  has_and_belongs_to_many :users, :join_table => "systems_users", strict_loading: false
+  has_and_belongs_to_many :annotations, :join_table => "annotations_systems", strict_loading: false
+  has_and_belongs_to_many :media, :join_table => "media_systems", strict_loading: false
+  has_and_belongs_to_many :metadata_formats, :join_table => "metadata_formats_systems", strict_loading: false
   has_one_attached :thumbnail
 
   scope :has_owner, -> { where.not(owner_id: nil) }
   scope :in_country, ->(country_id) { where(country_id: country_id) }
   scope :no_thumbnail, -> { where.missing(:thumbnail_attachment) }
   scope :publicly_viewable, -> { where.not(record_status: :unknown).where.not(record_status: :draft).where.not(record_status: :archived) }
-  scope :duplicates, -> { includes(:annotations).where(annotations: { id: 'duplicate' }) }
+  scope :duplicates, -> { includes(:annotations).where(annotations: { id: "duplicate" }) }
 
   validates :name, :url, presence: true
   validates_with PublishedSystemValidator
@@ -138,7 +138,7 @@ class System < ApplicationRecord
     elsif !self.name.blank?
       self.name
     else
-      'Unnamed system'
+      "Unnamed system"
     end
   end
 
@@ -151,7 +151,7 @@ class System < ApplicationRecord
   end
 
   def published?
-    self.record_status == 'published'
+    self.record_status == "published"
   end
 
   def publish!
@@ -219,23 +219,23 @@ class System < ApplicationRecord
 
   def curation_check
     issue_array = []
-    issue_array << Issue.new(:high, 'Name is missing') if self.name.blank?
-    issue_array << Issue.new(:high, 'Homepage URL is missing') if self.url.blank?
-    issue_array << Issue.new(:high, 'System is a repository but does not have an OAI-PMH base URL configured') if (self.system_category == 'repository' && self.oai_base_url.blank?)
-    issue_array << Issue.new(:medium, 'No responsible party configured') unless self.rp
-    issue_array << Issue.new(:medium, 'No owner identified') unless self.owner
-    self.network_checks.each do |nc|
-      # i18n-tasks-use t("activerecord.attributes.network_check.network_check_type_list.#{network_check_type}") # this lets i18n-tasks know the key is used
-      issue_array << Issue.new(:high, "#{nc.translated_network_check_type} check failed") unless nc.passed
-    end
-    issue_array << Issue.new(:medium, 'Platform is unknown') if self.platform_id == Platform.default_platform_id
+    issue_array << Issue.new(:high, "name-missing") if self.name.blank?
+    issue_array << Issue.new(:high, "homepage-url-missing") if self.url.blank?
+    issue_array << Issue.new(:high, "oai-base-url-missing") if (self.system_category == "repository" && self.oai_base_url.blank?)
+    issue_array << Issue.new(:medium, "owner-missing") unless self.owner
+    # self.network_checks.each do |nc|
+    #   # i18n-tasks-use t("activerecord.attributes.network_check.network_check_type_list.#{network_check_type}") # this lets i18n-tasks know the key is used
+    #   issue_array << Issue.new(:high, "#{nc.translated_network_check_type} check failed") unless nc.passed
+    # end
+    issue_array << Issue.new(:medium, "platform-missing") if self.platform_id == Platform.default_platform_id
     if self.generator
-      issue_array << Issue.new(:medium, 'Platform may be incorrect') if self.generator.platform && self.generator.platform_id != self.platform_id
-      issue_array << Issue.new(:medium, 'Platform version may be incorrect') if self.generator.version && self.generator.version != self.platform_version
+      issue_array << Issue.new(:medium, "platform-may-be-incorrect") if self.generator.platform && self.generator.platform_id != self.platform_id
+      issue_array << Issue.new(:medium, "platform-version-may-be-incorrect") if self.generator.version && self.generator.version != self.platform_version
     else
       # self.curation_alerts << Issue.new(:warning, 'Generator is unknown') # is this useful?
     end
-    issue_array << Issue.new(:low, 'Description is missing') if self.description.blank?
+    issue_array << Issue.new(:low, "description-missing") if self.description.blank?
+    issue_array << Issue.new(:low, "thumbnail-missing") unless self.thumbnail.attached?
     self.issues = issue_array
   end
 
@@ -261,7 +261,7 @@ class System < ApplicationRecord
 
   def update_from_duplicate_system(duplicate_system)
     Repoid.where(system_id: duplicate_system.id).each do |repoid|
-      unless repoid.identifier_scheme == 'ird'
+      unless repoid.identifier_scheme == "ird"
         begin
           self.add_repo_id(repoid.identifier_scheme, repoid.identifier_value)
         rescue Exception => e
@@ -342,7 +342,7 @@ class System < ApplicationRecord
       if self.rp_id.blank?
         self.rp = Organisation.default_rp_for_published_records
       end
-      self.owner_id = nil if self.owner_id == ''
+      self.owner_id = nil if self.owner_id == ""
     rescue Exception => e
       Rails.logger.warn "unable to set defaults for system #{self.id}: #{e.message}"
     end
@@ -361,7 +361,7 @@ class System < ApplicationRecord
     if self.random_id.nil? || self.random_id == 0
       self.random_id = rand(1...1000000)
     end
-    self.owner_id = nil if self.owner_id == ''
+    self.owner_id = nil if self.owner_id == ""
   end
 end
 

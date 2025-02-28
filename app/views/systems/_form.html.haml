@@ -84,10 +84,11 @@
             -# i18n-tasks-use t('activerecord.attributes.system.annotations') # this lets i18n-tasks know the key is used
             = f.label :annotations, :class=>"form-label"
           %div.col
-            = f.collection_check_boxes :annotation_ids, Annotation.unrestricted, :id, :name do |b|
+            = f.collection_check_boxes :annotation_ids, Annotation.unrestricted, :id, :id do |b|
               = b.label(class: "check_box") do
                 = b.check_box(class: "check_box")
-                = b.object.name
+                - # i18n-tasks-use t("annotations.#{b.object.id}.description") # this lets i18n-tasks know the key is used
+                = t("annotations.#{b.object.id}.name")
               %br
       - if policy(@system).tag?
         %div.row.align-items-top.field

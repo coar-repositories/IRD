@@ -2,6 +2,12 @@
 en:
   activerecord:
     attributes:
+      annotation:
+        priority_list:
+          high: High
+          low: Low
+          medium: Medium
+          none: None
       country:
         code: Code
         continent: Continent
@@ -34,6 +40,7 @@ en:
         annotations: Annotations
         authorised_curators: Authorised Curators
         contact: Contact
+        issues: Curation Issues
         media: Media Types
         oai_base_url: OAI-PMH Base URL
         oai_status: OAI-PMH Status
@@ -86,6 +93,9 @@ en:
         fore_name: Forename
         last_name: Surname
     models:
+      annotation:
+        one: Annotation
+        other: Annotations
       country:
         one: Country
         other: Countries

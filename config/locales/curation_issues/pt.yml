@@ -1,0 +1,30 @@
+---
+pt:
+  curation-issues:
+    description-missing:
+      description: Descrição ausente
+      name: Descrição ausente
+    homepage-url-missing:
+      description: URL da página inicial está faltando
+      name: URL da página inicial ausente
+    name-missing:
+      description: Nome está faltando
+      name: Nome faltando
+    oai-base-url-missing:
+      description: URL base OAI-PMH está faltando
+      name: URL base OAI-PMH ausente
+    owner-missing:
+      description: Nenhum proprietário identificado
+      name: Proprietário desaparecido
+    platform-may-be-incorrect:
+      description: A plataforma de software identificada pode estar incorreta
+      name: A plataforma pode estar incorreta
+    platform-missing:
+      description: Nenhuma plataforma identificada
+      name: Plataforma ausente
+    platform-version-may-be-incorrect:
+      description: A versão da plataforma de software identificada pode estar incorreta
+      name: A versão da plataforma pode estar incorreta
+    thumbnail-missing:
+      description: Falta a miniatura
+      name: Miniatura ausente

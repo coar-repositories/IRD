@@ -1,0 +1,21 @@
+---
+tr:
+  annotations:
+    candidate-defunct:
+      description: Depo çalışmıyor olabilir
+      name: Aday Feshedildi
+    candidate-out-of-scope:
+      description: Bu depo IRD kapsamı dışında olabilir
+      name: Aday Kapsam Dışında
+    defunct:
+      description: Depo artık çalışmıyor
+      name: Feshedilmiş
+    duplicate:
+      description: Bu bir kopya depolama kaydıdır
+      name: Kopyalamak
+    flag:
+      description: Bu depo Yönetici tarafından işaretlendi
+      name: Bayraklı
+    out-of-scope:
+      description: Bu depo IRD kapsamı dışındadır
+      name: Kapsam Dışı

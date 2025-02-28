@@ -4,7 +4,6 @@ pt:
   admin: Administrador
   agencies: Agências
   all_fields_must_be_completed: Todos os campos devem ser preenchidos
-  annotations: Anotações
   are_you_sure_question: Tem certeza?
   authorise_a_user: Autorizar um usuário
   authorised_curator_for_these_repositories: Curador autorizado para esses repositórios
@@ -12,15 +11,12 @@ pt:
   contact: Contato
   continents: Continentes
   curation: Curadoria
-  curation_issues: Questões de curadoria
   database: Banco de dados
-  edit: Editar
   email: E-mail
   filter: Filtro
   fore_name: Primeiro nome
   general_information: Informações gerais
   harvested: Colhido
-  has_thumbnail: Tem miniatura?
   homepage: Página inicial
   identifier_schemes: Esquemas de Identificação
   identifiers: Identificadores
@@ -32,15 +28,13 @@ pt:
   media_type: Tipo de mídia
   metadata: Metadados
   name: Nome
-  needs_review: Precisa de revisão
+  needs_review: Necessita de revisão
   network_checks: Verificações de rede
-  new: Novo
   none: Nenhum
   not_yet_reviewed: Ainda não revisado
   oai_status: Status OAI-PMH
   operations: Operações
   owner: Proprietário
-  owner_identified: Proprietário identificado?
   page_titles:
     about: Sobre o IRD
     admin: Administrador

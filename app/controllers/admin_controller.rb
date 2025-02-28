@@ -18,12 +18,11 @@ class AdminController < ApplicationController
     conditions[:subcategory] = params[:subcategory] if params[:subcategory].present?
     conditions[:media] = params[:media] if params[:media].present?
     conditions[:primary_subject] = params[:primary_subject] if params[:primary_subject].present?
-    conditions[:has_thumbnail] = params[:has_thumbnail] if params[:has_thumbnail].present?
-    conditions[:has_owner] = params[:has_owner] if params[:has_owner].present?
     conditions[:rp] = params[:rp] if params[:rp].present?
     conditions[:http_code] = params[:http_code] if params[:http_code].present?
     conditions[:metadata_formats] = params[:metadata_formats] if params[:metadata_formats].present?
     conditions[:identifier_schemes] = params[:identifier_schemes] if params[:identifier_schemes].present?
+    conditions[:curation_issues] = params[:curation_issues] if params[:curation_issues].present?
     unless params[:show_archived_records] == 'true'
       conditions[:_not] = { record_status: 'archived' }
     end
@@ -31,7 +30,7 @@ class AdminController < ApplicationController
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :media, :primary_subject, :annotations, :tags, :rp, :http_code, :has_thumbnail, :has_owner, :metadata_formats, :identifier_schemes]
+    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :media, :primary_subject, :annotations, :tags, :rp, :http_code, :metadata_formats, :identifier_schemes, :curation_issues]
 
     @unpaginated_systems = System.search(
       search_terms,
@@ -61,7 +60,7 @@ class AdminController < ApplicationController
       when :annotate
         annotation = Annotation.find(params[:annotation_to_process])
         ActiveJob.perform_all_later(@unpaginated_systems.map { |system| AnnotateJob.new(system.id, annotation, params[:add_or_remove].to_sym) })
-        redirect_back fallback_location: root_path, notice: "Started annotation job for #{@unpaginated_systems.count} systems with (#{params[:add_or_remove]}) annotation '#{annotation.name}'"
+        redirect_back fallback_location: root_path, notice: "Started annotation job for #{@unpaginated_systems.count} systems with (#{params[:add_or_remove]}) annotation " + t("annotations.#{annotation.id}.name")
       when :check_urls
         ActiveJob.perform_all_later(@unpaginated_systems.map { |system| CheckUrlJob.new(system.id, true) })
         redirect_back fallback_location: root_path, notice: "Started URL checking job for #{@unpaginated_systems.count} systems..."

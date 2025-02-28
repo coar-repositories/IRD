@@ -2,6 +2,12 @@
 tr:
   activerecord:
     attributes:
+      annotation:
+        priority_list:
+          high: Yüksek
+          low: Düşük
+          medium: Orta
+          none: Hiçbiri
       country:
         code: Kod
         continent: Kıta
@@ -34,6 +40,7 @@ tr:
         annotations: Açıklamalar
         authorised_curators: Yetkili Küratörler
         contact: Temas etmek
+        issues: Küratörlük Sorunları
         media: Medya Türleri
         oai_base_url: OAI-PMH Temel URL
         oai_status: OAI-PMH Durumu
@@ -86,6 +93,9 @@ tr:
         fore_name: Adı
         last_name: Soyadı
     models:
+      annotation:
+        one: Dipnot
+        other: Açıklamalar
       country:
         one: Ülke
         other: Ülkeler

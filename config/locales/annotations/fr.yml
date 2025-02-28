@@ -1,0 +1,21 @@
+---
+fr:
+  annotations:
+    candidate-defunct:
+      description: Le référentiel ne fonctionne peut-être pas
+      name: Candidat défunt
+    candidate-out-of-scope:
+      description: Ce référentiel peut être hors de portée de l'IRD
+      name: Candidat hors de portée
+    defunct:
+      description: Le dépôt ne fonctionne plus
+      name: Défunt
+    duplicate:
+      description: Il s'agit d'un enregistrement de référentiel en double
+      name: Double
+    flag:
+      description: Ce dépôt a été signalé par l'administrateur
+      name: Marqué
+    out-of-scope:
+      description: Ce dépôt est hors du champ d'application de l'IRD
+      name: Hors de portée

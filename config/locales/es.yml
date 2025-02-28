@@ -4,7 +4,6 @@ es:
   admin: Administración
   agencies: Agencias
   all_fields_must_be_completed: Todos los campos deben ser completados
-  annotations: Anotaciones
   are_you_sure_question: "¿Está seguro?"
   authorise_a_user: Autorizar a un usuario
   authorised_curator_for_these_repositories: Curador autorizado de estos repositorios
@@ -12,15 +11,12 @@ es:
   contact: Contacto
   continents: Continentes
   curation: Curación
-  curation_issues: Problemas de curación
   database: Base de datos
-  edit: Editar
   email: Correo electrónico
   filter: Filtrar
   fore_name: Nombre de pila
   general_information: Información general
   harvested: Cosechado
-  has_thumbnail: "¿Tiene miniatura?"
   homepage: Página principal
   identifier_schemes: Esquemas de identificadores
   identifiers: Identificadores
@@ -34,20 +30,18 @@ es:
   name: Nombre
   needs_review: Necesita revisión
   network_checks: Comprobaciones de red
-  new: Nuevo
   none: Ninguno
   not_yet_reviewed: Aún no revisado
   oai_status: Estado de OAI-PMH
   operations: Operaciones
   owner: Dueño
-  owner_identified: "¿Propietario identificado?"
   page_titles:
     about: Acerca del IRD
     admin: Administración
     dashboard_for: Panel de control para %{name}
     help: Ayuda del sistema
     repositories_in_country: Repositorios en %{country}
-    repositories_running_on_platform: Repositorios que se ejecutan en %{platform}
+    repositories_running_on_platform: Repositorios ejecutándose en %{platform}
     repositories_supporting_metadata_format: Repositorios que admiten %{metadata_format}
     repository_browser: Navegador de repositorios
     search: Buscar

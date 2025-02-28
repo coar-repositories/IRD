@@ -66,6 +66,14 @@ span.sortable-hidden {
     margin-bottom: 5px;
 }
 
+.button-with-tick::before {
+    content: '✔︎ ';
+}
+
+.button-with-cross::before {
+    content: '✘ ';
+}
+
 .decoration-external-link {
     font-size: 0.7em;
     vertical-align: baseline;

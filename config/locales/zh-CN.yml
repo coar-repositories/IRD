@@ -4,7 +4,6 @@ zh-CN:
   admin: 行政
   agencies: 机构
   all_fields_must_be_completed: 所有字段必须填写
-  annotations: 注解
   are_you_sure_question: 你确定吗？
   authorise_a_user: 授权用户
   authorised_curator_for_these_repositories: 这些存储库的授权管理员
@@ -12,15 +11,12 @@ zh-CN:
   contact: 接触
   continents: 大洲
   curation: 策展
-  curation_issues: 策展问题
   database: 数据库
-  edit: 编辑
   email: 电子邮件
   filter: 筛选
   fore_name: 名
   general_information: 一般信息
-  harvested: 收割
-  has_thumbnail: 有缩略图吗？
+  harvested: 收获
   homepage: 主页
   identifier_schemes: 标识符方案
   identifiers: 标识符
@@ -34,13 +30,11 @@ zh-CN:
   name: 姓名
   needs_review: 需要审核
   network_checks: 网络检查
-  new: 新的
   none: 没有任何
   not_yet_reviewed: 尚未审核
   oai_status: OAI-PMH 状态
   operations: 运营
   owner: 所有者
-  owner_identified: 主人已确认？
   page_titles:
     about: 关于税务局
     admin: 行政

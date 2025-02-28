@@ -1,0 +1,21 @@
+---
+en:
+  annotations:
+    candidate-defunct:
+      description: The repository may not be functioning
+      name: Candidate Defunct
+    candidate-out-of-scope:
+      description: This repository may be out of scope for the IRD
+      name: Candidate Out of Scope
+    defunct:
+      description: The repository is no longer functioning
+      name: Defunct
+    duplicate:
+      description: This is a duplicate repository record
+      name: Duplicate
+    flag:
+      description: This repository has been flagged by the Administrator
+      name: Flagged
+    out-of-scope:
+      description: This repository is out of scope for the IRD
+      name: Out of Scope

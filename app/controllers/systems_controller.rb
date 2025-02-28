@@ -266,12 +266,12 @@ class SystemsController < ApplicationController
         @system.remove_annotation annotation
       end
       @system.save!
-      redirect_back fallback_location: root_path, notice: "Changed system annotation (#{annotation.name})."
+      redirect_back fallback_location: root_path, notice: "Changed system annotation " + t("annotations.#{annotation.id}.name")
     rescue ActiveRecord::RecordNotUnique
-      redirect_back fallback_location: root_path, notice: "System is already annotated with '#{annotation.name}'"
+      redirect_back fallback_location: root_path, notice: "System is already annotated with " + t("annotations.#{annotation.id}.name")
     rescue StandardError => e
-      Rails.logger.error "Unable to annotate system with '#{annotation.name}': #{e.message}"
-      redirect_back fallback_location: root_path, notice: "Unable to annotate system with '#{annotation.name}'"
+      Rails.logger.error "Unable to annotate system with " + t("annotations.#{annotation.id}.name") + ": #{e.message}"
+      redirect_back fallback_location: root_path, notice: "Unable to annotate system with " + t("annotations.#{annotation.id}.name")
     end
   end
 
