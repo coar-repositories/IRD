@@ -40,6 +40,8 @@ module Ingest
               else
                 proposed_system.subcategory = :unknown
               end
+            else
+              proposed_system.subcategory = :unknown
             end
             org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
             if org
