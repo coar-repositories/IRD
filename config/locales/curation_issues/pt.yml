@@ -1,6 +1,15 @@
 ---
 pt:
   curation-issues:
+    automated-oai-pmh-check-failed:
+      description: Falha na verificação automatizada de OAI-PMH
+      name: Falha na verificação automatizada de OAI-PMH
+    automated-website-check-failed:
+      description: Falha na verificação automática do site
+      name: Falha na verificação automática do site
+    contact-missing:
+      description: Falta contato
+      name: Contato ausente
     description-missing:
       description: Descrição ausente
       name: Descrição ausente

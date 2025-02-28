@@ -1,6 +1,15 @@
 ---
 fr:
   curation-issues:
+    automated-oai-pmh-check-failed:
+      description: La vérification automatique OAI-PMH a échoué
+      name: La vérification automatique OAI-PMH a échoué
+    automated-website-check-failed:
+      description: La vérification automatique du site Web a échoué
+      name: La vérification automatique du site Web a échoué
+    contact-missing:
+      description: Le contact est manquant
+      name: Contact manquant
     description-missing:
       description: La description est manquante
       name: Description manquante

@@ -7,10 +7,14 @@ fr:
           attributes:
             media:
               missing: doit être sélectionné
+            oai_status:
+              not_supported: doit être soutenu
             primary_subject:
               missing: doit être sélectionné
             subcategory:
               missing: doit être sélectionné
+            system_status:
+              not_online: doit être en ligne
       template:
         body: 'Veuillez corriger les erreurs suivantes :'
         header:

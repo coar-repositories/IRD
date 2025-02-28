@@ -7,10 +7,14 @@ tr:
           attributes:
             media:
               missing: seçilmesi gerekiyor
+            oai_status:
+              not_supported: desteklenmesi gerekiyor
             primary_subject:
               missing: seçilmesi gerekiyor
             subcategory:
               missing: seçilmesi gerekiyor
+            system_status:
+              not_online: çevrimiçi olması gerekiyor
       template:
         body: 'Lütfen aşağıdaki hataları düzeltin:'
         header:

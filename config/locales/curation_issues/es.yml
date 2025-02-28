@@ -1,6 +1,15 @@
 ---
 es:
   curation-issues:
+    automated-oai-pmh-check-failed:
+      description: Error en la comprobación automatizada de OAI-PMH
+      name: Error en la comprobación automatizada de OAI-PMH
+    automated-website-check-failed:
+      description: Error en la comprobación automática del sitio web
+      name: Error en la comprobación automática del sitio web
+    contact-missing:
+      description: Falta contacto
+      name: Falta contacto
     description-missing:
       description: Falta la descripción
       name: Falta descripción

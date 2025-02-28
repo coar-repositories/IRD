@@ -1,6 +1,10 @@
 class PublishedSystemValidator < ActiveModel::Validator
   def validate(record)
     if record.record_status == "published"
+      # i18n-tasks-use t('activerecord.errors.models.system.attributes.system_status.not_online') # this lets i18n-tasks know the key is used
+      record.errors.add(:system_status, :not_online) unless record.system_status_online?
+      # i18n-tasks-use t('activerecord.errors.models.system.attributes.oai_status.not_supported') # this lets i18n-tasks know the key is used
+      record.errors.add(:oai_status, :not_supported) if record.oai_status_unsupported? || record.oai_status_unknown?
       if record.subcategory == "unknown"
         record.errors.add :subcategory, :missing
       end
@@ -44,7 +48,7 @@ class System < ApplicationRecord
       metadata_formats: metadata_formats.map(&:name),
       identifier_schemes: repoids.map(&:identifier_scheme).excluding("ird").uniq,
       # curation_issues: "name-missing"
-      curation_issues: issues.map {|issue| issue["description"]}
+      curation_issues: issues.map { |issue| issue["description"] }
     }
   end
 
@@ -221,12 +225,19 @@ class System < ApplicationRecord
     issue_array = []
     issue_array << Issue.new(:high, "name-missing") if self.name.blank?
     issue_array << Issue.new(:high, "homepage-url-missing") if self.url.blank?
-    issue_array << Issue.new(:high, "oai-base-url-missing") if (self.system_category == "repository" && self.oai_base_url.blank?)
+    issue_array << Issue.new(:high, "oai-base-url-missing") if self.system_category == "repository" && self.oai_base_url.blank?
     issue_array << Issue.new(:medium, "owner-missing") unless self.owner
-    # self.network_checks.each do |nc|
-    #   # i18n-tasks-use t("activerecord.attributes.network_check.network_check_type_list.#{network_check_type}") # this lets i18n-tasks know the key is used
-    #   issue_array << Issue.new(:high, "#{nc.translated_network_check_type} check failed") unless nc.passed
-    # end
+    self.network_checks.each do |nc|
+      unless nc.passed
+        case nc.network_check_type
+        when "homepage_url"
+          issue_array << Issue.new(:high, "automated-website-check-failed")
+        when "oai_pmh_identify"
+          issue_array << Issue.new(:high, "automated-oai-pmh-check-failed")
+        end
+      end
+      # i18n-tasks-use t("activerecord.attributes.network_check.network_check_type_list.#{network_check_type}") # this lets i18n-tasks know the key is used
+    end
     issue_array << Issue.new(:medium, "platform-missing") if self.platform_id == Platform.default_platform_id
     if self.generator
       issue_array << Issue.new(:medium, "platform-may-be-incorrect") if self.generator.platform && self.generator.platform_id != self.platform_id
@@ -305,7 +316,6 @@ class System < ApplicationRecord
   end
 
   def update_country_before_save
-    # if self.saved_change_to_owner_id? && self.owner
     if will_save_change_to_attribute?(:owner_id) && self.owner
       self.country = self.owner.country
     end

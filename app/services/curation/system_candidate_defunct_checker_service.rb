@@ -3,17 +3,17 @@ module Curation
   class SystemCandidateDefunctCheckerService < ApplicationService
     def call(system)
       begin
-        nc = system.network_checks.homepage_url_failed.first
-        if nc && nc.failures >= Rails.application.config.ird[:network_check_failure][:error_count_threshold] && nc.error_duration >= Rails.application.config.ird[:network_check_failure][:error_duration_threshold]
+        nc_homepage = system.network_checks.homepage_url_failed.first
+        nc_oai = system.network_checks.oai_pmh_identify_failed.first
+        if nc_homepage&.errors_past_threshold? && nc_oai&.errors_past_threshold?
           system.add_annotation(Annotation.find("candidate-defunct"))
-          system.change_record_status_to_under_review!
+          system.change_record_status_to_under_review! if system.record_status_published?
         else
           system.remove_annotation(Annotation.find("candidate-defunct"))
         end
-        nc = system.network_checks.oai_pmh_identify_failed.first
-        if nc && nc.failures >= Rails.application.config.ird[:network_check_failure][:error_count_threshold] && nc.error_duration >= Rails.application.config.ird[:network_check_failure][:error_duration_threshold]
+        if nc_oai&.errors_past_threshold?
           system.add_annotation(Annotation.find("candidate-out-of-scope"))
-          system.change_record_status_to_under_review!
+          system.change_record_status_to_under_review! if system.record_status_published?
         else
           system.remove_annotation(Annotation.find("candidate-out-of-scope"))
         end

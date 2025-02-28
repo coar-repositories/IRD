@@ -1,6 +1,15 @@
 ---
 ja:
   curation-issues:
+    automated-oai-pmh-check-failed:
+      description: 自動 OAI-PMH チェックに失敗しました
+      name: 自動 OAI-PMH チェックに失敗しました
+    automated-website-check-failed:
+      description: 自動ウェブサイトチェックに失敗しました
+      name: 自動ウェブサイトチェックに失敗しました
+    contact-missing:
+      description: 連絡先がありません
+      name: 連絡先が見つかりません
     description-missing:
       description: 説明がありません
       name: 説明がありません

@@ -7,10 +7,14 @@ ja:
           attributes:
             media:
               missing: 選択する必要があります
+            oai_status:
+              not_supported: サポートが必要
             primary_subject:
               missing: 選択する必要があります
             subcategory:
               missing: 選択する必要があります
+            system_status:
+              not_online: オンラインである必要があります
       template:
         body: '次のエラーを修正してください:'
         header:

@@ -1,6 +1,15 @@
 ---
 zh-CN:
   curation-issues:
+    automated-oai-pmh-check-failed:
+      description: 自动 OAI-PMH 检查失败
+      name: 自动 OAI-PMH 检查失败
+    automated-website-check-failed:
+      description: 自动网站检查失败
+      name: 自动网站检查失败
+    contact-missing:
+      description: 缺少联系方式
+      name: 失联
     description-missing:
       description: 缺少描述
       name: 缺少描述

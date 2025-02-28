@@ -6,11 +6,15 @@ en:
         system:
           attributes:
             media:
-              missing: needs to be selected
+              missing: need to be selected
+            oai_status:
+              not_supported: needs to be supported
             primary_subject:
               missing: needs to be selected
             subcategory:
               missing: needs to be selected
+            system_status:
+              not_online: needs to be online
       template:
         body: 'Please correct the following errors:'
         header:
