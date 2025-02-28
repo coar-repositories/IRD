@@ -246,6 +246,7 @@ class System < ApplicationRecord
       # self.curation_alerts << Issue.new(:warning, 'Generator is unknown') # is this useful?
     end
     issue_array << Issue.new(:low, "description-missing") if self.description.blank?
+    issue_array << Issue.new(:low, "contact-missing") if self.contact.blank?
     issue_array << Issue.new(:low, "thumbnail-missing") unless self.thumbnail.attached?
     self.issues = issue_array
   end

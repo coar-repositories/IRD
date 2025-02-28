@@ -22,7 +22,25 @@ module Ingest
             proposed_system.system_category = row["system_category"] if row["system_category"]
             proposed_system.name = row["name"] if row["name"]
             proposed_system.url = row["url"] if row["url"]
+            proposed_system.platform_id = row["platform"] if row["platform"]
+            proposed_system.platform_version = row["platform_version"] if row["platform_version"]
+            proposed_system.contact = row["contact"] if row["contact"]
             proposed_system.oai_base_url = row["oai_base_url"] if row["oai_base_url"]
+            proposed_system.country_id = row["country_id"] if row["country_id"]
+            if row["repository_type"]
+              case row["repository_type"]
+              when "institutional"
+                proposed_system.subcategory = :institutional_repository
+              when "generalist"
+                proposed_system.subcategory = :generalist_repository
+              when "disciplinary"
+                proposed_system.subcategory = :disciplinary_repository
+              when "governmental"
+                proposed_system.subcategory = :governmental_repository
+              else
+                proposed_system.subcategory = :unknown
+              end
+            end
             org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
             if org
               proposed_system.owner_id = org.id
@@ -47,7 +65,8 @@ module Ingest
             end
             records_created += 1
             system = service_result.payload
-            Rails.logger.info(" Created system with ID: #{system.id}")
+            Rails.logger.info(" Created system with ID: #{system.id}, Name: #{system.name}, URL: #{system.url}")
+            Rails.logger.debug(" Created system: #{system.inspect}")
           rescue SystemExistsIngestException => e
             Rails.logger.warn "Found duplicate system: #{e.message}"
           rescue Exception => e

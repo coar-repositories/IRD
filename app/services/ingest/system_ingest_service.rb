@@ -2,19 +2,19 @@
 
 module Ingest
   class ProposedSystem
-    attr_accessor :local_id, :dry_run, :tags, :name, :url, :record_source, :system_category, :oai_base_url, :owner_id, :identifiers
+    attr_accessor :local_id, :dry_run, :tags, :name, :url, :record_source, :system_category, :oai_base_url, :owner_id, :identifiers, :platform_id, :platform_version, :contact, :subcategory, :country_id
 
     def initialize(record_source, local_id, dry_run, tags)
       @record_source = record_source
       @local_id = local_id
       @dry_run = dry_run
       @tags = tags
-      @name, @url, @system_category, @oai_base_url, @owner_id = nil, nil, nil, nil, nil
+      @name, @url, @system_category, @oai_base_url, @owner_id, @platform_id, @platform_version, @contact, @subcategory, @country_id = nil
       @identifiers = {}
     end
 
     def attributes
-      { name: @name, url: @url, record_source: @record_source, system_category: @system_category, oai_base_url: @oai_base_url, owner_id: @owner_id }
+      { name: @name, url: @url, record_source: @record_source, system_category: @system_category, oai_base_url: @oai_base_url, owner_id: @owner_id, platform_id: @platform_id, platform_version: @platform_version, contact: @contact, subcategory: @subcategory, country_id: @country_id }
     end
   end
 
