@@ -21,7 +21,7 @@
         %li.nav-item
           =link_to t(:about,scope: :page_titles), about_path, class: 'nav-link'
       %ul.navbar-nav.ms-auto.mb-2.mb-lg-0
-        - if policy(:admin).index?
+        - if policy(:search).index?
           %li.nav-item
             %a.nav-link{href:"#search-panel",id:"searchButton",role:"button","data-bs-toggle":"collapse", "aria-expanded":"false", "aria-controls":"search-panel"}
               %span.icon.bi-search.navbar-text{title: "Search"}
