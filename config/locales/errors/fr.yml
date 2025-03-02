@@ -15,6 +15,8 @@ fr:
               missing: doit être sélectionné
             system_status:
               not_online: doit être en ligne
+            url:
+              invalid: n'est pas une URL valide
       template:
         body: 'Veuillez corriger les erreurs suivantes :'
         header:

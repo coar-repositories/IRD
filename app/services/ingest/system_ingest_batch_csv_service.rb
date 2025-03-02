@@ -19,34 +19,32 @@ module Ingest
         CSV.foreach(data_file_path, headers: true) do |row|
           begin
             proposed_system = ProposedSystem.new(record_source, row["local_id"], dry_run, nil)
-            proposed_system.system_category = row["system_category"] if row["system_category"]
-            proposed_system.name = row["name"] if row["name"]
-            proposed_system.url = row["url"] if row["url"]
-            proposed_system.platform_id = row["platform"] if row["platform"]
-            proposed_system.platform_version = row["platform_version"] if row["platform_version"]
-            proposed_system.contact = row["contact"] if row["contact"]
-            proposed_system.oai_base_url = row["oai_base_url"] if row["oai_base_url"]
-            proposed_system.country_id = row["country_id"] if row["country_id"]
+            proposed_system.add_attribute("system_category", row["system_category"]) if row["system_category"]
+            proposed_system.add_attribute("name", row["name"]) if row["name"]
+            proposed_system.add_attribute("url", row["url"]) if row["url"]
+            proposed_system.add_attribute("platform_id", row["platform"]) if row["platform"]
+            proposed_system.add_attribute("platform_version", row["platform_version"]) if row["platform_version"]
+            proposed_system.add_attribute("contact", row["contact"]) if row["contact"]
+            proposed_system.add_attribute("oai_base_url", row["oai_base_url"]) if row["oai_base_url"]
+            proposed_system.add_attribute("country_id", row["country_id"]) if row["country_id"]
             if row["repository_type"]
               case row["repository_type"]
               when "institutional"
-                proposed_system.subcategory = :institutional_repository
+                proposed_system.add_attribute("subcategory", :institutional_repository)
               when "generalist"
-                proposed_system.subcategory = :generalist_repository
+                proposed_system.add_attribute("subcategory", :generalist_repository)
               when "disciplinary"
-                proposed_system.subcategory = :disciplinary_repository
+                proposed_system.add_attribute("subcategory", :disciplinary_repository)
               when "governmental"
-                proposed_system.subcategory = :governmental_repository
+                proposed_system.add_attribute("subcategory", :governmental_repository)
               else
-                proposed_system.subcategory = :unknown
+                proposed_system.add_attribute("subcategory", :unknown)
               end
             else
-              proposed_system.subcategory = :unknown
+              proposed_system.add_attribute("subcategory", :unknown)
             end
             org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
-            if org
-              proposed_system.owner_id = org.id
-            end
+            proposed_system.add_attribute("owner_id", org.id) if org
             if row["identifiers"]
               identifiers = row["identifiers"].split("|")
               identifiers.each do |identifier|
@@ -121,9 +119,8 @@ module Ingest
         org
       rescue Exception => e
         Rails.logger.error("Error in OrganisationFinderService: #{e.message}")
-        return nil
+        nil
       end
     end
   end
-
 end

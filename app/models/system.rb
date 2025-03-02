@@ -18,6 +18,15 @@ class PublishedSystemValidator < ActiveModel::Validator
   end
 end
 
+class UrlValidator < ActiveModel::Validator
+  def validate(record)
+    # i18n-tasks-use t('activerecord.errors.models.system.attributes.url.invalid') # this lets i18n-tasks know the key is used
+    unless Utilities::UrlUtility.validate_url(record.url)
+      record.errors.add :url, :invalid
+    end
+  end
+end
+
 class System < ApplicationRecord
   include TranslateEnum
   include Curation
@@ -94,6 +103,7 @@ class System < ApplicationRecord
   scope :duplicates, -> { includes(:annotations).where(annotations: { id: "duplicate" }) }
 
   validates :name, :url, presence: true
+  validates_with UrlValidator
   validates_with PublishedSystemValidator
 
   before_validation :set_defaults

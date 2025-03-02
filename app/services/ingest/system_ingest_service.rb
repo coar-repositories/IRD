@@ -2,20 +2,25 @@
 
 module Ingest
   class ProposedSystem
-    attr_accessor :local_id, :dry_run, :tags, :name, :url, :record_source, :system_category, :oai_base_url, :owner_id, :identifiers, :platform_id, :platform_version, :contact, :subcategory, :country_id
+    attr_accessor :record_source, :local_id, :dry_run, :tags, :identifiers, :attributes
 
     def initialize(record_source, local_id, dry_run, tags)
       @record_source = record_source
       @local_id = local_id
       @dry_run = dry_run
       @tags = tags
-      @name, @url, @system_category, @oai_base_url, @owner_id, @platform_id, @platform_version, @contact, @subcategory, @country_id = nil
       @identifiers = {}
+      @attributes = System.new.attributes
     end
 
-    def attributes
-      { name: @name, url: @url, record_source: @record_source, system_category: @system_category, oai_base_url: @oai_base_url, owner_id: @owner_id, platform_id: @platform_id, platform_version: @platform_version, contact: @contact, subcategory: @subcategory, country_id: @country_id }
+    def add_attribute(key, value)
+      @attributes[key] = value
     end
+
+    def get_attribute(key)
+      @attributes[key]
+    end
+
   end
 
   class SystemExistsIngestException < StandardError; end
@@ -36,7 +41,7 @@ module Ingest
           success system
         end
       rescue Exception => e
-        Rails.logger.error("Error ingesting system with name '#{proposed_system.name}' - #{e.message}")
+        Rails.logger.error("Error ingesting system with name '#{proposed_system.get_attribute("name")}' - #{e.message}")
         failure e
       end
     end
@@ -77,7 +82,7 @@ module Ingest
             return System.find(repo_id.system_id) if repo_id
           end
         end
-        normalised_url = Utilities::UrlUtility.get_normalised_url(proposed_system.url)
+        normalised_url = Utilities::UrlUtility.get_normalised_url(proposed_system.get_attribute("url"))
         normal_id = Normalid.find_by_url(normalised_url)
         return System.find(normal_id.system_id) if normal_id
         nil
