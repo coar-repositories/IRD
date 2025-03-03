@@ -100,7 +100,6 @@ class System < ApplicationRecord
   accepts_nested_attributes_for :repoids, allow_destroy: true, reject_if: lambda { |attributes| attributes["identifier_value"].blank? }
   has_and_belongs_to_many :users, :join_table => "systems_users", strict_loading: false
   has_and_belongs_to_many :annotations, :join_table => "annotations_systems", strict_loading: false
-  has_and_belongs_to_many :media, :join_table => "media_systems", strict_loading: false
   has_and_belongs_to_many :metadata_formats, :join_table => "metadata_formats_systems", strict_loading: false
   has_one_attached :thumbnail
 

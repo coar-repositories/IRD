@@ -67,14 +67,4 @@ shared:
     research-articles: "http://purl.org/coar/resource_type/c_2df8fbb1"
     learning-objects: "http://purl.org/coar/resource_type/c_e059"
     multimedia: "http://purl.org/coar/resource_type/multimedia"
-#  - books
-#  - conference-papers
-#  - images
-#  - learning-objects
-#  - multimedia
-#  - other
-#  - patents
-#  - research-articles
-#  - research-data
-#  - software
-#  - theses
+

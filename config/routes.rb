@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   get "generators/:id/systems", to: "generators#systems", as: "generator_instances"
   resources :generators
 
-  resources :media
 
   passwordless_for :users
   get "/dashboard", to: "users#dashboard", as: "user_root"
