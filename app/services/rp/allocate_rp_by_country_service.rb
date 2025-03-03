@@ -4,7 +4,7 @@ module Rp
   class AllocateRpByCountryService < ApplicationService
     def call(system_id)
       begin
-        system = System.includes(:network_checks, :repoids, :media, :annotations, :users).find(system_id)
+        system = System.includes(:network_checks, :repoids, :annotations, :users).find(system_id)
         unless system.record_status_archived?
           rp = Organisation.rps.in_country(system.country_id).first unless Organisation.rps.in_country(system.country_id).blank?
           if rp

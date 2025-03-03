@@ -27,6 +27,7 @@ gem "selenium-webdriver", "~> 4.28"
 gem "acts-as-taggable-on"
 gem "chartkick"
 gem "bcrypt"
+gem "active_snapshot"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"

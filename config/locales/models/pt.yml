@@ -42,6 +42,7 @@ pt:
         contact: Contato
         issues: Questões de curadoria
         media: Tipos de mídia
+        media_types: Tipos de mídia
         oai_base_url: URL base OAI-PMH
         oai_status: Status OAI-PMH
         oai_status_list:

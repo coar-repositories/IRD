@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_28_093901) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_02_154231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -226,6 +226,32 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_093901) do
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
+  create_table "snapshot_items", force: :cascade do |t|
+    t.bigint "snapshot_id", null: false
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.json "object", null: false
+    t.datetime "created_at", null: false
+    t.string "child_group_name"
+    t.index ["item_type", "item_id"], name: "index_snapshot_items_on_item"
+    t.index ["snapshot_id", "item_id", "item_type"], name: "index_snapshot_items_on_snapshot_id_and_item_id_and_item_type", unique: true
+    t.index ["snapshot_id"], name: "index_snapshot_items_on_snapshot_id"
+  end
+
+  create_table "snapshots", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.string "user_type"
+    t.bigint "user_id"
+    t.string "identifier"
+    t.json "metadata"
+    t.datetime "created_at", null: false
+    t.index ["identifier", "item_id", "item_type"], name: "index_snapshots_on_identifier_and_item_id_and_item_type", unique: true
+    t.index ["identifier"], name: "index_snapshots_on_identifier"
+    t.index ["item_type", "item_id"], name: "index_snapshots_on_item"
+    t.index ["user_type", "user_id"], name: "index_snapshots_on_user"
+  end
+
   create_table "systems", id: { type: :string, limit: 36 }, force: :cascade do |t|
     t.string "name"
     t.json "aliases", default: []
@@ -254,6 +280,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_093901) do
     t.datetime "reviewed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "media_types", array: true
     t.index ["country_id"], name: "index_systems_on_country_id"
     t.index ["generator_id"], name: "index_systems_on_generator_id"
     t.index ["oai_status"], name: "index_systems_on_oai_status"

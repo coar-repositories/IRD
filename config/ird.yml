@@ -55,4 +55,26 @@ shared:
     zh-CN:
       language: 中文
       flag: cn
-
+  media_types:
+    books: "http://purl.org/coar/resource_type/c_2f33"
+    other: "http://purl.org/coar/resource_type/c_1843"
+    theses: "http://purl.org/coar/resource_type/c_46ec"
+    patents: "http://purl.org/coar/resource_type/c_15cd"
+    research-data: "http://purl.org/coar/resource_type/c_ddb1"
+    conference-papers: "http://purl.org/coar/resource_type/c_5794"
+    software: "http://purl.org/coar/resource_type/c_5ce6"
+    images: "http://purl.org/coar/resource_type/c_c513"
+    research-articles: "http://purl.org/coar/resource_type/c_2df8fbb1"
+    learning-objects: "http://purl.org/coar/resource_type/c_e059"
+    multimedia: "http://purl.org/coar/resource_type/multimedia"
+#  - books
+#  - conference-papers
+#  - images
+#  - learning-objects
+#  - multimedia
+#  - other
+#  - patents
+#  - research-articles
+#  - research-data
+#  - software
+#  - theses

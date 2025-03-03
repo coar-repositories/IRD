@@ -12,8 +12,7 @@
                   filter['key'],
                   true,
                   onclick: "javascript: $('#search_form').submit();"
-                -# i18n-tasks-use t('content_types_labels.#{content_type}') # this lets i18n-tasks know the key is used
-                = t("content_types_labels.#{filter['key']}")
+                = t("media_types.#{filter['key']}")
                 = "(#{filter['doc_count']})"
       %div.row
         %div.col
@@ -25,6 +24,5 @@
                       filter['key'],
                       false,
                       onclick: "javascript: $('#search_form').submit();"
-                  -# i18n-tasks-use t('content_types_labels.#{content_type}') # this lets i18n-tasks know the key is used
-                  = t("content_types_labels.#{filter['key']}")
+                  = t("media_types.#{filter['key']}")
                   = "(#{filter['doc_count']})"

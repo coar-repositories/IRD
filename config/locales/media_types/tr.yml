@@ -1,0 +1,14 @@
+---
+tr:
+  media_types:
+    books: Kitaplar
+    conference-papers: Konferans Bildirileri
+    images: Görüntüler
+    learning-objects: Öğrenme Nesneleri
+    multimedia: Multimedya
+    other: Diğer
+    patents: Patentler
+    research-articles: Araştırma Makaleleri
+    research-data: Araştırma Verileri
+    software: Yazılım
+    theses: Tezler

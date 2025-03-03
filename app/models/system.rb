@@ -31,9 +31,17 @@ class System < ApplicationRecord
   include TranslateEnum
   include Curation
   include MachineReadability
+  include ActiveSnapshot
+
+  has_snapshot_children do
+    instance = self.class.includes(:taggings).find(id)
+    {
+      taggings: instance.taggings,
+    }
+  end
 
   searchkick max_result_window: 20000, deep_paging: true
-  acts_as_taggable_on :tags
+  acts_as_taggable_on :tags, :labels
 
   def search_data
     {
@@ -48,7 +56,7 @@ class System < ApplicationRecord
       oai_status: oai_status,
       record_source: record_source,
       subcategory: subcategory,
-      media: media.map(&:name),
+      media_types: media_types,
       primary_subject: primary_subject,
       annotations: annotations.map(&:id),
       tags: tags.map(&:name),
@@ -61,7 +69,7 @@ class System < ApplicationRecord
     }
   end
 
-  scope :search_import, -> { includes(:country, :platform, :media, :annotations, :tags, :rp, :owner, :network_checks) } # avoids n+1 queries
+  scope :search_import, -> { includes(:country, :platform, :annotations, :tags, :rp, :owner, :network_checks) } # avoids n+1 queries
 
   enum :system_category, { unknown: 0, repository: 1, service: 2 }, prefix: true, default: :unknown, scopes: true
   translate_enum :system_category
@@ -379,6 +387,9 @@ class System < ApplicationRecord
     self.aliases ||= []
     self.aliases.uniq!
     self.aliases.compact_blank!
+    self.media_types ||= []
+    self.media_types.uniq!
+    self.media_types.compact_blank!
     if self.random_id.nil? || self.random_id == 0
       self.random_id = rand(1...1000000)
     end

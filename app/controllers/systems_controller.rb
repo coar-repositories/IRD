@@ -51,7 +51,7 @@ class SystemsController < ApplicationController
   def process_as_duplicate
     authorize @system
     begin
-      target_system = System.includes(:network_checks, :repoids, :media, :annotations, :users).find(params[:target_system_id])
+      target_system = System.includes(:network_checks, :repoids, :annotations, :users).find(params[:target_system_id])
       target_system.update_from_duplicate_system(@system)
       target_system.save!
       @system.add_annotation(Annotation.find("duplicate"))
@@ -365,12 +365,12 @@ class SystemsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_system
-    @system = System.includes(:network_checks, :repoids, :media, :annotations, :users).find(params[:id])
+    @system = System.includes(:network_checks, :repoids, :annotations, :users).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def system_params
-    params.require(:system).permit(:name, :short_name, :url, :description, :contact, :subcategory, :system_status, :oai_status, :platform_id, :country_id, :platform_version, :record_status, :record_source, :primary_subject, :owner_id, :rp_id, :oai_base_url, :system_category, :tag_list, :aliases => [], :user_ids => [], :annotation_ids => [], :medium_ids => [], :repoids_attributes => [[:id, :identifier_scheme, :identifier_value, :_destroy]])
+    params.require(:system).permit(:name, :short_name, :url, :description, :contact, :subcategory, :system_status, :oai_status, :platform_id, :country_id, :platform_version, :record_status, :record_source, :primary_subject, :owner_id, :rp_id, :oai_base_url, :system_category, :tag_list, :media_types =>[], :aliases => [], :user_ids => [], :annotation_ids => [], :repoids_attributes => [[:id, :identifier_scheme, :identifier_value, :_destroy]])
   end
 
   # def suggested_new_system_params

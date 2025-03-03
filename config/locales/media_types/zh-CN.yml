@@ -1,0 +1,14 @@
+---
+zh-CN:
+  media_types:
+    books: 图书
+    conference-papers: 会议论文
+    images: 图片
+    learning-objects: 学习对象
+    multimedia: 多媒体
+    other: 其他
+    patents: 专利
+    research-articles: 研究论文
+    research-data: 研究数据
+    software: 软件
+    theses: 论文

@@ -1,0 +1,14 @@
+---
+fr:
+  media_types:
+    books: Livres
+    conference-papers: Actes de conférence
+    images: Images
+    learning-objects: Objets d'apprentissage
+    multimedia: Multimédia
+    other: Autre
+    patents: Brevets
+    research-articles: Articles de recherche
+    research-data: Données de recherche
+    software: Logiciel
+    theses: Thèses

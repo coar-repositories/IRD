@@ -14,9 +14,9 @@ class AdminController < ApplicationController
     conditions[:record_status] = params[:record_status] if params[:record_status].present?
     conditions[:record_source] = params[:record_source] if params[:record_source].present?
     conditions[:annotations] = params[:annotations] if params[:annotations].present?
+    conditions[:media_types] = params[:media_types] if params[:media_types].present?
     conditions[:tags] = params[:tags] if params[:tags].present?
     conditions[:subcategory] = params[:subcategory] if params[:subcategory].present?
-    conditions[:media] = params[:media] if params[:media].present?
     conditions[:primary_subject] = params[:primary_subject] if params[:primary_subject].present?
     conditions[:rp] = params[:rp] if params[:rp].present?
     conditions[:http_code] = params[:http_code] if params[:http_code].present?
@@ -30,7 +30,7 @@ class AdminController < ApplicationController
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :media, :primary_subject, :annotations, :tags, :rp, :http_code, :metadata_formats, :identifier_schemes, :curation_issues]
+    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :primary_subject, :annotations, :media_types, :tags, :rp, :http_code, :metadata_formats, :identifier_schemes, :curation_issues]
 
     @unpaginated_systems = System.search(
       search_terms,
@@ -39,7 +39,7 @@ class AdminController < ApplicationController
       body_options: {
         track_total_hits: true
       },
-      includes: [:network_checks,:repoids,:media,:annotations,:users, :metadata_formats]
+      includes: [:network_checks, :repoids, :annotations, :users, :metadata_formats]
     )
 
     @systems = System.search(
@@ -49,7 +49,7 @@ class AdminController < ApplicationController
       aggs: facets,
       page: page,
       per_page: per_page,
-      includes: [:network_checks,:repoids,:media,:annotations,:users, :metadata_formats]
+      includes: [:network_checks, :repoids, :annotations, :users, :metadata_formats]
     )
 
     @facets = @systems.aggs

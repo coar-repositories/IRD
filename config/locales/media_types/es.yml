@@ -1,0 +1,14 @@
+---
+es:
+  media_types:
+    books: Libros
+    conference-papers: Ponencias de congresos
+    images: Imágenes
+    learning-objects: Objetos de aprendizaje
+    multimedia: Multimedia
+    other: Otro
+    patents: Patentes
+    research-articles: Artículos de investigación
+    research-data: Datos de investigación
+    software: Software
+    theses: Tesis

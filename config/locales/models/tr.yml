@@ -42,6 +42,7 @@ tr:
         contact: Temas etmek
         issues: Küratörlük Sorunları
         media: Medya Türleri
+        media_types: Medya Türleri
         oai_base_url: OAI-PMH Temel URL
         oai_status: OAI-PMH Durumu
         oai_status_list:

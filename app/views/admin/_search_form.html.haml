@@ -19,7 +19,7 @@
           = render(:partial => '_shared/facets_for_searchkick/facet_system_status',:locals => {filter_name: 'system_status', title: t('repository_status'),facet: @facets['system_status']})
           = render(:partial => '_shared/facets_for_searchkick/facet_oai_status',:locals => {filter_name: 'oai_status', title: t('oai_status'),facet: @facets['oai_status']})
           = render(:partial => '_shared/facets_for_searchkick/facet_subcategory',:locals => {filter_name: 'subcategory', title: t('repository_scope'),facet: @facets['subcategory']})
-          = render(:partial => '_shared/facets_for_searchkick/facet_media_type',:locals => {filter_name: 'media', title: t('media_type'),facet: @facets['media']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_media_type',:locals => {filter_name: 'media_types', title: t('media_type'),facet: @facets['media_types']})
           = render(:partial => '_shared/facets_for_searchkick/facet_primary_subject',:locals => {filter_name: 'primary_subject', title: t('primary_subject'),facet: @facets['primary_subject']})
           = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'metadata_formats', title: t('activerecord.models.metadata_format.other'),facet: @facets['metadata_formats']})
           = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'identifier_schemes', title: t('identifier_schemes'),facet: @facets['identifier_schemes']})
