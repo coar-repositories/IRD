@@ -3,14 +3,14 @@ class User < ApplicationRecord
   passwordless_with :email
   has_secure_password :api_key, validations: false
 
-  searchkick
-
-  def search_data
-    {
-      name: display_name,
-      email: email
-    }
-  end
+  # searchkick
+  #
+  # def search_data
+  #   {
+  #     name: display_name,
+  #     email: email
+  #   }
+  # end
 
   has_and_belongs_to_many :roles, :join_table => 'roles_users'
   has_and_belongs_to_many :systems, :join_table => 'systems_users'

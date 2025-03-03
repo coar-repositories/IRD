@@ -13,9 +13,9 @@ module Index
         Organisation.reindex
         Rails.logger.info "Organisations re-indexed OK"
 
-        Rails.logger.debug "Reindexing users..."
-        User.reindex
-        Rails.logger.info "Users re-indexed OK"
+        # Rails.logger.debug "Reindexing users..."
+        # User.reindex
+        # Rails.logger.info "Users re-indexed OK"
         success true
       rescue Exception => e
         failure e
