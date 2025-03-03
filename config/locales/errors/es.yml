@@ -5,7 +5,7 @@ es:
       models:
         system:
           attributes:
-            media:
+            media_types:
               missing: Necesita ser seleccionado
             oai_status:
               not_supported: Necesita apoyo

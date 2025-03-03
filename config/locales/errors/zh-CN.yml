@@ -5,7 +5,7 @@ zh-CN:
       models:
         system:
           attributes:
-            media:
+            media_types:
               missing: 需要选择
             oai_status:
               not_supported: 需要支持

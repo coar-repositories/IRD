@@ -5,8 +5,8 @@ ja:
       models:
         system:
           attributes:
-            media:
-              missing: 選択する必要があります
+            media_types:
+              missing: 選択する必要がある
             oai_status:
               not_supported: サポートが必要
             primary_subject:

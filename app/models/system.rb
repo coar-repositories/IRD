@@ -11,8 +11,8 @@ class PublishedSystemValidator < ActiveModel::Validator
       if record.primary_subject == "unknown"
         record.errors.add :primary_subject, :missing
       end
-      if record.media.count == 0
-        record.errors.add :media, :missing
+      if record.media_types.count == 0
+        record.errors.add :media_types, :missing
       end
     end
   end
@@ -27,9 +27,10 @@ class UrlValidator < ActiveModel::Validator
   end
 end
 
+Issue = Struct.new(:priority, :description)
+
 class System < ApplicationRecord
   include TranslateEnum
-  include Curation
   include MachineReadability
   include ActiveSnapshot
 
@@ -41,7 +42,7 @@ class System < ApplicationRecord
   end
 
   searchkick max_result_window: 20000, deep_paging: true
-  acts_as_taggable_on :tags, :labels
+  acts_as_taggable_on :tags, :labels # labels are from a *controlled* vocab, used for operations
 
   def search_data
     {

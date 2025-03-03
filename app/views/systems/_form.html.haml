@@ -56,7 +56,7 @@
         %div.col-2.field-name
           = f.label :media_types, :class=>"form-label"
         %div.col
-          -# i18n-tasks-use t('activerecord.errors.models.system.attributes.media.missing') # this lets i18n-tasks know the key is used
+          -# i18n-tasks-use t('activerecord.errors.models.system.attributes.media_types.missing') # this lets i18n-tasks know the key is used
           -# i18n-tasks-use t('activerecord.attributes.system.media_types') # this lets i18n-tasks know the key is used
           = f.collection_check_boxes :media_types, Rails.configuration.ird[:media_types].keys, :to_s,:to_s do |b|
             = b.label(class: "check_box") do

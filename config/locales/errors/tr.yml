@@ -5,7 +5,7 @@ tr:
       models:
         system:
           attributes:
-            media:
+            media_types:
               missing: seçilmesi gerekiyor
             oai_status:
               not_supported: desteklenmesi gerekiyor
