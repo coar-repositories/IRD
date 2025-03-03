@@ -2,12 +2,6 @@
 zh-CN:
   activerecord:
     attributes:
-      annotation:
-        priority_list:
-          high: 高的
-          low: 低的
-          medium: 中等的
-          none: 没有任何
       country:
         code: 代码
         continent: 大陆
@@ -27,7 +21,7 @@ zh-CN:
         latitude: 纬度
         location: 地点
         longitude: 经度
-        ror: 回流比
+        ror: 罗尔斯-罗伊斯
       repoid:
         identifier_scheme_list:
           ird: 税务局
@@ -37,7 +31,6 @@ zh-CN:
           re3data: 重新数据
           roar: 吼
       system:
-        annotations: 注解
         authorised_curators: 授权策展人
         contact: 接触
         issues: 策展问题
@@ -80,6 +73,7 @@ zh-CN:
           governmental_repository: 政府
           institutional_repository: 机构
           unknown: 未分类
+        system_labels: 标签
         system_status: 系统状态
         system_status_list:
           missing: 未找到系统
@@ -93,9 +87,6 @@ zh-CN:
         fore_name: 名字
         last_name: 姓
     models:
-      annotation:
-        one: 注解
-        other: 注解
       country:
         one: 国家
         other: 国家

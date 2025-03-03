@@ -1,7 +1,7 @@
 require "ostruct"
 
 class SystemsController < ApplicationController
-  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail annotate flag_as_archived add_repo_id process_as_duplicate mark_reviewed publish archive make_draft auto_curate change_record_status_to_under_review]
+  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label flag_as_archived add_repo_id process_as_duplicate mark_reviewed publish archive make_draft auto_curate change_record_status_to_under_review]
   after_action :verify_authorized
 
   def suggest_new_system
@@ -51,10 +51,10 @@ class SystemsController < ApplicationController
   def process_as_duplicate
     authorize @system
     begin
-      target_system = System.includes(:network_checks, :repoids, :annotations, :users).find(params[:target_system_id])
+      target_system = System.includes(:network_checks, :repoids, :users).find(params[:target_system_id])
       target_system.update_from_duplicate_system(@system)
       target_system.save!
-      @system.add_annotation(Annotation.find("duplicate"))
+      @system.label_list.add "duplicate"
       @system.record_status = :archived
       @system.save!
       redirect_back fallback_location: root_path, notice: "Processed as duplicate of #{params[:target_system_id]}"
@@ -128,18 +128,6 @@ class SystemsController < ApplicationController
       redirect_to system_url(@system), flash: { error: "Unable to add repository identifier: #{e.message}" }
     end
   end
-
-  # def authorise_existing_user
-  #   authorize @system
-  #   begin
-  #     @system.users << User.find(params[:user_id])
-  #     redirect_to system_url(@system), notice: "User was successfully authorised."
-  #   rescue ActiveRecord::RecordNotFound
-  #     redirect_to system_url(@system), flash: { error: "User not found. Please click 'Add a new user and authorise them' instead." }
-  #   rescue ActiveRecord::RecordNotUnique
-  #     redirect_to system_url(@system), flash: { alert: "User is already authorised to curate this repository." }
-  #   end
-  # end
 
   def authorise_user
     authorize @system
@@ -256,22 +244,20 @@ class SystemsController < ApplicationController
     redirect_back fallback_location: root_path, notice: "Website thumbnail removed."
   end
 
-  def annotate
+  def label
     authorize @system
     begin
-      annotation = Annotation.find(params[:annotation])
+      label = params[:label_to_process]
       if !params[:add_or_remove] || params[:add_or_remove].to_sym == :add
-        @system.add_annotation annotation
+        @system.label_list.add label
       elsif params[:add_or_remove].to_sym == :remove
-        @system.remove_annotation annotation
+        @system.label_list.remove label
       end
       @system.save!
-      redirect_back fallback_location: root_path, notice: "Changed system annotation " + t("annotations.#{annotation.id}.name")
-    rescue ActiveRecord::RecordNotUnique
-      redirect_back fallback_location: root_path, notice: "System is already annotated with " + t("annotations.#{annotation.id}.name")
+      redirect_back fallback_location: root_path, notice: "Changed system label " + t("labels.#{label}")
     rescue StandardError => e
-      Rails.logger.error "Unable to annotate system with " + t("annotations.#{annotation.id}.name") + ": #{e.message}"
-      redirect_back fallback_location: root_path, notice: "Unable to annotate system with " + t("annotations.#{annotation.id}.name")
+      Rails.logger.error "Unable to label system with " + t("labels.#{label}") + ": #{e.message}"
+      redirect_back fallback_location: root_path, notice: "Unable to label system with " + t("labels.#{label}")
     end
   end
 
@@ -365,12 +351,12 @@ class SystemsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_system
-    @system = System.includes(:network_checks, :repoids, :annotations, :users).find(params[:id])
+    @system = System.includes(:network_checks, :repoids, :users).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def system_params
-    params.require(:system).permit(:name, :short_name, :url, :description, :contact, :subcategory, :system_status, :oai_status, :platform_id, :country_id, :platform_version, :record_status, :record_source, :primary_subject, :owner_id, :rp_id, :oai_base_url, :system_category, :tag_list, :media_types =>[], :aliases => [], :user_ids => [], :annotation_ids => [], :repoids_attributes => [[:id, :identifier_scheme, :identifier_value, :_destroy]])
+    params.require(:system).permit(:name, :short_name, :url, :description, :contact, :subcategory, :system_status, :oai_status, :platform_id, :country_id, :platform_version, :record_status, :record_source, :primary_subject, :owner_id, :rp_id, :oai_base_url, :system_category, :tag_list,:label_list =>[], :media_types =>[], :aliases => [], :user_ids => [], :repoids_attributes => [[:id, :identifier_scheme, :identifier_value, :_destroy]])
   end
 
   # def suggested_new_system_params

@@ -68,7 +68,7 @@ Rails.application.routes.draw do
   resources :organisations
 
   # SYSTEMS
-  get "/systems/:id/annotate", to: "systems#annotate", as: "annotate"
+  get "/systems/:id/label", to: "systems#label", as: "label"
   get "/systems/:id/network_check", to: "systems#network_check", as: "network_check"
   get "/systems/:id/publish_record", to: "systems#publish_record"
   # get '/systems/autocomplete', to: 'systems#autocomplete', as: 'autocomplete_system_link'

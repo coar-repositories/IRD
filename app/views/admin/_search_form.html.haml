@@ -26,7 +26,7 @@
           = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'record_source', title: t('record_source'),facet: @facets['record_source']})
         %div.col
           = render(:partial => '_shared/facets_for_searchkick/facet_record_status',:locals => {filter_name: 'record_status', title: t('record_status'),facet: @facets['record_status']})
-          = render(:partial => '_shared/facets_for_searchkick/facet_annotation',:locals => {filter_name: 'annotations', title: t('activerecord.models.annotation.other'),facet: @facets['annotations']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_labels',:locals => {filter_name: 'labels', title: t('activerecord.attributes.system.system_labels'),facet: @facets['labels']})
           = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'tags', title: t('tags'),facet: @facets['tags']})
           = render(:partial => '_shared/facets_for_searchkick/facet_curation_issues',:locals => {filter_name: 'curation_issues', title: t('activerecord.attributes.system.issues'),facet: @facets['curation_issues']})
           = render(:partial => '_shared/facets_for_searchkick/facet_http_codes',:locals => {filter_name: 'http_code', title: 'HTTP',facet: @facets['http_code']})

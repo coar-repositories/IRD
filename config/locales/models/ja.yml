@@ -2,12 +2,6 @@
 ja:
   activerecord:
     attributes:
-      annotation:
-        priority_list:
-          high: 高い
-          low: 低い
-          medium: 中くらい
-          none: なし
       country:
         code: コード
         continent: 大陸
@@ -37,7 +31,6 @@ ja:
           re3data: re3データ
           roar: 轟音
       system:
-        annotations: 注釈
         authorised_curators: 認定キュレーター
         contact: 接触
         issues: キュレーションの問題
@@ -80,6 +73,7 @@ ja:
           governmental_repository: 政府
           institutional_repository: 機関
           unknown: 非公開
+        system_labels: ラベル
         system_status: システムステータス
         system_status_list:
           missing: システムが見つかりません
@@ -93,9 +87,6 @@ ja:
         fore_name: 名
         last_name: 姓
     models:
-      annotation:
-        one: 注釈
-        other: 注釈
       country:
         one: 国
         other: 国

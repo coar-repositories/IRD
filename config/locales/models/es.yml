@@ -2,12 +2,6 @@
 es:
   activerecord:
     attributes:
-      annotation:
-        priority_list:
-          high: Alto
-          low: Bajo
-          medium: Medio
-          none: Ninguno
       country:
         code: Código
         continent: Continente
@@ -37,7 +31,6 @@ es:
           re3data: re3datos
           roar: RUGIDO
       system:
-        annotations: Anotaciones
         authorised_curators: Curadores autorizados
         contact: Contacto
         issues: Problemas de curación
@@ -80,6 +73,7 @@ es:
           governmental_repository: Gubernamental
           institutional_repository: Institucional
           unknown: Sin clasificar
+        system_labels: Etiquetas
         system_status: Estado del sistema
         system_status_list:
           missing: Sistema no encontrado
@@ -93,9 +87,6 @@ es:
         fore_name: Nombre
         last_name: Apellido
     models:
-      annotation:
-        one: Anotación
-        other: Anotaciones
       country:
         one: País
         other: Países

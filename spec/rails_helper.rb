@@ -45,7 +45,7 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-  config.global_fixtures = :roles, :users, :roles_users, :countries, :organisations, :platforms, :media, :annotations, :generators,:systems
+  config.global_fixtures = :roles, :users, :roles_users, :countries, :organisations, :platforms, :generators,:systems
   Organisation.reindex
   System.reindex
   User.reindex

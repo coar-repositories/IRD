@@ -2,12 +2,6 @@
 pt:
   activerecord:
     attributes:
-      annotation:
-        priority_list:
-          high: Alto
-          low: Baixo
-          medium: Médio
-          none: Nenhum
       country:
         code: Código
         continent: Continente
@@ -37,7 +31,6 @@ pt:
           re3data: re3dados
           roar: RUGIDO
       system:
-        annotations: Anotações
         authorised_curators: Curadores Autorizados
         contact: Contato
         issues: Questões de curadoria
@@ -49,7 +42,7 @@ pt:
           offline: OAI-PMH offline
           online: OAI-PMH online
           unknown: OAI-PMH desconhecido
-          unsupported: OAI-PMH não suportado
+          unsupported: OAI-PMH sem suporte
         owner: Proprietário
         platform: Plataforma
         platform_version: Versão da plataforma
@@ -80,6 +73,7 @@ pt:
           governmental_repository: Governamental
           institutional_repository: Institucional
           unknown: Não classificado
+        system_labels: Etiquetas
         system_status: Status do sistema
         system_status_list:
           missing: Sistema não encontrado
@@ -93,9 +87,6 @@ pt:
         fore_name: Nome Próprio
         last_name: Sobrenome
     models:
-      annotation:
-        one: Anotação
-        other: Anotações
       country:
         one: País
         other: Países

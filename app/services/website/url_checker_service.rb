@@ -6,7 +6,7 @@ module Website
 
     def call(system_id, parse_metadata_flag, redirect_limit = 6)
       begin
-        @system = System.includes(:network_checks,:repoids,:media,:annotations,:users).find(system_id)
+        @system = System.includes(:network_checks,:repoids,:users).find(system_id)
         original_url = @system.url
         conn = Utilities::HttpClientConnectionWrapper.new(redirect_limit)
         response = conn.get(@system.url)

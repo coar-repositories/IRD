@@ -20,7 +20,7 @@ class SystemPolicy < ApplicationPolicy
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
-  def annotate?
+  def label?
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 

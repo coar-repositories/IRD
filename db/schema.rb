@@ -42,23 +42,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_02_154231) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "annotations", id: { type: :string, limit: 25 }, force: :cascade do |t|
-    t.boolean "restricted", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["restricted"], name: "index_annotations_on_restricted"
-  end
-
-  create_table "annotations_systems", id: false, force: :cascade do |t|
-    t.string "annotation_id", limit: 25, null: false
-    t.string "system_id", limit: 36, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["annotation_id", "system_id"], name: "index_annotations_systems_on_annotation_id_and_system_id", unique: true
-    t.index ["annotation_id"], name: "index_annotations_systems_on_annotation_id"
-    t.index ["system_id"], name: "index_annotations_systems_on_system_id"
-  end
-
   create_table "countries", id: { type: :string, limit: 10 }, force: :cascade do |t|
     t.string "name"
     t.integer "continent"
@@ -78,23 +61,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_02_154231) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_generators_on_name", unique: true
     t.index ["platform_id"], name: "index_generators_on_platform_id"
-  end
-
-  create_table "media", id: { type: :string, limit: 50 }, force: :cascade do |t|
-    t.string "name"
-    t.string "uri"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "media_systems", id: false, force: :cascade do |t|
-    t.string "medium_id", limit: 50, null: false
-    t.string "system_id", limit: 36, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["medium_id", "system_id"], name: "index_media_systems_on_medium_id_and_system_id", unique: true
-    t.index ["medium_id"], name: "index_media_systems_on_medium_id"
-    t.index ["system_id"], name: "index_media_systems_on_system_id"
   end
 
   create_table "metadata_formats", id: { type: :string, limit: 36 }, force: :cascade do |t|
@@ -346,11 +312,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_02_154231) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "annotations_systems", "annotations"
-  add_foreign_key "annotations_systems", "systems"
   add_foreign_key "generators", "platforms"
-  add_foreign_key "media_systems", "media"
-  add_foreign_key "media_systems", "systems"
   add_foreign_key "metadata_formats_systems", "metadata_formats"
   add_foreign_key "metadata_formats_systems", "systems"
   add_foreign_key "network_checks", "systems"

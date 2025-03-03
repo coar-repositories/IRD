@@ -31,7 +31,12 @@ module MachineReadability
         collection.each do |entity|
           row = []
           machine_readable_attributes.attributes.each do |attribute|
-            row << eval(attribute[:method])
+            attribute = eval(attribute[:method])
+            if attribute.is_a?(Array)
+              row << attribute.join("|")
+            else
+              row << attribute
+            end
           end
           csv << row
         end

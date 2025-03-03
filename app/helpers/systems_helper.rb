@@ -20,8 +20,8 @@ module SystemsHelper
     returned_identifier.html_safe
   end
 
-  def annotation_flags(annotation)
-    "<span class='badge rounded-pill text-bg-light'>#{annotation.name}</span>".html_safe
+  def label_flags(label)
+    "<span class='badge rounded-pill text-bg-light'>#{label}</span>".html_safe
   end
 
   def tag_flags(tag)

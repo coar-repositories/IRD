@@ -6,7 +6,7 @@ module OaiPmh
 
     def call(system_id, redirect_limit = 6)
       begin
-        @system = System.includes(:network_checks, :repoids, :annotations, :users).find(system_id)
+        @system = System.includes(:network_checks, :repoids,  :users).find(system_id)
         original_url = @system.oai_base_url
         unless original_url.present?
           Rails.logger.warn("OAI-PMH Base URL missing for OAI-PMH ListMetadataFormats #{original_url}")

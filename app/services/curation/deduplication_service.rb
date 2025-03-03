@@ -17,7 +17,7 @@ module Curation
               end
               keeper.update_from_duplicate_system(doppelganger)
               keeper.save!
-              doppelganger.add_annotation(Annotation.find('duplicate'))
+              doppelganger.label_list.add('duplicate')
               doppelganger.record_status = :archived
               doppelganger.save!
             end

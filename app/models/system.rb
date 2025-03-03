@@ -59,8 +59,8 @@ class System < ApplicationRecord
       subcategory: subcategory,
       media_types: media_types,
       primary_subject: primary_subject,
-      annotations: annotations.map(&:id),
       tags: tags.map(&:name),
+      labels: labels.map(&:name),
       rp: rp.display_name,
       http_code: network_checks.url_checks.first&.http_code,
       metadata_formats: metadata_formats.map(&:name),
@@ -70,7 +70,7 @@ class System < ApplicationRecord
     }
   end
 
-  scope :search_import, -> { includes(:country, :platform, :annotations, :tags, :rp, :owner, :network_checks) } # avoids n+1 queries
+  scope :search_import, -> { includes(:country, :platform, :tags, :rp, :owner, :network_checks) } # avoids n+1 queries
 
   enum :system_category, { unknown: 0, repository: 1, service: 2 }, prefix: true, default: :unknown, scopes: true
   translate_enum :system_category
@@ -100,7 +100,6 @@ class System < ApplicationRecord
   has_many :repoids, dependent: :delete_all, strict_loading: false # strict_loading: false because of the de-duplication code
   accepts_nested_attributes_for :repoids, allow_destroy: true, reject_if: lambda { |attributes| attributes["identifier_value"].blank? }
   has_and_belongs_to_many :users, :join_table => "systems_users", strict_loading: false
-  has_and_belongs_to_many :annotations, :join_table => "annotations_systems", strict_loading: false
   has_and_belongs_to_many :metadata_formats, :join_table => "metadata_formats_systems", strict_loading: false
   has_one_attached :thumbnail
 
@@ -108,7 +107,7 @@ class System < ApplicationRecord
   scope :in_country, ->(country_id) { where(country_id: country_id) }
   scope :no_thumbnail, -> { where.missing(:thumbnail_attachment) }
   scope :publicly_viewable, -> { where.not(record_status: :unknown).where.not(record_status: :draft).where.not(record_status: :archived) }
-  scope :duplicates, -> { includes(:annotations).where(annotations: { id: "duplicate" }) }
+  # scope :duplicates, -> { includes(:annotations).where(annotations: { id: "duplicate" }) }
 
   validates :name, :url, presence: true
   validates_with UrlValidator
@@ -138,7 +137,7 @@ class System < ApplicationRecord
                                                                   # MachineReadableAttribute.new(:repo_ids, "entity.repo_ids"),
                                                                   MachineReadableAttribute.new(:oai_base_url, "entity.oai_base_url"),
                                                                   MachineReadableAttribute.new(:oai_status, "entity.oai_status"),
-                                                                  MachineReadableAttribute.new(:media, "entity.media.collect(&:name)"),
+                                                                  MachineReadableAttribute.new(:media_types, "entity.media_types"),
                                                                   MachineReadableAttribute.new(:primary_subject, "entity.primary_subject"),
                                                                   MachineReadableAttribute.new(:reviewed, "entity.reviewed"),
                                                                   MachineReadableAttribute.new(:metadata_formats, "entity.metadata_formats.collect(&:name)")
@@ -150,8 +149,8 @@ class System < ApplicationRecord
     Machine_readable_attributes
   end
 
-  def is_duplicate?
-    self.annotations.include?(Annotation.duplicate)
+  def self.unrestricted_labels
+    Rails.configuration.ird[:labels].select { |k, v| v[:restricted] == false }.keys
   end
 
   def display_name
@@ -194,22 +193,6 @@ class System < ApplicationRecord
 
   def change_record_status_to_under_review!
     self.record_status = :under_review
-  end
-
-  def add_annotation(annotation)
-    self.annotations << annotation unless self.annotations.include? annotation
-  end
-
-  def remove_annotation(annotation)
-    self.annotations.delete(annotation) if self.annotations.include? annotation
-  end
-
-  def add_medium(medium)
-    self.media << medium unless self.media.include? medium
-  end
-
-  def remove_medium(medium)
-    self.media.delete(medium) if self.media.include? medium
   end
 
   def add_repo_id(repo_id_scheme, repo_id_value)
@@ -299,8 +282,10 @@ class System < ApplicationRecord
         end
       end
     end
-    duplicate_system.media.each do |medium|
-      self.add_medium(medium)
+    if (self.media_types.is_a? Array) && (self.media_types.empty?)
+      duplicate_system.media_types.each do |media_type|
+        self.media_types << media_type
+      end
     end
     self.oai_base_url = duplicate_system.oai_base_url if self.oai_base_url.blank?
     if self.unknown_platform?

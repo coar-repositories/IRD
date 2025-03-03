@@ -1,0 +1,9 @@
+---
+tr:
+  labels:
+    candidate-defunct: İşlevini yitirmiş olabilir
+    candidate-out-of-scope: Kapsam dışı olabilir
+    defunct: Feshedilmiş
+    duplicate: Kopyalamak
+    flag: Bayraklı
+    out-of-scope: Kapsam dışı

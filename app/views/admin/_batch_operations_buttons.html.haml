@@ -38,16 +38,17 @@
       = link_to t('buttons.make_record_draft'), admin_path(request.query_parameters.except(:lang).merge({operation: 'make_draft'})), class: 'btn btn-secondary btn-sm operations-button'
       %br
       = link_to t('buttons.archive_record'), admin_path(request.query_parameters.except(:lang).merge({operation: 'set_record_reviewed'})), class: 'btn btn-primary btn-sm operations-button'
+
   %div.row
     %div.col-2.field-name
       %div.form-label
-        Annotations
+        Labels
     %div.col
-      - Annotation.unrestricted.each do |annotation|
-        = link_to t("annotations.#{annotation.id}.name"), admin_path(request.query_parameters.except(:lang).merge({operation: 'annotate',annotation_to_process: annotation.id, add_or_remove: 'add'})), class: 'btn btn-outline-success btn-sm operations-button button-with-tick'
+      - System.unrestricted_labels.each do |label|
+        = link_to t("labels.#{label}"), admin_path(request.query_parameters.except(:lang).merge({operation: 'label',label_to_process: label, add_or_remove: 'add'})), class: 'btn btn-outline-success btn-sm operations-button button-with-tick'
       %br
-      - Annotation.unrestricted.each do |annotation|
-        = link_to t("annotations.#{annotation.id}.name"), admin_path(request.query_parameters.except(:lang).merge({operation: 'annotate',annotation_to_process: annotation.id, add_or_remove: 'remove'})), class: 'btn btn-outline-danger btn-sm operations-button button-with-cross'
+      - System.unrestricted_labels.each do |label|
+        = link_to t("labels.#{label}"), admin_path(request.query_parameters.except(:lang).merge({operation: 'label',label_to_process: label, add_or_remove: 'add'})), class: 'btn btn-outline-danger btn-sm operations-button button-with-cross'
   %div.row
     %div.col-2.field-name
       %div.form-label
@@ -55,5 +56,3 @@
     %div.col
       = link_to t('buttons.purge_thumbnails'), admin_path(request.query_parameters.except(:lang).merge({operation: 'purge_thumbnails'})), class: 'btn btn-danger btn-sm operations-button'
       = link_to t('buttons.auto_curate'), admin_path(request.query_parameters.except(:lang).merge({operation: 'auto_curate'})), class: 'btn btn-primary btn-sm operations-button'
-
-      -# =

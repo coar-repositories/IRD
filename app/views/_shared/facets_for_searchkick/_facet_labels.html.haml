@@ -6,21 +6,26 @@
       %div.col
         %ul.selected
           - facet['buckets'].each do |filter|
-            - if params[filter_name].try(:include?, filter["key"])
+            - if params[filter_name].try(:include?, filter["key"].to_s)
               %li
                 = check_box_tag "#{filter_name}[]",
                   filter['key'],
                   true,
                   onclick: "javascript: $('#search_form').submit();"
-                = t("annotations.#{filter['key']}.name") + " (#{filter['doc_count']})"
+                -# i18n-tasks-use t('labels.#{label}') # this lets i18n-tasks know the key is used
+                = t("labels.#{filter['key']}")
+                = "(#{filter['doc_count']})"
+                -# = "#{filter['key']} (#{filter['doc_count']})"
       %div.row
         %div.col
           %ul.selectable
             - facet['buckets'].each do |filter|
-              - unless params[filter_name].try(:include?, filter["key"])
+              - unless params[filter_name].try(:include?, filter["key"].to_s)
                 %li
                   = check_box_tag "#{filter_name}[]",
                       filter['key'],
                       false,
                       onclick: "javascript: $('#search_form').submit();"
-                  = t("annotations.#{filter['key']}.name") + " (#{filter['doc_count']})"
+                  = t("labels.#{filter['key']}")
+                  = "(#{filter['doc_count']})"
+                  -# = "#{t(filter['key'])} (#{filter['doc_count']})"

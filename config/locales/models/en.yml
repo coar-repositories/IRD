@@ -2,12 +2,6 @@
 en:
   activerecord:
     attributes:
-      annotation:
-        priority_list:
-          high: High
-          low: Low
-          medium: Medium
-          none: None
       country:
         code: Code
         continent: Continent
@@ -37,7 +31,6 @@ en:
           re3data: re3data
           roar: ROAR
       system:
-        annotations: Annotations
         authorised_curators: Authorised Curators
         contact: Contact
         issues: Curation Issues
@@ -80,6 +73,7 @@ en:
           governmental_repository: Governmental
           institutional_repository: Institutional
           unknown: Unclassified
+        system_labels: Labels
         system_status: System Status
         system_status_list:
           missing: System not found
@@ -93,9 +87,6 @@ en:
         fore_name: Forename
         last_name: Surname
     models:
-      annotation:
-        one: Annotation
-        other: Annotations
       country:
         one: Country
         other: Countries

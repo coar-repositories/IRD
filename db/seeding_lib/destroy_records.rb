@@ -4,8 +4,6 @@ def destroy_records
   Country.destroy_all
   Generator.destroy_all
   Platform.destroy_all
-  Annotation.destroy_all
-  Medium.destroy_all
   User.destroy_all
   Role.destroy_all
 end

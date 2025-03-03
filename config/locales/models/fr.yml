@@ -2,12 +2,6 @@
 fr:
   activerecord:
     attributes:
-      annotation:
-        priority_list:
-          high: Haut
-          low: Faible
-          medium: Moyen
-          none: Aucun
       country:
         code: Code
         continent: Continent
@@ -37,7 +31,6 @@ fr:
           re3data: re3data
           roar: RUGIR
       system:
-        annotations: Annotations
         authorised_curators: Conservateurs agréés
         contact: Contact
         issues: Problèmes de conservation
@@ -80,6 +73,7 @@ fr:
           governmental_repository: Gouvernemental
           institutional_repository: Institutionnel
           unknown: Non classé
+        system_labels: Étiquettes
         system_status: État du système
         system_status_list:
           missing: Système non trouvé
@@ -93,9 +87,6 @@ fr:
         fore_name: Prénom
         last_name: Nom de famille
     models:
-      annotation:
-        one: Annotation
-        other: Annotations
       country:
         one: Pays
         other: Pays

@@ -81,18 +81,30 @@
           %div.col
             -# i18n-tasks-use t('activerecord.attributes.system.system_status_list.#{status}') # this lets i18n-tasks know the key is used
             = f.select :system_status, options_for_select(System.translated_system_statuses.map { |translation, k, _v| [translation, k] },@system.system_status), :class=>"form-control"
-      - if policy(@system).annotate?
+
+
+
+
+
+      - if policy(@system).label?
         %div.row.align-items-top.field
           %div.col-2.field-name
-            -# i18n-tasks-use t('activerecord.attributes.system.annotations') # this lets i18n-tasks know the key is used
-            = f.label :annotations, :class=>"form-label"
+            -# i18n-tasks-use t('activerecord.attributes.system.system_labels') # this lets i18n-tasks know the key is used
+            = f.label :system_labels, :class=>"form-label"
           %div.col
-            = f.collection_check_boxes :annotation_ids, Annotation.unrestricted, :id, :id do |b|
+            = f.collection_check_boxes :label_list, Rails.configuration.ird[:labels].keys, :to_s,:to_s do |b|
               = b.label(class: "check_box") do
-                = b.check_box(class: "check_box")
-                - # i18n-tasks-use t("annotations.#{b.object.id}.description") # this lets i18n-tasks know the key is used
-                = t("annotations.#{b.object.id}.name")
+                = b.check_box(class: "check_box", checked: @system.label_list.include?(b.object.to_s))
+                -# i18n-tasks-use t('media_types.#{b.object}') # this lets i18n-tasks know the key is used
+                = t(b.object.to_s, scope: :labels)
               %br
+
+
+
+
+
+
+
       - if policy(@system).tag?
         %div.row.align-items-top.field
           %div.col-2.field-name

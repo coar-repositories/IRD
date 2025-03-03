@@ -7,7 +7,7 @@ module Website
 
     def call(system_id,refresh_thumbnail)
       begin
-        system = System.includes(:network_checks,:repoids,:media,:annotations,:users).find(system_id)
+        system = System.includes(:network_checks,:repoids,:users).find(system_id)
         driver = nil
         unless !system || system.url.blank?
           if (system.thumbnail.attached? == false) || refresh_thumbnail
