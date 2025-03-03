@@ -14,6 +14,7 @@ zenodo:
   oai_base_url: 'https://zenodo.org/oai2d'
   platform_id: 'invenio'
   country_id: 'CH'
+  media_types: ['books']
 
 
 

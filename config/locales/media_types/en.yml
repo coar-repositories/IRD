@@ -2,13 +2,13 @@
 en:
   media_types:
     books: Books
-    other: Other
-    theses: Theses
-    patents: Patents
-    research-data: Research Data
     conference-papers: Conference Papers
-    software: Software
     images: Images
-    research-articles: Research Articles
     learning-objects: Learning Objects
     multimedia: Multimedia
+    other: Other
+    patents: Patents
+    research-articles: Research Articles
+    research-data: Research Data
+    software: Software
+    theses: Theses
