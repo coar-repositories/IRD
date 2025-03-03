@@ -83,26 +83,18 @@
             = f.select :system_status, options_for_select(System.translated_system_statuses.map { |translation, k, _v| [translation, k] },@system.system_status), :class=>"form-control"
 
 
-
-
-
       - if policy(@system).label?
         %div.row.align-items-top.field
           %div.col-2.field-name
             -# i18n-tasks-use t('activerecord.attributes.system.system_labels') # this lets i18n-tasks know the key is used
             = f.label :system_labels, :class=>"form-label"
           %div.col
-            = f.collection_check_boxes :label_list, Rails.configuration.ird[:labels].keys, :to_s,:to_s do |b|
+            = f.collection_check_boxes :label_list, System.unrestricted_labels, :to_s,:to_s do |b|
               = b.label(class: "check_box") do
                 = b.check_box(class: "check_box", checked: @system.label_list.include?(b.object.to_s))
                 -# i18n-tasks-use t('media_types.#{b.object}') # this lets i18n-tasks know the key is used
                 = t(b.object.to_s, scope: :labels)
               %br
-
-
-
-
-
 
 
       - if policy(@system).tag?
@@ -111,7 +103,7 @@
             -# i18n-tasks-use t('activerecord.attributes.system.tags') # this lets i18n-tasks know the key is used
             = f.label :tags, :class=>"form-label"
           %div.col
-            = f.text_field :tag_list, :class=>"form-control"
+            = f.text_field :tag_list,value: @system.tag_list.to_s, :class=>"form-control"
 
       %div.row.align-items-center.field
         %div.col-2.field-name
