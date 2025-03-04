@@ -7,7 +7,7 @@ banner_message: ""
 webapp:
   image:
     repository: "antleaf/ird_app"
-    tag: "1.47"
+    tag: "1.48"
     pullPolicy: Always
   service:
     port: 80
@@ -27,7 +27,7 @@ opensearch:
 jobs:
   image:
     repository: "antleaf/ird_app"
-    tag: "1.47"
+    tag: "1.48"
     pullPolicy: Always
   resources:
     requests:
@@ -38,7 +38,6 @@ jobs:
       cpu: "1"
   logLevel: info
 env:
-  ACTIVE_STORAGE_SERVICE: linode
   ALLOW_TEST_USER_ACCOUNTS_WITHOUT_VERIFICATION: false
   DEFAULT_PLATFORM: "_unknown"
   FEEDBACK_LINK: "https://github.com/coar-repositories/IRD/issues/new?template=early-feedback.md"
@@ -60,7 +59,6 @@ env:
   RAILS_SERVER_PORT: 80
   RP_FOR_ARCHIVED_RECORDS: "a1e87a55-b200-49b0-95a0-0f36832730c5"
   RP_FOR_PUBLISHED_RECORDS: "d0dafe16-fbe7-4392-aa11-c5c3466ba8d7"
-  S3_BUCKET: ird-thumbnails
   S3_ENDPOINT: https://eu-central-1.linodeobjects.com
   S3_REGION: default
   SMTP_ADDRESS: smtp.gmail.com

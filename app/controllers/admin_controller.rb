@@ -102,15 +102,8 @@ class AdminController < ApplicationController
         # redirect_to admin_url(request.query_parameters.except(:operation, :lang)), notice: "Started auto-curating #{@unpaginated_systems.count} systems..."
         redirect_back fallback_location: root_path, notice: "Purged #{count} duplicates."
       when :purge_thumbnails
-        count = 0
-        @unpaginated_systems.each do |system|
-          if system.thumbnail.attached?
-            system.thumbnail.purge
-            count += 1
-          end
-        end
-        # redirect_to admin_url(request.query_parameters.except(:operation, :lang)), notice: "Started purging thumbnails from #{count} systems..."
-        redirect_back fallback_location: root_path, notice: "Started purging thumbnails from #{count} systems..."
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| PurgeThumbnailJob.new(system.id) })
+        redirect_back fallback_location: root_path, notice: "Started purging thumbnails from #{@unpaginated_systems.count} systems..."
       when :allocate_rp
         rp = Organisation.find_by_id(params[:rp_id])
         if rp

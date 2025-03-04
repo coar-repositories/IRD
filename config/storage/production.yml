@@ -1,0 +1,11 @@
+linode: &linode
+  service: S3
+  endpoint: <%= ENV.fetch("S3_ENDPOINT") %>
+  region: <%= ENV.fetch("S3_REGION") %>
+  access_key_id: <%= ENV.fetch("S3_ACCESS_KEY_ID") %>
+  secret_access_key: <%= ENV.fetch("S3_SECRET_ACCESS_KEY") %>
+  bucket: ird-default
+
+thumbnails:
+  <<: *linode
+  bucket: ird-thumbnails

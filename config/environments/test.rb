@@ -4,7 +4,7 @@
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
-  config.active_storage.service = ENV['ACTIVE_STORAGE_SERVICE'].to_sym
+  config.active_storage.service = :local
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "debug")
 
   # Settings specified here will take precedence over those in config/application.rb.

@@ -102,7 +102,7 @@ class System < ApplicationRecord
   accepts_nested_attributes_for :repoids, allow_destroy: true, reject_if: lambda { |attributes| attributes["identifier_value"].blank? }
   has_and_belongs_to_many :users, :join_table => "systems_users", strict_loading: false
   has_and_belongs_to_many :metadata_formats, :join_table => "metadata_formats_systems", strict_loading: false
-  has_one_attached :thumbnail
+  has_one_attached :thumbnail, service: :thumbnails
 
   scope :has_owner, -> { where.not(owner_id: nil) }
   scope :in_country, ->(country_id) { where(country_id: country_id) }
@@ -259,10 +259,6 @@ class System < ApplicationRecord
     rescue Exception => e
       Rails.logger.warn "unable to add normal id (#{url}) for system #{self.id}: #{e.message}"
     end
-  end
-
-  def purge_thumbnail
-    self.thumbnail.purge if self.thumbnail.attached?
   end
 
   def unknown_platform?
