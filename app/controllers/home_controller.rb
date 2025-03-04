@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     Country.translated_continents.each do |translated_continent|
       # unless ['global', 'antarctica'].include? translated_continent[1]
       systems = System.joins(:country).where(countries: { continent: translated_continent[2] }).publicly_viewable
-      continent_data << [translated_continent[0], systems.count]
+      continent_data << ["#{translated_continent[0]} (#{systems.count})", systems.count]
       # end
     end
     @continent_graph_data = continent_data
