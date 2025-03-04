@@ -5,5 +5,10 @@ class Repoid < ApplicationRecord
   translate_enum :identifier_scheme
 
   belongs_to :system
+  scope :third_party, -> { where.not(identifier_scheme: [0,5]) }
+
+  def to_s
+    "#{self.identifier_scheme}:#{self.identifier_value}"
+  end
 
 end

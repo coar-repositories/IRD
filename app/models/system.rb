@@ -138,6 +138,7 @@ class System < ApplicationRecord
                                                                   MachineReadableAttribute.new(:software_version, "entity.platform_version",true),
                                                                   MachineReadableAttribute.new(:country, "entity.country_id",false),
                                                                   MachineReadableAttribute.new(:responsible_organisation, "entity.rp.name if entity.rp",false),
+                                                                  MachineReadableAttribute.new(:other_registry_identifiers, "entity.repoids.third_party.collect(&:to_s)",false),
                                                                   # MachineReadableAttribute.new(:repo_ids, "entity.repo_ids"),
                                                                   MachineReadableAttribute.new(:oai_base_url, "entity.oai_base_url",true),
                                                                   MachineReadableAttribute.new(:oai_status, "entity.oai_status",false),
