@@ -28,15 +28,13 @@ class Organisation < ApplicationRecord
   before_save :extract_short_name_from_aliases
 
   Machine_readable_attributes = MachineReadableAttributeSet.new([
-                                                                  MachineReadableAttribute.new(:id, "entity.id"),
-                                                                  MachineReadableAttribute.new(:name, "entity.name"),
-                                                                  MachineReadableAttribute.new(:ror, "entity.ror"),
-                                                                  MachineReadableAttribute.new(:website, "entity.website"),
-                                                                  MachineReadableAttribute.new(:country_id, "entity.country_id"),
-                                                                  MachineReadableAttribute.new(:repositories_owned, "entity.ownerships.count"),
-                                                                  MachineReadableAttribute.new(:responsibilities, "entity.responsibilities.count"),
-                                                                  MachineReadableAttribute.new(:created_at, "entity.created_at"),
-                                                                  MachineReadableAttribute.new(:updated_at, "entity.updated_at")
+                                                                  MachineReadableAttribute.new(:id, :string, "entity.id"),
+                                                                  MachineReadableAttribute.new(:name, :string, "entity.name"),
+                                                                  MachineReadableAttribute.new(:ror, :string, "entity.ror"),
+                                                                  MachineReadableAttribute.new(:website, :string, "entity.website"),
+                                                                  MachineReadableAttribute.new(:country_id, :string, "entity.country_id"),
+                                                                  MachineReadableAttribute.new(:repositories_owned, :integer, "entity.ownerships.count"),
+                                                                  MachineReadableAttribute.new(:responsibilities, :integer, "entity.responsibilities.count")
                                                                 ])
 
   def self.default_rp_for_archived_records_id

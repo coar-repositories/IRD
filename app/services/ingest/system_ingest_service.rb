@@ -1,88 +1,61 @@
 # frozen_string_literal: true
 
 module Ingest
-  class ProposedSystem
-    attr_accessor :record_source, :local_id, :dry_run, :tags, :identifiers, :attributes
-
-    def initialize(record_source, local_id, dry_run, tags)
-      @record_source = record_source
-      @local_id = local_id
-      @dry_run = dry_run
-      @tags = tags
-      @identifiers = {}
-      @attributes = System.new.attributes
-    end
-
-    def add_attribute(key, value)
-      @attributes[key] = value
-    end
-
-    def get_attribute(key)
-      @attributes[key]
-    end
-
-  end
+  SystemIngestServiceResultPayload = Struct.new(:system, :updated)
 
   class SystemExistsIngestException < StandardError; end
 
   class SystemIngestService < ApplicationService
 
-    def call(proposed_system)
+    def call(candidate_system)
       begin
-        existing_system = check_for_existing_system(proposed_system)
-        if existing_system
-          update_repoids(existing_system, proposed_system)
-          failure SystemExistsIngestException.new(existing_system.id)
+        system = nil
+        updated = false
+        system = System.find(candidate_system.get_attribute("id")) if candidate_system.get_attribute("id").present?
+        if system
+          Rails.logger.debug("Updating existing system with id '#{system.id}'....")
+          system.update!(candidate_system.attributes) unless candidate_system.dry_run
+          Rails.logger.info("System with id '#{system.id}' updated")
+          candidate_system.identifiers.each_pair { |scheme, value| Repoid.find_or_create_by(system: system, identifier_scheme: scheme.to_sym, identifier_value: value) } unless candidate_system.dry_run
+          Rails.logger.debug("Repoids for system with id '#{system.id}' updated")
+          updated = true # updated is true because input specified system ID to update
         else
-          system = System.new(proposed_system.attributes)
-          system.save! unless proposed_system.dry_run
-          system.tag_list = proposed_system.tags unless proposed_system.dry_run
-          update_repoids(system, proposed_system)
-          success system
+          system = check_for_existing_system(candidate_system)
+          if system
+            raise SystemExistsIngestException.new("Found existing system with id '#{system.id}' - will NOT update") # fail because input did not specify system ID to update, so this was an unexpected potential duplicate
+          else
+            system = System.new(candidate_system.attributes)
+            candidate_system.tags.each { |tag| system.tag_list.add(tag) }
+            Rails.logger.debug("Creating new system with id '#{system.id}'....")
+            system.save! unless candidate_system.dry_run
+            Rails.logger.info("System with id '#{system.id}' created")
+            candidate_system.identifiers.each_pair { |scheme, value| Repoid.find_or_create_by(system: system, identifier_scheme: scheme.to_sym, identifier_value: value) } unless candidate_system.dry_run
+            Rails.logger.debug("Repoids for system with id '#{system.id}' updated")
+            updated = false
+          end
         end
+        success SystemIngestServiceResultPayload.new(system, updated)
+      rescue SystemExistsIngestException => e
+        Rails.logger.warn(e.message)
+        failure e
       rescue Exception => e
-        Rails.logger.error("Error ingesting system with name '#{proposed_system.get_attribute("name")}' - #{e.message}")
+        Rails.logger.error("Error ingesting system with name '#{candidate_system.get_attribute("name")}' - #{e.message}")
         failure e
       end
     end
 
     private
 
-    def update_repoids(system, proposed_system)
-      unless proposed_system.local_id.blank? || proposed_system.record_source.blank?
-        begin
-          # Rails.logger.debug "Adding Repoid for system #{system.id} - #{proposed_system.record_source} - #{proposed_system.local_id}"
-          Repoid.create!(system: system, identifier_scheme: proposed_system.record_source.to_sym, identifier_value: proposed_system.local_id) unless proposed_system.dry_run
-        rescue Exception => e
-          Rails.logger.warn("Error creating Repoid for system #{system.id} - #{e.message}")
-        end
-      end
-      unless proposed_system.identifiers.blank?
-        proposed_system.identifiers.each_pair do |scheme, value|
-          begin
-            # Rails.logger.debug "Adding Repoid for system #{system.id} - #{proposed_system.record_source} - #{proposed_system.local_id}"
-            Repoid.create!(system: system, identifier_scheme: scheme.to_sym, identifier_value: value) unless proposed_system.dry_run
-          rescue Exception => e
-            Rails.logger.warn("Error creating Repoid for system #{system.id} - #{e.message}")
-          end
-        end
-      end
-    end
-
-    def check_for_existing_system(proposed_system)
+    def check_for_existing_system(candidate_system)
       begin
-        if proposed_system.local_id
-          repo_id = Repoid.find_by(identifier_scheme: proposed_system.record_source.to_sym, identifier_value: proposed_system.local_id)
-          return System.find(repo_id.system_id) if repo_id
+        if candidate_system.get_attribute("id").present?
+          return System.find(candidate_system.get_attribute("id"))
         end
-        if proposed_system.identifiers.present?
-          proposed_system.identifiers.each_pair do |scheme, value|
-            repo_id = Repoid.find_by(identifier_scheme: scheme.to_sym, identifier_value: value)
-            # Rails.logger.debug("Found existing system with identifier #{scheme} - #{value}") if repo_id
-            return System.find(repo_id.system_id) if repo_id
-          end
+        candidate_system.identifiers.each_pair do |scheme, value|
+          repoids = Repoid.where(identifier_scheme: scheme.to_sym, identifier_value: value)
+          return System.find(repoids.first.system_id) if repoids.count == 1
         end
-        normalised_url = Utilities::UrlUtility.get_normalised_url(proposed_system.get_attribute("url"))
+        normalised_url = Utilities::UrlUtility.get_normalised_url(candidate_system.get_attribute("url"))
         normal_id = Normalid.find_by_url(normalised_url)
         return System.find(normal_id.system_id) if normal_id
         nil

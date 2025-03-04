@@ -6,77 +6,83 @@ module Ingest
 
   class MultipleOrganisationsMatchException < StandardError; end
 
+  class RowErrorReport
+    attr_reader :row_number, :message
+    def initialize(row_number, message)
+      @row_number = row_number
+      @message = [message]
+    end
+
+    def report
+      "Row #{row_number}: #{message}"
+    end
+  end
+
   class SystemIngestBatchCsvService < ApplicationService
     require_relative "system_ingest_service"
     require "csv"
     require "fileutils"
 
-    def call(data_file_path, record_source, dry_run)
-      records_created = 0
-      records_existing = 0
-      errors = 0
+    def call(data, record_source, dry_run)
+      records_created = []
+      records_updated = []
+      records_not_updated = []
+      errors = []
       begin
-        CSV.foreach(data_file_path, headers: true) do |row|
+        CSV.parse(data, headers: true).each_with_index do |row,row_number|
           begin
-            proposed_system = ProposedSystem.new(record_source, row["local_id"], dry_run, nil)
-            proposed_system.add_attribute("system_category", row["system_category"]) if row["system_category"]
-            proposed_system.add_attribute("name", row["name"]) if row["name"]
-            proposed_system.add_attribute("url", row["url"]) if row["url"]
-            proposed_system.add_attribute("platform_id", row["platform"]) if row["platform"]
-            proposed_system.add_attribute("platform_version", row["platform_version"]) if row["platform_version"]
-            proposed_system.add_attribute("contact", row["contact"]) if row["contact"]
-            proposed_system.add_attribute("oai_base_url", row["oai_base_url"]) if row["oai_base_url"]
-            proposed_system.add_attribute("country_id", row["country_id"]) if row["country_id"]
-            if row["repository_type"]
-              case row["repository_type"]
-              when "institutional"
-                proposed_system.add_attribute("subcategory", :institutional_repository)
-              when "generalist"
-                proposed_system.add_attribute("subcategory", :generalist_repository)
-              when "disciplinary"
-                proposed_system.add_attribute("subcategory", :disciplinary_repository)
-              when "governmental"
-                proposed_system.add_attribute("subcategory", :governmental_repository)
-              else
-                proposed_system.add_attribute("subcategory", :unknown)
-              end
-            else
-              proposed_system.add_attribute("subcategory", :unknown)
-            end
+            # [ :owner_id, :owner_homepage, :owner_ror, :owner_name, :repository_type, :, :, :, :
+            candidate_system = CandidateSystem.new(record_source, dry_run, nil)
+            candidate_system.add_attribute("id", row["id"])
+            candidate_system.add_attribute("system_category", "repository")
+            candidate_system.add_attribute("subcategory", row["repository_type"])
+            candidate_system.add_attribute("name", row["name"])
+            candidate_system.add_attribute("url", row["homepage"])
+            candidate_system.add_attribute("platform_id", row["software"])
+            candidate_system.add_attribute("platform_version", row["software_version"])
+            candidate_system.add_attribute("contact", row["contact"])
+            candidate_system.add_attribute("oai_base_url", row["oai_base_url"])
+            candidate_system.add_attribute("primary_subject", row["primary_subject"])
+            candidate_system.add_attribute("media_types", row["media_types"].split("|")) if row["media_types"] && !row["media_types"].blank?
             org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
-            proposed_system.add_attribute("owner_id", org.id) if org
-            if row["identifiers"]
-              identifiers = row["identifiers"].split("|")
+            candidate_system.add_attribute("owner_id", org.id) if org
+            if row["other_registry_identifiers"]
+              identifiers = row["other_registry_identifiers"].split("|")
               identifiers.each do |identifier|
                 scheme, value = identifier.split(":")
-                proposed_system.identifiers[scheme] = value
+                candidate_system.add_identifier(scheme, value)
               end
             end
-            # puts proposed_system.inspect
-            service_result = SystemIngestService.call(proposed_system)
+            service_result = SystemIngestService.call(candidate_system)
             if service_result.failure?
               if service_result.error.is_a?(SystemExistsIngestException)
-                records_existing += 1
-                raise service_result.error
+                records_not_updated << RowErrorReport.new(row_number, service_result.error.message)
               else
-                errors += 1
-                raise service_result.error
+                errors << RowErrorReport.new(row_number, service_result.error.message)
+              end
+              raise service_result.error
+            else
+              if service_result.payload.updated
+                records_updated << service_result.payload.system.id
+              else
+                records_created << service_result.payload.system.id
               end
             end
-            records_created += 1
-            system = service_result.payload
-            Rails.logger.info(" Created system with ID: #{system.id}, Name: #{system.name}, URL: #{system.url}")
-            Rails.logger.debug(" Created system: #{system.inspect}")
           rescue SystemExistsIngestException => e
-            Rails.logger.warn "Found duplicate system: #{e.message}"
+            Rails.logger.warn "Error batch ingesting system with name '#{row["name"]}' - #{e.message}"
           rescue Exception => e
-            Rails.logger.error "Error ingesting system with name '#{row["name"]}' - #{e.message}"
+            Rails.logger.error "Error batch ingesting system with name '#{row["name"]}' - #{e.message}"
           end
         end
       end
-      Rails.logger.info("Records created: #{records_created}")
-      Rails.logger.info("Records existing: #{records_existing}")
-      Rails.logger.info("Errors: #{errors}")
+      Rails.logger.info("Records created: #{records_created.count}")
+      records_created.each {  |record| puts record}
+      Rails.logger.info("Records updated: #{records_updated.count}")
+      records_updated.each {  |record| puts record}
+      Rails.logger.info("Existing records NOT updated: #{records_not_updated.count}")
+      records_not_updated.each {  |record| puts record}
+      Rails.logger.info("Errors: #{errors.count}")
+      errors.each {|error| puts error.report}
       success true
     rescue Exception => e
       failure e

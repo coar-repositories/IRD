@@ -24,12 +24,12 @@ class User < ApplicationRecord
 
 
   Machine_readable_attributes = MachineReadableAttributeSet.new([
-                                                                  MachineReadableAttribute.new(:id, "entity.id"),
-                                                                  MachineReadableAttribute.new(:last_name, "entity.last_name"),
-                                                                  MachineReadableAttribute.new(:fore_name, "entity.fore_name"),
-                                                                  MachineReadableAttribute.new(:email, "entity.email"),
-                                                                  MachineReadableAttribute.new(:created_at, "entity.created_at"),
-                                                                  MachineReadableAttribute.new(:updated_at, "entity.updated_at")
+                                                                  MachineReadableAttribute.new(:id, :string, "entity.id"),
+                                                                  MachineReadableAttribute.new(:last_name, :string, "entity.last_name"),
+                                                                  MachineReadableAttribute.new(:fore_name, :string, "entity.fore_name"),
+                                                                  MachineReadableAttribute.new(:email, :string, "entity.email"),
+                                                                  MachineReadableAttribute.new(:created_at, :timestamp, "entity.created_at"),
+                                                                  MachineReadableAttribute.new(:updated_at, :timestamp, "entity.updated_at")
                                                                 ])
 
   def self.machine_readable_attributes

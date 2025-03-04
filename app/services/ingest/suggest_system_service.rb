@@ -6,11 +6,11 @@ module Ingest
 
     def call(params)
       begin
-        suggested_system = ProposedSystem.new("user", nil, false, nil)
-        suggested_system.name = params[:name]
-        suggested_system.url = params[:url]
-        suggested_system.system_category = params[:system_category]
-        service_result = SystemIngestService.call(suggested_system)
+        candidate_system = CandidateSystem.new("user", nil,  nil)
+        candidate_system.add_attribute("name", params[:name])
+        candidate_system.add_attribute("url", params[:url])
+        candidate_system.add_attribute("system_category", params[:system_category])
+        service_result = SystemIngestService.call(candidate_system)
         if service_result.failure?
           if service_result.error.is_a?(SystemExistsIngestException)
             system = System.find_by_id(service_result.error.message)
