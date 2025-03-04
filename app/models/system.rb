@@ -124,24 +124,27 @@ class System < ApplicationRecord
   after_create :add_url_to_normalids_on_create
 
   Machine_readable_attributes = MachineReadableAttributeSet.new([
-                                                                  MachineReadableAttribute.new(:id, "entity.id"),
-                                                                  MachineReadableAttribute.new(:name, "entity.name"),
-                                                                  MachineReadableAttribute.new(:url, "entity.url"),
-                                                                  MachineReadableAttribute.new(:owner, "entity.owner.name if entity.owner"),
-                                                                  MachineReadableAttribute.new(:repository_type, "entity.subcategory"),
-                                                                  MachineReadableAttribute.new(:system_status, "entity.system_status"),
+                                                                  MachineReadableAttribute.new(:id, "entity.id",true),
+                                                                  MachineReadableAttribute.new(:name, "entity.name",true),
+                                                                  MachineReadableAttribute.new(:homepage, "entity.url",true),
+                                                                  MachineReadableAttribute.new(:owner_id, "entity.owner.id if entity.owner",true),
+                                                                  MachineReadableAttribute.new(:owner_homepage, "entity.owner.website if entity.owner",true),
+                                                                  MachineReadableAttribute.new(:owner_ror, "entity.owner.ror if entity.owner",true),
+                                                                  MachineReadableAttribute.new(:owner_name, "entity.owner.name if entity.owner",true),
+                                                                  MachineReadableAttribute.new(:repository_type, "entity.subcategory",true),
+                                                                  MachineReadableAttribute.new(:system_status, "entity.system_status",false),
                                                                   # MachineReadableAttribute.new(:record_status, "entity.record_status"),
-                                                                  MachineReadableAttribute.new(:software, "entity.platform.name if entity.platform"),
-                                                                  MachineReadableAttribute.new(:software_version, "entity.platform_version"),
-                                                                  MachineReadableAttribute.new(:country, "entity.country_id"),
-                                                                  MachineReadableAttribute.new(:responsible_organisation, "entity.rp.name if entity.rp"),
+                                                                  MachineReadableAttribute.new(:software, "entity.platform_id",true),
+                                                                  MachineReadableAttribute.new(:software_version, "entity.platform_version",true),
+                                                                  MachineReadableAttribute.new(:country, "entity.country_id",false),
+                                                                  MachineReadableAttribute.new(:responsible_organisation, "entity.rp.name if entity.rp",false),
                                                                   # MachineReadableAttribute.new(:repo_ids, "entity.repo_ids"),
-                                                                  MachineReadableAttribute.new(:oai_base_url, "entity.oai_base_url"),
-                                                                  MachineReadableAttribute.new(:oai_status, "entity.oai_status"),
-                                                                  MachineReadableAttribute.new(:media_types, "entity.media_types"),
-                                                                  MachineReadableAttribute.new(:primary_subject, "entity.primary_subject"),
-                                                                  MachineReadableAttribute.new(:reviewed, "entity.reviewed"),
-                                                                  MachineReadableAttribute.new(:metadata_formats, "entity.metadata_formats.collect(&:name)")
+                                                                  MachineReadableAttribute.new(:oai_base_url, "entity.oai_base_url",true),
+                                                                  MachineReadableAttribute.new(:oai_status, "entity.oai_status",false),
+                                                                  MachineReadableAttribute.new(:media_types, "entity.media_types",true),
+                                                                  MachineReadableAttribute.new(:primary_subject, "entity.primary_subject",true),
+                                                                  MachineReadableAttribute.new(:reviewed, "entity.reviewed",false),
+                                                                  MachineReadableAttribute.new(:metadata_formats, "entity.metadata_formats.collect(&:name)",false)
                                                                 # MachineReadableAttribute.new(:created, "entity.created_at"),
                                                                 # MachineReadableAttribute.new(:updated, "entity.updated_at")
                                                                 ])
