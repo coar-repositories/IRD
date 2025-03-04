@@ -6,7 +6,7 @@ gem "translate_enum"
 gem "haml-rails"
 # gem 'html2haml' #temporarily
 gem "colorize"
-gem "pundit", "~> 2.4"
+gem "pundit", "~> 2.5"
 gem "pagy", "~> 9.3" # omit patch digit
 gem "public_suffix"
 gem "thor", "~> 1.3", ">= 1.3.2"
