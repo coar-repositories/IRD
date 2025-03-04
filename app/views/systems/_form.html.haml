@@ -159,7 +159,7 @@
             -# i18n-tasks-use t('attributes.identifiers') # this lets i18n-tasks know the key is used
             = f.label :identifiers, :class=>"form-label"
           %div.col
-            = f.fields_for :repoids do |repoid_form|
+            = f.fields_for :repoids, f.object.repoids.third_party do |repoid_form|
               %div.row
                 %div.col-2.field-name
                   Scheme
