@@ -27,9 +27,10 @@ class UrlValidator < ActiveModel::Validator
   end
 end
 
-Issue = Struct.new(:priority, :description)
+
 
 class System < ApplicationRecord
+  Issue = Struct.new(:priority, :description)
   include TranslateEnum
   include MachineReadability
   include ActiveSnapshot
