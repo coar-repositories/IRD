@@ -65,14 +65,6 @@ class Organisation < ApplicationRecord
     end
   end
 
-  def add_alias(new_name)
-    unless self.aliases
-      self.aliases = []
-    end
-    self.aliases << new_name
-    self.aliases.uniq!
-  end
-
   def self.rp_for_country(country_id)
     rp = nil
     rps = self.where(rp: true, country_id: country_id)
@@ -105,6 +97,7 @@ class Organisation < ApplicationRecord
 
   def initialise_for_saving
     self.aliases ||= []
+    self.aliases.uniq!
     self.aliases.compact_blank!
   end
 

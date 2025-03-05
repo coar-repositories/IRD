@@ -100,7 +100,7 @@ class SystemsController < ApplicationController
   def make_draft
     authorize @system
     begin
-      @system.make_draft!
+      @system.record_status = :draft
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record made draft."
     rescue Exception => e

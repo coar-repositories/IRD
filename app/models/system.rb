@@ -115,7 +115,6 @@ class System < ApplicationRecord
   validates_with PublishedSystemValidator
 
   before_validation :set_defaults
-  before_save :set_id
   before_save :initialise_for_saving
   before_save :update_country_before_save
   before_save :curation_check
@@ -153,16 +152,14 @@ class System < ApplicationRecord
   end
 
   def self.unrestricted_labels
-    Rails.configuration.ird[:labels].select { |k, v| v[:restricted] == false }.keys
+    Rails.configuration.ird[:labels].select { |_, v| v[:restricted] == false }.keys
   end
 
   def display_name
     if !self.short_name.blank?
       self.short_name
-    elsif !self.name.blank?
-      self.name
     else
-      "Unnamed system"
+      self.name
     end
   end
 
@@ -189,11 +186,6 @@ class System < ApplicationRecord
     self.mark_reviewed!
   end
 
-  def make_draft!
-    self.record_status = :draft
-    self.reviewed = nil
-  end
-
   def change_record_status_to_under_review!
     self.record_status = :under_review
   end
@@ -204,13 +196,6 @@ class System < ApplicationRecord
     rescue Exception => e
       Rails.logger.warn "unable to add repo id (#{repo_id_scheme}, #{repo_id_value}) for system #{self.id}: #{e.message}"
     end
-  end
-
-  def add_alias(new_name)
-    unless self.aliases
-      self.aliases = []
-    end
-    self.aliases << new_name
   end
 
   def network_check(network_check_type)
@@ -291,9 +276,9 @@ class System < ApplicationRecord
       self.platform = duplicate_system.platform
       self.platform_version = duplicate_system.platform_version
     end
-    self.add_alias(duplicate_system.name)
+    self.aliases << duplicate_system.name
     duplicate_system.aliases.each do |a|
-      self.add_alias(a)
+      self.aliases << a
     end
     self.owner = duplicate_system.owner unless self.owner
     self.primary_subject = duplicate_system.primary_subject if self.primary_subject_unknown?
@@ -305,12 +290,6 @@ class System < ApplicationRecord
   end
 
   private
-
-  def set_id
-    if self.id == nil
-      self.id = SecureRandom.uuid
-    end
-  end
 
   def update_normalids_after_save
     if self.saved_change_to_url? && !self.url.blank?
@@ -363,6 +342,9 @@ class System < ApplicationRecord
   end
 
   def initialise_for_saving
+    if self.id == nil
+      self.id = SecureRandom.uuid
+    end
     # hashes
     self.metadata ||= {}
     self.formats ||= {}
