@@ -48,7 +48,6 @@ RSpec.configure do |config|
   config.global_fixtures = :roles, :users, :roles_users, :countries, :organisations, :platforms, :generators,:systems
   Organisation.reindex
   System.reindex
-  User.reindex
 
   config.before(:each, type: :system) do
     # driven_by :selenium, using: :headless_firefox, screen_size: [ 1400, 1400 ] # use :firefox (not :headless_firefox) to see what's going on
