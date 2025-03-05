@@ -14,7 +14,7 @@ zh-CN:
       - 它支持 OAI-PMH
 
       #### 数据管理
-      此目录中的元数据是从存储库本身收集的，并定期更新。一些元数据会自动更新，但元数据记录也由称为“负责组织”的组织管理，这些组织分配人员和资源以维护元数据的准确性和及时性。
+      此目录中的元数据是从存储库本身收集的，并定期更新。一些元数据会自动更新，但元数据记录也由称为“负责组织”的组织管理，这些组织分配人员和资源来维护元数据的准确性和及时性。
 
       #### 许可证
       IRD 中的数据可以不受限制地重复使用。更正式地说，它是根据 [CC0 许可证](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1) 授权的。
@@ -23,6 +23,17 @@ zh-CN:
       IRD 的软件由 [Antleaf](https://www.antleaf.com/) 开发、部署和维护。此软件的 [开源代码](https://github.com/coar-repositories/IRD) 根据 [MIT 许可证](https://opensource.org/license/mit) 授权。
 
       ### 致谢
+      #### IRD 工作组
+      COAR 谨感谢 IRD 工作组对 IRD 发展的宝贵贡献：
+
+      - Iryna Kuchma，EIFL
+      - Pierre Lasou，拉瓦尔大学
+      - Lautaro Matas，LA Referencia
+      - Pedro Príncipe，米尼奥大学
+      - Kazu Yamaji，国家信息学研究所
+      - Kathleen Shearer，COAR
+      - Paul Walk，Antleaf
+      - Virginia Barbour，开放获取澳大利亚（前成员）
 
       #### 研究组织注册表 (ROR)
       IRD 使用经许可从 [研究组织注册表 (ROR)](https://ror.org/) 下载的数据。

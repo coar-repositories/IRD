@@ -23,9 +23,20 @@ tr:
       IRD için yazılım [Antleaf](https://www.antleaf.com/) tarafından geliştirilmekte, dağıtılmakta ve bakımı yapılmaktadır. Bu yazılımın [açık kaynak kodu](https://github.com/coar-repositories/IRD) [MIT Lisansı](https://opensource.org/license/mit) altında lisanslanmıştır.
 
       ### Teşekkürler
+      #### IRD Çalışma Grubu
+      COAR, IRD Çalışma Grubuna IRD'nin geliştirilmesine yaptıkları değerli katkılardan dolayı teşekkür etmek ister:
+
+      - Iryna Kuchma, EIFL
+      - Pierre Lasou, Université de Laval
+      - Lautaro Matas, LA Referencia
+      - Pedro Príncipe, University of Minho
+      - Kazu Yamaji, National Institute of Informatics
+      - Kathleen Shearer, COAR
+      - Paul Walk, Antleaf
+      - Virginia Barbour, Open Access Australasia (eski üye)
 
       #### Araştırma Kuruluşu Kaydı (ROR)
-      IRD, [Araştırma Kuruluşu Kaydı'ndan (ROR)](https://ror.org/) izin alınarak indirilen verileri kullanır.
+      IRD, [Araştırma Kuruluşu Kaydı (ROR)](https://ror.org/) adresinden izin alınarak indirilen verileri kullanır.
       IRD, mümkün olduğunda dizindeki kuruluşların adlarını belirsizleştirmek için ROR'u kullanır.
 
       #### Diğer bilgi kaynakları
