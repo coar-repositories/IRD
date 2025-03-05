@@ -67,11 +67,17 @@ module MachineReadability
             attribute_value = eval(attribute.method)
             case attribute.data_type
             when :array
-              row << attribute_value.join("|")
-            when :string
-              row << attribute_value
+              if attribute_value.is_a? Array
+                row << attribute_value.join("|")
+              else
+                row << nil
+              end
             else
-              row << attribute_value.to_s
+              if attribute_value
+                row << attribute_value.to_s
+              else
+                row << attribute_value
+              end
             end
           end
           csv << row
