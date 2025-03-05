@@ -2,7 +2,8 @@ $('document').ready(function () {
     $('#autocomplete_system_owner').autocomplete({
         source: '/organisations/autocomplete',
         select: function (event, ui) {
-            $('#system_owner_id').val(ui.item.value);
+            $('#system_owner_id').val(ui.item.value); // for the system edit form
+            $('#owner_id').val(ui.item.value); // for the "suggest a repository modal"
             $('#autocomplete_system_owner').val(ui.item.label);
             return false;
         },

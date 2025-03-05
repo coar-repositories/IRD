@@ -6,6 +6,7 @@ class SystemsController < ApplicationController
 
   def suggest_new_system
     authorize :system
+    puts "params: #{params.inspect}"
     service_result = Ingest::SuggestSystemService.call(params)
     if service_result.success?
       redirect_back fallback_location: root_path, flash: { message: "A new repository has been added to IRD. It will be processed shortly." }

@@ -21,7 +21,15 @@
             %div.col
               = f.text_field :url, :class=>"form-control"
           = f.hidden_field :system_category, :value => :repository
-
+          %div.row.align-items-center.field
+            %div.col-2.field-name
+              -# i18n-tasks-use t('activerecord.attributes.system.owner') # this lets i18n-tasks know the key is used
+              = f.label :owner,:class=>"form-label"
+            %div.col
+              = f.hidden_field :owner_id
+              = text_field_tag 'autocomplete_system_owner', nil, id: 'autocomplete_system_owner',:class=>"form-control"
+              -# %a{onclick:"document.getElementById('system_owner_id').value = ''",class:'btn btn-danger',href:''}
+              -#   Clear
         %div.modal-footer
           .actions
             = f.submit t("buttons.save_record"), :class => 'btn btn-primary'

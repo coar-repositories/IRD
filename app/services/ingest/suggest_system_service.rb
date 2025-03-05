@@ -10,6 +10,7 @@ module Ingest
         candidate_system.add_attribute("name", params[:name])
         candidate_system.add_attribute("url", params[:url])
         candidate_system.add_attribute("system_category", params[:system_category])
+        candidate_system.add_attribute("owner_id", params[:owner_id])
         service_result = SystemIngestService.call(candidate_system)
         if service_result.failure?
           if service_result.error.is_a?(SystemExistsIngestException)

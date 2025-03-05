@@ -15,6 +15,8 @@ module Ingest
         if system
           Rails.logger.debug("Updating existing system with id '#{system.id}'....")
           system.update!(candidate_system.attributes) unless candidate_system.dry_run
+          candidate_system.tags.each { |tag| system.tag_list.add(tag) } if candidate_system.tags
+          system.save! unless candidate_system.dry_run
           Rails.logger.info("System with id '#{system.id}' updated")
           candidate_system.identifiers.each_pair { |scheme, value| Repoid.find_or_create_by(system: system, identifier_scheme: scheme.to_sym, identifier_value: value) } unless candidate_system.dry_run
           Rails.logger.debug("Repoids for system with id '#{system.id}' updated")
@@ -22,10 +24,10 @@ module Ingest
         else
           system = check_for_existing_system(candidate_system)
           if system
-            raise SystemExistsIngestException.new("Found existing system with id '#{system.id}' - will NOT update") # fail because input did not specify system ID to update, so this was an unexpected potential duplicate
+            raise SystemExistsIngestException.new("Found existing system:  <a href='/systems/#{system.id}'>#{system.name}</a>") # fail because input did not specify system ID to update, so this was an unexpected potential duplicate
           else
             system = System.new(candidate_system.attributes)
-            candidate_system.tags.each { |tag| system.tag_list.add(tag) }
+            candidate_system.tags.each { |tag| system.tag_list.add(tag) } if candidate_system.tags
             Rails.logger.debug("Creating new system with id '#{system.id}'....")
             system.save! unless candidate_system.dry_run
             Rails.logger.info("System with id '#{system.id}' created")
