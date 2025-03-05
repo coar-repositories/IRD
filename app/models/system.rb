@@ -144,7 +144,8 @@ class System < ApplicationRecord
                                                                   MachineReadableAttribute.new(:media_types, :array, "entity.media_types",true),
                                                                   MachineReadableAttribute.new(:primary_subject, :string, "entity.primary_subject",true),
                                                                   MachineReadableAttribute.new(:reviewed, :timestamp, "entity.reviewed",false),
-                                                                  MachineReadableAttribute.new(:metadata_formats, :array, "entity.metadata_formats.collect(&:name)",false)
+                                                                  MachineReadableAttribute.new(:metadata_formats, :array, "entity.metadata_formats.collect(&:name)",false),
+                                                                  MachineReadableAttribute.new(:record_status, :string, "entity.record_status",true)
                                                                 ])
 
   def self.machine_readable_attributes

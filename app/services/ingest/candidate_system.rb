@@ -23,5 +23,9 @@ module Ingest
     def get_attribute(key)
       @attributes[key]
     end
+
+    def normalise_attributes!
+      @attributes["media_types"] = [] if @attributes["media_types"].nil?
+    end
   end
 end

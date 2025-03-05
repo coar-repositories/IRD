@@ -6,33 +6,18 @@ module Ingest
 
   class MultipleOrganisationsMatchException < StandardError; end
 
-  class RowErrorReport
-    attr_reader :row_number, :message
-    def initialize(row_number, message)
-      @row_number = row_number
-      @message = [message]
-    end
-
-    def report
-      "Row #{row_number}: #{message}"
-    end
-  end
-
   class SystemIngestBatchCsvService < ApplicationService
     require_relative "system_ingest_service"
     require "csv"
     require "fileutils"
 
-    def call(data, record_source, dry_run)
-      records_created = []
-      records_updated = []
-      records_not_updated = []
-      errors = []
+    def call(data, record_source, tags, dry_run)
+      batch_report = SystemIngestBatchReport.new
       begin
         CSV.parse(data, headers: true).each_with_index do |row,row_number|
           begin
             # [ :owner_id, :owner_homepage, :owner_ror, :owner_name, :repository_type, :, :, :, :
-            candidate_system = CandidateSystem.new(record_source, dry_run, nil)
+            candidate_system = CandidateSystem.new(record_source, dry_run, tags)
             candidate_system.add_attribute("id", row["id"])
             candidate_system.add_attribute("system_category", "repository")
             candidate_system.add_attribute("subcategory", row["repository_type"])
@@ -43,6 +28,7 @@ module Ingest
             candidate_system.add_attribute("contact", row["contact"])
             candidate_system.add_attribute("oai_base_url", row["oai_base_url"])
             candidate_system.add_attribute("primary_subject", row["primary_subject"])
+            candidate_system.add_attribute("record_status", row["record_status"])
             candidate_system.add_attribute("media_types", row["media_types"].split("|")) if row["media_types"] && !row["media_types"].blank?
             org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
             candidate_system.add_attribute("owner_id", org.id) if org
@@ -53,19 +39,22 @@ module Ingest
                 candidate_system.add_identifier(scheme, value)
               end
             end
+            candidate_system.normalise_attributes!
             service_result = SystemIngestService.call(candidate_system)
             if service_result.failure?
               if service_result.error.is_a?(SystemExistsIngestException)
-                records_not_updated << RowErrorReport.new(row_number, service_result.error.message)
+                batch_report.add_record_not_updated(BatchItemReport.new(row_number, service_result.error.message))
               else
-                errors << RowErrorReport.new(row_number, service_result.error.message)
+                batch_report.add_error(BatchItemReport.new(row_number, service_result.error.message))
               end
               raise service_result.error
             else
               if service_result.payload.updated
-                records_updated << service_result.payload.system.id
+                batch_report.add_record_updated(service_result.payload.system.id)
+                elsif service_result.payload.created
+                  batch_report.add_record_created(service_result.payload.system.id)
               else
-                records_created << service_result.payload.system.id
+                batch_report.add_record_unchanged(BatchItemReport.new(row_number, "System unchanged"))
               end
             end
           rescue SystemExistsIngestException => e
@@ -75,15 +64,8 @@ module Ingest
           end
         end
       end
-      Rails.logger.info("Records created: #{records_created.count}")
-      records_created.each {  |record| puts record}
-      Rails.logger.info("Records updated: #{records_updated.count}")
-      records_updated.each {  |record| puts record}
-      Rails.logger.info("Existing records NOT updated: #{records_not_updated.count}")
-      records_not_updated.each {  |record| puts record}
-      Rails.logger.info("Errors: #{errors.count}")
-      errors.each {|error| puts error.report}
-      success true
+      Rails.logger.info("Batch ingest operation completed: #{batch_report.report}")
+      success batch_report
     rescue Exception => e
       failure e
     end
