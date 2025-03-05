@@ -26,6 +26,7 @@ module Ingest
 
     def normalise_attributes!
       @attributes["media_types"] = [] if @attributes["media_types"].nil?
+      @tags = [] if @tags.nil?
     end
   end
 end

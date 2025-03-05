@@ -15,20 +15,23 @@ module Ingest
         system = System.find(candidate_system.get_attribute("id")) if candidate_system.get_attribute("id").present?
         if system
           Rails.logger.debug("Updating existing system with id '#{system.id}'....")
-          puts "Media types = #{candidate_system.get_attribute('media_types')}"
           system.assign_attributes(candidate_system.attributes)
-          # system.update!(candidate_system.attributes) unless candidate_system.dry_run
-          candidate_system.tags.each { |tag| system.tag_list.add(tag) } if candidate_system.tags
-          if !system.changes.empty?
+          unless system.changes.empty?
+            updated = true
             system.save! unless candidate_system.dry_run
-            updated = true # updated is true because input specified system ID to update
             Rails.logger.info("System with id '#{system.id}' updated")
-          else
-            updated = false # updated is true because input specified system ID to update
+          end
+          candidate_system.tags.each { |tag| system.tag_list.add(tag) }
+          candidate_system.identifiers.each_pair do |scheme, value|
+            if Repoid.find_by(system: system, identifier_scheme: scheme.to_sym, identifier_value: value).nil?
+              Repoid.create!(system: system, identifier_scheme: scheme.to_sym, identifier_value: value) unless candidate_system.dry_run
+              updated = true
+              Rails.logger.debug("Repoids for system with id '#{system.id}' updated")
+            end
+          end
+          unless updated
             Rails.logger.info("System with id '#{system.id}' unchanged")
           end
-          candidate_system.identifiers.each_pair { |scheme, value| Repoid.find_or_create_by(system: system, identifier_scheme: scheme.to_sym, identifier_value: value) } unless candidate_system.dry_run
-          Rails.logger.debug("Repoids for system with id '#{system.id}' updated")
         else
           system = check_for_existing_system(candidate_system)
           if system
