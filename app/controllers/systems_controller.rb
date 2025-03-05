@@ -100,7 +100,7 @@ class SystemsController < ApplicationController
   def make_draft
     authorize @system
     begin
-      @system.record_status = :draft
+      @system.draft!
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record made draft."
     rescue Exception => e
@@ -111,7 +111,7 @@ class SystemsController < ApplicationController
   def change_record_status_to_under_review
     authorize @system
     begin
-      @system.change_record_status_to_under_review!
+      @system.review!
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record set to 'under review'."
     rescue Exception => e

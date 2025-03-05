@@ -5,7 +5,7 @@ class RecordMakeUnderReviewJob < ApplicationJob
 
   def perform(system_id)
     system = System.includes(:network_checks,:repoids,:users).find(system_id)
-    system.change_record_status_to_under_review!
+    system.review!
     system.save!
   end
 end

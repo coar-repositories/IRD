@@ -41,7 +41,7 @@ class SystemPolicy < ApplicationPolicy
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
   end
 
-  def make_draft?
+  def draft?
     # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record))
     # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
     User.valid_user?(@user) && @user.has_role?(:administrator)

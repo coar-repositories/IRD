@@ -56,7 +56,7 @@
           = link_to 'Change to under review!', change_record_status_to_under_review_url(@system.id), :class => 'btn btn-sm btn-warning'
         - if policy(@system).archive? && !@system.record_status_archived?
           = link_to 'Archive!', archive_url(@system.id), :class => 'btn btn-danger btn-sm'
-        - if policy(@system).make_draft? && !@system.record_status_draft?
+        - if policy(@system).draft? && !@system.record_status_draft?
           = link_to 'Return to draft status!', make_draft_url(@system.id), :class => 'btn btn-secondary btn-sm'
         - if policy(@system).publish? && !@system.record_status_published?
           = link_to "#{t('buttons.publish_record')}!", publish_url(@system.id), :class => 'btn btn-success btn-sm'

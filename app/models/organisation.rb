@@ -45,12 +45,12 @@ class Organisation < ApplicationRecord
     Organisation.find(self.default_rp_for_archived_records_id)
   end
 
-  def self.default_rp_for_published_records_id
-    Rails.application.config.ird[:default_models][:rp_for_published_records]
+  def self.default_rp_for_live_records_id
+    Rails.application.config.ird[:default_models][:rp_for_live_records]
   end
 
-  def self.default_rp_for_published_records
-    Organisation.find(self.default_rp_for_published_records_id)
+  def self.default_rp_for_live_records
+    Organisation.find(self.default_rp_for_live_records_id)
   end
 
   def self.machine_readable_attributes

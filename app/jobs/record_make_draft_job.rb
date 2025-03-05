@@ -5,7 +5,7 @@ class RecordMakeDraftJob < ApplicationJob
 
   def perform(system_id)
     system = System.includes(:network_checks,:repoids,:users).find(system_id)
-    system.record_status = :draft
+    system.draft!
     system.save!
   end
 end

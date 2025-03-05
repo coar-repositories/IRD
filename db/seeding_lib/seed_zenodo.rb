@@ -21,7 +21,7 @@ def seed_zenodo
     url: 'https://zenodo.org',
     record_source: 'ird',
     owner: Organisation.find('4ab4ad1a-0d3d-40ef-824c-cd20b3173e78'),
-    rp: Organisation.default_rp_for_published_records,
+    rp: Organisation.default_rp_for_live_records,
     system_category: :repository,
     subcategory: :aggregating_repository,
     primary_subject: :multidisciplinary,

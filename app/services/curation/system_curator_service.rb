@@ -11,7 +11,7 @@ module Curation
         service_result = Curation::SystemNamesProcessorService.call(system)
         system = service_result.payload if service_result.success?
         service_result = Curation::SystemRpUpdaterService.call(system)
-        # system = service_result.payload if service_result.success?
+        system = service_result.payload if service_result.success?
         # # service_result = Curation::SystemCandidateDefunctCheckerService.call(system)
         # # system = service_result.payload if service_result.success?
         service_result = Curation::OaiPmhBaseUrlNormalisingService.call(system)
