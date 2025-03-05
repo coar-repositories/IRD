@@ -18,7 +18,6 @@ module Ingest
           system.assign_attributes(candidate_system.attributes)
           unless system.changes.empty?
             updated = true
-            system.save! unless candidate_system.dry_run
             Rails.logger.info("System with id '#{system.id}' updated")
           end
           candidate_system.tags.each { |tag| system.tag_list.add(tag) }
@@ -32,6 +31,8 @@ module Ingest
           unless updated
             Rails.logger.info("System with id '#{system.id}' unchanged")
           end
+          system.mark_reviewed!
+          system.save! unless candidate_system.dry_run # always save even if record unchanged to update reviewed_at timestamp
         else
           system = check_for_existing_system(candidate_system)
           if system
