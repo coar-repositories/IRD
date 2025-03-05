@@ -1,5 +1,5 @@
 ARG RUBY_VERSION=3.3.7
-FROM antleaf/ird_base:0.32
+FROM antleaf/ird_base:0.33
 ARG IRD_APP_VERSION
 ENV APP_VERSION=$IRD_APP_VERSION
 RUN echo "Bulding Docker image version: $APP_VERSION"
