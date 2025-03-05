@@ -106,9 +106,7 @@ module Website
         if @system.unknown_platform?
           Rails.logger.debug "Attempting to match platform...."
           Platform.where(trusted: true).order(:match_order).each do |platform|
-            unless @system.unknown_platform?
-              break
-            end
+            break unless @system.unknown_platform?
             if platform.matchers.present?
               platform.matchers.each do |matcher|
                 begin
