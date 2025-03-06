@@ -4,14 +4,23 @@ allow_user_accounts_without_verification: false
 test_user_accounts: ""
 # banner_message: "demonstration_only_text"
 banner_message: ""
+web_and_jobs_image:
+  repository: "antleaf/ird_app"
+#  tag: "1.52" #this is defaulting to .Chart.AppVersion
+  pullPolicy: Always
 webapp:
-  image:
-    repository: "antleaf/ird_app"
-    tag: "1.52"
-    pullPolicy: Always
   service:
     port: 80
     containerPort: 3000
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "750m"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
+  logLevel: info
+jobs:
   resources:
     requests:
       memory: "1Gi"
@@ -24,19 +33,6 @@ opensearch:
   url: "http://opensearch:9200"
   service:
     port: 9200
-jobs:
-  image:
-    repository: "antleaf/ird_app"
-    tag: "1.52"
-    pullPolicy: Always
-  resources:
-    requests:
-      memory: "1Gi"
-      cpu: "750m"
-    limits:
-      memory: "2Gi"
-      cpu: "1"
-  logLevel: info
 env:
   ALLOW_TEST_USER_ACCOUNTS_WITHOUT_VERIFICATION: false
   DEFAULT_PLATFORM: "_unknown"

@@ -24,7 +24,8 @@ spec:
         runAsUser: 0
       containers:
         - name: {{ include "ird.webapp.name" . }}
-          image: "{{ .Values.webapp.image.repository }}:{{ .Values.webapp.image.tag }}"
+{{/*          image: "{{ .Values.webapp.image.repository }}:{{ .Values.webapp.image.tag }}"*/}}
+          image: "{{ .Values.web_and_jobs_image.repository }}:{{ default .Chart.AppVersion .Values.web_and_jobs_image.tag }}"
           imagePullPolicy: {{ .Values.webapp.image.pullPolicy }}
           command: ["bash", "-c"]
           # args: ["bundle exec rails db:migrate && bundle exec rails assets:precompile && bundle exec thor index:reindex && ./bin/rails server"]
@@ -67,7 +68,8 @@ spec:
             - secretRef:
                 name: ird-secrets
         - name: {{ include "ird.jobs.name" . }}
-          image: "{{ .Values.jobs.image.repository }}:{{ .Values.jobs.image.tag }}"
+{{/*          image: "{{ .Values.jobs.image.repository }}:{{ .Values.jobs.image.tag }}"*/}}
+          image: "{{ .Values.web_and_jobs_image.repository }}:{{ default .Chart.AppVersion .Values.web_and_jobs_image.tag }}"
           imagePullPolicy: {{ .Values.jobs.image.pullPolicy }}
           command: ["bash", "-c"]
           # args: ["bundle exec rails solid_queue:start"]
