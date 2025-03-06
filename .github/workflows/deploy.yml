@@ -29,7 +29,7 @@ jobs:
             --set-literal secrets.RAILS_MASTER_KEY=${{ secrets.IRD_RAILS_MASTER_KEY}} ./chart/ird
       - name: Run Smoke Tests
         id: smokeTest
-        run: ruby ./.github/workflows/smoke-test.rb
+        run: exit 1
         continue-on-error: true
       - name: Rollback Helm
         if: failure() && steps.smokeTest.outcome == 'failure'
