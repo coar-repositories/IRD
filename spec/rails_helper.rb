@@ -45,10 +45,9 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-  config.global_fixtures = :roles, :users, :roles_users, :countries, :organisations, :platforms, :media, :annotations, :generators,:systems
+  config.global_fixtures = :roles, :users, :roles_users, :countries, :organisations, :platforms, :generators,:systems
   Organisation.reindex
   System.reindex
-  User.reindex
 
   config.before(:each, type: :system) do
     # driven_by :selenium, using: :headless_firefox, screen_size: [ 1400, 1400 ] # use :firefox (not :headless_firefox) to see what's going on

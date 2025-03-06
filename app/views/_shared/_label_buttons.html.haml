@@ -1,0 +1,5 @@
+- System.unrestricted_labels.each do |label|
+  - if system.label_list.include?(label.to_s)
+    = link_to t("labels.#{label}"), label_path(system,request.query_parameters.except(:lang).merge({label_to_process: label, add_or_remove: 'remove'})),:class=>"btn btn-outline-danger btn-sm button-with-cross"
+  - else
+    = link_to t("labels.#{label}"), label_path(system,request.query_parameters.except(:lang).merge({label_to_process: label, add_or_remove: 'add'})),:class=>"btn btn-outline-success btn-sm button-with-tick"

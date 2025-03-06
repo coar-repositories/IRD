@@ -19,10 +19,22 @@ ja:
       #### ライセンス
       IRD 内のデータは、制限なく再利用できます。より正式には、[CC0 ライセンス](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1) に基づいてライセンスされています。
 
-      #### ソフトウェアの開発とメンテナンス
-      IRD のソフトウェアは、[Antleaf](https://www.antleaf.com/) によって開発、展開、およびメンテナンスされています。このソフトウェアの [オープンソース コード](https://github.com/coar-repositories/IRD) は、[MIT ライセンス](https://opensource.org/license/mit) に基づいてライセンスされています。
+      #### ソフトウェアの開発と保守
+      IRD のソフトウェアは、[Antleaf](https://www.antleaf.com/) によって開発、展開、保守されています。このソフトウェアの [オープンソース コード](https://github.com/coar-repositories/IRD) は、[MIT ライセンス](https://opensource.org/license/mit) に基づいてライセンスされています。
 
       ### 謝辞
+
+      #### IRD ワーキング グループ
+      COAR は、IRD の開発に貴重な貢献をしてくださった IRD ワーキング グループに感謝の意を表します。
+
+      - Iryna Kuchma、EIFL
+      - Pierre Lasou、ラバル大学
+      - Lautaro Matas、LA Referencia
+      - Pedro Príncipe、ミンホ大学
+      - Kazu Yamaji、国立情報学研究所
+      - Kathleen Shearer、COAR
+      - Paul Walk、Antleaf
+      - Virginia Barbour、Open Access Australasia (元メンバー)
 
       #### 研究組織レジストリ (ROR)
       IRD は、[研究組織レジストリ (ROR)](https://ror.org/) から許可を得てダウンロードしたデータを使用します。
@@ -31,6 +43,7 @@ ja:
       #### その他の情報源
       IRD への登録候補を特定するために、サードパーティのレジストリ/ディレクトリ/リストがいくつか使用されています。これらには以下が含まれます (他にもいくつかあります):
 
+      - [ROAR](https://roar.eprints.org)
       - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
       - [Re3data](https://www.re3data.org/)
       - [Dataverse インストールに関するクラウドソーシング情報](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
@@ -39,8 +52,8 @@ ja:
 
       リポジトリに関する情報を提供してくださった以下の方々にも感謝いたします:
 
-      - Bram Luyten、[Atmire](https://www.atmire.com)
-      - Jon Hackney、 [Worktribe](https://www.worktribe.com)
+      - Bram Luyten、 [Atmire](https://www.atmire.com)
+      - Jon Hackney、[Worktribe](https://www.worktribe.com)
       - Heather Greer-Klein [Samvera](https://samvera.org/)
     data_curation_text: |-
       ### 責任組織

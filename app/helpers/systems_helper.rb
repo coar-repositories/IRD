@@ -13,15 +13,15 @@ module SystemsHelper
     returned_identifier = "<b>#{Repoid.translated_identifier_scheme(scheme)}:</b> "
     scheme_config = Rails.application.config.ird[:repoid_schemes][scheme.to_sym]
     if scheme_config && scheme_config[:link_to_source]
-      returned_identifier += link_to id, full_identifier(scheme, id), class: 'external-link',target: '_blank'
+      returned_identifier += link_to id, full_identifier(scheme, id), class: "external-link",target: "_blank"
     else
       returned_identifier += id
     end
     returned_identifier.html_safe
   end
 
-  def annotation_flags(annotation)
-    "<span class='badge rounded-pill text-bg-light'>#{annotation.name}</span>".html_safe
+  def label_flags(label)
+    "<span class='badge rounded-pill text-bg-light'>#{label}</span>".html_safe
   end
 
   def tag_flags(tag)
@@ -32,15 +32,15 @@ module SystemsHelper
     status_sym = status.to_sym
     case status_sym
     when :unknown
-      badge_class = 'text-bg-secondary'
+      badge_class = "text-bg-secondary"
     when :online
-      badge_class = 'text-bg-success'
+      badge_class = "text-bg-success"
     when :offline
-      badge_class = 'text-bg-warning'
+      badge_class = "text-bg-warning"
     when :missing
-      badge_class = 'text-bg-danger'
+      badge_class = "text-bg-danger"
     else
-      badge_class = 'text-bg-secondary'
+      badge_class = "text-bg-secondary"
     end
     # i18n-tasks-use t("activerecord.attributes.system.system_status_list.#{status}") # this lets i18n-tasks know the key is used
     "<span class='badge rounded-pill #{badge_class}'>#{System.translated_system_status status_sym}</span>".html_safe
@@ -50,17 +50,17 @@ module SystemsHelper
     status_sym = status.to_sym
     case status_sym
     when :unknown
-      badge_class = 'text-bg-secondary'
+      badge_class = "text-bg-secondary"
     when :online
-      badge_class = 'text-bg-success'
+      badge_class = "text-bg-success"
     when :not_enabled
-      badge_class = 'text-bg-warning'
+      badge_class = "text-bg-warning"
     when :offline
-      badge_class = 'text-bg-warning'
+      badge_class = "text-bg-warning"
     when :unsupported
-      badge_class = 'text-bg-danger'
+      badge_class = "text-bg-danger"
     else
-      badge_class = 'text-bg-secondary'
+      badge_class = "text-bg-secondary"
     end
     # i18n-tasks-use t("activerecord.attributes.system.oai_status_list.#{status}") # this lets i18n-tasks know the key is used
     "<span class='badge rounded-pill #{badge_class}'>#{System.translated_oai_status status_sym}</span>".html_safe
@@ -88,15 +88,15 @@ module SystemsHelper
     status_sym = status.to_sym
     case status_sym
     when :draft
-      badge_class = 'text-bg-secondary'
+      badge_class = "text-bg-secondary"
     when :published
-      badge_class = 'text-bg-success'
+      badge_class = "text-bg-success"
     when :archived
-      badge_class = 'text-bg-danger'
+      badge_class = "text-bg-danger"
     when :under_review
-      badge_class = 'text-bg-warning'
+      badge_class = "text-bg-warning"
     else
-      badge_class = 'text-bg-secondary'
+      badge_class = "text-bg-secondary"
     end
     # badge_class = 'text-bg-secondary'
     "<span class='badge rounded-pill #{badge_class}'>#{System.translated_record_status status_sym}</span>".html_safe
@@ -116,18 +116,25 @@ module SystemsHelper
   end
 
   def issue_priority_flags(issue)
-    priority_sym = issue['priority'].to_sym
+    # i18n-tasks-use t("activerecord.attributes.annotation.priority_list.#{issue['priority']}") # this lets i18n-tasks know the key is used
+    # i18n-tasks-use t("curation-issues.#{issue['description']}.name") # this lets i18n-tasks know the key is used
+    priority_sym = issue["priority"].to_sym
     case priority_sym
     when :high
-      badge_class = 'bi-exclamation-triangle-fill red-icon'
+      badge_class = "bi-exclamation-triangle-fill red-icon"
     when :medium
-      badge_class = 'bi-exclamation-triangle-fill orange-icon'
+      badge_class = "bi-exclamation-triangle-fill orange-icon"
     when :low
-      badge_class = 'bi-exclamation-triangle-fill yellow-icon'
+      badge_class = "bi-exclamation-triangle-fill yellow-icon"
     else
-      badge_class = 'bi-exclamation-triangle-fill'
+      badge_class = "bi-exclamation-triangle-fill"
     end
-    "<span class='#{badge_class}'></span> #{issue['description']}".html_safe
+    begin
+      description = t("curation-issues.#{issue['description']}.description")
+    rescue Exception => e
+      description = issue["description"]
+    end
+    "<span class='#{badge_class}'></span> #{description}".html_safe
   end
 
 end

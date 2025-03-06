@@ -31,10 +31,10 @@ en:
           re3data: re3data
           roar: ROAR
       system:
-        annotations: Annotations
         authorised_curators: Authorised Curators
         contact: Contact
-        media: Media Types
+        issues: Curation Issues
+        media_types: Media Types
         oai_base_url: OAI-PMH Base URL
         oai_status: OAI-PMH Status
         oai_status_list:
@@ -73,6 +73,7 @@ en:
           governmental_repository: Governmental
           institutional_repository: Institutional
           unknown: Unclassified
+        system_labels: Labels
         system_status: System Status
         system_status_list:
           missing: System not found

@@ -1,11 +1,12 @@
 require "ostruct"
 
 class SystemsController < ApplicationController
-  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats get_thumbnail remove_thumbnail annotate flag_as_archived add_repo_id process_as_duplicate mark_reviewed publish archive make_draft auto_curate change_record_status_to_under_review]
+  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label flag_as_archived add_repo_id process_as_duplicate mark_reviewed publish archive make_draft auto_curate change_record_status_to_under_review]
   after_action :verify_authorized
 
   def suggest_new_system
     authorize :system
+    puts "params: #{params.inspect}"
     service_result = Ingest::SuggestSystemService.call(params)
     if service_result.success?
       redirect_back fallback_location: root_path, flash: { message: "A new repository has been added to IRD. It will be processed shortly." }
@@ -36,10 +37,12 @@ class SystemsController < ApplicationController
         @record_count = @pagy.count
       end
       format.json do
+        authorize :system, :download_json?
         @pagy = Pagy.new_from_searchkick(@search_result)
         @systems = @search_result.order(:name)
       end
       format.csv do
+        authorize :system, :download_csv?
         @systems = @search_result.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: "text/csv"
       end
@@ -49,10 +52,10 @@ class SystemsController < ApplicationController
   def process_as_duplicate
     authorize @system
     begin
-      target_system = System.includes(:network_checks, :repoids, :media, :annotations, :users).find(params[:target_system_id])
+      target_system = System.includes(:network_checks, :repoids, :users).find(params[:target_system_id])
       target_system.update_from_duplicate_system(@system)
       target_system.save!
-      @system.add_annotation(Annotation.find("duplicate"))
+      @system.label_list.add "duplicate"
       @system.record_status = :archived
       @system.save!
       redirect_back fallback_location: root_path, notice: "Processed as duplicate of #{params[:target_system_id]}"
@@ -97,7 +100,7 @@ class SystemsController < ApplicationController
   def make_draft
     authorize @system
     begin
-      @system.make_draft!
+      @system.draft!
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record made draft."
     rescue Exception => e
@@ -108,7 +111,7 @@ class SystemsController < ApplicationController
   def change_record_status_to_under_review
     authorize @system
     begin
-      @system.change_record_status_to_under_review!
+      @system.review!
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record set to 'under review'."
     rescue Exception => e
@@ -126,18 +129,6 @@ class SystemsController < ApplicationController
       redirect_to system_url(@system), flash: { error: "Unable to add repository identifier: #{e.message}" }
     end
   end
-
-  # def authorise_existing_user
-  #   authorize @system
-  #   begin
-  #     @system.users << User.find(params[:user_id])
-  #     redirect_to system_url(@system), notice: "User was successfully authorised."
-  #   rescue ActiveRecord::RecordNotFound
-  #     redirect_to system_url(@system), flash: { error: "User not found. Please click 'Add a new user and authorise them' instead." }
-  #   rescue ActiveRecord::RecordNotUnique
-  #     redirect_to system_url(@system), flash: { alert: "User is already authorised to curate this repository." }
-  #   end
-  # end
 
   def authorise_user
     authorize @system
@@ -186,6 +177,28 @@ class SystemsController < ApplicationController
     end
   end
 
+  def check_oai_pmh_combined
+    authorize @system
+    service_result = OaiPmh::OaiPmhIdentifyService.call(@system.id)
+    if service_result.success?
+      @system = service_result.payload
+      @system.save!
+      service_result2 = OaiPmh::OaiPmhMetadataFormatsService.call(@system.id)
+      if service_result2.success?
+        @system = service_result2.payload
+        @system.save!
+        Curation::SystemMetadataFormatAssociationService.call(@system)
+        if @system.oai_status_online?
+          redirect_back fallback_location: root_path, notice: "OAI-PMH check completed successfully - OAI-PMH is functioning correctly"
+        else
+          redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check completed: OAI-PMH status is #{@system.oai_status}" }
+        end
+      end
+    else
+      redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check failed: #{service_result.error.message}" }
+    end
+  end
+
   def check_oai_pmh_identify
     authorize @system
     service_result = OaiPmh::OaiPmhIdentifyService.call(@system.id)
@@ -204,16 +217,25 @@ class SystemsController < ApplicationController
 
   def check_oai_pmh_formats
     authorize @system
-    CheckOaiPmhFormatsJob.perform_now(@system.id)
-    # redirect_to system_url(@system), notice: "OAI-PMH Metadata formats checked."
-    redirect_back fallback_location: root_path, notice: "OAI-PMH Metadata formats checked."
+    service_result = OaiPmh::OaiPmhMetadataFormatsService.call(@system.id)
+    if service_result.success?
+      @system = service_result.payload
+      @system.save!
+      Curation::SystemMetadataFormatAssociationService.call(@system)
+      if @system.oai_status_online?
+        redirect_back fallback_location: root_path, notice: "OAI-PMH Metadata Formats check completed successfully - OAI-PMH is functioning correctly"
+      else
+        redirect_back fallback_location: root_path, flash: { error: "OAI-PMH Metadata Formats  check completed: OAI-PMH status is #{@system.oai_status}" }
+      end
+    else
+      redirect_back fallback_location: root_path, flash: { error: "OAI-PMH Metadata Formats check failed: #{service_result.error.message}" }
+    end
   end
 
   def get_thumbnail
     authorize @system
-    CreateWebsiteThumbnailJob.perform_now(@system.id, true)
-    # redirect_to system_url(@system), notice: "Website thumbnail retrieved."
-    redirect_back fallback_location: root_path, notice: "Website thumbnail retrieved."
+    CreateWebsiteThumbnailJob.perform_later(@system.id, true)
+    redirect_back fallback_location: root_path, notice: "Generating thumbnail as an asynchronous background process - check back in a few minutes"
   end
 
   def remove_thumbnail
@@ -223,22 +245,20 @@ class SystemsController < ApplicationController
     redirect_back fallback_location: root_path, notice: "Website thumbnail removed."
   end
 
-  def annotate
+  def label
     authorize @system
     begin
-      annotation = Annotation.find(params[:annotation])
+      label = params[:label_to_process]
       if !params[:add_or_remove] || params[:add_or_remove].to_sym == :add
-        @system.add_annotation annotation
+        @system.label_list.add label
       elsif params[:add_or_remove].to_sym == :remove
-        @system.remove_annotation annotation
+        @system.label_list.remove label
       end
       @system.save!
-      redirect_back fallback_location: root_path, notice: "Changed system annotation (#{annotation.name})."
-    rescue ActiveRecord::RecordNotUnique
-      redirect_back fallback_location: root_path, notice: "System is already annotated with '#{annotation.name}'"
+      redirect_back fallback_location: root_path, notice: "Changed system label " + t("labels.#{label}")
     rescue StandardError => e
-      Rails.logger.error "Unable to annotate system with '#{annotation.name}': #{e.message}"
-      redirect_back fallback_location: root_path, notice: "Unable to annotate system with '#{annotation.name}'"
+      Rails.logger.error "Unable to label system with " + t("labels.#{label}") + ": #{e.message}"
+      redirect_back fallback_location: root_path, notice: "Unable to label system with " + t("labels.#{label}")
     end
   end
 
@@ -258,8 +278,11 @@ class SystemsController < ApplicationController
       format.html do
         @record_count = @pagy.count
       end
-      format.json
+      format.json do
+        authorize :system, :download_json?
+      end
       format.csv do
+        authorize :system, :download_csv?
         @systems = System.all.publicly_viewable.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: "text/csv"
       end
@@ -329,12 +352,12 @@ class SystemsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_system
-    @system = System.includes(:network_checks, :repoids, :media, :annotations, :users).find(params[:id])
+    @system = System.includes(:network_checks, :repoids, :users).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def system_params
-    params.require(:system).permit(:name, :short_name, :url, :description, :contact, :subcategory, :system_status, :oai_status, :platform_id, :country_id, :platform_version, :record_status, :record_source, :primary_subject, :owner_id, :rp_id, :oai_base_url, :system_category, :tag_list, :aliases => [], :user_ids => [], :annotation_ids => [], :medium_ids => [], :repoids_attributes => [[:id, :identifier_scheme, :identifier_value, :_destroy]])
+    params.require(:system).permit(:name, :short_name, :url, :description, :contact, :subcategory, :system_status, :oai_status, :platform_id, :country_id, :platform_version, :record_status, :record_source, :primary_subject, :owner_id, :rp_id, :oai_base_url, :system_category, :tag_list,:label_list =>[], :media_types =>[], :aliases => [], :user_ids => [], :repoids_attributes => [[:id, :identifier_scheme, :identifier_value, :_destroy]])
   end
 
   # def suggested_new_system_params

@@ -5,12 +5,18 @@ tr:
       models:
         system:
           attributes:
-            media:
+            media_types:
               missing: seçilmesi gerekiyor
+            oai_status:
+              not_supported: desteklenmesi gerekiyor
             primary_subject:
               missing: seçilmesi gerekiyor
             subcategory:
               missing: seçilmesi gerekiyor
+            system_status:
+              not_online: çevrimiçi olması gerekiyor
+            url:
+              invalid: geçerli bir URL değil
       template:
         body: 'Lütfen aşağıdaki hataları düzeltin:'
         header:

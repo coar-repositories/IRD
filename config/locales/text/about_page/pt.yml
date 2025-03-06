@@ -24,6 +24,18 @@ pt:
 
       ### Agradecimentos
 
+      #### Grupo de Trabalho do IRD
+      O COAR gostaria de agradecer ao Grupo de Trabalho do IRD por sua valiosa contribuição ao desenvolvimento do IRD:
+
+      - Iryna Kuchma, EIFL
+      - Pierre Lasou, Université de Laval
+      - Lautaro Matas, LA Referencia
+      - Pedro Príncipe, University of Minho
+      - Kazu Yamaji, National Institute of Informatics
+      - Kathleen Shearer, COAR
+      - Paul Walk, Antleaf
+      - Virginia Barbour, Open Access Australasia (membro anterior)
+
       #### Research Organization Registry (ROR)
       O IRD usa dados baixados, com permissão, do [Research Organization Registry (ROR)](https://ror.org/).
       O IRD usa o ROR para desambiguar os nomes das organizações no diretório, sempre que possível.
@@ -31,6 +43,7 @@ pt:
       #### Outras fontes de informação
       Alguns registros/diretórios/listas de terceiros foram usados para identificar candidatos para inclusão no IRD. Isso inclui (entre outros):
 
+      - [ROAR](https://roar.eprints.org)
       - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
       - [Re3data](https://www.re3data.org/)
       - [Informações de crowdsourcing sobre instalações do Dataverse](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)

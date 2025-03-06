@@ -5,12 +5,18 @@ es:
       models:
         system:
           attributes:
-            media:
+            media_types:
               missing: Necesita ser seleccionado
+            oai_status:
+              not_supported: Necesita apoyo
             primary_subject:
               missing: Necesita ser seleccionado
             subcategory:
               missing: Necesita ser seleccionado
+            system_status:
+              not_online: Necesita estar en línea
+            url:
+              invalid: no es una URL válida
       template:
         body: 'Por favor corrija los siguientes errores:'
         header:

@@ -4,7 +4,6 @@ tr:
   admin: Yönetici
   agencies: Acenteler
   all_fields_must_be_completed: Tüm alanların doldurulması zorunludur
-  annotations: Açıklamalar
   are_you_sure_question: Emin misin?
   authorise_a_user: Bir Kullanıcıyı Yetkilendirin
   authorised_curator_for_these_repositories: Bu depolar için Yetkili Küratör
@@ -12,15 +11,14 @@ tr:
   contact: Temas etmek
   continents: Kıtalar
   curation: Küratörlük
-  curation_issues: Küratörlük Sorunları
   database: Veritabanı
   email: E-posta
   filter: Filtre
   fore_name: İlk adı
   general_information: Genel bilgi
   harvested: Hasat edildi
-  has_thumbnail: Küçük resim var mı?
   homepage: Ana sayfa
+  identifier_schemes: Tanımlayıcı Şemalar
   identifiers: Tanımlayıcılar
   last_name: Soy isim
   login: Giriş yapmak
@@ -37,7 +35,6 @@ tr:
   oai_status: OAI-PMH Durumu
   operations: Operasyonlar
   owner: Mal sahibi
-  owner_identified: Sahibi Belirlendi mi?
   page_titles:
     about: IRD Hakkında
     admin: Yönetici

@@ -31,10 +31,10 @@ tr:
           re3data: re3veri
           roar: KÜKREME
       system:
-        annotations: Açıklamalar
         authorised_curators: Yetkili Küratörler
         contact: Temas etmek
-        media: Medya Türleri
+        issues: Küratörlük Sorunları
+        media_types: Medya Türleri
         oai_base_url: OAI-PMH Temel URL
         oai_status: OAI-PMH Durumu
         oai_status_list:
@@ -73,6 +73,7 @@ tr:
           governmental_repository: Hükümetsel
           institutional_repository: Kurumsal
           unknown: Sınıflandırılmamış
+        system_labels: Etiketler
         system_status: Sistem Durumu
         system_status_list:
           missing: Sistem bulunamadı

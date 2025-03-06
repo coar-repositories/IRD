@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_19_160513) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_02_154231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -42,25 +42,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_160513) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "annotations", id: { type: :string, limit: 25 }, force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.boolean "restricted", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["restricted"], name: "index_annotations_on_restricted"
-  end
-
-  create_table "annotations_systems", id: false, force: :cascade do |t|
-    t.string "annotation_id", limit: 25, null: false
-    t.string "system_id", limit: 36, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["annotation_id", "system_id"], name: "index_annotations_systems_on_annotation_id_and_system_id", unique: true
-    t.index ["annotation_id"], name: "index_annotations_systems_on_annotation_id"
-    t.index ["system_id"], name: "index_annotations_systems_on_system_id"
-  end
-
   create_table "countries", id: { type: :string, limit: 10 }, force: :cascade do |t|
     t.string "name"
     t.integer "continent"
@@ -80,23 +61,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_160513) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_generators_on_name", unique: true
     t.index ["platform_id"], name: "index_generators_on_platform_id"
-  end
-
-  create_table "media", id: { type: :string, limit: 50 }, force: :cascade do |t|
-    t.string "name"
-    t.string "uri"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "media_systems", id: false, force: :cascade do |t|
-    t.string "medium_id", limit: 50, null: false
-    t.string "system_id", limit: 36, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["medium_id", "system_id"], name: "index_media_systems_on_medium_id_and_system_id", unique: true
-    t.index ["medium_id"], name: "index_media_systems_on_medium_id"
-    t.index ["system_id"], name: "index_media_systems_on_system_id"
   end
 
   create_table "metadata_formats", id: { type: :string, limit: 36 }, force: :cascade do |t|
@@ -228,6 +192,32 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_160513) do
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
+  create_table "snapshot_items", force: :cascade do |t|
+    t.bigint "snapshot_id", null: false
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.json "object", null: false
+    t.datetime "created_at", null: false
+    t.string "child_group_name"
+    t.index ["item_type", "item_id"], name: "index_snapshot_items_on_item"
+    t.index ["snapshot_id", "item_id", "item_type"], name: "index_snapshot_items_on_snapshot_id_and_item_id_and_item_type", unique: true
+    t.index ["snapshot_id"], name: "index_snapshot_items_on_snapshot_id"
+  end
+
+  create_table "snapshots", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.string "user_type"
+    t.bigint "user_id"
+    t.string "identifier"
+    t.json "metadata"
+    t.datetime "created_at", null: false
+    t.index ["identifier", "item_id", "item_type"], name: "index_snapshots_on_identifier_and_item_id_and_item_type", unique: true
+    t.index ["identifier"], name: "index_snapshots_on_identifier"
+    t.index ["item_type", "item_id"], name: "index_snapshots_on_item"
+    t.index ["user_type", "user_id"], name: "index_snapshots_on_user"
+  end
+
   create_table "systems", id: { type: :string, limit: 36 }, force: :cascade do |t|
     t.string "name"
     t.json "aliases", default: []
@@ -256,6 +246,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_160513) do
     t.datetime "reviewed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "media_types", array: true
     t.index ["country_id"], name: "index_systems_on_country_id"
     t.index ["generator_id"], name: "index_systems_on_generator_id"
     t.index ["oai_status"], name: "index_systems_on_oai_status"
@@ -321,11 +312,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_160513) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "annotations_systems", "annotations"
-  add_foreign_key "annotations_systems", "systems"
   add_foreign_key "generators", "platforms"
-  add_foreign_key "media_systems", "media"
-  add_foreign_key "media_systems", "systems"
   add_foreign_key "metadata_formats_systems", "metadata_formats"
   add_foreign_key "metadata_formats_systems", "systems"
   add_foreign_key "network_checks", "systems"

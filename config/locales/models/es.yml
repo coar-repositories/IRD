@@ -31,10 +31,10 @@ es:
           re3data: re3datos
           roar: RUGIDO
       system:
-        annotations: Anotaciones
         authorised_curators: Curadores autorizados
         contact: Contacto
-        media: Tipos de medios
+        issues: Problemas de curación
+        media_types: Tipos de medios
         oai_base_url: URL base de OAI-PMH
         oai_status: Estado de OAI-PMH
         oai_status_list:
@@ -73,6 +73,7 @@ es:
           governmental_repository: Gubernamental
           institutional_repository: Institucional
           unknown: Sin clasificar
+        system_labels: Etiquetas
         system_status: Estado del sistema
         system_status_list:
           missing: Sistema no encontrado

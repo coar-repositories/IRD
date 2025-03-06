@@ -4,7 +4,7 @@ fr:
     about_page_text: |-
       ### À propos du service
 
-      Le répertoire international des référentiels (IRD) est géré par la [Confederation of Open Access Repositories (COAR)](https://www.coar-repositories.org/).
+      Le répertoire des référentiels internationaux (IRD) est géré par la [Confederation of Open Access Repositories (COAR)](https://www.coar-repositories.org/).
 
       #### Critères d'inclusion
 
@@ -24,6 +24,18 @@ fr:
 
       ### Remerciements
 
+      #### Groupe de travail IRD
+      COAR tient à remercier le groupe de travail IRD pour sa précieuse contribution au développement de l'IRD :
+
+      - Iryna Kuchma, EIFL
+      - Pierre Lasou, Université de Laval
+      - Lautaro Matas, LA Referencia
+      - Pedro Príncipe, Université de Minho
+      - Kazu Yamaji, Institut national d'informatique
+      - Kathleen Shearer, COAR
+      - Paul Walk, Antleaf
+      - Virginia Barbour, Open Access Australasia (ancien membre)
+
       #### Registre des organismes de recherche (ROR)
       L'IRD utilise des données téléchargées, avec autorisation, à partir du [Registre des organismes de recherche (ROR)](https://ror.org/).
       L'IRD utilise le ROR pour lever l'ambiguïté des noms des organisations dans le répertoire, lorsque cela est possible.
@@ -31,6 +43,7 @@ fr:
       #### Autres sources d'information
       Certains registres/annuaires/listes tiers ont été utilisés pour identifier les candidats à l'inclusion dans l'IRD. Il s'agit notamment (entre autres) de :
 
+      - [ROAR](https://roar.eprints.org)
       - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
       - [Re3data](https://www.re3data.org/)
       - [Informations collaboratives sur les installations de Dataverse](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)

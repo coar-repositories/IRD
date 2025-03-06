@@ -5,7 +5,7 @@ module Rp
 
     def call(system_id, rp_id)
       begin
-        system = System.includes(:network_checks, :repoids, :media, :annotations, :users).find(system_id)
+        system = System.includes(:network_checks, :repoids,  :users).find(system_id)
         system.rp = Organisation.find(rp_id)
         success system
       rescue Exception => e

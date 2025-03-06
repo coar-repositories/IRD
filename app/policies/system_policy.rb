@@ -20,7 +20,7 @@ class SystemPolicy < ApplicationPolicy
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
-  def annotate?
+  def label?
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
@@ -41,7 +41,7 @@ class SystemPolicy < ApplicationPolicy
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
   end
 
-  def make_draft?
+  def draft?
     # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record))
     # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
     User.valid_user?(@user) && @user.has_role?(:administrator)
@@ -79,6 +79,10 @@ class SystemPolicy < ApplicationPolicy
     curate?
   end
 
+  def check_oai_pmh_combined?
+    curate?
+  end
+
   def get_thumbnail?
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end
@@ -108,7 +112,8 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def change_oai_status?
-    curate?
+    User.valid_user?(@user) && @user.has_role?(:administrator)
+    # should not need to be changed by curator since can be fully automatically tested and is not subject to robots problem
   end
 
   def change_rp?

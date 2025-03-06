@@ -29,6 +29,7 @@
 - @user.organisations.each do |org|
   - authorised_systems += org.responsibilities.publicly_viewable
 %br
-= render 'table_authorised_systems', title: t(:authorised_curator_for_these_repositories), systems: authorised_systems.uniq, data_downloadable: (true unless authorised_systems.blank?)
+-# = render 'table_authorised_systems', title: t(:authorised_curator_for_these_repositories), systems: authorised_systems.uniq, data_downloadable: (true unless authorised_systems.blank?)
+= render 'table_authorised_systems', title: t(:authorised_curator_for_these_repositories), systems: authorised_systems.uniq, data_downloadable: false
 
 = render 'suggest_system_modal'

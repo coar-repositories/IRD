@@ -25,10 +25,12 @@ class OrganisationsController < ApplicationController
         @record_count = @pagy.count
       end
       format.json do
+        authorize :organisation, :download_json?
         @pagy = Pagy.new_from_searchkick(@search_result)
         @organisations = @search_result.order(:name)
       end
       format.csv do
+        authorize :organisation, :download_csv?
         @organisations = @search_result.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
@@ -99,8 +101,11 @@ class OrganisationsController < ApplicationController
       format.html do
         @record_count = @pagy.count
       end
-      format.json
+      format.json do
+        authorize @organisation, :download_json?
+      end
       format.csv do
+        authorize @organisation, :download_csv?
         @systems = @organisation.ownerships.publicly_viewable.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
@@ -115,8 +120,11 @@ class OrganisationsController < ApplicationController
       format.html do
         @record_count = @pagy.count
       end
-      format.json
+      format.json do
+        authorize @organisation, :download_json?
+      end
       format.csv do
+        authorize @organisation, :download_csv?
         @systems = @organisation.responsibilities.publicly_viewable.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
@@ -126,14 +134,17 @@ class OrganisationsController < ApplicationController
   def responsible_parties
     authorize :organisation
     @page_title = "Responsible Parties"
-    @pagy, @organisations = pagy(Organisation.rps.order('lower(name)'), items: 100)
+    @pagy, @organisations = pagy(Organisation.rps.order('lower(name)'), limit: 100)
     # @organisations = Organisation.responsible_parties.order('lower(name)')
     respond_to do |format|
       format.html do
         @record_count = @pagy.count
       end
-      format.json
+      format.json do
+        authorize :organisation, :download_json?
+      end
       format.csv do
+        authorize :organisation, :download_csv?
         @organisations = Organisation.rps.order('lower(name)')
         send_data Organisation.to_csv(@organisations), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
@@ -149,7 +160,10 @@ class OrganisationsController < ApplicationController
       format.html do
         @record_count = @pagy.count
       end
-      format.json
+      format.json do
+        authorize :organisation, :download_json?
+      end
+      # don't allow csv download - massive dataset!
     end
   end
 

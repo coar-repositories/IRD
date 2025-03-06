@@ -1,0 +1,39 @@
+---
+zh-CN:
+  curation-issues:
+    automated-oai-pmh-check-failed:
+      description: 自动 OAI-PMH 检查失败
+      name: 自动 OAI-PMH 检查失败
+    automated-website-check-failed:
+      description: 自动网站检查失败
+      name: 自动网站检查失败
+    contact-missing:
+      description: 缺少联系方式
+      name: 失联
+    description-missing:
+      description: 缺少描述
+      name: 缺少描述
+    homepage-url-missing:
+      description: 缺少主页网址
+      name: 缺少主页网址
+    name-missing:
+      description: 姓名缺失
+      name: 缺少姓名
+    oai-base-url-missing:
+      description: 缺少 OAI-PMH 基本 URL
+      name: 缺少 OAI-PMH 基本 URL
+    owner-missing:
+      description: 未确认所有者
+      name: 失踪的主人
+    platform-may-be-incorrect:
+      description: 识别的软件平台可能不正确
+      name: 平台可能不正确
+    platform-missing:
+      description: 未识别平台
+      name: 缺少平台
+    platform-version-may-be-incorrect:
+      description: 识别的软件平台版本可能不正确
+      name: 平台版本可能不正确
+    thumbnail-missing:
+      description: 缩略图缺失
+      name: 缺少缩略图

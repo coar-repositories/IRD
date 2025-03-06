@@ -1,0 +1,9 @@
+---
+en:
+  labels:
+    candidate-defunct: May be defunct
+    candidate-out-of-scope: May be out of scope
+    defunct: Defunct
+    duplicate: Duplicate
+    flag: Flagged
+    out-of-scope: Out of scope

@@ -1,53 +1,27 @@
 # frozen_string_literal: true
-require "faraday"
-require "faraday/follow_redirects"
-require "faraday/retry"
 require "nokogiri"
 
 module OaiPmh
   class OaiPmhMetadataFormatsService < ApplicationService
 
-    def call(system_id)
+    def call(system_id, redirect_limit = 6)
       begin
-        @system = System.includes(:network_checks, :repoids, :media, :annotations, :users).find(system_id)
-        new_url = @system.oai_base_url
-        new_url_with_verb = Addressable::URI.parse(new_url)
-        params = new_url_with_verb.query_values
-        if params
-          params.delete("verb")
-        else
-          params = {}
+        @system = System.includes(:network_checks, :repoids,  :users).find(system_id)
+        original_url = @system.oai_base_url
+        unless original_url.present?
+          Rails.logger.warn("OAI-PMH Base URL missing for OAI-PMH ListMetadataFormats #{original_url}")
+          return system # return early if no OAI-PMH base URL
         end
-        params["verb"] = "ListMetadataFormats"
-        new_url_with_verb.query_values = params
-        Rails.logger.debug("Running OAI-PMH Check Formats on #{new_url_with_verb}")
-        # Callback function for FaradayMiddleware::Retry will only be called if retry is needed
-        retry_options = {
-          max: 2,
-          interval: 0.05,
-          interval_randomness: 0.5,
-          backoff_factor: 2
-        }
-        # Callback function for FaradayMiddleware::FollowRedirects will only be called if redirected to another url
-        redirects_opts = {}
-        redirects_opts[:callback] = proc do |old_response, new_response|
-          Rails.logger.debug "Redirected from #{old_response.url} to #{new_response.url}"
-          new_url_with_verb = new_response.url
-        end
-        conn = Faraday.new do |faraday|
-          faraday.response :follow_redirects, redirects_opts
-          faraday.options.timeout = 10
-          faraday.adapter Faraday.default_adapter
-          faraday.request :retry, retry_options
-          faraday.response :raise_error
-        end
-        response = conn.get(new_url_with_verb)
+        url_with_verb_list_metadata_formats = Utilities::OaiPmhUrlFormatter.with_verb_list_metadata_formats(original_url)
+        Rails.logger.debug("Running OAI-PMH Check Formats on #{url_with_verb_list_metadata_formats}")
+        conn = Utilities::HttpClientConnectionWrapper.new(redirect_limit)
+        response = conn.get(url_with_verb_list_metadata_formats)
         doc = Nokogiri::XML(response.body)
         doc.remove_namespaces!
 
         @system.formats = {}
         doc.xpath("//metadataFormat").each do |format|
-          @system.formats[format.at_xpath("metadataPrefix").text] = format.at_xpath("metadataNamespace").text
+          @system.formats[format.at_xpath("metadataPrefix").text] = format.at_xpath("metadataNamespace").text if format.at_xpath("metadataNamespace")
         end
       rescue StandardError => e
         Rails.logger.warn "CheckOaiPmhFormatsJob: #{e.message}"

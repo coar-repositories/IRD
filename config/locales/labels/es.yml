@@ -1,0 +1,9 @@
+---
+es:
+  labels:
+    candidate-defunct: Puede estar obsoleto
+    candidate-out-of-scope: Puede estar fuera del alcance
+    defunct: Difunto
+    duplicate: Duplicado
+    flag: Marcado
+    out-of-scope: Fuera de alcance

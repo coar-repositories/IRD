@@ -2,7 +2,7 @@ shared:
   catalogue_default_page_size: 20
   system_review_period: 365 #days
   default_models:
-    rp_for_published_records: <%= ENV["RP_FOR_PUBLISHED_RECORDS"] %> #COAR
+    rp_for_live_records: <%= ENV["RP_FOR_LIVE_RECORDS"] %> #COAR
     rp_for_archived_records: <%= ENV["RP_FOR_ARCHIVED_RECORDS"] %> #IRD System
     platform: <%= ENV["DEFAULT_PLATFORM"] %>
   network_check_failure:
@@ -55,4 +55,41 @@ shared:
     zh-CN:
       language: 中文
       flag: cn
+  media_types:
+    books:
+      identifier: "http://purl.org/coar/resource_type/c_2f33"
+    other:
+      identifier: "http://purl.org/coar/resource_type/c_1843"
+    theses:
+      identifier: "http://purl.org/coar/resource_type/c_46ec"
+    patents:
+      identifier: "http://purl.org/coar/resource_type/c_15cd"
+    research-data:
+      identifier: "http://purl.org/coar/resource_type/c_ddb1"
+    conference-papers:
+      identifier: "http://purl.org/coar/resource_type/c_5794"
+    software:
+      identifier: "http://purl.org/coar/resource_type/c_5ce6"
+    images:
+      identifier: "http://purl.org/coar/resource_type/c_c513"
+    research-articles:
+      identifier: "http://purl.org/coar/resource_type/c_2df8fbb1"
+    learning-objects:
+      identifier: "http://purl.org/coar/resource_type/c_e059"
+    multimedia:
+      identifier: "http://purl.org/coar/resource_type/multimedia"
+  labels:
+    duplicate:
+      restricted: false
+    out-of-scope:
+      restricted: false
+    candidate-defunct:
+      restricted: true
+    flag:
+      restricted: false
+    defunct:
+      restricted: false
+    candidate-out-of-scope:
+      restricted: true
+
 

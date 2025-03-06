@@ -7,13 +7,14 @@ zenodo:
   url: 'https://zenodo.org'
   record_source: 'ird'
   owner_id: '4ab4ad1a-0d3d-40ef-824c-cd20b3173e78'
-  rp_id: <%= Organisation.default_rp_for_published_records_id %>
+  rp_id: <%= Organisation.default_rp_for_live_records_id %>
   system_category: 1
   subcategory: 3
   primary_subject: 1
   oai_base_url: 'https://zenodo.org/oai2d'
   platform_id: 'invenio'
   country_id: 'CH'
+  media_types: ['books']
 
 
 

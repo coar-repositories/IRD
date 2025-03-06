@@ -27,6 +27,7 @@ gem "selenium-webdriver", "~> 4.28"
 gem "acts-as-taggable-on"
 gem "chartkick"
 gem "bcrypt"
+gem "active_snapshot"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"
@@ -60,17 +61,14 @@ gem "solid_cable"
 gem "bootsnap", require: false
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
-gem "kamal", require: false
+# gem "kamal", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-
-gem "rack-mini-profiler"
-gem "memory_profiler"
-gem "stackprof"
+# gem "stackprof"
 
 group :development, :test do
   gem "rspec-rails", "~> 7.1.0"

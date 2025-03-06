@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :configure_json_pretty_printing
   around_action :switch_locale
-  before_action :check_if_miniprofiler_should_be_rendered
 
   helper_method :current_user
 
@@ -49,12 +48,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def check_if_miniprofiler_should_be_rendered
-    if current_user && current_user.has_role?(:profiler)
-      Rack::MiniProfiler.authorize_request
-    end
-  end
-
   def configure_json_pretty_printing
     @prettify_json = Rails.env.development?
   end
@@ -67,6 +60,9 @@ class ApplicationController < ActionController::Base
       end
       format.json do
         redirect_to(error_403_path(format: :json))
+      end
+      format.csv do
+        redirect_to(error_403_path(format: :csv))
       end
     end
   end

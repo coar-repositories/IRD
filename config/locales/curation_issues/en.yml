@@ -1,0 +1,39 @@
+---
+en:
+  curation-issues:
+    automated-oai-pmh-check-failed:
+      description: Automated OAI-PMH check failed
+      name: Automated OAI-PMH check failed
+    automated-website-check-failed:
+      description: Automated website check failed
+      name: Automated website check failed
+    contact-missing:
+      description: Contact is missing
+      name: Missing contact
+    description-missing:
+      description: Description is missing
+      name: Missing description
+    homepage-url-missing:
+      description: Homepage URL is missing
+      name: Missing homepage URL
+    name-missing:
+      description: Name is missing
+      name: Missing name
+    oai-base-url-missing:
+      description: OAI-PMH Base URL is missing
+      name: Missing OAI-PMH Base URL
+    owner-missing:
+      description: No owner identified
+      name: Missing owner
+    platform-may-be-incorrect:
+      description: Identified software platform may be incorrect
+      name: Platform may be incorrect
+    platform-missing:
+      description: No platform identified
+      name: Missing platform
+    platform-version-may-be-incorrect:
+      description: Identified software platform version may be incorrect
+      name: Platform version may be incorrect
+    thumbnail-missing:
+      description: Thumbnail is missing
+      name: Missing thumbnail

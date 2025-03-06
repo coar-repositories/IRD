@@ -26,12 +26,12 @@
       -# i18n-tasks-use t('activerecord.attributes.system.primary_subject_list.#{subject}') # this lets i18n-tasks know the key is used
       = print_field_name_and_value2(t(:primary_subject),System.translated_primary_subject(@system.primary_subject))
       %div.property
-        %h5.property-name Content Types
+        %h5.property-name Media Types
         %div.property-value
-          - if !@system.media.empty?
+          - if !@system.media_types.empty?
             %ul
-              - @system.media.each do |medium|
-                %li= medium.name
-          -else
+              - @system.media_types.each do |medium|
+                %li= t(medium, scope: :media_types)
+          - else
             =t(:none)
 

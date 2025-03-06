@@ -39,9 +39,11 @@ class UsersController < ApplicationController
         @record_count = @pagy.count
       end
       format.json do
+        authorize :user, :download_json?
         @pagy, @users = pagy(User.order(:last_name))
       end
       format.csv do
+        authorize :user, :download_csv?
         @users = User.order(:last_name)
         send_data User.to_csv(@users), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end

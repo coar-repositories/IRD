@@ -1,0 +1,39 @@
+---
+tr:
+  curation-issues:
+    automated-oai-pmh-check-failed:
+      description: Otomatik OAI-PMH kontrolü başarısız oldu
+      name: Otomatik OAI-PMH kontrolü başarısız oldu
+    automated-website-check-failed:
+      description: Otomatik web sitesi kontrolü başarısız oldu
+      name: Otomatik web sitesi kontrolü başarısız oldu
+    contact-missing:
+      description: İletişim eksik
+      name: Eksik iletişim
+    description-missing:
+      description: Açıklama eksik
+      name: Eksik açıklama
+    homepage-url-missing:
+      description: Ana sayfa URL'si eksik
+      name: Eksik ana sayfa URL'si
+    name-missing:
+      description: İsim eksik
+      name: Eksik isim
+    oai-base-url-missing:
+      description: OAI-PMH Temel URL'si eksik
+      name: Eksik OAI-PMH Temel URL'si
+    owner-missing:
+      description: Sahibi belirlenemedi
+      name: Kayıp sahibi
+    platform-may-be-incorrect:
+      description: Tanımlanan yazılım platformu yanlış olabilir
+      name: Platform yanlış olabilir
+    platform-missing:
+      description: Hiçbir platform tanımlanmadı
+      name: Eksik platform
+    platform-version-may-be-incorrect:
+      description: Tanımlanan yazılım platformu sürümü yanlış olabilir
+      name: Platform sürümü yanlış olabilir
+    thumbnail-missing:
+      description: Küçük resim eksik
+      name: Eksik küçük resim

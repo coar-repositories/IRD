@@ -3,6 +3,7 @@
 module Ingest
 
   class NoOrganisationMatchesException < StandardError; end
+
   class MultipleOrganisationsMatchException < StandardError; end
 
   class SystemIngestBatchCsvService < ApplicationService
@@ -10,54 +11,61 @@ module Ingest
     require "csv"
     require "fileutils"
 
-    def call(data_file_path, record_source, dry_run)
-      records_created = 0
-      records_existing = 0
-      errors = 0
+    def call(data, record_source, tags, dry_run)
+      batch_report = SystemIngestBatchReport.new
       begin
-        CSV.foreach(data_file_path, headers: true) do |row|
+        CSV.parse(data, headers: true).each_with_index do |row,row_number|
           begin
-            proposed_system = ProposedSystem.new(record_source, row["local_id"], dry_run, nil)
-            proposed_system.system_category = row["system_category"] if row["system_category"]
-            proposed_system.name = row["name"] if row["name"]
-            proposed_system.url = row["url"] if row["url"]
-            proposed_system.oai_base_url = row["oai_base_url"] if row["oai_base_url"]
+            # [ :owner_id, :owner_homepage, :owner_ror, :owner_name, :repository_type, :, :, :, :
+            candidate_system = CandidateSystem.new(record_source, dry_run, tags)
+            candidate_system.add_attribute("id", row["id"])
+            candidate_system.add_attribute("system_category", "repository")
+            candidate_system.add_attribute("subcategory", row["repository_type"])
+            candidate_system.add_attribute("name", row["name"])
+            candidate_system.add_attribute("url", row["homepage"])
+            candidate_system.add_attribute("platform_id", row["software"])
+            candidate_system.add_attribute("platform_version", row["software_version"])
+            candidate_system.add_attribute("contact", row["contact"])
+            candidate_system.add_attribute("oai_base_url", row["oai_base_url"])
+            candidate_system.add_attribute("primary_subject", row["primary_subject"])
+            candidate_system.add_attribute("record_status", row["record_status"])
+            candidate_system.add_attribute("media_types", row["media_types"].split("|")) if row["media_types"] && !row["media_types"].blank?
             org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
-            if org
-              proposed_system.owner_id = org.id
-            end
-            if row["identifiers"]
-              identifiers = row["identifiers"].split("|")
+            candidate_system.add_attribute("owner_id", org.id) if org
+            if row["other_registry_identifiers"]
+              identifiers = row["other_registry_identifiers"].split("|")
               identifiers.each do |identifier|
                 scheme, value = identifier.split(":")
-                proposed_system.identifiers[scheme] = value
+                candidate_system.add_identifier(scheme, value)
               end
             end
-            # puts proposed_system.inspect
-            service_result = SystemIngestService.call(proposed_system)
+            candidate_system.normalise_attributes!
+            service_result = SystemIngestService.call(candidate_system)
             if service_result.failure?
               if service_result.error.is_a?(SystemExistsIngestException)
-                records_existing += 1
-                raise service_result.error
+                batch_report.add_record_not_updated(BatchItemReport.new(row_number, service_result.error.message))
               else
-                errors += 1
-                raise service_result.error
+                batch_report.add_error(BatchItemReport.new(row_number, service_result.error.message))
+              end
+              raise service_result.error
+            else
+              if service_result.payload.updated
+                batch_report.add_record_updated(service_result.payload.system.id)
+                elsif service_result.payload.created
+                  batch_report.add_record_created(service_result.payload.system.id)
+              else
+                batch_report.add_record_unchanged(BatchItemReport.new(row_number, "System unchanged"))
               end
             end
-            records_created += 1
-            system = service_result.payload
-            Rails.logger.info(" Created system with ID: #{system.id}")
           rescue SystemExistsIngestException => e
-            Rails.logger.warn "Found duplicate system: #{e.message}"
+            Rails.logger.warn "Error batch ingesting system with name '#{row["name"]}' - #{e.message}"
           rescue Exception => e
-            Rails.logger.error "Error ingesting system with name '#{row["name"]}' - #{e.message}"
+            Rails.logger.error "Error batch ingesting system with name '#{row["name"]}' - #{e.message}"
           end
         end
       end
-      Rails.logger.info("Records created: #{records_created}")
-      Rails.logger.info("Records existing: #{records_existing}")
-      Rails.logger.info("Errors: #{errors}")
-      success true
+      Rails.logger.info("Batch ingest operation completed: #{batch_report.report}")
+      success batch_report
     rescue Exception => e
       failure e
     end
@@ -68,13 +76,27 @@ module Ingest
       begin
         org = nil
         org = Organisation.find_by_ror(ror) unless ror.blank?
-        unless org.present?
-          org = Organisation.find_by_domain(Utilities::UrlUtility.get_domain_from_url(url)) unless url.blank?
+        if org
+          return org
         end
-        unless org.present? || name.blank?
+        unless url.blank?
+          org = Organisation.find_by_website(url)
+          if org
+            return org
+          end
+          orgs = Organisation.where(domain: Utilities::UrlUtility.get_domain_from_url(url))
+          if orgs.count == 1
+            org = orgs.first
+            return org
+          elsif orgs.count > 1
+            Rails.logger.warn("Multiple matches for organisation finder")
+          end
+        end
+        unless name.blank?
           orgs = Organisation.where("name = ?", name)
           if orgs.count == 1
             org = orgs.first
+            return org
           elsif orgs.count > 1
             Rails.logger.warn("Multiple matches for organisation finder")
           end
@@ -85,9 +107,8 @@ module Ingest
         org
       rescue Exception => e
         Rails.logger.error("Error in OrganisationFinderService: #{e.message}")
-        return nil
+        nil
       end
     end
   end
-
 end

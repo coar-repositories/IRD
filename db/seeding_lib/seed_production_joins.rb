@@ -1,17 +1,5 @@
 require 'csv'
 
-def seed_annotations_systems
-  CSV.foreach(('./data/export_production_csv/annotations_systems.csv'), headers: true) do |row|
-    System.find(row['system_id']).annotations << Annotation.find(row['annotation_id'])
-  end
-end
-
-def seed_media_systems
-  CSV.foreach(('./data/export_production_csv/media_systems.csv'), headers: true) do |row|
-    System.find(row['system_id']).media << Medium.find(row['medium_id'])
-  end
-end
-
 def seed_network_checks
   CSV.foreach(('./data/export_production_csv/network_checks.csv'), headers: true) do |row|
     NetworkCheck.create!(
@@ -39,8 +27,6 @@ def seed_normalids
 end
 
 def seed_all_production_joins
-  # seed_annotations_systems
-  # seed_media_systems
   # seed_network_checks
   # seed_normalids
 end

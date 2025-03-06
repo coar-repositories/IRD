@@ -13,16 +13,16 @@ class AdminController < ApplicationController
     conditions[:oai_status] = params[:oai_status] if params[:oai_status].present?
     conditions[:record_status] = params[:record_status] if params[:record_status].present?
     conditions[:record_source] = params[:record_source] if params[:record_source].present?
-    conditions[:annotations] = params[:annotations] if params[:annotations].present?
+    conditions[:media_types] = params[:media_types] if params[:media_types].present?
+    conditions[:labels] = params[:labels] if params[:labels].present?
     conditions[:tags] = params[:tags] if params[:tags].present?
     conditions[:subcategory] = params[:subcategory] if params[:subcategory].present?
-    conditions[:media] = params[:media] if params[:media].present?
     conditions[:primary_subject] = params[:primary_subject] if params[:primary_subject].present?
-    conditions[:has_thumbnail] = params[:has_thumbnail] if params[:has_thumbnail].present?
-    conditions[:has_owner] = params[:has_owner] if params[:has_owner].present?
     conditions[:rp] = params[:rp] if params[:rp].present?
     conditions[:http_code] = params[:http_code] if params[:http_code].present?
     conditions[:metadata_formats] = params[:metadata_formats] if params[:metadata_formats].present?
+    conditions[:identifier_schemes] = params[:identifier_schemes] if params[:identifier_schemes].present?
+    conditions[:curation_issues] = params[:curation_issues] if params[:curation_issues].present?
     unless params[:show_archived_records] == 'true'
       conditions[:_not] = { record_status: 'archived' }
     end
@@ -30,7 +30,7 @@ class AdminController < ApplicationController
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :media, :primary_subject, :annotations, :tags, :rp, :http_code, :has_thumbnail, :has_owner, :metadata_formats]
+    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :primary_subject, :media_types, :labels, :tags, :rp, :http_code, :metadata_formats, :identifier_schemes, :curation_issues]
 
     @unpaginated_systems = System.search(
       search_terms,
@@ -39,7 +39,7 @@ class AdminController < ApplicationController
       body_options: {
         track_total_hits: true
       },
-      includes: [:network_checks,:repoids,:media,:annotations,:users, :metadata_formats]
+      includes: [:network_checks, :repoids, :users, :metadata_formats]
     )
 
     @systems = System.search(
@@ -49,7 +49,7 @@ class AdminController < ApplicationController
       aggs: facets,
       page: page,
       per_page: per_page,
-      includes: [:network_checks,:repoids,:media,:annotations,:users, :metadata_formats]
+      includes: [:network_checks, :repoids, :users, :metadata_formats]
     )
 
     @facets = @systems.aggs
@@ -57,10 +57,10 @@ class AdminController < ApplicationController
     # @filtered_stats = get_stats(@systems)
     if params[:operation].present? && policy(:admin).perform_batch_operations?
       case params[:operation].to_sym
-      when :annotate
-        annotation = Annotation.find(params[:annotation_to_process])
-        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| AnnotateJob.new(system.id, annotation, params[:add_or_remove].to_sym) })
-        redirect_back fallback_location: root_path, notice: "Started annotation job for #{@unpaginated_systems.count} systems with (#{params[:add_or_remove]}) annotation '#{annotation.name}'"
+      when :label
+        label_to_process = params[:label_to_process]
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| LabelJob.new(system.id, label_to_process, params[:add_or_remove].to_sym) })
+        redirect_back fallback_location: root_path, notice: "Started label job for #{@unpaginated_systems.count} systems with (#{params[:add_or_remove]}) label " + t("labels.#{label_to_process}")
       when :check_urls
         ActiveJob.perform_all_later(@unpaginated_systems.map { |system| CheckUrlJob.new(system.id, true) })
         redirect_back fallback_location: root_path, notice: "Started URL checking job for #{@unpaginated_systems.count} systems..."
@@ -95,22 +95,15 @@ class AdminController < ApplicationController
         redirect_back fallback_location: root_path, notice: "Started auto-curating #{@unpaginated_systems.count} systems..."
       when :purge_duplicates
         count = 0
-        Annotation.find('duplicate').systems.each do |system|
+        System.tagged_with("duplicate", on: :labels).each do |system|
           system.destroy!
           count += 1
         end
         # redirect_to admin_url(request.query_parameters.except(:operation, :lang)), notice: "Started auto-curating #{@unpaginated_systems.count} systems..."
         redirect_back fallback_location: root_path, notice: "Purged #{count} duplicates."
       when :purge_thumbnails
-        count = 0
-        @unpaginated_systems.each do |system|
-          if system.thumbnail.attached?
-            system.thumbnail.purge
-            count += 1
-          end
-        end
-        # redirect_to admin_url(request.query_parameters.except(:operation, :lang)), notice: "Started purging thumbnails from #{count} systems..."
-        redirect_back fallback_location: root_path, notice: "Started purging thumbnails from #{count} systems..."
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| PurgeThumbnailJob.new(system.id) })
+        redirect_back fallback_location: root_path, notice: "Started purging thumbnails from #{@unpaginated_systems.count} systems..."
       when :allocate_rp
         rp = Organisation.find_by_id(params[:rp_id])
         if rp
@@ -144,9 +137,11 @@ class AdminController < ApplicationController
         @record_count = @pagy.count
       end
       format.json do
+        authorize :admin, :download_json?
         @pagy = Pagy.new_from_searchkick(@systems)
       end
       format.csv do
+        authorize :admin, :download_csv?
         send_data System.to_csv(@unpaginated_systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
     end

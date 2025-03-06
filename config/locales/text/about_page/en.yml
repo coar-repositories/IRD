@@ -23,6 +23,18 @@ en:
       The software for the IRD is developed, deployed and maintained by [Antleaf](https://www.antleaf.com/). The [open-source code](https://github.com/coar-repositories/IRD) for this software is licensed under the [MIT License](https://opensource.org/license/mit).
 
       ### Acknowledgements
+      
+      #### IRD Working Group
+      COAR would like to thank the IRD Working Group for their valuable contribution to the development of the IRD:
+      
+      - Iryna Kuchma, EIFL
+      - Pierre Lasou, Université de Laval
+      - Lautaro Matas, LA Referencia
+      - Pedro Príncipe, University of Minho
+      - Kazu Yamaji, National Institute of Informatics
+      - Kathleen Shearer, COAR
+      - Paul Walk, Antleaf
+      - Virginia Barbour, Open Access Australasia (past member)
 
       #### Research Organization Registry (ROR)
       The IRD uses data downloaded, by permission, from the [Research Organization Registry (ROR)](https://ror.org/).
@@ -31,6 +43,7 @@ en:
       #### Other sources of information
       Some third-party registries/directories/lists have been used to identify candidates for inclusion in IRD. These include (among others):
 
+      - [ROAR](https://roar.eprints.org)
       - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
       - [Re3data](https://www.re3data.org/)
       - [Crowdsourced information about Dataverse installations](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)

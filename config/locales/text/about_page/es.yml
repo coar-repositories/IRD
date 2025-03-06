@@ -24,13 +24,26 @@ es:
 
       ### Agradecimientos
 
-      #### Registro de Organizaciones de Investigación (ROR)
-      El IRD utiliza datos descargados, con permiso, del [Registro de Organizaciones de Investigación (ROR)](https://ror.org/).
+      #### Grupo de trabajo del IRD
+      COAR desea agradecer al Grupo de trabajo del IRD por su valiosa contribución al desarrollo del IRD:
+
+      - Iryna Kuchma, EIFL
+      - Pierre Lasou, Université de Laval
+      - Lautaro Matas, LA Referencia
+      - Pedro Príncipe, University of Minho
+      - Kazu Yamaji, National Institute of Informatics
+      - Kathleen Shearer, COAR
+      - Paul Walk, Antleaf
+      - Virginia Barbour, Open Access Australasia (miembro anterior)
+
+      #### Registro de organizaciones de investigación (ROR)
+      El IRD utiliza datos descargados, con permiso, del [Registro de organizaciones de investigación (ROR)](https://ror.org/).
       El IRD utiliza el ROR para desambiguar los nombres de las organizaciones en el directorio, cuando sea posible.
 
       #### Otras fuentes de información
-      Se han utilizado algunos registros, directorios y listas de terceros para identificar candidatos para su inclusión en el IRD. Entre ellos se incluyen (entre otros):
+      Se han utilizado algunos registros/directorios/listas de terceros para identificar candidatos para su inclusión en el IRD. Entre ellos se incluyen (entre otros):
 
+      - [ROAR](https://roar.eprints.org)
       - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
       - [Re3data](https://www.re3data.org/)
       - [Información de colaboración colectiva sobre instalaciones de Dataverse](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
@@ -40,7 +53,7 @@ es:
       También agradecemos a las siguientes personas que han proporcionado información sobre los repositorios:
 
       - Bram Luyten, [Atmire](https://www.atmire.com)
-      - Jon Hackney, [Tribu laboral](https://www.worktribe.com)
+      - Jon Hackney, [Worktribe](https://www.worktribe.com)
       - Heather Greer-Klein [Samvera](https://samvera.org/)
     data_curation_text: |-
       ### Organizaciones responsables

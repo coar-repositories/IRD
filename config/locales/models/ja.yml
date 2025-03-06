@@ -31,10 +31,10 @@ ja:
           re3data: re3データ
           roar: 轟音
       system:
-        annotations: 注釈
         authorised_curators: 認定キュレーター
         contact: 接触
-        media: メディアタイプ
+        issues: キュレーションの問題
+        media_types: メディアタイプ
         oai_base_url: OAI-PMH ベース URL
         oai_status: OAI-PMH ステータス
         oai_status_list:
@@ -73,6 +73,7 @@ ja:
           governmental_repository: 政府
           institutional_repository: 機関
           unknown: 非公開
+        system_labels: ラベル
         system_status: システムステータス
         system_status_list:
           missing: システムが見つかりません

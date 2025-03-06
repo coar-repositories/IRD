@@ -4,7 +4,6 @@ fr:
   admin: Administrateur
   agencies: Agences
   all_fields_must_be_completed: Tous les champs doivent être complétés
-  annotations: Annotations
   are_you_sure_question: Es-tu sûr?
   authorise_a_user: Autoriser un utilisateur
   authorised_curator_for_these_repositories: Conservateur agréé pour ces dépôts
@@ -12,15 +11,14 @@ fr:
   contact: Contact
   continents: Continents
   curation: Conservation
-  curation_issues: Problèmes de conservation
   database: Base de données
   email: E-mail
   filter: Filtre
   fore_name: Prénom
   general_information: Informations générales
   harvested: Récolté
-  has_thumbnail: A une miniature ?
   homepage: Page d'accueil
+  identifier_schemes: Schémas d'identification
   identifiers: Identifiants
   last_name: Nom de famille
   login: Se connecter
@@ -37,7 +35,6 @@ fr:
   oai_status: Statut OAI-PMH
   operations: Opérations
   owner: Propriétaire
-  owner_identified: Propriétaire identifié ?
   page_titles:
     about: À propos de l'IRD
     admin: Administrateur

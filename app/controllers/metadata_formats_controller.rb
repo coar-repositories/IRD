@@ -11,8 +11,11 @@ class MetadataFormatsController < ApplicationController
       format.html do
         @record_count = @pagy.count
       end
-      format.json
+      format.json do
+        authorize @metadata_format, :download_json?
+      end
       format.csv do
+        authorize @metadata_format, :download_csv?
         @systems = @metadata_format.systems.publicly_viewable.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
@@ -26,13 +29,15 @@ class MetadataFormatsController < ApplicationController
     # @metadata_formats = MetadataFormat.all
     respond_to do |format|
       format.html do
-        @pagy, @metadata_formats = pagy(MetadataFormat.order(:name), items: 150)
+        @pagy, @metadata_formats = pagy(MetadataFormat.order(:name), limit: 150)
         @record_count = @pagy.count
       end
       format.json do
-        @pagy, @metadata_formats = pagy(MetadataFormat.order(:name), items: 150)
+        authorize :metadata_format, :download_json?
+        @pagy, @metadata_formats = pagy(MetadataFormat.order(:name), limit: 150)
       end
       format.csv do
+        authorize :metadata_format, :download_csv?
         @metadata_formats = MetadataFormat.order(:name)
         send_data MetadataFormat.to_csv(@metadata_formats), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end

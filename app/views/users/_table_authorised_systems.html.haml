@@ -10,6 +10,7 @@
       %th= t(:status)
       %th= t(:owner)
       %th= t(:responsible_organisation)
+      %th= t("activerecord.attributes.system.record_status")
       %th= "#{t(:reviewed)}?"
       %th= "#{t(:needs_review)}?"
   %tbody
@@ -19,6 +20,7 @@
         %td= system_status_flags system.system_status
         %td= link_to(system.owner.name, system.owner) if system.owner
         %td= link_to(system.rp.display_name,system.rp) if system.rp
+        %td= record_status_flags system.record_status
         %td
           - if system.reviewed
             = system.reviewed.strftime('%Y-%m-%d')
@@ -27,5 +29,5 @@
         %td
           - if system.record_status_under_review?
             %span.badge.badge-warning
-              = link_to t('buttons.review_this_record'), system, class: "btn btn-sm btn-warning"
+              = link_to t('buttons.review_this_record'), system, class: "btn btn-sm btn-primary"
 = render '_shared/paginator'

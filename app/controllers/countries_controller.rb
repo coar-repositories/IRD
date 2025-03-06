@@ -12,10 +12,14 @@ class CountriesController < ApplicationController
       format.html do
         @record_count = @pagy.count
       end
-      format.json
+      format.json do
+        authorize @country, :download_json?
+      end
       format.csv do
+        authorize @country, :download_csv?
         @systems = @country.systems.publicly_viewable.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
+        # render plain: System.to_csv(@systems), content_type: 'text/csv'
       end
     end
   end
@@ -40,13 +44,15 @@ class CountriesController < ApplicationController
     @page_title = t("activerecord.models.country.other")
     respond_to do |format|
       format.html do
-        @pagy, @countries = pagy(Country.order(:name), items: 300)
+        @pagy, @countries = pagy(Country.order(:name), limit: 300)
         @record_count = @pagy.count
       end
       format.json do
-        @pagy, @countries = pagy(Country.order(:name), items: 300)
+        authorize :country, :download_json?
+        @pagy, @countries = pagy(Country.order(:name), limit: 300)
       end
       format.csv do
+        authorize :country, :download_csv?
         @countries = Country.order(:name)
         send_data Country.to_csv(@countries), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end

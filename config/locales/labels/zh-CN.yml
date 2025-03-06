@@ -1,0 +1,9 @@
+---
+zh-CN:
+  labels:
+    candidate-defunct: 可能已不存在
+    candidate-out-of-scope: 可能超出范围
+    defunct: 已停业
+    duplicate: 复制
+    flag: 已标记
+    out-of-scope: 超出范围

@@ -31,10 +31,10 @@ fr:
           re3data: re3data
           roar: RUGIR
       system:
-        annotations: Annotations
         authorised_curators: Conservateurs agréés
         contact: Contact
-        media: Types de médias
+        issues: Problèmes de conservation
+        media_types: Types de médias
         oai_base_url: URL de base OAI-PMH
         oai_status: Statut OAI-PMH
         oai_status_list:
@@ -73,6 +73,7 @@ fr:
           governmental_repository: Gouvernemental
           institutional_repository: Institutionnel
           unknown: Non classé
+        system_labels: Étiquettes
         system_status: État du système
         system_status_list:
           missing: Système non trouvé

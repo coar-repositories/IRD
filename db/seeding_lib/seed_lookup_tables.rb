@@ -41,27 +41,6 @@ def seed_countries
   end
 end
 
-def seed_media
-  CSV.foreach(('./data/seed_data/media.csv'), headers: true) do |row|
-    Medium.create!(
-      id: row['id'],
-      name: row['name'],
-      uri: row['uri']
-    )
-  end
-end
-
-def seed_annotations
-  CSV.foreach(('./data/seed_data/annotations.csv'), headers: true) do |row|
-    Annotation.create!(
-      id: row['id'],
-      name: row['name'],
-      description: row['description'],
-      restricted: row['restricted']=='1'
-    )
-  end
-end
-
 def seed_rps
   CSV.foreach(('./data/seed_data/rps.csv'), headers: true) do |row|
     alias_array = []
@@ -86,7 +65,5 @@ def seed_all_lookup_tables
   seed_roles
   seed_users
   seed_countries
-  seed_media
-  seed_annotations
   seed_rps
 end

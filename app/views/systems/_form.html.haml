@@ -51,17 +51,20 @@
         %div.col
           -# = f.collection_select :system_type_id, SystemType.order('lower(name)'), :id, :name, :class=>"form-select form-control"
           = f.select :subcategory, options_for_select(System.translated_subcategories.map { |translation, k, _v| [translation, k] },@system.subcategory), :class=>"form-control"
+
       %div.row.align-items-top.field
         %div.col-2.field-name
-          -# i18n-tasks-use t('activerecord.attributes.system.media') # this lets i18n-tasks know the key is used
-          -# i18n-tasks-use t('activerecord.errors.models.system.attributes.media.missing') # this lets i18n-tasks know the key is used
-          = f.label :media, :class=>"form-label"
+          = f.label :media_types, :class=>"form-label"
         %div.col
-          = f.collection_check_boxes :medium_ids, Medium.order(:name), :id, :name do |b|
+          -# i18n-tasks-use t('activerecord.errors.models.system.attributes.media_types.missing') # this lets i18n-tasks know the key is used
+          -# i18n-tasks-use t('activerecord.attributes.system.media_types') # this lets i18n-tasks know the key is used
+          = f.collection_check_boxes :media_types, Rails.configuration.ird[:media_types].keys, :to_s,:to_s do |b|
             = b.label(class: "check_box") do
-              = b.check_box(class: "check_box")
-              = b.object.name
+              = b.check_box(class: "check_box", checked: @system.media_types.include?(b.object.to_s))
+              -# i18n-tasks-use t('media_types.#{b.object}') # this lets i18n-tasks know the key is used
+              = t(b.object, scope: :media_types)
             %br
+
       %div.row.align-items-center.field
         %div.col-2.field-name
           -# i18n-tasks-use t('activerecord.errors.models.system.attributes.primary_subject.missing') # this lets i18n-tasks know the key is used
@@ -78,24 +81,29 @@
           %div.col
             -# i18n-tasks-use t('activerecord.attributes.system.system_status_list.#{status}') # this lets i18n-tasks know the key is used
             = f.select :system_status, options_for_select(System.translated_system_statuses.map { |translation, k, _v| [translation, k] },@system.system_status), :class=>"form-control"
-      - if policy(@system).annotate?
+
+
+      - if policy(@system).label?
         %div.row.align-items-top.field
           %div.col-2.field-name
-            -# i18n-tasks-use t('activerecord.attributes.system.annotations') # this lets i18n-tasks know the key is used
-            = f.label :annotations, :class=>"form-label"
+            -# i18n-tasks-use t('activerecord.attributes.system.system_labels') # this lets i18n-tasks know the key is used
+            = f.label :system_labels, :class=>"form-label"
           %div.col
-            = f.collection_check_boxes :annotation_ids, Annotation.unrestricted, :id, :name do |b|
+            = f.collection_check_boxes :label_list, System.unrestricted_labels, :to_s,:to_s do |b|
               = b.label(class: "check_box") do
-                = b.check_box(class: "check_box")
-                = b.object.name
+                = b.check_box(class: "check_box", checked: @system.label_list.include?(b.object.to_s))
+                -# i18n-tasks-use t('media_types.#{b.object}') # this lets i18n-tasks know the key is used
+                = t(b.object.to_s, scope: :labels)
               %br
+
+
       - if policy(@system).tag?
         %div.row.align-items-top.field
           %div.col-2.field-name
             -# i18n-tasks-use t('activerecord.attributes.system.tags') # this lets i18n-tasks know the key is used
             = f.label :tags, :class=>"form-label"
           %div.col
-            = f.text_field :tag_list, :class=>"form-control"
+            = f.text_field :tag_list,value: @system.tag_list.to_s, :class=>"form-control"
 
       %div.row.align-items-center.field
         %div.col-2.field-name
@@ -151,7 +159,7 @@
             -# i18n-tasks-use t('attributes.identifiers') # this lets i18n-tasks know the key is used
             = f.label :identifiers, :class=>"form-label"
           %div.col
-            = f.fields_for :repoids do |repoid_form|
+            = f.fields_for :repoids, f.object.repoids.third_party do |repoid_form|
               %div.row
                 %div.col-2.field-name
                   Scheme
@@ -168,17 +176,6 @@
                 %div.col
                   = repoid_form.checkbox :_destroy
               %br
-
-      -#       %div.col
-      -#         -# = f.fields_for :repo_ids, OpenStruct.new(f.object.repo_ids) do |p|
-      -#         -#   - System.repo_id_schemes.each do |repo_id_scheme|
-      -#         -#     %div.row
-      -#         -#       %div.col-2.field-name
-      -#         -#         %span= "#{repo_id_scheme}:"
-      -#         -#       %div.col
-      -#         -#         = p.text_field repo_id_scheme, :class=>"form-control"
-      -#         -#         %br
-
 
       %div.row.align-items-center.field
         %div.col-2.field-name

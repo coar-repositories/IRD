@@ -4,7 +4,7 @@
   %div.row
     - systems = Normalid.where(url: potential_duplicate.url).extract_associated(:system)
     - already_annotated_duplicate = []
-    - systems.each {|system| if system.annotations.include? Annotation.find('duplicate') then already_annotated_duplicate << system end}
+    - systems.each {|system| if system.label_list.include? 'duplicate' then already_annotated_duplicate << system end}
     - if (systems.count - already_annotated_duplicate.count) > 1
       - duplicated_system_count += 1
       - duplicate_system_id_array = systems.map(&:id)

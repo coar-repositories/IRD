@@ -10,8 +10,11 @@ class GeneratorsController < ApplicationController
       format.html do
         @record_count = @pagy.count
       end
-      format.json
+      format.json do
+        authorize @generator, :download_json?
+      end
       format.csv do
+        authorize @generator, :download_csv?
         @systems = @generator.systems.publicly_viewable.order(:name)
         send_data System.to_csv(@systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
@@ -22,11 +25,13 @@ class GeneratorsController < ApplicationController
   def index
     authorize :generator
     @page_title = t("activerecord.models.generator.other")
-    @pagy, @generators = pagy(Generator.order(:name))
+    @pagy, @generators = pagy(Generator.order(:name), limit: 500)
     @record_count = @pagy.count
     respond_to do |format|
       format.html
-      format.json
+      format.json do
+        authorize :generator, :download_json?
+      end
     end
   end
 

@@ -1,0 +1,14 @@
+---
+ja:
+  media_types:
+    books: 書籍
+    conference-papers: 会議論文
+    images: 画像
+    learning-objects: 学習オブジェクト
+    multimedia: マルチメディア
+    other: 他の
+    patents: 特許
+    research-articles: 研究論文
+    research-data: 研究データ
+    software: ソフトウェア
+    theses: 論文

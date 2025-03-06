@@ -19,6 +19,10 @@ class NetworkCheck < ApplicationRecord
   scope :oai_pmh_identify_failed, -> { where network_check_type: :oai_pmh_identify, passed: false}
   scope :failures_no_network_connection, -> { where http_code: 0 }
 
+  def errors_past_threshold?
+    self.failures >= Rails.application.config.ird[:network_check_failure][:error_count_threshold] && self.error_duration >= Rails.application.config.ird[:network_check_failure][:error_duration_threshold]
+  end
+
   def error_duration
     if self.error_at.nil?
       return 0

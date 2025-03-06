@@ -9,11 +9,9 @@ class Platform < ApplicationRecord
   validate :matchers_must_be_regex,:generator_patterns_must_be_regex
 
   Machine_readable_attributes = MachineReadableAttributeSet.new([
-                                                                  MachineReadableAttribute.new(:id, "entity.id"),
-                                                                  MachineReadableAttribute.new(:name, "entity.name"),
-                                                                  MachineReadableAttribute.new(:repositories, "entity.systems.count"),
-                                                                  MachineReadableAttribute.new(:created_at, "entity.created_at"),
-                                                                  MachineReadableAttribute.new(:updated_at, "entity.updated_at")
+                                                                  MachineReadableAttribute.new(:id, :string, "entity.id"),
+                                                                  MachineReadableAttribute.new(:name, :string, "entity.name"),
+                                                                  MachineReadableAttribute.new(:repositories, :integer, "entity.systems.count")
                                                                 ])
 
   def self.machine_readable_attributes

@@ -36,7 +36,7 @@
         %td.field-name
           Roles:
         %td.field-value
-          = collection_check_boxes(:user, :role_ids, Role.where.not(id: :administrator), :id, :name) do |c|
+          = collection_check_boxes(:user, :role_ids, Role.all, :id, :name) do |c|
             = c.check_box
             = c.label
             %br

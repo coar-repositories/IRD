@@ -21,9 +21,7 @@
 !/data/reports/.keep
 !/data/dump/.keep
 !/data/export_production_csv/.keep
-!/data/seed_data/annotations.csv
 !/data/seed_data/countries.csv
-!/data/seed_data/media.csv
 !/data/seed_data/roles.csv
 
 # Ignore all logfiles and tempfiles.

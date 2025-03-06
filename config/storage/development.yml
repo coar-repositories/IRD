@@ -1,0 +1,7 @@
+local: &local
+  service: Disk
+  root: <%= ENV['LOCAL_DISK_STORAGE_ROOT'] %>
+
+thumbnails:
+  <<: *local
+  root: <%= ENV['LOCAL_DISK_STORAGE_ROOT'] %>/thumbnails

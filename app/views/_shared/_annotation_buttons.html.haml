@@ -1,5 +1,0 @@
-- Annotation.unrestricted.each do |annotation|
-  - if system.annotations.include?(annotation)
-    = link_to "✘ #{t(annotation.id, scope: :annotation_names)}", annotate_path(system,request.query_parameters.except(:lang).merge({annotation: annotation.id, add_or_remove: 'remove'})),:class=>"btn btn-outline-danger btn-sm"
-  - else
-    = link_to "✔︎ #{t(annotation.id, scope: :annotation_names)}", annotate_path(system,request.query_parameters.except(:lang).merge({annotation: annotation.id, add_or_remove: 'add'})),:class=>"btn btn-outline-success btn-sm"

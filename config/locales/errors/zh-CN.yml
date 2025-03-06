@@ -5,12 +5,18 @@ zh-CN:
       models:
         system:
           attributes:
-            media:
+            media_types:
               missing: 需要选择
+            oai_status:
+              not_supported: 需要支持
             primary_subject:
               missing: 需要选择
             subcategory:
               missing: 需要选择
+            system_status:
+              not_online: 需要在线
+            url:
+              invalid: 不是有效的 URL
       template:
         body: 请更正以下错误：
         header:

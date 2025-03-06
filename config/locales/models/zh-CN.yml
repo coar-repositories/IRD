@@ -21,7 +21,7 @@ zh-CN:
         latitude: 纬度
         location: 地点
         longitude: 经度
-        ror: 回流比
+        ror: 罗尔斯-罗伊斯
       repoid:
         identifier_scheme_list:
           ird: 税务局
@@ -31,10 +31,10 @@ zh-CN:
           re3data: 重新数据
           roar: 吼
       system:
-        annotations: 注解
         authorised_curators: 授权策展人
         contact: 接触
-        media: 媒体类型
+        issues: 策展问题
+        media_types: 媒体类型
         oai_base_url: OAI-PMH 基本 URL
         oai_status: OAI-PMH 状态
         oai_status_list:
@@ -73,6 +73,7 @@ zh-CN:
           governmental_repository: 政府
           institutional_repository: 机构
           unknown: 未分类
+        system_labels: 标签
         system_status: 系统状态
         system_status_list:
           missing: 未找到系统

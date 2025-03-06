@@ -4,7 +4,6 @@ en:
   admin: Admin
   agencies: Agencies
   all_fields_must_be_completed: All fields must be completed
-  annotations: Annotations
   are_you_sure_question: Are you sure?
   authorise_a_user: Authorise a User
   authorised_curator_for_these_repositories: Authorised Curator for these repositories
@@ -12,15 +11,14 @@ en:
   contact: Contact
   continents: Continents
   curation: Curation
-  curation_issues: Curation Issues
   database: Database
   email: Email
   filter: Filter
   fore_name: First Name
   general_information: General Information
   harvested: Harvested
-  has_thumbnail: Has Thumbnail?
   homepage: Homepage
+  identifier_schemes: Identifier Schemes
   identifiers: Identifiers
   last_name: Last Name
   login: Login
@@ -37,7 +35,6 @@ en:
   oai_status: OAI-PMH Status
   operations: Operations
   owner: Owner
-  owner_identified: Owner Identified?
   page_titles:
     about: About IRD
     admin: Admin

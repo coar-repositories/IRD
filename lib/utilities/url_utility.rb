@@ -1,7 +1,15 @@
 # frozen_string_literal: true
 module Utilities
   class UrlUtility
-    require 'uri/http'
+    require "uri/http"
+
+    def self.validate_url(url)
+      begin
+        URI.parse(url).is_a?(URI::HTTP)
+      rescue Exception => e
+        false
+      end
+    end
 
     def self.get_url_with_parent_folder_redirect_removed(url)
       begin
@@ -9,9 +17,9 @@ module Utilities
           url_section_to_remove = url[/[a-zA-Z0-9\-_]+\/\.\.\//]
           url.slice! url_section_to_remove unless url_section_to_remove.nil?
         end
-         url
+        url
       rescue Exception => e
-         url
+        url
       end
     end
 
@@ -27,25 +35,25 @@ module Utilities
 
     def self.get_domain_from_url(url)
       begin
-         PublicSuffix.parse(URI(url).host).domain.to_s.downcase
+        PublicSuffix.parse(URI(url).host).domain.to_s.downcase
       rescue Exception => e
-         nil
+        nil
       end
     end
 
     def self.get_domain_from_normalid(normalid)
       begin
-         PublicSuffix.parse(URI('http://' + normalid).host).domain.to_s.downcase
+        PublicSuffix.parse(URI("http://" + normalid).host).domain.to_s.downcase
       rescue Exception => e
         Rails.logger.debug e
-         nil
+        nil
       end
     end
 
     def self.get_tld_from_url(url)
       begin
-        url = url.delete_suffix('/')
-        PublicSuffix.parse(URI(url).host).tld.split('.').last
+        url = url.delete_suffix("/")
+        PublicSuffix.parse(URI(url).host).tld.split(".").last
       rescue Exception => e
         nil
       end
@@ -53,7 +61,7 @@ module Utilities
 
     def self.get_url_without_trailing_slash(url)
       begin
-        url.delete_suffix('/')
+        url.delete_suffix("/")
       rescue Exception => e
         url
       end
@@ -65,7 +73,7 @@ module Utilities
         normalised_url = uri.host
         normalised_url += uri.path if uri.path
         if normalised_url
-          normalised_url.delete_suffix('/').downcase
+          normalised_url.delete_suffix("/").downcase
         else
           nil
         end

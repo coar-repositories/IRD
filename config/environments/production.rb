@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 require 'colorize'
 
 Rails.application.configure do
-  config.active_storage.service = ENV['ACTIVE_STORAGE_SERVICE'].to_sym
+  config.active_storage.service = :linode
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
@@ -108,5 +108,3 @@ new_active_record_logger = ActiveSupport::Logger.new(STDOUT)
 new_active_record_logger.formatter = CustomLoggerFormatter.new
 ActiveRecord::Base.logger = ActiveSupport::TaggedLogging.new(new_active_record_logger)
 ActiveRecord::Base.logger.level = ENV.fetch("RAILS_LOG_LEVEL", "error").to_sym
-
-Rack::MiniProfiler.config.authorization_mode = :allow_authorized

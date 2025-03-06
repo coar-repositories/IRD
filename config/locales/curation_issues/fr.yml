@@ -1,0 +1,39 @@
+---
+fr:
+  curation-issues:
+    automated-oai-pmh-check-failed:
+      description: La vérification automatique OAI-PMH a échoué
+      name: La vérification automatique OAI-PMH a échoué
+    automated-website-check-failed:
+      description: La vérification automatique du site Web a échoué
+      name: La vérification automatique du site Web a échoué
+    contact-missing:
+      description: Le contact est manquant
+      name: Contact manquant
+    description-missing:
+      description: La description est manquante
+      name: Description manquante
+    homepage-url-missing:
+      description: L'URL de la page d'accueil est manquante
+      name: URL de la page d'accueil manquante
+    name-missing:
+      description: Le nom est manquant
+      name: Nom manquant
+    oai-base-url-missing:
+      description: L'URL de base OAI-PMH est manquante
+      name: URL de base OAI-PMH manquante
+    owner-missing:
+      description: Aucun propriétaire identifié
+      name: Propriétaire disparu
+    platform-may-be-incorrect:
+      description: La plate-forme logicielle identifiée peut être incorrecte
+      name: La plateforme peut être incorrecte
+    platform-missing:
+      description: Aucune plateforme identifiée
+      name: Plateforme manquante
+    platform-version-may-be-incorrect:
+      description: La version de la plateforme logicielle identifiée peut être incorrecte
+      name: La version de la plateforme peut être incorrecte
+    thumbnail-missing:
+      description: La miniature est manquante
+      name: Vignette manquante
