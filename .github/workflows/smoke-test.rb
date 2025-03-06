@@ -1,1 +1,1 @@
-puts 1
+STDERR.puts 1
