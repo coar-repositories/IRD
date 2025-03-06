@@ -1,1 +1,1 @@
-STDERR.puts 1
+exit 1
