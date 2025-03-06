@@ -40,6 +40,14 @@ class User < ApplicationRecord
     true unless user == nil || user.access_revoked?
   end
 
+  def self.system_user_id
+    Rails.application.config.ird[:default_models][:system_user]
+  end
+
+  def self.system_user
+    User.find(self.system_user_id)
+  end
+
   # def self.search(term)
   #   where("email LIKE ?", "%#{term}%").order('email')
   # end

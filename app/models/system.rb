@@ -36,9 +36,11 @@ class System < ApplicationRecord
   include ActiveSnapshot
 
   has_snapshot_children do
-    instance = self.class.includes(:taggings).find(id)
+    instance = self.class.includes(:taggings,:repoids,:normalids).find(id)
     {
       taggings: instance.taggings,
+      repoids: instance.repoids,
+      normalids: instance.normalids
     }
   end
 
@@ -129,6 +131,7 @@ class System < ApplicationRecord
                                                                   MachineReadableAttribute.new(:homepage, :string, "entity.url",true),
                                                                   MachineReadableAttribute.new(:owner_id, :string, "entity.owner.id if entity.owner",true),
                                                                   MachineReadableAttribute.new(:owner_homepage, :string, "entity.owner.website if entity.owner",true),
+                                                                  MachineReadableAttribute.new(:contact, :string, "entity.contact",true),
                                                                   MachineReadableAttribute.new(:owner_ror, :string, "entity.owner.ror if entity.owner",true),
                                                                   MachineReadableAttribute.new(:owner_name, :string, "entity.owner.name if entity.owner",true),
                                                                   MachineReadableAttribute.new(:repository_type, :string, "entity.subcategory",true),
@@ -366,6 +369,18 @@ class System < ApplicationRecord
       self.random_id = rand(1...1000000)
     end
     self.owner_id = nil if self.owner_id == ""
+    # strip whitespace from beginning/end of strings caused by updates from spreadsheets or forms
+    self.id.strip!
+    self.name.strip!
+    self.short_name.strip!
+    self.url.strip!
+    self.oai_base_url.strip!
+    self.description.strip!
+    self.contact.strip!
+    self.platform_version.strip!
+    self.aliases.each do |a|
+      a.strip!
+    end
   end
 end
 
