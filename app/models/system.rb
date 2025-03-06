@@ -27,8 +27,6 @@ class UrlValidator < ActiveModel::Validator
   end
 end
 
-
-
 class System < ApplicationRecord
   Issue = Struct.new(:priority, :description)
   include TranslateEnum
@@ -36,7 +34,7 @@ class System < ApplicationRecord
   include ActiveSnapshot
 
   has_snapshot_children do
-    instance = self.class.includes(:taggings,:repoids,:normalids).find(id)
+    instance = self.class.includes(:taggings, :repoids, :normalids).find(id)
     {
       taggings: instance.taggings,
       repoids: instance.repoids,
@@ -68,7 +66,6 @@ class System < ApplicationRecord
       http_code: network_checks.url_checks.first&.http_code,
       metadata_formats: metadata_formats.map(&:name),
       identifier_schemes: repoids.map(&:identifier_scheme).excluding("ird").uniq,
-      # curation_issues: "name-missing"
       curation_issues: issues.map { |issue| issue["description"] }
     }
   end
@@ -125,29 +122,29 @@ class System < ApplicationRecord
   after_create :add_url_to_normalids_on_create
 
   Machine_readable_attributes = MachineReadableAttributeSet.new([
-                                                                  MachineReadableAttribute.new(:id, :string, "entity.id",true),
-                                                                  MachineReadableAttribute.new(:name, :string, "entity.name",true),
-                                                                  MachineReadableAttribute.new(:system_category, :string, "entity.system_category",true),
-                                                                  MachineReadableAttribute.new(:homepage, :string, "entity.url",true),
-                                                                  MachineReadableAttribute.new(:owner_id, :string, "entity.owner.id if entity.owner",true),
-                                                                  MachineReadableAttribute.new(:owner_homepage, :string, "entity.owner.website if entity.owner",true),
-                                                                  MachineReadableAttribute.new(:contact, :string, "entity.contact",true),
-                                                                  MachineReadableAttribute.new(:owner_ror, :string, "entity.owner.ror if entity.owner",true),
-                                                                  MachineReadableAttribute.new(:owner_name, :string, "entity.owner.name if entity.owner",true),
-                                                                  MachineReadableAttribute.new(:repository_type, :string, "entity.subcategory",true),
-                                                                  MachineReadableAttribute.new(:system_status, :string, "entity.system_status",false),
-                                                                  MachineReadableAttribute.new(:software, :string, "entity.platform_id",true),
-                                                                  MachineReadableAttribute.new(:software_version, :string, "entity.platform_version",true),
-                                                                  MachineReadableAttribute.new(:country, :string, "entity.country_id",false),
-                                                                  MachineReadableAttribute.new(:responsible_organisation, :string, "entity.rp.name if entity.rp",false),
-                                                                  MachineReadableAttribute.new(:other_registry_identifiers, :array, "entity.repoids.third_party.collect(&:to_s)",true),
-                                                                  MachineReadableAttribute.new(:oai_base_url, :string, "entity.oai_base_url",true),
-                                                                  MachineReadableAttribute.new(:oai_status, :string, "entity.oai_status",false),
-                                                                  MachineReadableAttribute.new(:media_types, :array, "entity.media_types",true),
-                                                                  MachineReadableAttribute.new(:primary_subject, :string, "entity.primary_subject",true),
-                                                                  MachineReadableAttribute.new(:reviewed, :timestamp, "entity.reviewed",false),
-                                                                  MachineReadableAttribute.new(:metadata_formats, :array, "entity.metadata_formats.collect(&:name)",false),
-                                                                  MachineReadableAttribute.new(:record_status, :string, "entity.record_status",true)
+                                                                  MachineReadableAttribute.new(:id, :string, "entity.id", true),
+                                                                  MachineReadableAttribute.new(:name, :string, "entity.name", true),
+                                                                  MachineReadableAttribute.new(:system_category, :string, "entity.system_category", true),
+                                                                  MachineReadableAttribute.new(:homepage, :string, "entity.url", true),
+                                                                  MachineReadableAttribute.new(:owner_id, :string, "entity.owner.id if entity.owner", true),
+                                                                  MachineReadableAttribute.new(:owner_homepage, :string, "entity.owner.website if entity.owner", true),
+                                                                  MachineReadableAttribute.new(:contact, :string, "entity.contact", true),
+                                                                  MachineReadableAttribute.new(:owner_ror, :string, "entity.owner.ror if entity.owner", true),
+                                                                  MachineReadableAttribute.new(:owner_name, :string, "entity.owner.name if entity.owner", true),
+                                                                  MachineReadableAttribute.new(:repository_type, :string, "entity.subcategory", true),
+                                                                  MachineReadableAttribute.new(:system_status, :string, "entity.system_status", false),
+                                                                  MachineReadableAttribute.new(:software, :string, "entity.platform_id", true),
+                                                                  MachineReadableAttribute.new(:software_version, :string, "entity.platform_version", true),
+                                                                  MachineReadableAttribute.new(:country, :string, "entity.country_id", false),
+                                                                  MachineReadableAttribute.new(:responsible_organisation, :string, "entity.rp.name if entity.rp", false),
+                                                                  MachineReadableAttribute.new(:other_registry_identifiers, :array, "entity.repoids.third_party.collect(&:to_s)", true),
+                                                                  MachineReadableAttribute.new(:oai_base_url, :string, "entity.oai_base_url", true),
+                                                                  MachineReadableAttribute.new(:oai_status, :string, "entity.oai_status", false),
+                                                                  MachineReadableAttribute.new(:media_types, :array, "entity.media_types", true),
+                                                                  MachineReadableAttribute.new(:primary_subject, :string, "entity.primary_subject", true),
+                                                                  MachineReadableAttribute.new(:reviewed, :timestamp, "entity.reviewed", false),
+                                                                  MachineReadableAttribute.new(:metadata_formats, :array, "entity.metadata_formats.collect(&:name)", false),
+                                                                  MachineReadableAttribute.new(:record_status, :string, "entity.record_status", true)
                                                                 ])
 
   def self.machine_readable_attributes
@@ -156,6 +153,14 @@ class System < ApplicationRecord
 
   def self.unrestricted_labels
     Rails.configuration.ird[:labels].select { |_, v| v[:restricted] == false }.keys
+  end
+
+  def most_recent_snapshot(user = nil)
+    if user
+      snapshots.where(user_id: user.id).order(created_at: :desc).first
+    else
+      snapshots.order(created_at: :desc).first
+    end
   end
 
   def display_name

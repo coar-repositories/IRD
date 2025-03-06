@@ -22,14 +22,16 @@
               %b= "#{t(:primary_subject)}:"
               -# i18n-tasks-use t('activerecord.attributes.system.primary_subject_list.#{subject}') # this lets i18n-tasks know the key is used
               = System.translated_primary_subject(system.primary_subject)
-            %li
-              %b= "#{t(:reviewed)}:"
-              - if system.reviewed
-                = system.reviewed.strftime('%Y-%m-%d')
-              - else
-                =t(:not_yet_reviewed)
       %div.col-5
         = image_tag(rails_blob_url(system.thumbnail),:class=>"website-thumbnail-search-results shadowed") if system.thumbnail.attached?
+    %div.row
+      %div.col
+        %div.card-system-details-right
+          - if system.reviewed
+            %b= "#{t(:reviewed)}:"
+            = system.reviewed.strftime('%Y-%m-%d')
+          - else
+            =t(:not_yet_reviewed)
   %div.card-footer
     %div.card-footer-status-bar
       = system_status_flags system.system_status

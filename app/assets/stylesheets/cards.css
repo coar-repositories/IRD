@@ -1,45 +1,41 @@
 
-
-.system-search-result-card,.activity-card {
-  margin-top: 10px;
+.system-search-result-card, .activity-card {
+    margin-top: 10px;
 }
 
 .card-header {
-  color: #444444;
-  font-weight: normal;
+    color: #444444;
+    font-weight: normal;
+}
+
+.card-body ul {
+    padding: 5px;
 }
 
 .card-header a {
-  text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 .card-header a:hover {
-  text-decoration: underline !important;
+    text-decoration: underline !important;
 }
 
-.system-search-description {
-  font-size: 0.9em;
-  padding-top:5px;
-}
-
-.card-system-details, .card-system-details ul li {
-  font-size: 0.9em;
-  list-style: none;
+.card-system-details,.card-system-details-right, .card-system-details ul li {
+    list-style: none;
 }
 
 .card-system-details-right {
-  text-align: end;
+    text-align: end;
 }
 
 .card-footer-status-bar {
-  text-align: right;
-  font-size: 0.9em;
+    text-align: right;
 }
 
 .card-duplicate {
-  margin-bottom: 20px
+    margin-bottom: 20px
 }
 
 hr.duplicate-card-row-separator {
-  margin-top: 10px;
+    margin-top: 10px;
 }
