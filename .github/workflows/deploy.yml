@@ -32,6 +32,6 @@ jobs:
         run: ruby ./.github/workflows/smoke-test.rb
         continue-on-error: true
       - name: Rollback Helm
-        if: failure() && steps.smokeTest.outcome == 'failure'
+        if: steps.smokeTest.outcome == 'failure'
         run: |
           helm rollback ird 1
