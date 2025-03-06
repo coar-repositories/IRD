@@ -208,7 +208,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_02_154231) do
     t.string "item_type", null: false
     t.bigint "item_id", null: false
     t.string "user_type"
-    t.bigint "user_id"
+    t.string "user_id", limit: 36
     t.string "identifier"
     t.json "metadata"
     t.datetime "created_at", null: false

@@ -11,13 +11,13 @@ module Ingest
     require "csv"
     require "fileutils"
 
-    def call(data, record_source, tags, dry_run)
+    def call(data, record_source, tags, dry_run, user)
       batch_report = SystemIngestBatchReport.new
       begin
         CSV.parse(data, headers: true).each_with_index do |row,row_number|
           begin
             # [ :owner_id, :owner_homepage, :owner_ror, :owner_name, :repository_type, :, :, :, :
-            candidate_system = CandidateSystem.new(record_source, dry_run, tags)
+            candidate_system = CandidateSystem.new(record_source, dry_run, tags, user)
             candidate_system.add_attribute("id", row["id"])
             candidate_system.add_attribute("system_category", row["system_category"])
             candidate_system.add_attribute("subcategory", row["repository_type"])

@@ -1,20 +1,13 @@
 class User < ApplicationRecord
   include MachineReadability
+
   passwordless_with :email
   has_secure_password :api_key, validations: false
-
-  # searchkick
-  #
-  # def search_data
-  #   {
-  #     name: display_name,
-  #     email: email
-  #   }
-  # end
 
   has_and_belongs_to_many :roles, :join_table => 'roles_users'
   has_and_belongs_to_many :systems, :join_table => 'systems_users'
   has_and_belongs_to_many :organisations, :join_table => 'organisations_users'
+  has_many :snapshots, class_name: "ActiveSnapshot::Snapshot"
 
   before_create :set_id
 

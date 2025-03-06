@@ -2,12 +2,12 @@
 
 module Snapshots
   class SystemSnapshotCreationService < ApplicationService
-    def call(system_id)
+    def call(system_id,user)
       begin
         Rails.logger.debug "Starting system snapshot creation"
         system = System.find(system_id)
         snapshot = system.create_snapshot!(
-          user: User.system_user
+          user: user
         )
         success snapshot
       rescue Exception => exception

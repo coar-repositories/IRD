@@ -3,7 +3,7 @@ class CreateSnapshotsTables < ActiveRecord::Migration::Current
   def change
     create_table :snapshots do |t|
       t.belongs_to :item, polymorphic: true, null: false, index: true
-      t.belongs_to :user, polymorphic: true
+      t.belongs_to :user, type: :string, limit: 36, polymorphic: true
 
       t.string :identifier, index: true
       t.index [:identifier, :item_id, :item_type], unique: true

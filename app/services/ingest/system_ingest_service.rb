@@ -26,7 +26,7 @@ module Ingest
           end
           unless system.changes.empty?
             unless candidate_system.dry_run
-              service_result = Snapshots::SystemSnapshotCreationService.call(candidate_system.get_attribute("id"))
+              service_result = Snapshots::SystemSnapshotCreationService.call(candidate_system.get_attribute("id"), candidate_system.user)
               if service_result.success?
                 Rails.logger.info("Created snapshot for system with id '#{system.id}'")
               else

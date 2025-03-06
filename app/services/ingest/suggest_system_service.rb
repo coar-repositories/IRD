@@ -4,9 +4,9 @@ module Ingest
   class SuggestSystemService < ApplicationService
     require_relative "system_ingest_service"
 
-    def call(params)
+    def call(params, user)
       begin
-        candidate_system = CandidateSystem.new("user", nil,  nil)
+        candidate_system = CandidateSystem.new("user", nil, nil, user)
         candidate_system.add_attribute("name", params[:name])
         candidate_system.add_attribute("url", params[:url])
         candidate_system.add_attribute("system_category", params[:system_category])
