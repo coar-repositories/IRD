@@ -19,7 +19,7 @@ module Ingest
             # [ :owner_id, :owner_homepage, :owner_ror, :owner_name, :repository_type, :, :, :, :
             candidate_system = CandidateSystem.new(record_source, dry_run, tags)
             candidate_system.add_attribute("id", row["id"])
-            candidate_system.add_attribute("system_category", "repository")
+            candidate_system.add_attribute("system_category", row["system_category"])
             candidate_system.add_attribute("subcategory", row["repository_type"])
             candidate_system.add_attribute("name", row["name"])
             candidate_system.add_attribute("url", row["homepage"])
@@ -33,7 +33,7 @@ module Ingest
             org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
             candidate_system.add_attribute("owner_id", org.id) if org
             if row["other_registry_identifiers"]
-              identifiers = row["other_registry_identifiers"].split("|")
+              identifiers = row["other_registry_identifiers"].strip.split("|")
               identifiers.each do |identifier|
                 scheme, value = identifier.split(":")
                 candidate_system.add_identifier(scheme, value)

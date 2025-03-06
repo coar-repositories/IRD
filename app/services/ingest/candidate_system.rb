@@ -13,10 +13,11 @@ module Ingest
     end
 
     def add_attribute(key, value)
+      value.strip! if value.is_a? String
       @attributes[key] = value
     end
 
-    def add_identifier(scheme,value)
+    def add_identifier(scheme, value)
       @identifiers[scheme] = value
     end
 

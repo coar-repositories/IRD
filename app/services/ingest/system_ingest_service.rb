@@ -16,10 +16,6 @@ module Ingest
         if system
           Rails.logger.debug("Updating existing system with id '#{system.id}'....")
           system.assign_attributes(candidate_system.attributes)
-          unless system.changes.empty?
-            updated = true
-            Rails.logger.info("System with id '#{system.id}' updated")
-          end
           candidate_system.tags.each { |tag| system.tag_list.add(tag) }
           candidate_system.identifiers.each_pair do |scheme, value|
             if Repoid.find_by(system: system, identifier_scheme: scheme.to_sym, identifier_value: value).nil?
@@ -27,6 +23,19 @@ module Ingest
               updated = true
               Rails.logger.debug("Repoids for system with id '#{system.id}' updated")
             end
+          end
+          unless system.changes.empty?
+            unless candidate_system.dry_run
+              service_result = Snapshots::SystemSnapshotCreationService.call(candidate_system.get_attribute("id"))
+              if service_result.success?
+                Rails.logger.info("Created snapshot for system with id '#{system.id}'")
+              else
+                Rails.logger.error("Error creating snapshot for system with id '#{system.id}': #{service_result.error}")
+                raise service_result.error
+              end
+            end
+            updated = true
+            Rails.logger.info("System with id '#{system.id}' updated")
           end
           unless updated
             Rails.logger.info("System with id '#{system.id}' unchanged")
