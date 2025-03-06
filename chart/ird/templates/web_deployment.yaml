@@ -26,7 +26,7 @@ spec:
         - name: {{ include "ird.webapp.name" . }}
 {{/*          image: "{{ .Values.webapp.image.repository }}:{{ .Values.webapp.image.tag }}"*/}}
           image: "{{ .Values.web_and_jobs_image.repository }}:{{ default .Chart.AppVersion .Values.web_and_jobs_image.tag }}"
-          imagePullPolicy: {{ .Values.webapp.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.web_and_jobs_image.pullPolicy }}
           command: ["bash", "-c"]
           # args: ["bundle exec rails db:migrate && bundle exec rails assets:precompile && bundle exec thor index:reindex && ./bin/rails server"]
           args: ["bundle exec rails db:migrate && bundle exec rails assets:precompile && ./bin/rails server"]
@@ -70,7 +70,7 @@ spec:
         - name: {{ include "ird.jobs.name" . }}
 {{/*          image: "{{ .Values.jobs.image.repository }}:{{ .Values.jobs.image.tag }}"*/}}
           image: "{{ .Values.web_and_jobs_image.repository }}:{{ default .Chart.AppVersion .Values.web_and_jobs_image.tag }}"
-          imagePullPolicy: {{ .Values.jobs.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.web_and_jobs_image.pullPolicy }}
           command: ["bash", "-c"]
           # args: ["bundle exec rails solid_queue:start"]
           args: ["bundle exec rails db:migrate && ./bin/jobs"]
