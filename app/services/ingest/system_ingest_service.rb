@@ -7,41 +7,46 @@ module Ingest
 
   class SystemIngestService < ApplicationService
 
-    def call(candidate_system)
+    def call(candidate_system,user)
       begin
         system = nil
         updated = false
         created = false
         system = System.find(candidate_system.get_attribute("id")) if candidate_system.get_attribute("id").present?
         if system
-          Rails.logger.debug("Updating existing system with id '#{system.id}'....")
-          system.assign_attributes(candidate_system.attributes)
-          candidate_system.tags.each { |tag| system.tag_list.add(tag) }
-          candidate_system.identifiers.each_pair do |scheme, value|
-            if Repoid.find_by(system: system, identifier_scheme: scheme.to_sym, identifier_value: value).nil?
-              Repoid.create!(system: system, identifier_scheme: scheme.to_sym, identifier_value: value) unless candidate_system.dry_run
-              updated = true
-              Rails.logger.debug("Repoids for system with id '#{system.id}' updated")
-            end
-          end
-          unless system.changes.empty?
-            unless candidate_system.dry_run
-              service_result = Snapshots::SystemSnapshotCreationService.call(candidate_system.get_attribute("id"), candidate_system.user)
-              if service_result.success?
-                Rails.logger.info("Created snapshot for system with id '#{system.id}'")
-              else
-                Rails.logger.error("Error creating snapshot for system with id '#{system.id}': #{service_result.error}")
-                raise service_result.error
+          # if policy(system).update?
+          if Pundit.policy(user, system).update?
+            Rails.logger.debug("Updating existing system with id '#{system.id}'.... for user #{user.name}")
+            system.assign_attributes(candidate_system.attributes)
+            candidate_system.tags.each { |tag| system.tag_list.add(tag) }
+            candidate_system.identifiers.each_pair do |scheme, value|
+              if Repoid.find_by(system: system, identifier_scheme: scheme.to_sym, identifier_value: value).nil?
+                Repoid.create!(system: system, identifier_scheme: scheme.to_sym, identifier_value: value) unless candidate_system.dry_run
+                updated = true
+                Rails.logger.debug("Repoids for system with id '#{system.id}' updated")
               end
             end
-            updated = true
-            Rails.logger.info("System with id '#{system.id}' updated")
+            unless system.changes.empty?
+              unless candidate_system.dry_run
+                service_result = Snapshots::SystemSnapshotCreationService.call(candidate_system.get_attribute("id"), user)
+                if service_result.success?
+                  Rails.logger.info("Created snapshot for system with id '#{system.id}'")
+                else
+                  Rails.logger.error("Error creating snapshot for system with id '#{system.id}': #{service_result.error}")
+                  raise service_result.error
+                end
+              end
+              updated = true
+              Rails.logger.info("System with id '#{system.id}' updated")
+            end
+            unless updated
+              Rails.logger.info("System with id '#{system.id}' unchanged")
+            end
+            system.mark_reviewed!
+            system.save! unless candidate_system.dry_run # always save even if record unchanged to update reviewed_at timestamp
+          else
+            raise Pundit::NotAuthorizedError.new("Not authorised to update system with ID: '#{system.id}'") # fail because user does not have permission to update system
           end
-          unless updated
-            Rails.logger.info("System with id '#{system.id}' unchanged")
-          end
-          system.mark_reviewed!
-          system.save! unless candidate_system.dry_run # always save even if record unchanged to update reviewed_at timestamp
         else
           system = check_for_existing_system(candidate_system)
           if system

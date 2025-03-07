@@ -17,7 +17,7 @@ module Ingest
         CSV.parse(data, headers: true).each_with_index do |row,row_number|
           begin
             # [ :owner_id, :owner_homepage, :owner_ror, :owner_name, :repository_type, :, :, :, :
-            candidate_system = CandidateSystem.new(record_source, dry_run, tags, user)
+            candidate_system = CandidateSystem.new(record_source, dry_run, tags)
             candidate_system.add_attribute("id", row["id"])
             candidate_system.add_attribute("system_category", row["system_category"])
             candidate_system.add_attribute("subcategory", row["repository_type"])
@@ -40,7 +40,7 @@ module Ingest
               end
             end
             candidate_system.normalise_attributes!
-            service_result = SystemIngestService.call(candidate_system)
+            service_result = SystemIngestService.call(candidate_system,user)
             if service_result.failure?
               if service_result.error.is_a?(SystemExistsIngestException)
                 batch_report.add_record_not_updated(BatchItemReport.new(row_number, service_result.error.message))
@@ -51,7 +51,7 @@ module Ingest
             else
               if service_result.payload.updated
                 batch_report.add_record_updated(service_result.payload.system.id)
-                elsif service_result.payload.created
+              elsif service_result.payload.created
                   batch_report.add_record_created(service_result.payload.system.id)
               else
                 batch_report.add_record_unchanged(BatchItemReport.new(row_number, "System unchanged"))

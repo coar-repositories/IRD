@@ -2,13 +2,12 @@
 
 module Ingest
   class CandidateSystem
-    attr_reader :record_source, :dry_run, :tags, :user, :identifiers, :attributes
+    attr_reader :record_source, :dry_run, :tags, :identifiers, :attributes
 
-    def initialize(record_source, dry_run, tags, user)
+    def initialize(record_source, dry_run, tags)
       @record_source = record_source
       @dry_run = dry_run
       @tags = tags
-      @user = user
       @identifiers = {}
       @attributes = {}
     end

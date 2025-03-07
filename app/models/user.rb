@@ -30,7 +30,7 @@ class User < ApplicationRecord
   end
 
   def self.valid_user?(user)
-    true unless user == nil || user.access_revoked?
+    user.is_a?(User) && !user.access_revoked?
   end
 
   def self.system_user_id
