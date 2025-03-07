@@ -11,7 +11,7 @@ jobs:
         id: minikube
         uses: medyagh/setup-minikube@latest
       - name: Install kubectl
-        uses: azure/setup-kubectl@v1
+        uses: azure/setup-kubectl@v4
       - name: Try the cluster
         run: kubectl get pods -A
       - name: Checkout repository
