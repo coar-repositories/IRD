@@ -6,8 +6,12 @@ module Website
 
     def call(system_id, parse_metadata_flag, redirect_limit = 6)
       begin
-        @system = System.includes(:network_checks,:repoids,:users).find(system_id)
+        @system = System.includes(:network_checks, :repoids, :users).find(system_id)
         original_url = @system.url
+        if @system.metadata["html_redirected_url"].present?
+          @system.url = @system.metadata["html_redirected_url"]
+          @system.metadata.except!("html_redirected_url")
+        end
         conn = Utilities::HttpClientConnectionWrapper.new(redirect_limit)
         response = conn.get(@system.url)
         unless conn.redirect_url_chain.empty?
@@ -16,6 +20,7 @@ module Website
         if conn.new_url.to_s != @system.url
           @system.url = conn.new_url.to_s
         end
+        puts conn.redirect_url_chain.inspect
         @system.write_network_check(:homepage_url, true, "", response.status)
         @system.system_status = :online
         if parse_metadata_flag
@@ -93,6 +98,15 @@ module Website
         Rails.logger.debug("Parsing metadata for URL #{@system.url}")
         begin
           doc = Nokogiri::HTML(response.body)
+          begin
+            html_redirect_element = doc.xpath('//meta[@http-equiv="refresh"]')
+            html_redirect_element_url = html_redirect_element.attr("content").text
+            @system.metadata["html_redirected_url"] = html_redirect_element_url.split(';')[1].split('=')[1].strip
+          rescue Exception => e
+            # don't worry about it!
+            @system.metadata.except!("html_redirected_url") if @system.metadata["html_redirected_url"].present?
+            puts e.message
+          end
           doc.xpath('//meta[@name="twitter:title"]', '//meta[@property="og:title"]').each { |element| @system.metadata["title"] = element.attr("content") }
           doc.xpath('//meta[@name="twitter:description"]', '//meta[@property="og:description"]', '//meta[@name="description"]', '//meta[@name="Description"]').each { |element| @system.metadata["description"] = element.attr("content") }
           doc.xpath('//meta[@name="generator"]', '//meta[@name="Generator"]').each { |element| @system.metadata["generator"] = element.attr("content") }
