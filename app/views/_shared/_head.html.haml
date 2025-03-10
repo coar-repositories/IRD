@@ -14,7 +14,8 @@
 = stylesheet_link_tag :app
 = javascript_importmap_tags
 
-= favicon_link_tag asset_path('coar-favicon.png'),rel: "apple-touch-icon"
+-# = favicon_link_tag asset_path('coar-favicon.png'),rel: "apple-touch-icon"
+= favicon_link_tag "coar-favicon.png", rel: "apple-touch-icon", sizes: "100x100", type: "image/png"
 
 - if ENV["PLAUSIBLE_ANALYTICS"].present?
   %script{defer: true, "data-domain": ENV['PLAUSIBLE_ANALYTICS'], src:"https://plausible.io/js/script.js"}

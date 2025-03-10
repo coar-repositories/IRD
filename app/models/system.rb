@@ -376,15 +376,15 @@ class System < ApplicationRecord
     self.owner_id = nil if self.owner_id == ""
     # strip whitespace from beginning/end of strings caused by updates from spreadsheets or forms
     self.id.strip!
-    self.name.strip!
-    self.short_name.strip!
-    self.url.strip!
-    self.oai_base_url.strip!
-    self.description.strip!
-    self.contact.strip!
-    self.platform_version.strip!
+    self.name.strip! unless self.name.nil?
+    self.short_name.strip! unless self.short_name.nil?
+    self.url.strip! unless self.url.nil?
+    self.oai_base_url.strip! unless self.oai_base_url.nil?
+    self.description.strip! unless self.description.nil?
+    self.contact.strip! unless self.contact.nil?
+    self.platform_version.strip! unless self.platform_version.nil?
     self.aliases.each do |a|
-      a.strip!
+      a.strip! unless self.name.nil?
     end
   end
 end
