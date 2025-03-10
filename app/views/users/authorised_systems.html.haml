@@ -1,9 +1,8 @@
 = render '_shared/paginator'
 %table{:class=>"table table-sm table-striped table-bordered sortable-table"}
   %caption
-    = "#{title} (#{systems.count})"
-    - if data_downloadable
-      = render '_shared/download_machine_readable_data_buttons', formats: [:json,:csv]
+    = "#{@page_title} (#{@systems.count})"
+    = render '_shared/download_machine_readable_data_buttons', formats: [:json,:csv]
   %thead
     %tr
       %th= t(:name)
@@ -14,7 +13,7 @@
       %th= "#{t(:reviewed)}?"
       %th= "#{t(:needs_review)}?"
   %tbody
-    - systems.each do |system|
+    - @systems.each do |system|
       %tr
         %td= link_to system.display_name,system
         %td= system_status_flags system.system_status

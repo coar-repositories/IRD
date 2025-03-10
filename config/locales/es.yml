@@ -38,6 +38,8 @@ es:
   page_titles:
     about: Acerca del IRD
     admin: Administración
+    authorised_systems: Los repositorios %{name} están autorizados a conservar
+    authorised_systems_self: Repositorios que estás autorizado a conservar
     dashboard_for: Panel de control para %{name}
     help: Ayuda del sistema
     repositories_in_country: Repositorios en %{country}
@@ -54,6 +56,7 @@ es:
   records_in_ird: Registros en el IRD
   registered_users: Usuarios registrados
   repositories: Repositorios
+  repositories_requiring_review: Repositorios que requieren revisión
   repository_browser: Navegador de repositorios
   repository_scope: Alcance del repositorio
   repository_scope_short: Alcance

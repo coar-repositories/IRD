@@ -10,6 +10,14 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def authorised_systems?
+    show?
+  end
+
+  def systems_requiring_review?
+    show?
+  end
+
   def allow_feedback?
     ENV["FEEDBACK_LINK"].present? && User.valid_user?(@user)
   end

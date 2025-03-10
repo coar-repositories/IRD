@@ -38,6 +38,8 @@ tr:
   page_titles:
     about: IRD Hakkında
     admin: Yönetici
+    authorised_systems: Depolar %{name}, düzenleme yetkisine sahiptir
+    authorised_systems_self: Yönetme yetkisine sahip olduğunuz depolar
     dashboard_for: "%{name} için Gösterge Paneli"
     help: Sistem Yardımı
     repositories_in_country: "%{country}'daki depolar"
@@ -54,6 +56,7 @@ tr:
   records_in_ird: IRD'deki kayıtlar
   registered_users: Kayıtlı Kullanıcılar
   repositories: Depolar
+  repositories_requiring_review: İnceleme Gerektiren Depolar
   repository_browser: Depo Tarayıcısı
   repository_scope: Depo Kapsamı
   repository_scope_short: Kapsam

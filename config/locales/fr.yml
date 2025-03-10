@@ -38,6 +38,8 @@ fr:
   page_titles:
     about: À propos de l'IRD
     admin: Administrateur
+    authorised_systems: Les référentiels %{name} sont autorisés à gérer
+    authorised_systems_self: Les référentiels que vous êtes autorisé à gérer
     dashboard_for: Tableau de bord pour %{name}
     help: Aide du système
     repositories_in_country: Dépôts dans %{country}
@@ -54,6 +56,7 @@ fr:
   records_in_ird: Enregistrements dans l'IRD
   registered_users: Utilisateurs enregistrés
   repositories: Dépôts
+  repositories_requiring_review: Dépôts nécessitant une révision
   repository_browser: Navigateur de référentiel
   repository_scope: Portée du référentiel
   repository_scope_short: Portée

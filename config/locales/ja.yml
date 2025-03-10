@@ -38,6 +38,8 @@ ja:
   page_titles:
     about: IRDについて
     admin: 管理者
+    authorised_systems: リポジトリ%{name}はキュレーションする権限を持っています
+    authorised_systems_self: キュレーション権限のあるリポジトリ
     dashboard_for: "%{name} のダッシュボード"
     help: システムヘルプ
     repositories_in_country: "%{country} のリポジトリ"
@@ -54,6 +56,7 @@ ja:
   records_in_ird: IRDの記録
   registered_users: 登録ユーザー
   repositories: リポジトリ
+  repositories_requiring_review: レビューが必要なリポジトリ
   repository_browser: リポジトリブラウザ
   repository_scope: リポジトリのスコープ
   repository_scope_short: 範囲

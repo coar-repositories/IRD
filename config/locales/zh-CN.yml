@@ -38,6 +38,8 @@ zh-CN:
   page_titles:
     about: 关于税务局
     admin: 行政
+    authorised_systems: 存储库 %{name} 被授权管理
+    authorised_systems_self: 您有权管理的存储库
     dashboard_for: "%{name} 的仪表板"
     help: 系统帮助
     repositories_in_country: "%{country} 中的存储库"
@@ -54,6 +56,7 @@ zh-CN:
   records_in_ird: 税务局记录
   registered_users: 注册用户
   repositories: 存储库
+  repositories_requiring_review: 需要审查的存储库
   repository_browser: 存储库浏览器
   repository_scope: 存储库范围
   repository_scope_short: 范围

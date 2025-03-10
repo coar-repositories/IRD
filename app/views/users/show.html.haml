@@ -1,3 +1,8 @@
+- authorised_systems = @user.systems.publicly_viewable
+- @user.organisations.each do |org|
+  - authorised_systems += org.responsibilities.publicly_viewable
+- systems_requiring_review = authorised_systems.select{|s| s.record_status_under_review?}
+
 - if current_user && current_user == @user
   %div.text-end
     = link_to t(:logout), users_sign_out_path, method: :delete, class: "btn btn-sm btn-danger"
@@ -21,15 +26,14 @@
       = print_field_name_and_value2(t(:roles),@user.roles.map(&:name).join(', '))
   %div.col.md-6
     -# - if @user.organisations.count > 0
-    = render 'table_organisations',title: t(:managing_agent_for_these_organisations), organisations: @user.organisations, data_downloadable: (true unless @user.organisations.blank?)
+    = render 'table_organisations',title: t(:managing_agent_for_these_organisations), organisations: @user.organisations, data_downloadable: false
+    = print_field_name_and_value2('All authorised repositories',(link_to authorised_systems.uniq.count, authorised_systems_path(@user))) if authorised_systems.present?
+    = print_field_name_and_value2(t("repositories_requiring_review"),(link_to systems_requiring_review.uniq.count, systems_requiring_review_path(@user))) if systems_requiring_review.present?
 
 = link_to t("buttons.suggest_new_system"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#suggestSystemModal"
 
-- authorised_systems = @user.systems.publicly_viewable
-- @user.organisations.each do |org|
-  - authorised_systems += org.responsibilities.publicly_viewable
 %br
 -# = render 'table_authorised_systems', title: t(:authorised_curator_for_these_repositories), systems: authorised_systems.uniq, data_downloadable: (true unless authorised_systems.blank?)
-= render 'table_authorised_systems', title: t(:authorised_curator_for_these_repositories), systems: authorised_systems.uniq, data_downloadable: false
+-# = render 'table_systems_under_review', title: t(:repositories_requiring_review), systems: systems_requiring_review.uniq, data_downloadable: true
 
 = render 'suggest_system_modal'

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy generate_api_key revoke_access restore_access]
+  before_action :set_user, only: %i[ show edit update destroy generate_api_key revoke_access restore_access authorised_systems systems_requiring_review]
   after_action :verify_authorized
+
   def dashboard
     authorize :user
     @user = current_user
@@ -9,6 +10,34 @@ class UsersController < ApplicationController
       @user.save!
     end
     redirect_to user_path(@user)
+  end
+
+  def systems_requiring_review
+    authorize @user
+    @page_title = t("repositories_requiring_review")
+    @systems_requiring_review = @user.systems.publicly_viewable.record_status_under_review
+    @user.organisations.each do |org|
+      @systems_requiring_review += org.responsibilities.publicly_viewable.record_status_under_review
+    end
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data System.to_csv(@systems_requiring_review), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: "text/csv"
+      end
+    end
+  end
+
+  def authorised_systems
+    authorize @user
+    if @user == current_user
+      @page_title = t("page_titles.authorised_systems_self")
+    else
+      @page_title = t("page_titles.authorised_systems", name: @user.display_name)
+    end
+    @systems = @user.systems.publicly_viewable
+    @user.organisations.each do |org|
+      @systems += org.responsibilities.publicly_viewable
+    end
   end
 
   def generate_api_key
@@ -45,7 +74,7 @@ class UsersController < ApplicationController
       format.csv do
         authorize :user, :download_csv?
         @users = User.order(:last_name)
-        send_data User.to_csv(@users), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
+        send_data User.to_csv(@users), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: "text/csv"
       end
     end
   end
@@ -53,7 +82,7 @@ class UsersController < ApplicationController
   # GET /users/1 or /users/1.json
   def show
     authorize @user
-    @page_title = t('page_titles.dashboard_for', name: @user.display_name)
+    @page_title = t("page_titles.dashboard_for", name: @user.display_name)
   end
 
   # GET /users/new

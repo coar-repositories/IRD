@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   get "/users/:id/generate_api_key", to: "users#generate_api_key", as: "generate_api_key"
   get "/users/:id/revoke_access", to: "users#revoke_access", as: "revoke_access"
   get "/users/:id/restore_access", to: "users#restore_access", as: "restore_access"
+  get "/users/:id/authorised_systems", to: "users#authorised_systems", as: "authorised_systems"
+  get "/users/:id/systems_requiring_review", to: "users#systems_requiring_review", as: "systems_requiring_review"
   resources :users
 
   get "roles/:id/users", to: "roles#users", as: "role_instances"

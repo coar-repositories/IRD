@@ -1,0 +1,28 @@
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    = "#{@page_title} (#{@systems_requiring_review.count})"
+    = render '_shared/download_machine_readable_data_buttons', formats: [:csv]
+  %thead
+    %tr
+      %th= t(:name)
+      %th= t(:status)
+      %th= t(:owner)
+      %th= t(:responsible_organisation)
+      %th= "#{t(:reviewed)}?"
+      %th.no-sort &nbsp;
+  %tbody
+    - @systems_requiring_review.each do |system|
+      %tr
+        %td= link_to system.display_name,system
+        %td= system_status_flags system.system_status
+        %td= link_to(system.owner.name, system.owner) if system.owner
+        %td= link_to(system.rp.display_name,system.rp) if system.rp
+        %td
+          - if system.reviewed
+            = system.reviewed.strftime('%Y-%m-%d')
+          - else
+            never
+        %td
+          - if system.record_status_under_review?
+            %span.badge.badge-warning
+              = link_to t('buttons.review_this_record'), system, class: "btn btn-sm btn-primary"

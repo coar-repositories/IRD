@@ -38,6 +38,8 @@ en:
   page_titles:
     about: About IRD
     admin: Admin
+    authorised_systems: Repositories %{name} is authorised to curate
+    authorised_systems_self: Repositories you are authorised to curate
     dashboard_for: Dashboard for %{name}
     help: System Help
     repositories_in_country: Repositories in %{country}
@@ -54,6 +56,7 @@ en:
   records_in_ird: Records in IRD
   registered_users: Registered Users
   repositories: Repositories
+  repositories_requiring_review: Repositories Requiring Review
   repository_browser: Repository Browser
   repository_scope: Repository Scope
   repository_scope_short: Scope
