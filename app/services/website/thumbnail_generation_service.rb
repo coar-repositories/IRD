@@ -17,7 +17,7 @@ module Website
             options.page_load_strategy = :normal
             options.accept_insecure_certs = true
             options.unhandled_prompt_behavior = :accept
-            # options.timeouts = {script: 30_000, page_load: 300_00}
+            options.timeouts = {script: 30_000, page_load: 200_00}
             # options.set_window_rect = true
             options.strict_file_interactability = false
             options.add_argument("-headless")
