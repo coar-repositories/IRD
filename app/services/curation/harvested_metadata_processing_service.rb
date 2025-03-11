@@ -7,19 +7,6 @@ module Curation
         if system.contact.blank? && system.metadata["oai_contact"].present?
           system.contact = system.metadata["oai_contact"]
         end
-        if system.metadata["generator"]
-          system.generator = Generator.find_or_create_by!(name: system.metadata["generator"])
-          if system.generator && (system.unknown_platform? || system.generator.platform.trusted?)
-            if system.generator.platform != system.platform
-              Rails.logger.info "Updating platform for system #{system.id}..."
-            end
-            system.platform = system.generator.platform
-            if system.generator.version != system.platform_version
-              Rails.logger.info "Updating platform version for system #{system.id}..."
-            end
-            system.platform_version = system.generator.version
-          end
-        end
         if system.owner_id.blank?
           orgs = Organisation.where('domain = ?', Utilities::UrlUtility.get_domain_from_url(system.url)).limit(5)
           if orgs.count > 1

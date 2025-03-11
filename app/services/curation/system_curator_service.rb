@@ -10,6 +10,12 @@ module Curation
         else
           system.tag_list.add("auto-curation-error")
         end
+        service_result = Curation::PlatformAndGeneratorUpdaterService.call(system)
+        if service_result.success?
+          system = service_result.payload
+        else
+          system.tag_list.add("auto-curation-error")
+        end
         service_result = Curation::SystemNamesProcessorService.call(system)
         if service_result.success?
           system = service_result.payload
@@ -22,12 +28,12 @@ module Curation
         else
           system.tag_list.add("auto-curation-error")
         end
-        service_result = Curation::SystemCandidateDefunctCheckerService.call(system)
-        if service_result.success?
-          system = service_result.payload
-        else
-          system.tag_list.add("auto-curation-error")
-        end
+        # service_result = Curation::SystemCandidateDefunctCheckerService.call(system)
+        # if service_result.success?
+        #   system = service_result.payload
+        # else
+        #   system.tag_list.add("auto-curation-error")
+        # end
         service_result = Curation::OaiPmhBaseUrlNormalisingService.call(system)
         if service_result.success?
           system = service_result.payload
