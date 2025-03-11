@@ -110,7 +110,7 @@ class System < ApplicationRecord
   # scope :duplicates, -> { includes(:annotations).where(annotations: { id: "duplicate" }) }
 
   validates :name, :url, presence: true
-  validates_with UrlValidator
+  validates_with UrlValidator, on: :create
   validates_with PublishedSystemValidator
 
   before_validation :set_defaults
@@ -243,8 +243,8 @@ class System < ApplicationRecord
     end
     issue_array << Issue.new(:medium, "platform-missing") if self.platform_id == Platform.default_platform_id
     if self.generator
-      issue_array << Issue.new(:medium, "platform-may-be-incorrect") if self.generator.platform && self.generator.platform_id != self.platform_id
-      issue_array << Issue.new(:medium, "platform-version-may-be-incorrect") if self.generator.version && self.generator.version != self.platform_version
+      issue_array << Issue.new(:medium, "platform-may-be-incorrect") if self.generator.platform&.trusted && (self.generator.platform_id != self.platform_id)
+      issue_array << Issue.new(:medium, "platform-version-may-be-incorrect") if self.generator.platform == self.platform && self.generator.version != self.platform_version
     else
       # self.curation_alerts << Issue.new(:warning, 'Generator is unknown') # is this useful?
     end

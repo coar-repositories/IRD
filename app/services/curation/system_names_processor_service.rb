@@ -4,12 +4,10 @@ module Curation
   class SystemNamesProcessorService < ApplicationService
     def call(system)
       begin
-        if system.aliases_changed?
-          if system.short_name.blank?
-            system.aliases.each do |a|
-              if a.size < 20 || !a.include?(' ')
-                system.short_name = a
-              end
+        if system.short_name.blank?
+          system.aliases.each do |a|
+            if a.size < 20 || !a.include?(' ')
+              system.short_name = a
             end
           end
         end

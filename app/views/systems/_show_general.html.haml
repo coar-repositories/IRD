@@ -4,7 +4,7 @@
     %div.col-md-6
       = print_field_name_and_value2(t('attributes.name'),@system.name)
       -# = print_field_name_and_value2(t('attributes.short_name'),@system.short_name)
-      = print_field_name_and_value2(t('attributes.aliases'),@system.aliases.join(', '))
+      = print_field_name_and_value2(t('attributes.aliases'),@system.aliases.join(', ')) unless @system.aliases.nil? || @system.aliases.empty?
       = print_field_name_and_value2(t(:homepage),link_to(@system.url,@system.url, class: "external-link"))
       = print_field_name_and_value2(t(:contact),@system.contact) if @system.contact.present?
       = print_field_name_and_value2(t('activerecord.attributes.system.owner'),(link_to(@system.owner.name, @system.owner) unless @system.owner.nil?),true)

@@ -40,10 +40,10 @@
         -unless @system.issues.empty?
           %ul
             - @system.issues.each do |issue|
-              %li
-                = issue_priority_flags(issue)
+              %li.list-group-item
+              = issue_priority_flags(issue)
         - else
-          =t(:none)
+          ="#{t(:none)} 😊"
     %h5.property-name Actions
     %div.property
       -# %h6= t(:ird_metadata_record)

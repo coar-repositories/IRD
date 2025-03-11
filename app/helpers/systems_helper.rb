@@ -125,7 +125,7 @@ module SystemsHelper
     when :medium
       badge_class = "bi-exclamation-triangle-fill orange-icon"
     when :low
-      badge_class = "bi-exclamation-triangle-fill yellow-icon"
+      badge_class = "bi-exclamation-triangle-fill grey-icon"
     else
       badge_class = "bi-exclamation-triangle-fill"
     end

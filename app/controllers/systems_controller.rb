@@ -157,8 +157,14 @@ class SystemsController < ApplicationController
 
   def auto_curate
     authorize @system
-    AutoCurateJob.perform_now(@system.id)
-    redirect_back fallback_location: root_path, notice: "Auto-curate completed."
+    service_result = Curation::SystemCuratorService.call(@system)
+    if service_result.success?
+      @system = service_result.payload
+      @system.save!
+      redirect_back fallback_location: root_path, notice: "Auto-curate completed."
+    else
+      redirect_back fallback_location: root_path, flash: { error: "Auto-curate failed: #{service_result.error.message}" }
+    end
   end
 
   def check_url
