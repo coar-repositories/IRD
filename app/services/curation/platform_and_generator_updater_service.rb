@@ -13,6 +13,8 @@ module Curation
             end
             system.platform_version = system.generator.version
           end
+        else
+          system.generator = nil
         end
         success system
       rescue Exception => e

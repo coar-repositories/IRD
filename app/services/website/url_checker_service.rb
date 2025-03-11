@@ -105,11 +105,15 @@ module Website
           rescue Exception => e
             # don't worry about it!
             @system.metadata.except!("html_redirected_url") if @system.metadata["html_redirected_url"].present?
-            puts e.message
           end
           doc.xpath('//meta[@name="twitter:title"]', '//meta[@property="og:title"]').each { |element| @system.metadata["title"] = element.attr("content") }
           doc.xpath('//meta[@name="twitter:description"]', '//meta[@property="og:description"]', '//meta[@name="description"]', '//meta[@name="Description"]').each { |element| @system.metadata["description"] = element.attr("content") }
-          doc.xpath('//meta[@name="generator"]', '//meta[@name="Generator"]').each { |element| @system.metadata["generator"] = element.attr("content") }
+          generator_elements = doc.xpath('//meta[@name="generator"]', '//meta[@name="Generator"]')
+          if generator_elements.empty?
+            @system.metadata.except!("generator")
+          else
+            @system.metadata["generator"] = element.attr("content")
+          end
         rescue Exception => e
           Rails.logger.warn "Unable to parse website body as XML for URL #{@system.url}"
         end
