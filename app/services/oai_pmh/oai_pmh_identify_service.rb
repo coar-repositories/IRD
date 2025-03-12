@@ -58,7 +58,7 @@ module OaiPmh
       rescue Faraday::ForbiddenError => e # 403
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, e.response[:status])
-        @system.oai_status = :unknown
+        @system.oai_status = :offline
       rescue Faraday::FollowRedirects::RedirectLimitReached => e
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, 0)
@@ -67,7 +67,7 @@ module OaiPmh
       rescue Faraday::ClientError => e # 4xx
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, e.response[:status])
-        @system.oai_status = :unknown
+        @system.oai_status = :offline
       rescue Faraday::TimeoutError => e
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, 0)
@@ -75,7 +75,7 @@ module OaiPmh
       rescue Faraday::NilStatusError => e
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, 0)
-        @system.oai_status = :unknown
+        @system.oai_status = :offline
       rescue Faraday::ServerError => e # 5xx
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, e.response[:status])
