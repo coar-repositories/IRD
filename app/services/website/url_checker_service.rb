@@ -20,7 +20,6 @@ module Website
         if conn.new_url.to_s != @system.url
           @system.url = conn.new_url.to_s
         end
-        puts conn.redirect_url_chain.inspect
         @system.write_network_check(:homepage_url, true, "", response.status)
         @system.system_status = :online
         if parse_metadata_flag
@@ -33,7 +32,7 @@ module Website
       rescue Faraday::ForbiddenError => e # 403
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, e.response[:status])
-        @system.system_status = :unknown
+        @system.system_status = :online
       rescue Faraday::FollowRedirects::RedirectLimitReached => e
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
@@ -112,10 +111,10 @@ module Website
           if generator_elements.empty?
             @system.metadata.except!("generator")
           else
-            @system.metadata["generator"] = element.attr("content")
+            generator_elements.each { |element| @system.metadata["generator"] = element.attr("content") }
           end
         rescue Exception => e
-          Rails.logger.warn "Unable to parse website body as XML for URL #{@system.url}"
+          Rails.logger.warn "Unable to parse website body for URL #{@system.url}: #{e}"
         end
         service_result = Curation::PlatformAndGeneratorUpdaterService.call(@system)
         if service_result.success?
