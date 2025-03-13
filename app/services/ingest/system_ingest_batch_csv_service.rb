@@ -7,13 +7,16 @@ module Ingest
   class MultipleOrganisationsMatchException < StandardError; end
 
   class SystemIngestBatchCsvService < ApplicationService
-    require_relative "system_ingest_service"
     require "csv"
     require "fileutils"
 
     def call(data, record_source, tags, dry_run, user)
       batch_report = SystemIngestBatchReport.new
       begin
+        service_result = SystemIngestBatchCsvValidationService.call(data)
+        if service_result.failure?
+          raise service_result.error
+        end
         CSV.parse(data, headers: true).each_with_index do |row,row_number|
           begin
             # [ :owner_id, :owner_homepage, :owner_ror, :owner_name, :repository_type, :, :, :, :

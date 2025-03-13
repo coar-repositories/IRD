@@ -14,7 +14,6 @@ module Ingest
         created = false
         system = System.find(candidate_system.get_attribute("id")) if candidate_system.get_attribute("id").present?
         if system
-          # if policy(system).update?
           if Pundit.policy(user, system).update?
             Rails.logger.debug("Updating existing system with id '#{system.id}'.... for user #{user.name}")
             system.assign_attributes(candidate_system.attributes)
