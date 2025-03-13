@@ -201,7 +201,7 @@ class System < ApplicationRecord
 
   def draft!
     self.record_status = :draft
-    self.rp_id = Organisation.default_rp_for_live_records_id
+    self.rp_id = Organisation.default_rp_for_archived_records_id
   end
 
   def add_repo_id(repo_id_scheme, repo_id_value)
