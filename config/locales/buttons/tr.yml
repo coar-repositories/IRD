@@ -14,6 +14,7 @@ tr:
     delete: Silmek
     do_not_show_archived_records: Arşivlenmiş Kayıtları Göstermeyin
     edit: Düzenlemek
+    generate_csv_for_batch_ingest: Toplu Alım için CSV Oluştur
     generate_new_api_key: Yeni API Anahtarı Oluştur
     get_thumbnail: Küçük resmi al
     get_thumbnails: Küçük Resimleri Alın

@@ -14,6 +14,7 @@ es:
     delete: Borrar
     do_not_show_archived_records: No mostrar registros archivados
     edit: Editar
+    generate_csv_for_batch_ingest: Generar CSV para la ingesta por lotes
     generate_new_api_key: Generar nueva clave API
     get_thumbnail: Obtener miniatura
     get_thumbnails: Obtener miniaturas

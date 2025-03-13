@@ -3,6 +3,7 @@ class AdminController < ApplicationController
 
   def index
     authorize :admin
+    @csv_is_for_ingest = false
     @page_title = t('page_titles.admin')
     search_terms = params[:search].presence || "*"
     conditions = {}
@@ -127,6 +128,8 @@ class AdminController < ApplicationController
       when :reindex_systems
         ReindexSystemsJob.perform_later
         redirect_back fallback_location: root_path, notice: "Started reindexing systems."
+      when :generate_csv_for_batch_ingest
+        @csv_is_for_ingest = true
       else
         redirect_back fallback_location: root_path, alert: "Operation #{params[:operation]} is unknown"
       end
@@ -142,7 +145,7 @@ class AdminController < ApplicationController
       end
       format.csv do
         authorize :admin, :download_csv?
-        send_data System.to_csv(@unpaginated_systems), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
+        send_data System.to_csv(@unpaginated_systems,@csv_is_for_ingest), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
     end
   end

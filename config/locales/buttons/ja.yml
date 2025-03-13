@@ -14,6 +14,7 @@ ja:
     delete: 消去
     do_not_show_archived_records: アーカイブされたレコードを表示しない
     edit: 編集
+    generate_csv_for_batch_ingest: バッチ取り込み用のCSVを生成する
     generate_new_api_key: 新しいAPIキーを生成する
     get_thumbnail: サムネイルを取得
     get_thumbnails: サムネイルを取得

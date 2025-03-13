@@ -14,6 +14,7 @@ zh-CN:
     delete: 删除
     do_not_show_archived_records: 不显示存档记录
     edit: 编辑
+    generate_csv_for_batch_ingest: 生成用于批量提取的 CSV
     generate_new_api_key: 生成新的 API 密钥
     get_thumbnail: 获取缩略图
     get_thumbnails: 获取缩略图

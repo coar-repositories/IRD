@@ -10,6 +10,7 @@
       = render(:partial => 'batch_operations_buttons')
     %div{style:"font-size: 1.5em;"}
       = render '_shared/download_machine_readable_data_buttons', formats: [:json,:csv]
+      = link_to t('buttons.generate_csv_for_batch_ingest'), admin_path(request.query_parameters.except(:lang).merge({operation: 'generate_csv_for_batch_ingest'},format: :csv)), class: 'btn btn-primary btn-sm operations-button'
     = render '_shared/paginator'
     -# = render '_shared/download_machine_readable_data_buttons'
     %div.row
