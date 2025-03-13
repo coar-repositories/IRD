@@ -81,7 +81,7 @@ Rails.application.routes.draw do
   get "/systems/:id/mark_reviewed", to: "systems#mark_reviewed", as: "mark_reviewed"
   get "/systems/:id/publish", to: "systems#publish", as: "publish"
   get "/systems/:id/archive", to: "systems#archive", as: "archive"
-  get "/systems/:id/make_draft", to: "systems#make_draft", as: "make_draft"
+  get "/systems/:id/draft", to: "systems#draft", as: "draft"
   get "/systems/:id/change_record_status_to_under_review", to: "systems#change_record_status_to_under_review", as: "change_record_status_to_under_review"
   get "/systems/:id/get_thumbnail", to: "systems#get_thumbnail", as: "get_thumbnail"
   get "/systems/:id/remove_thumbnail", to: "systems#remove_thumbnail", as: "remove_thumbnail"

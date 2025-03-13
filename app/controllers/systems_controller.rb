@@ -1,7 +1,7 @@
 require "ostruct"
 
 class SystemsController < ApplicationController
-  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label flag_as_archived add_repo_id process_as_duplicate mark_reviewed publish archive make_draft auto_curate change_record_status_to_under_review]
+  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label flag_as_archived add_repo_id process_as_duplicate mark_reviewed publish archive draft auto_curate change_record_status_to_under_review]
   after_action :verify_authorized
 
   def suggest_new_system
@@ -97,7 +97,7 @@ class SystemsController < ApplicationController
     end
   end
 
-  def make_draft
+  def draft
     authorize @system
     begin
       @system.draft!
