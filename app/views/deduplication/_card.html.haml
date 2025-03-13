@@ -48,12 +48,12 @@
         - if system.record_status_published?
           = link_to 'Mark as reviewed!', mark_reviewed_url(system.id), :class => 'btn btn-success btn-sm'
           = link_to 'Archive!', archive_url(system.id), :class => 'btn btn-danger btn-sm'
-          = link_to 'Return to draft status!', make_draft_url(system.id), :class => 'btn btn-secondary btn-sm'
+          = link_to 'Return to draft status!', draft_url(system.id), :class => 'btn btn-secondary btn-sm'
         - elsif system.record_status_draft?
           = link_to 'Publish!', publish_url(system.id), :class => 'btn btn-success btn-sm'
           = link_to 'Archive!', archive_url(system.id), :class => 'btn btn-danger btn-sm'
         - else
-          = link_to 'Return to draft status!',  make_draft_url(system.id), :class => 'btn btn-secondary btn-sm'
+          = link_to 'Return to draft status!',  draft_url(system.id), :class => 'btn btn-secondary btn-sm'
     %div.row
       %div.col
         = render '_shared/label_buttons', system: system

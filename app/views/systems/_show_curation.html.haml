@@ -57,7 +57,7 @@
         - if policy(@system).archive? && !@system.record_status_archived?
           = link_to 'Archive!', archive_url(@system.id), :class => 'btn btn-danger btn-sm'
         - if policy(@system).draft? && !@system.record_status_draft?
-          = link_to 'Return to draft status!', make_draft_url(@system.id), :class => 'btn btn-secondary btn-sm'
+          = link_to 'Return to draft status!', draft_url(@system.id), :class => 'btn btn-secondary btn-sm'
         - if policy(@system).publish? && !@system.record_status_published?
           = link_to "#{t('buttons.publish_record')}!", publish_url(@system.id), :class => 'btn btn-success btn-sm'
         - if policy(@system).auto_curate?
