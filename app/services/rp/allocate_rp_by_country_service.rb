@@ -8,7 +8,7 @@ module Rp
         if system.record_status_archived? || system.record_status_draft?
           system.rp = Organisation.default_rp_for_archived_records
         else
-          rp = Organisation.rps.in_country(system.country_id).first unless Organisation.rps.in_country(system.country_id).blank?
+          rp = Organisation.rp_for_country(system.country_id)
           if rp
             system.rp = rp
           else

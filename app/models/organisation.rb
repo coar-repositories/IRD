@@ -71,6 +71,9 @@ class Organisation < ApplicationRecord
     if rps.count == 1
       rp = rps.first
     end
+    if rp.nil? && country_id == "--"
+      rp = Organisation.default_rp_for_live_records
+    end
     rp
   end
 
