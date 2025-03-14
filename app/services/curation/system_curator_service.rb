@@ -22,12 +22,6 @@ module Curation
         else
           system.tag_list.add("auto-curation-error")
         end
-        service_result = Curation::SystemRpUpdaterService.call(system)
-        if service_result.success?
-          system = service_result.payload
-        else
-          system.tag_list.add("auto-curation-error")
-        end
         # service_result = Curation::SystemCandidateDefunctCheckerService.call(system)
         # if service_result.success?
         #   system = service_result.payload

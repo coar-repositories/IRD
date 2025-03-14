@@ -6,13 +6,13 @@ module Rp
       begin
         system = System.includes(:network_checks, :repoids, :users).find(system_id)
         if system.record_status_archived? || system.record_status_draft?
-          system.rp = Organisation.default_rp_for_archived_records
-        else
+          system.rp = Organisation.default_rp
+        elsif system.rp.nil? || system.rp == Organisation.default_rp
           rp = Organisation.rp_for_country(system.country_id)
           if rp
             system.rp = rp
           else
-            system.rp = Organisation.default_rp_for_archived_records
+            system.rp = Organisation.default_rp
           end
         end
         success system

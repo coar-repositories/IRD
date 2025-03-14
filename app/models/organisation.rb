@@ -37,20 +37,12 @@ class Organisation < ApplicationRecord
                                                                   MachineReadableAttribute.new(:responsibilities, :integer, "entity.responsibilities.count")
                                                                 ])
 
-  def self.default_rp_for_archived_records_id
-    Rails.application.config.ird[:default_models][:rp_for_archived_records]
+  def self.default_rp_id
+    Rails.application.config.ird[:default_models][:rp]
   end
 
-  def self.default_rp_for_archived_records
-    Organisation.find(self.default_rp_for_archived_records_id)
-  end
-
-  def self.default_rp_for_live_records_id
-    Rails.application.config.ird[:default_models][:rp_for_live_records]
-  end
-
-  def self.default_rp_for_live_records
-    Organisation.find(self.default_rp_for_live_records_id)
+  def self.default_rp
+    Organisation.find(self.default_rp_id)
   end
 
   def self.machine_readable_attributes
@@ -70,9 +62,6 @@ class Organisation < ApplicationRecord
     rps = self.where(rp: true, country_id: country_id)
     if rps.count == 1
       rp = rps.first
-    end
-    if rp.nil? && country_id == "--"
-      rp = Organisation.default_rp_for_live_records
     end
     rp
   end

@@ -2,8 +2,9 @@ shared:
   catalogue_default_page_size: 20
   system_review_period: 365 #days
   default_models:
-    rp_for_live_records: <%= ENV["RP_FOR_LIVE_RECORDS"] %> #COAR
-    rp_for_archived_records: <%= ENV["RP_FOR_ARCHIVED_RECORDS"] %> #IRD System
+#    rp_for_live_records: <%#= ENV["RP_FOR_LIVE_RECORDS"] %> #COAR
+#    rp_for_archived_records: <%#= ENV["RP_FOR_ARCHIVED_RECORDS"] %> #IRD System
+    rp: <%= ENV["DEFAULT_RP"] %> #IRD System
     platform: <%= ENV["DEFAULT_PLATFORM"] %>
     system_user: <%= ENV["SYSTEM_USER"] %>
   network_check_failure:

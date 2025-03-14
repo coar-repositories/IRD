@@ -190,7 +190,7 @@ class System < ApplicationRecord
 
   def archive!
     self.record_status = :archived
-    self.rp_id = Organisation.default_rp_for_archived_records_id
+    self.rp_id = Organisation.default_rp_id
     self.users.clear
     self.mark_reviewed!
   end
@@ -201,7 +201,7 @@ class System < ApplicationRecord
 
   def draft!
     self.record_status = :draft
-    self.rp_id = Organisation.default_rp_for_archived_records_id
+    self.rp_id = Organisation.default_rp_id
   end
 
   def add_repo_id(repo_id_scheme, repo_id_value)
@@ -346,7 +346,7 @@ class System < ApplicationRecord
         self.platform_id = Platform.default_platform_id if self.platform_id.blank?
       end
       if self.rp_id.blank?
-        self.rp = Organisation.default_rp_for_live_records
+        self.rp = Organisation.default_rp
       end
       self.owner_id = nil if self.owner_id == ""
     rescue Exception => e

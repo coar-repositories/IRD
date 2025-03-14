@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col">
     <% i = 0 %>
-    <% Organisation.rps.where.not(id: Organisation.default_rp_for_archived_records_id).order(:country_id).each do |rp| %>
+    <% Organisation.rps.where.not(id: Organisation.default_rp_id).order(:country_id).each do |rp| %>
       <% if i > 0 && (i % 30 == 0) %>
         </div>
         <div class="col">

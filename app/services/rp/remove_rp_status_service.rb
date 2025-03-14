@@ -4,7 +4,7 @@ module Rp
 
     def call(org)
       begin
-        unless org.id == Organisation.default_rp_for_archived_records_id || org.id == Organisation.default_rp_for_live_records_id
+        unless org.id == Organisation.default_rp_id
           org.rp = false
           org.responsibilities.each do |system|
             remove_rp_status(system)
@@ -20,11 +20,7 @@ module Rp
     private
 
     def remove_rp_status(system)
-      if system.record_status_archived? || system.record_status_draft?
-        system = AllocateRpService.call!(system.id, Organisation.default_rp_for_archived_records_id).payload
-      else
-        system = AllocateRpService.call!(system.id, Organisation.default_rp_for_live_records_id).payload
-      end
+      system = AllocateRpService.call!(system.id, Organisation.default_rp_id).payload
       system.save!
     end
   end
