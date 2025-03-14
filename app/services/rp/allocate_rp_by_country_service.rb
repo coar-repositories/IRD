@@ -5,9 +5,7 @@ module Rp
     def call(system_id)
       begin
         system = System.includes(:network_checks, :repoids, :users).find(system_id)
-        if system.record_status_archived? || system.record_status_draft?
-          system.rp = Organisation.default_rp
-        elsif system.rp.nil? || system.rp == Organisation.default_rp
+        if system.rp.nil? || system.rp == Organisation.default_rp
           rp = Organisation.rp_for_country(system.country_id)
           if rp
             system.rp = rp
