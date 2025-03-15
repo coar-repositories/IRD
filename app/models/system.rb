@@ -64,6 +64,7 @@ class System < ApplicationRecord
       labels: labels.map(&:name),
       rp: rp.display_name,
       http_code: network_checks.url_checks.first&.http_code,
+      http_code_oai: network_checks.oai_checks.first&.http_code,
       metadata_formats: metadata_formats.map(&:name),
       identifier_schemes: repoids.map(&:identifier_scheme).excluding("ird").uniq,
       curation_issues: issues.map { |issue| issue["description"] }

@@ -21,6 +21,7 @@ class AdminController < ApplicationController
     conditions[:primary_subject] = params[:primary_subject] if params[:primary_subject].present?
     conditions[:rp] = params[:rp] if params[:rp].present?
     conditions[:http_code] = params[:http_code] if params[:http_code].present?
+    conditions[:http_code_oai] = params[:http_code_oai] if params[:http_code_oai].present?
     conditions[:metadata_formats] = params[:metadata_formats] if params[:metadata_formats].present?
     conditions[:identifier_schemes] = params[:identifier_schemes] if params[:identifier_schemes].present?
     conditions[:curation_issues] = params[:curation_issues] if params[:curation_issues].present?
@@ -31,7 +32,7 @@ class AdminController < ApplicationController
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :primary_subject, :media_types, :labels, :tags, :rp, :http_code, :metadata_formats, :identifier_schemes, :curation_issues]
+    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :primary_subject, :media_types, :labels, :tags, :rp, :http_code, :http_code_oai, :metadata_formats, :identifier_schemes, :curation_issues]
 
     @unpaginated_systems = System.search(
       search_terms,
@@ -145,7 +146,7 @@ class AdminController < ApplicationController
       end
       format.csv do
         authorize :admin, :download_csv?
-        send_data System.to_csv(@unpaginated_systems,@csv_is_for_ingest), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
+        send_data System.to_csv(@unpaginated_systems, @csv_is_for_ingest), filename: ActiveStorage::Filename.new(@page_title).sanitized, content_type: 'text/csv'
       end
     end
   end

@@ -14,6 +14,7 @@ class NetworkCheck < ApplicationRecord
   end
 
   scope :url_checks, -> { where network_check_type: :homepage_url }
+  scope :oai_checks, -> { where network_check_type: :oai_pmh_identify }
   scope :failures, -> { where passed: false }
   scope :homepage_url_failed, -> { where network_check_type: :homepage_url, passed: false}
   scope :oai_pmh_identify_failed, -> { where network_check_type: :oai_pmh_identify, passed: false}
