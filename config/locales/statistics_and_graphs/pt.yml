@@ -11,6 +11,8 @@ pt:
     oai_status_for_platforms_with_10_or_more_repositories: Status OAI-PMH para plataformas com 10 ou mais repositórios
     oai_status_for_top_20_countries_by_repository_count: Status do OAI-PMH para os 20 principais países por contagem de repositórios
     oai_status_percentage_for_all_repositories: Status OAI-PMH (%) para todos os repositórios
+    records_archived: Registros arquivados
+    records_draft: Rascunhos de Registros
     records_published: Registros publicados
     records_total: Total de registros
     records_under_review: Registros sob revisão

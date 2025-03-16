@@ -8,24 +8,31 @@ pt:
 
       #### Critérios para inclusão
 
-      Cada repositório neste diretório atende aos seguintes critérios:
+      Cada repositório neste diretório satisfaz os seguintes critérios:
 
-      - A maioria de seu conteúdo é totalmente Open Access
+      - A maioria do seu conteúdo é totalmente Open Access
       - Ele suporta OAI-PMH
 
       #### Gerenciamento dos dados
-      Os metadados neste diretório são coletados dos próprios repositórios e são atualizados regularmente. Alguns dos metadados são atualizados automaticamente, mas os registros de metadados também são curados por organizações chamadas "Organizações Responsáveis", que alocam pessoas e recursos para manter a precisão e a pontualidade dos metadados.
+      Os metadados neste diretório são coletados dos próprios repositórios e são atualizados regularmente. Alguns dos metadados são atualizados automaticamente, mas os registros de metadados também são curados por organizações chamadas "Organizações responsáveis", que alocam pessoas e recursos para manter a precisão e a pontualidade dos metadados.
+
+      O diretório contém registros de metadados sobre repositórios. A qualquer momento, cada registro está em um dos quatro "estados":
+
+      - **Rascunho**: Um repositório foi identificado, mas ainda não foi avaliado ou verificado pelo serviço IRD.
+      - **Em revisão**: O repositório identificado passou por algumas verificações automatizadas iniciais, mas agora está esperando para ser revisado pela Organização Responsável alocada.
+      - **Publicado**: O repositório foi revisado pela Organização Responsável alocada e é considerado preciso e atualizado. O registro é publicado no serviço IRD.
+      - **Arquivado**: O repositório não está mais ativo ou está fora do escopo. O registro é arquivado e não mais publicado no serviço IRD.
 
       #### Licença
       Os dados no IRD podem ser reutilizados sem restrições. Mais formalmente, ele é licenciado sob a [Licença CC0](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1).
 
-      #### Desenvolvimento e Manutenção de Software
+      #### Desenvolvimento e manutenção de software
       O software para o IRD é desenvolvido, implantado e mantido pela [Antleaf](https://www.antleaf.com/). O [código de código aberto](https://github.com/coar-repositories/IRD) para este software é licenciado sob a [Licença MIT](https://opensource.org/license/mit).
 
       ### Agradecimentos
 
       #### Grupo de Trabalho do IRD
-      O COAR gostaria de agradecer ao Grupo de Trabalho do IRD por sua valiosa contribuição ao desenvolvimento do IRD:
+      A COAR gostaria de agradecer ao Grupo de Trabalho do IRD por sua valiosa contribuição ao desenvolvimento do IRD:
 
       - Iryna Kuchma, EIFL
       - Pierre Lasou, Université de Laval
@@ -38,7 +45,7 @@ pt:
 
       #### Research Organization Registry (ROR)
       O IRD usa dados baixados, com permissão, do [Research Organization Registry (ROR)](https://ror.org/).
-      O IRD usa o ROR para desambiguar os nomes das organizações no diretório, sempre que possível.
+      O IRD usa ROR para desambiguar os nomes de organizações no diretório, quando possível.
 
       #### Outras fontes de informação
       Alguns registros/diretórios/listas de terceiros foram usados para identificar candidatos para inclusão no IRD. Isso inclui (entre outros):

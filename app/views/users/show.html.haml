@@ -27,7 +27,7 @@
   %div.col.md-6
     -# - if @user.organisations.count > 0
     = render 'table_organisations',title: t(:managing_agent_for_these_organisations), organisations: @user.organisations, data_downloadable: false
-    = print_field_name_and_value2('All authorised repositories',(link_to authorised_systems.uniq.count, authorised_systems_path(@user))) if authorised_systems.present?
+    = print_field_name_and_value2(t('authorised_curator_for_these_repositories'),(link_to authorised_systems.uniq.count, authorised_systems_path(@user))) if authorised_systems.present?
     = print_field_name_and_value2(t("repositories_requiring_review"),(link_to systems_requiring_review.uniq.count, systems_requiring_review_path(@user))) if systems_requiring_review.present?
 
 = link_to t("buttons.suggest_new_system"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#suggestSystemModal"

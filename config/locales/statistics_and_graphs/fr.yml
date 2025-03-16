@@ -11,6 +11,8 @@ fr:
     oai_status_for_platforms_with_10_or_more_repositories: Statut OAI-PMH pour les plateformes avec 10 référentiels ou plus
     oai_status_for_top_20_countries_by_repository_count: Statut OAI-PMH pour les 20 premiers pays par nombre de référentiels
     oai_status_percentage_for_all_repositories: Statut OAI-PMH (%) pour tous les référentiels
+    records_archived: Archives
+    records_draft: Dossiers préliminaires
     records_published: Enregistrements publiés
     records_total: Nombre total d'enregistrements
     records_under_review: Dossiers en cours d'examen

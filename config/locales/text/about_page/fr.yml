@@ -4,57 +4,63 @@ fr:
     about_page_text: |-
       ### À propos du service
 
-      Le répertoire des référentiels internationaux (IRD) est géré par la [Confederation of Open Access Repositories (COAR)](https://www.coar-repositories.org/).
+      Le Répertoire international des dépôts (IRD) est géré par la [Confédération des dépôts en libre accès (COAR)](https://www.coar-repositories.org/).
 
       #### Critères d'inclusion
 
-      Chaque référentiel de ce répertoire répond aux critères suivants :
+      Chaque dépôt de ce répertoire répond aux critères suivants :
 
       - La majorité de son contenu est entièrement en libre accès
-      - Il prend en charge OAI-PMH
+      - Il est compatible avec OAI-PMH
 
       #### Gestion des données
-      Les métadonnées de ce répertoire sont collectées à partir des référentiels eux-mêmes et sont mises à jour régulièrement. Certaines des métadonnées sont mises à jour automatiquement, mais les enregistrements de métadonnées sont également organisés par des organisations appelées « Organisations responsables » qui allouent des personnes et des ressources pour maintenir l'exactitude et l'actualité des métadonnées.
+      Les métadonnées de ce répertoire sont collectées auprès des dépôts eux-mêmes et sont mises à jour régulièrement. Certaines métadonnées sont mises à jour automatiquement, mais les enregistrements de métadonnées sont également gérés par des organisations appelées « Organisations responsables », qui affectent des personnes et des ressources pour maintenir l'exactitude et l'actualité des métadonnées.
+
+      Le répertoire contient des enregistrements de métadonnées sur les dépôts. Chaque enregistrement est à tout moment dans l'un des quatre « états » suivants :
+
+      - **Brouillon** : Un dépôt a été identifié, mais n'a pas encore été évalué ni vérifié par le service IRD.
+      - **En cours de révision** : Le dépôt identifié a passé avec succès une première vérification automatisée, mais attend maintenant d'être examiné par l'organisation responsable désignée.
+      - **Publié** : Le dépôt a été examiné par l'organisation responsable désignée et est considéré comme exact et à jour. L'enregistrement est publié sur le service IRD.
+      - **Archivé** : Le dépôt n'est plus actif ou hors de portée. L'enregistrement est archivé et n'est plus publié sur le service IRD.
 
       #### Licence
-      Les données de l'IRD peuvent être réutilisées sans restriction. Plus formellement, il est sous licence [CC0 License](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1).
+      Les données de l'IRD peuvent être réutilisées sans restriction. Plus formellement, elles sont sous licence [CC0](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1).
 
       #### Développement et maintenance du logiciel
-      Le logiciel de l'IRD est développé, déployé et maintenu par [Antleaf](https://www.antleaf.com/). Le [code open source](https://github.com/coar-repositories/IRD) de ce logiciel est sous licence [MIT License](https://opensource.org/license/mit).
+      Le logiciel de l'IRD est développé, déployé et maintenu par [Antleaf](https://www.antleaf.com/). Le code source ouvert de ce logiciel est sous licence MIT (https://github.com/coar-repositories/IRD).
 
       ### Remerciements
 
       #### Groupe de travail IRD
-      COAR tient à remercier le groupe de travail IRD pour sa précieuse contribution au développement de l'IRD :
+      COAR remercie le groupe de travail IRD pour sa précieuse contribution au développement de l'IRD :
 
       - Iryna Kuchma, EIFL
-      - Pierre Lasou, Université de Laval
+      - Pierre Lasou, Université Laval
       - Lautaro Matas, LA Referencia
-      - Pedro Príncipe, Université de Minho
+      - Pedro Príncipe, Université du Minho
       - Kazu Yamaji, Institut national d'informatique
       - Kathleen Shearer, COAR
       - Paul Walk, Antleaf
       - Virginia Barbour, Open Access Australasia (ancien membre)
 
       #### Registre des organismes de recherche (ROR)
-      L'IRD utilise des données téléchargées, avec autorisation, à partir du [Registre des organismes de recherche (ROR)](https://ror.org/).
-      L'IRD utilise le ROR pour lever l'ambiguïté des noms des organisations dans le répertoire, lorsque cela est possible.
+      L'IRD utilise des données téléchargées, avec autorisation, depuis le [Registre des organismes de recherche (ROR)](https://ror.org/). L'IRD utilise le ROR pour clarifier les noms des organisations figurant dans l'annuaire, lorsque cela est possible.
 
       #### Autres sources d'information
-      Certains registres/annuaires/listes tiers ont été utilisés pour identifier les candidats à l'inclusion dans l'IRD. Il s'agit notamment (entre autres) de :
+      Certains registres/annuaires/listes tiers ont été utilisés pour identifier les candidats à l'inclusion dans l'IRD. Parmi celles-ci, on trouve (entre autres) :
 
       - [ROAR](https://roar.eprints.org)
       - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
       - [Re3data](https://www.re3data.org/)
-      - [Informations collaboratives sur les installations de Dataverse](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
+      - [Informations collaboratives sur les installations Dataverse](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
       - [Hyku Commons](https://hykucommons.org/)
-      - [Liste des référentiels NII (Japon)](https://irdb.nii.ac.jp/en/repositorylist)
+      - [Liste des dépôts NII (Japon)](https://irdb.nii.ac.jp/en/repositorylist)
 
-      Merci également aux personnes suivantes qui ont fourni des informations sur les référentiels :
+      Nous remercions également les personnes suivantes pour leurs informations sur les dépôts :
 
       - Bram Luyten, [Atmire](https://www.atmire.com)
       - Jon Hackney, [Worktribe](https://www.worktribe.com)
       - Heather Greer-Klein [Samvera](https://samvera.org/)
     data_curation_text: |-
       ### Organisations responsables
-      La responsabilité de la conservation des enregistrements dans ce répertoire est répartie entre les *organisations responsables* :
+      La responsabilité de la conservation des données de ce répertoire incombe aux *Organisations responsables* :

@@ -8,13 +8,20 @@ en:
 
       #### Criteria for Inclusion
 
-      Each repository in this directory is satisfies the following criteria:
+      Each repository in this directory satisfies the following criteria:
 
       - The majority of its content is fully Open Access
       - It supports OAI-PMH
 
       #### Management of the Data
       The metadata in this directory is harvested from the repositories themselves, and is updated on a regular basis. Some of the metadata is updated automatically, but the metadata records are also curated by organisations called "Responsible Organisations" which allocate people and resources to maintain the accuracy and timeliness of the metadata.
+
+      The directory contains metadata records about repositories. At any time, each record is in one of the four "states":
+
+        - **Draft**: A repository has been identified, but not yet assessed or verified by the IRD service.
+        - **Under Review**: The identified repository has passed some initial automated checking, but is now waiting to be reviewed by the allocated Responsible Organisation.
+        - **Published**: The repository has been reviewed by the allocated Responsible Organisation and is considered to be accurate and up-to-date. The record is published on the IRD service.
+        - **Archived**: The repository is no longer active, or is out-of-scope. The record is archived no longer published on the IRD service.
 
       #### License
       The data in the IRD may be re-used without restriction. More formally, it is licensed under the [CC0 License](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1).

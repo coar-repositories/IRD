@@ -11,6 +11,8 @@ tr:
     oai_status_for_platforms_with_10_or_more_repositories: 10 veya daha fazla deposu olan platformlar için OAI-PMH durumu
     oai_status_for_top_20_countries_by_repository_count: Depo sayısına göre ilk 20 ülke için OAI-PMH durumu
     oai_status_percentage_for_all_repositories: Tüm Depolar için OAI-PMH Durumu (%)
+    records_archived: Arşivlenmiş Kayıtlar
+    records_draft: Taslak Kayıtlar
     records_published: Yayımlanmış Kayıtlar
     records_total: Toplam Kayıtlar
     records_under_review: İncelenen Kayıtlar

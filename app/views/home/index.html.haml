@@ -5,8 +5,10 @@
   %div.col-lg-2
     %h3= t(:records_in_ird)
     = print_field_name_and_value2(t('statistics_and_graphs.records_total'),@stats.total)
+    = print_field_name_and_value2(t('statistics_and_graphs.records_draft'),@stats.value(:record_status_draft))
     = print_field_name_and_value2(t('statistics_and_graphs.records_published'),@stats.value(:record_status_published))
     = print_field_name_and_value2(t('statistics_and_graphs.records_under_review'),@stats.value(:record_status_under_review))
+    = print_field_name_and_value2(t('statistics_and_graphs.records_archived'),@stats.value(:record_status_archived))
     -# %br
     -# %h3= t(:repositories)
     -# = print_field_name_and_value2(t('statistics_and_graphs.currently_online'),"#{@stats.value(:status_online)} (#{@stats.value_percentage(:status_online)}%)")

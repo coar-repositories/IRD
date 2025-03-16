@@ -16,6 +16,13 @@ tr:
       #### Verilerin Yönetimi
       Bu dizindeki meta veriler depoların kendisinden toplanır ve düzenli olarak güncellenir. Meta verilerin bir kısmı otomatik olarak güncellenir, ancak meta veri kayıtları ayrıca meta verilerin doğruluğunu ve zamanlamasını korumak için insanları ve kaynakları tahsis eden "Sorumlu Kuruluşlar" adı verilen kuruluşlar tarafından düzenlenir.
 
+      Dizin, depolarla ilgili meta veri kayıtları içerir. Herhangi bir zamanda, her kayıt dört "durumdan" birindedir:
+
+      - **Taslak**: Bir depo tanımlanmıştır ancak henüz IRD hizmeti tarafından değerlendirilmemiştir veya doğrulanmamıştır.
+      - **İnceleme Altında**: Tanımlanan depo bazı ilk otomatik kontrollerden geçmiştir ancak artık tahsis edilen Sorumlu Kuruluş tarafından incelenmeyi beklemektedir.
+      - **Yayınlandı**: Depo tahsis edilen Sorumlu Kuruluş tarafından incelenmiştir ve doğru ve güncel olduğu düşünülmektedir. Kayıt IRD hizmetinde yayınlanmıştır.
+      - **Arşivlendi**: Depo artık etkin değildir veya kapsam dışındadır. Kayıt arşivlenmiştir ve artık IRD hizmetinde yayınlanmamaktadır.
+
       #### Lisans
       IRD'deki veriler kısıtlama olmaksızın yeniden kullanılabilir. Daha resmi olarak, [CC0 Lisansı](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1) altında lisanslanmıştır.
 

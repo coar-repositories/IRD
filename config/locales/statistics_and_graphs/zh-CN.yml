@@ -11,6 +11,8 @@ zh-CN:
     oai_status_for_platforms_with_10_or_more_repositories: 拥有 10 个或更多存储库的平台的 OAI-PMH 状态
     oai_status_for_top_20_countries_by_repository_count: 按存储库数量排名前 20 的国家/地区的 OAI-PMH 状态
     oai_status_percentage_for_all_repositories: 所有存储库的 OAI-PMH 状态 (%)
+    records_archived: 存档记录
+    records_draft: 选秀记录
     records_published: 已出版记录
     records_total: 总记录数
     records_under_review: 正在审查的记录
