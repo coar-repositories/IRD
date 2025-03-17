@@ -33,8 +33,8 @@ module Ingest
           begin
             errors << CsvRowError.new(row_number, "'name' must not be blank") if row["name"].blank?
             errors << CsvRowError.new(row_number, "'homepage' must be a valid URL") unless Utilities::UrlUtility.validate_url row["homepage"]
-            errors << CsvRowError.new(row_number, "'system_category' must have the value 'repository'") unless System.system_categories.keys.include? row["system_category"]
-            errors << CsvRowError.new(row_number, "'system_status' must be one of: [#{System.system_statuses.keys.join('|')}]") unless System.system_statuses.keys.include? row["system_status"]
+            # errors << CsvRowError.new(row_number, "'system_category' must have the value 'repository'") unless System.system_categories.keys.include? row["system_category"]
+            # errors << CsvRowError.new(row_number, "'system_status' must be one of: [#{System.system_statuses.keys.join('|')}]") unless System.system_statuses.keys.include? row["system_status"]
             errors << CsvRowError.new(row_number, "'record_status' must be one of: [#{System.record_statuses.keys.join('|')}]") unless System.record_statuses.keys.include? row["record_status"]
             errors << CsvRowError.new(row_number, "'repository_type' must be one of: [#{System.subcategories.keys.join('|')}]") unless System.subcategories.keys.include? row["repository_type"]
           end

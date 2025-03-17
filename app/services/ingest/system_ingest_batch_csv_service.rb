@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require_relative "system_ingest_service"
 
 module Ingest
 
@@ -22,7 +23,7 @@ module Ingest
             # [ :owner_id, :owner_homepage, :owner_ror, :owner_name, :repository_type, :, :, :, :
             candidate_system = CandidateSystem.new(record_source, dry_run, tags)
             candidate_system.add_attribute("id", row["id"])
-            candidate_system.add_attribute("system_category", row["system_category"])
+            candidate_system.add_attribute("system_category", (row["system_category"] ||= Rails.configuration.ird[:default_attributes][:system_category]))
             candidate_system.add_attribute("subcategory", row["repository_type"])
             candidate_system.add_attribute("name", row["name"])
             candidate_system.add_attribute("url", row["homepage"])

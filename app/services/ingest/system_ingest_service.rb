@@ -26,6 +26,7 @@ module Ingest
               end
             end
             unless system.changes.empty?
+              puts system.changes.inspect
               unless candidate_system.dry_run
                 service_result = Snapshots::SystemSnapshotCreationService.call(candidate_system.get_attribute("id"), user)
                 if service_result.success?
