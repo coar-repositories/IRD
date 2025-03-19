@@ -2,17 +2,11 @@
 
 module Rp
   class AllocateRpByCountryService < ApplicationService
-    def call(system_id)
+    def call(system_id,replace_existing_rp)
       begin
         system = System.includes(:network_checks, :repoids, :users).find(system_id)
-        if system.rp.nil? || system.rp == Organisation.default_rp
-          rp = Organisation.rp_for_country(system.country_id)
-          if rp
-            system.rp = rp
-          else
-            system.rp = Organisation.default_rp
-          end
-        end
+        rp = Organisation.rp_for_country(system.country_id)
+        system = AllocateRpService.call!(system.id, rp.id,replace_existing_rp).payload
         success system
       rescue Exception => e
         Rails.logger.error("AllocateRpByCountryService failed: #{e.message}")

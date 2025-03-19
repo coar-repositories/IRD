@@ -2,6 +2,7 @@
 ja:
   buttons:
     allocate_rp_by_country: 国別にRPを割り当てる
+    allocate_rp_by_country_replace_existing: 国別にRPを割り当てる（既存のRPを置き換える）
     archive_record: アーカイブ記録
     authorise_a_user: ユーザーを承認する
     auto_curate: 自動キュレーション
@@ -10,6 +11,7 @@ ja:
     check_url: ウェブサイトを確認する
     check_urls: URLを確認する
     choose_rp: RPを選択
+    choose_rp_replace_existing: RP (既存のものを置き換える) を選択
     create_record: "%{model} レコードを作成"
     delete: 消去
     do_not_show_archived_records: アーカイブされたレコードを表示しない

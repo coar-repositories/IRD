@@ -2,6 +2,7 @@
 es:
   buttons:
     allocate_rp_by_country: Asignar RP por país
+    allocate_rp_by_country_replace_existing: Asignar RP por país (reemplazar existente)
     archive_record: Registro de archivo
     authorise_a_user: Autorizar a un usuario
     auto_curate: Curación automática
@@ -10,6 +11,7 @@ es:
     check_url: Consultar sitio web
     check_urls: Comprobar URL
     choose_rp: Elige RP
+    choose_rp_replace_existing: Elija RP (Reemplazar existente)
     create_record: Crear registro %{model}
     delete: Borrar
     do_not_show_archived_records: No mostrar registros archivados

@@ -9,7 +9,4 @@ superuser:
 downloader:
   id: downloader
   name: Downloader
-profiler:
-  id: profiler
-  name: Profiler
 

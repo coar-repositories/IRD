@@ -12,14 +12,26 @@
       %div.form-label
         Resp. Parties
     %div.col
-      %div.dropdown
-        %button.btn.btn-primary.btn-sm.dropdown-toggle{type:"button","data-bs-toggle":"dropdown","aria-expanded":"false"}
-          =t('buttons.choose_rp')
-        %ul.dropdown-menu
-          - Organisation.rps.each do |org|
-            %li
-              = link_to org.display_name, admin_path(request.query_parameters.except(:lang).merge({operation: 'allocate_rp', rp_id: org.id}))
+      %div.row
+        %div.col-2
+          %div.dropdown
+            %button.btn.btn-primary.btn-sm.dropdown-toggle{type:"button","data-bs-toggle":"dropdown","aria-expanded":"false"}
+              =t('buttons.choose_rp')
+            %ul.dropdown-menu
+              - Organisation.rps.each do |org|
+                %li
+                  = link_to org.display_name, admin_path(request.query_parameters.except(:lang).merge({operation: 'allocate_rp', rp_id: org.id}))
+        %div.col
+          %div.dropdown
+            %button.btn.btn-primary.btn-sm.dropdown-toggle{type:"button","data-bs-toggle":"dropdown","aria-expanded":"false"}
+              =t('buttons.choose_rp_replace_existing')
+            %ul.dropdown-menu
+              - Organisation.rps.each do |org|
+                %li
+                  = link_to org.display_name, admin_path(request.query_parameters.except(:lang).merge({operation: 'allocate_rp_replace_existing', rp_id: org.id}))
       = link_to t('buttons.allocate_rp_by_country'), admin_path(request.query_parameters.except(:lang).merge({operation: 'allocate_rps_by_country'})), class: 'btn btn-primary btn-sm operations-button'
+      = link_to t('buttons.allocate_rp_by_country_replace_existing'), admin_path(request.query_parameters.except(:lang).merge({operation: 'allocate_rps_by_country_replace_existing'})), class: 'btn btn-primary btn-sm operations-button'
+
   -# %div.row
   -#   %div.col-2.field-name
   -#     %div.form-label

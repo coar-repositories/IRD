@@ -108,14 +108,17 @@ class AdminController < ApplicationController
         redirect_back fallback_location: root_path, notice: "Started purging thumbnails from #{@unpaginated_systems.count} systems..."
       when :allocate_rp
         rp = Organisation.find_by_id(params[:rp_id])
-        if rp
-          ActiveJob.perform_all_later(@unpaginated_systems.map { |system| AllocateRpJob.new(system.id, rp.id) })
-          redirect_back fallback_location: root_path, notice: "Started allocating RP #{rp.display_name} for #{@unpaginated_systems.count} systems..."
-        else
-          redirect_back fallback_location: root_path, alert: "Unable to allocate RP with ID = #{params[:rp_id]}"
-        end
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| AllocateRpJob.new(system.id, rp.id, false) })
+        redirect_back fallback_location: root_path, notice: "Started allocating RP #{rp.display_name} for #{@unpaginated_systems.count} systems..."
+      when :allocate_rp_replace_existing
+        rp = Organisation.find_by_id(params[:rp_id])
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| AllocateRpJob.new(system.id, rp.id, true) })
+        redirect_back fallback_location: root_path, notice: "Started allocating RP #{rp.display_name} for #{@unpaginated_systems.count} systems..."
       when :allocate_rps_by_country
-        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| AllocateRpByCountryJob.new(system.id) })
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| AllocateRpByCountryJob.new(system.id, false) })
+        redirect_back fallback_location: root_path, notice: "Started allocating RPs by country for #{@unpaginated_systems.count} systems..."
+      when :allocate_rps_by_country_replace_existing
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| AllocateRpByCountryJob.new(system.id, true) })
         redirect_back fallback_location: root_path, notice: "Started allocating RPs by country for #{@unpaginated_systems.count} systems..."
       when :purge_unused_generators
         count = 0

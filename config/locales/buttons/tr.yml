@@ -2,6 +2,7 @@
 tr:
   buttons:
     allocate_rp_by_country: RP'yi Ülkeye Göre Tahsis Et
+    allocate_rp_by_country_replace_existing: RP'yi Ülkeye Göre Tahsis Et (Mevcut Olanı Değiştir)
     archive_record: Arşiv Kaydı
     authorise_a_user: Bir Kullanıcıyı Yetkilendirin
     auto_curate: Otomatik Düzenleme
@@ -10,6 +11,7 @@ tr:
     check_url: Web Sitesini Kontrol Edin
     check_urls: URL'leri kontrol edin
     choose_rp: RP'yi seçin
+    choose_rp_replace_existing: RP'yi (Mevcut Olanı Değiştir) seçin
     create_record: "%{model} Kaydı Oluştur"
     delete: Silmek
     do_not_show_archived_records: Arşivlenmiş Kayıtları Göstermeyin

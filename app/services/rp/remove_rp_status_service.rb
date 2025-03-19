@@ -20,7 +20,7 @@ module Rp
     private
 
     def remove_rp_status(system)
-      system = AllocateRpService.call!(system.id, Organisation.default_rp_id).payload
+      system = AllocateRpService.call!(system.id, Organisation.default_rp_id,true).payload
       system.save!
     end
   end
