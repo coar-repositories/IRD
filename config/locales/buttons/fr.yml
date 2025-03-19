@@ -41,6 +41,7 @@ fr:
     review_this_record: Évaluer cet enregistrement
     revoke_access: Révoquer l'accès
     save_record: Enregistrer l'enregistrement
+    set_record_reviewed: Ensemble de records examinés
     show_archived_records: Afficher les archives
     show_duplicates: Afficher les doublons
     start_background_network_checks: Vérifications du réseau

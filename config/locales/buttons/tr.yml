@@ -41,6 +41,7 @@ tr:
     review_this_record: Bu kaydı inceleyin
     revoke_access: Erişimi İptal Et
     save_record: Kaydı kaydet
+    set_record_reviewed: Kayıt İncelendi
     show_archived_records: Arşivlenmiş Kayıtları Göster
     show_duplicates: Yinelenenleri Göster
     start_background_network_checks: Ağ Kontrolleri

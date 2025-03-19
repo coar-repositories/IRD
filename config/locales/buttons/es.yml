@@ -41,6 +41,7 @@ es:
     review_this_record: Revisar este registro
     revoke_access: Revocar acceso
     save_record: Guardar registro
+    set_record_reviewed: Conjunto de récord revisado
     show_archived_records: Mostrar registros archivados
     show_duplicates: Mostrar duplicados
     start_background_network_checks: Comprobaciones de red

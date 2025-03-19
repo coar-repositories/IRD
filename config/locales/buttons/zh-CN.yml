@@ -41,6 +41,7 @@ zh-CN:
     review_this_record: 审阅此记录
     revoke_access: 撤销访问权限
     save_record: 保存记录
+    set_record_reviewed: 创下纪录
     show_archived_records: 显示存档记录
     show_duplicates: 显示重复项
     start_background_network_checks: 网络检查

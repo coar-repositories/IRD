@@ -49,7 +49,7 @@
       = link_to t('buttons.make_record_under_review'), admin_path(request.query_parameters.except(:lang).merge({operation: 'make_record_under_review'})), class: 'btn btn-warning btn-sm operations-button'
       = link_to t('buttons.make_record_draft'), admin_path(request.query_parameters.except(:lang).merge({operation: 'make_draft'})), class: 'btn btn-secondary btn-sm operations-button'
       %br
-      = link_to t('buttons.archive_record'), admin_path(request.query_parameters.except(:lang).merge({operation: 'set_record_reviewed'})), class: 'btn btn-primary btn-sm operations-button'
+      -# = link_to t('buttons.set_record_reviewed'), admin_path(request.query_parameters.except(:lang).merge({operation: 'set_record_reviewed'})), class: 'btn btn-primary btn-sm operations-button'
 
   %div.row
     %div.col-2.field-name

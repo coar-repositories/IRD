@@ -41,6 +41,7 @@ en:
     review_this_record: Review this record
     revoke_access: Revoke Access
     save_record: Save record
+    set_record_reviewed: Set Record Reviewed
     show_archived_records: Show Archived Records
     show_duplicates: Show Duplicates
     start_background_network_checks: Network Checks

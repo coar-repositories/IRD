@@ -41,6 +41,7 @@ ja:
     review_this_record: この記録を確認する
     revoke_access: アクセスを取り消す
     save_record: 記録を保存
+    set_record_reviewed: 記録をレビュー
     show_archived_records: アーカイブされたレコードを表示
     show_duplicates: 重複を表示
     start_background_network_checks: ネットワークチェック
