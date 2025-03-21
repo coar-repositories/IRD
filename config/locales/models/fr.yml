@@ -62,9 +62,10 @@ fr:
         record_status: Statut de l'enregistrement
         record_status_list:
           archived: Archivé
+          awaiting_review: En attente de révision
           draft: Brouillon
-          published: Publié
           under_review: En cours de révision
+          verified: Vérifié
         responsible_party: Organisation responsable
         subcategory: Portée
         subcategory_list:

@@ -8,6 +8,7 @@
       %h5= t(:filter)
       %div.row
         %div.col
+          = render(:partial => '_shared/facets_for_searchkick/facet_record_status',:locals => {filter_name: 'record_status', title: t('record_status'),facet: @facets['record_status']})
           -# = render(:partial => '_shared/facets_for_searchkick/facet_system_status',:locals => {filter_name: 'system_status', title: t('repository_status'),facet: @facets['system_status']})
           -# = render(:partial => '_shared/facets_for_searchkick/facet_oai_status',:locals => {filter_name: 'oai_status', title: t('oai_status'),facet: @facets['oai_status']})
           = render(:partial => '_shared/facets_for_searchkick/facet_subcategory',:locals => {filter_name: 'subcategory', title: t('repository_scope'),facet: @facets['subcategory']})

@@ -62,9 +62,10 @@ ja:
         record_status: レコードステータス
         record_status_list:
           archived: アーカイブ済み
+          awaiting_review: レビュー待ち
           draft: 下書き
-          published: 公開済み
           under_review: 審査中
+          verified: 検証済み
         responsible_party: 責任組織
         subcategory: 範囲
         subcategory_list:

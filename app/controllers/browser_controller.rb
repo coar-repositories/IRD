@@ -7,8 +7,7 @@ class BrowserController < ApplicationController
     search_terms = params[:search].presence || "*"
     conditions = {}
     # equivalent to scope :published, -> { where.not(record_status: :draft).where.not(record_status: :archived).where.not(system_status: :defunct) }
-    # conditions = {record_status: { _not: [:unknown, :draft,:archived] }}
-    conditions = {record_status: :published }
+    # conditions = {record_status: :published }
     conditions[:country] = params[:country] if params[:country].present?
     conditions[:continent] = params[:continent] if params[:continent].present?
     conditions[:platform] = params[:platform] if params[:platform].present?
@@ -18,11 +17,13 @@ class BrowserController < ApplicationController
     conditions[:primary_subject] = params[:primary_subject] if params[:primary_subject].present?
     conditions[:metadata_formats] = params[:metadata_formats] if params[:metadata_formats].present?
     conditions[:media_types] = params[:media_types] if params[:media_types].present?
+    conditions[:record_status] = params[:record_status] if params[:record_status].present?
+    conditions[:_not] = { record_status: [:draft,:archived] }
 
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country,:continent,:platform,:system_status,:oai_status,:subcategory,:primary_subject, :metadata_formats, :media_types]
+    facets = [:country,:continent,:platform,:system_status,:oai_status,:subcategory,:primary_subject, :metadata_formats, :media_types, :record_status]
 
     @unpaginated_systems = System.search(
       search_terms,

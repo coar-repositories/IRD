@@ -1,7 +1,7 @@
 require "ostruct"
 
 class SystemsController < ApplicationController
-  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label flag_as_archived add_repo_id process_as_duplicate mark_reviewed publish archive draft auto_curate change_record_status_to_under_review]
+  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label flag_as_archived add_repo_id process_as_duplicate mark_reviewed verify archive draft auto_curate change_record_status_to_awaiting_review change_record_status_to_under_review]
   after_action :verify_authorized
 
   def suggest_new_system
@@ -75,14 +75,25 @@ class SystemsController < ApplicationController
     end
   end
 
-  def publish
+  # def publish
+  #   authorize @system
+  #   begin
+  #     @system.publish!
+  #     @system.save!
+  #     redirect_back fallback_location: root_path, notice: "Repository record published."
+  #   rescue Exception => e
+  #     redirect_back fallback_location: root_path, flash: { error: "Unable to publish repository record: #{e.message}" }
+  #   end
+  # end
+
+  def verify
     authorize @system
     begin
-      @system.publish!
+      @system.verify!
       @system.save!
-      redirect_back fallback_location: root_path, notice: "Repository record published."
+      redirect_back fallback_location: root_path, notice: "Repository record verified."
     rescue Exception => e
-      redirect_back fallback_location: root_path, flash: { error: "Unable to publish repository record: #{e.message}" }
+      redirect_back fallback_location: root_path, flash: { error: "Unable to verify repository record: #{e.message}" }
     end
   end
 
@@ -105,6 +116,17 @@ class SystemsController < ApplicationController
       redirect_back fallback_location: root_path, notice: "Repository record made draft."
     rescue Exception => e
       redirect_back fallback_location: root_path, flash: { error: "Unable to make repository record draft: #{e.message}" }
+    end
+  end
+
+  def change_record_status_to_awaiting_review
+    authorize @system
+    begin
+      @system.awaiting_review!
+      @system.save!
+      redirect_back fallback_location: root_path, notice: "Repository record set to 'awaiting review'."
+    rescue Exception => e
+      redirect_back fallback_location: root_path, flash: { error: "Unable to set repository record to 'awaiting review': #{e.message}" }
     end
   end
 

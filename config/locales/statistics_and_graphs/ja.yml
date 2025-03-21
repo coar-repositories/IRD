@@ -12,10 +12,11 @@ ja:
     oai_status_for_top_20_countries_by_repository_count: リポジトリ数による上位 20 か国の OAI-PMH ステータス
     oai_status_percentage_for_all_repositories: すべてのリポジトリの OAI-PMH ステータス (%)
     records_archived: アーカイブされた記録
+    records_awaiting_review: 審査待ちの記録
     records_draft: ドラフト記録
-    records_published: 公開された記録
     records_total: 総記録数
     records_under_review: 審査中の記録
+    records_verified: 検証済み記録
     repositories_count_by_continent: 大陸別のリポジトリ（数）
     statistics: 統計
     statistics_by_continent: 大陸別統計

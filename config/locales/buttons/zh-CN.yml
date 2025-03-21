@@ -22,13 +22,13 @@ zh-CN:
     get_thumbnails: 获取缩略图
     make_org_an_rp: 让组织成为一个负责任的组织
     make_org_an_rp_for_country: 让组织负责该国的所有存储库
+    make_record_awaiting_review: 制作记录等待审核
     make_record_draft: 制作记录草稿
     make_record_under_review: 使记录接受审查
     mark_reviewed: 标记已审核
     oai_pmh_identify: OAI-PMH识别
     oai_pmh_metadata_formats: OAI-PMH 元数据格式
     process_as_duplicate_of: 处理为
-    publish_record: 发布记录
     purge_duplicates: 清除重复项
     purge_statistics_cache: 清除统计缓存
     purge_thumbnail: 清除缩略图
@@ -46,5 +46,6 @@ zh-CN:
     show_duplicates: 显示重复项
     start_background_network_checks: 网络检查
     suggest_new_system: 建议新的存储库
+    verify_record: 核实记录
     view_job_queue: 查看作业队列
     view_kanban: 查看看板

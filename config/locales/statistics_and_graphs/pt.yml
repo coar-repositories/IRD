@@ -12,10 +12,11 @@ pt:
     oai_status_for_top_20_countries_by_repository_count: Status do OAI-PMH para os 20 principais países por contagem de repositórios
     oai_status_percentage_for_all_repositories: Status OAI-PMH (%) para todos os repositórios
     records_archived: Registros arquivados
+    records_awaiting_review: Registros aguardando revisão
     records_draft: Rascunhos de Registros
-    records_published: Registros publicados
     records_total: Total de registros
     records_under_review: Registros sob revisão
+    records_verified: Registros Verificados
     repositories_count_by_continent: Repositórios (contagem) por continente
     statistics: Estatísticas
     statistics_by_continent: Estatísticas por Continente

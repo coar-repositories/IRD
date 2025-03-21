@@ -62,9 +62,10 @@ en:
         record_status: Record Status
         record_status_list:
           archived: Archived
+          awaiting_review: Awaiting Review
           draft: Draft
-          published: Published
           under_review: Under Review
+          verified: Verified
         responsible_party: Responsible Organisation
         subcategory: Scope
         subcategory_list:

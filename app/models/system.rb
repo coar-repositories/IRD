@@ -1,6 +1,26 @@
-class PublishedSystemValidator < ActiveModel::Validator
+# class PublishedSystemValidator < ActiveModel::Validator
+#   def validate(record)
+#     if record.record_status == "published"
+#       # i18n-tasks-use t('activerecord.errors.models.system.attributes.system_status.not_online') # this lets i18n-tasks know the key is used
+#       record.errors.add(:system_status, :not_online) unless record.system_status_online?
+#       # i18n-tasks-use t('activerecord.errors.models.system.attributes.oai_status.not_supported') # this lets i18n-tasks know the key is used
+#       record.errors.add(:oai_status, :not_supported) if record.oai_status_unsupported? || record.oai_status_unknown?
+#       if record.subcategory == "unknown"
+#         record.errors.add :subcategory, :missing
+#       end
+#       if record.primary_subject == "unknown"
+#         record.errors.add :primary_subject, :missing
+#       end
+#       if record.media_types.count == 0
+#         record.errors.add :media_types, :missing
+#       end
+#     end
+#   end
+# end
+
+class VerifiedSystemValidator < ActiveModel::Validator
   def validate(record)
-    if record.record_status == "published"
+    if record.record_status == "verified"
       # i18n-tasks-use t('activerecord.errors.models.system.attributes.system_status.not_online') # this lets i18n-tasks know the key is used
       record.errors.add(:system_status, :not_online) unless record.system_status_online?
       # i18n-tasks-use t('activerecord.errors.models.system.attributes.oai_status.not_supported') # this lets i18n-tasks know the key is used
@@ -85,7 +105,7 @@ class System < ApplicationRecord
   enum :oai_status, { unknown: 0, unsupported: 1, offline: 2, online: 3, not_enabled: 4 }, prefix: true, default: :unknown, scopes: true
   translate_enum :oai_status
 
-  enum :record_status, { draft: 0, published: 1, archived: 2, under_review: 3 }, prefix: true, default: :draft, scopes: true
+  enum :record_status, { draft: 0, verified: 1, archived: 2, under_review: 3, awaiting_review: 4 }, prefix: true, default: :draft, scopes: true
   translate_enum :record_status
 
   enum :primary_subject, { unknown: 0, multidisciplinary: 1, arts: 2, engineering: 3, health_and_medicine: 4, humanities: 5, law: 6, mathematics: 7, science: 8, social_sciences: 9, technology: 10 }, prefix: true, default: :unknown, scopes: true
@@ -107,12 +127,12 @@ class System < ApplicationRecord
   scope :has_owner, -> { where.not(owner_id: nil) }
   scope :in_country, ->(country_id) { where(country_id: country_id) }
   scope :no_thumbnail, -> { where.missing(:thumbnail_attachment) }
-  scope :publicly_viewable, -> { where.not(record_status: :unknown).where.not(record_status: :draft).where.not(record_status: :archived) }
+  scope :publicly_viewable, -> { where.not(record_status: :draft).where.not(record_status: :archived) }
   # scope :duplicates, -> { includes(:annotations).where(annotations: { id: "duplicate" }) }
 
   validates :name, :url, presence: true
   validates_with UrlValidator, on: :create
-  validates_with PublishedSystemValidator
+  validates_with VerifiedSystemValidator
 
   before_validation :set_defaults
   before_save :initialise_for_saving
@@ -180,12 +200,20 @@ class System < ApplicationRecord
     self.reviewed.nil? || self.reviewed < Rails.configuration.ird[:system_review_period].days.ago
   end
 
-  def published?
-    self.record_status == "published"
+  def awaiting_review?
+    self.record_status == "awaiting_review"
   end
 
-  def publish!
-    self.record_status = :published
+  def awaiting_review!
+    self.record_status = :awaiting_review
+  end
+
+  def verified?
+    self.record_status == "verified"
+  end
+
+  def verify!
+    self.record_status = :verified
     self.mark_reviewed!
   end
 
@@ -203,6 +231,10 @@ class System < ApplicationRecord
   def draft!
     self.record_status = :draft
     self.rp_id = Organisation.default_rp_id
+  end
+
+  def publicly_viewable?
+    self.record_status != :draft && self.record_status != :archived
   end
 
   def add_repo_id(repo_id_scheme, repo_id_value)

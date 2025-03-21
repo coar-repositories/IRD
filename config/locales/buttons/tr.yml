@@ -22,13 +22,13 @@ tr:
     get_thumbnails: Küçük Resimleri Alın
     make_org_an_rp: Kuruluşu Sorumlu Bir Kuruluş Haline Getirin
     make_org_an_rp_for_country: Bu Ülkedeki Tüm Depolardan Kuruluşu Sorumlu Hale Getirin
+    make_record_awaiting_review: Kayıt Bekleyen İncelemeyi Oluştur
     make_record_draft: Kayıt Taslağı Oluştur
     make_record_under_review: Kaydı İnceleme Altına Alın
     mark_reviewed: Mark İncelendi
     oai_pmh_identify: OAI-PMH Tanımlama
     oai_pmh_metadata_formats: OAI-PMH Meta Veri Biçimleri
     process_as_duplicate_of: İşlemin Kopyası Olarak
-    publish_record: Kaydı Yayımla
     purge_duplicates: Yinelenenleri Temizle
     purge_statistics_cache: İstatistik Önbelleğini Temizle
     purge_thumbnail: Küçük resmi temizle
@@ -46,5 +46,6 @@ tr:
     show_duplicates: Yinelenenleri Göster
     start_background_network_checks: Ağ Kontrolleri
     suggest_new_system: Yeni Bir Depo Önerin
+    verify_record: Kaydı Doğrula
     view_job_queue: İş Kuyruğunu Görüntüle
     view_kanban: Kanban'ı görüntüle

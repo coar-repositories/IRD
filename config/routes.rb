@@ -72,16 +72,16 @@ Rails.application.routes.draw do
   # SYSTEMS
   get "/systems/:id/label", to: "systems#label", as: "label"
   get "/systems/:id/network_check", to: "systems#network_check", as: "network_check"
-  get "/systems/:id/publish_record", to: "systems#publish_record"
   # get '/systems/autocomplete', to: 'systems#autocomplete', as: 'autocomplete_system_link'
   get "/systems/search", to: "systems#search", as: "system_search"
   get "/systems/:id/check_url", to: "systems#check_url", as: "check_website"
   post "/systems/add_repo_id", to: "systems#add_repo_id"
   get "/systems/:id/process_as_duplicate", to: "systems#process_as_duplicate", as: "process_as_duplicate"
   get "/systems/:id/mark_reviewed", to: "systems#mark_reviewed", as: "mark_reviewed"
-  get "/systems/:id/publish", to: "systems#publish", as: "publish"
+  get "/systems/:id/verify", to: "systems#verify", as: "verify"
   get "/systems/:id/archive", to: "systems#archive", as: "archive"
   get "/systems/:id/draft", to: "systems#draft", as: "draft"
+  get "/systems/:id/change_record_status_to_awaiting_review", to: "systems#change_record_status_to_awaiting_review", as: "change_record_status_to_awaiting_review"
   get "/systems/:id/change_record_status_to_under_review", to: "systems#change_record_status_to_under_review", as: "change_record_status_to_under_review"
   get "/systems/:id/get_thumbnail", to: "systems#get_thumbnail", as: "get_thumbnail"
   get "/systems/:id/remove_thumbnail", to: "systems#remove_thumbnail", as: "remove_thumbnail"

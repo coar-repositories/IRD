@@ -62,9 +62,10 @@ pt:
         record_status: Status do registro
         record_status_list:
           archived: Arquivado
+          awaiting_review: Aguardando revisão
           draft: Rascunho
-          published: Publicado
           under_review: Em revisão
+          verified: Verificado
         responsible_party: Organização Responsável
         subcategory: Escopo
         subcategory_list:

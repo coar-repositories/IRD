@@ -27,12 +27,16 @@
     %div.row
       %div.col
         %div.card-system-details-right
+          %b= "#{t(:reviewed)}:"
           - if system.reviewed
-            %b= "#{t(:reviewed)}:"
             = system.reviewed.strftime('%Y-%m-%d')
           - else
             =t(:not_yet_reviewed)
   %div.card-footer
-    %div.card-footer-status-bar
-      = system_status_flags system.system_status
-      = oai_status_flags system.oai_status
+    %div.row
+      %div.col-2
+        = record_status_flags system.record_status
+      %div.col-10
+        %div.text-end
+          = system_status_flags system.system_status
+          = oai_status_flags system.oai_status

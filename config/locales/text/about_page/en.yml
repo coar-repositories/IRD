@@ -19,9 +19,10 @@ en:
       The directory contains metadata records about repositories. At any time, each record is in one of the four "states":
 
         - **Draft**: A repository has been identified, but not yet assessed or verified by the IRD service.
-        - **Under Review**: The identified repository has passed some initial automated checking, but is now waiting to be reviewed by the allocated Responsible Organisation.
-        - **Published**: The repository has been reviewed by the allocated Responsible Organisation and is considered to be accurate and up-to-date. The record is published on the IRD service.
-        - **Archived**: The repository is no longer active, or is out-of-scope. The record is archived no longer published on the IRD service.
+        - **Awaiting Review**: The identified repository has been judged to be "in scope", has passed some initial automated checking but has not yet been allocated to a Responsible Organisation.
+        - **Under Review**: The identified repository is being reviewed by the allocated Responsible Organisation.
+        - **Published**: The repository has been reviewed by the allocated Responsible Organisation and is verified as accurate and up-to-date.
+        - **Archived**: The repository is no longer active, or is out-of-scope. The record is archived and no longer published on the IRD service.
 
       #### License
       The data in the IRD may be re-used without restriction. More formally, it is licensed under the [CC0 License](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1).

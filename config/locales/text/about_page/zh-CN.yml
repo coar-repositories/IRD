@@ -19,20 +19,21 @@ zh-CN:
       目录包含有关存储库的元数据记录。在任何时候，每条记录都处于以下四种“状态”之一：
 
       - **草稿**：存储库已确定，但尚未由 IRD 服务评估或验证。
-      - **正在审核**：已识别的存储库已通过一些初步的自动检查，但现在正在等待分配的负责机构进行审核。
-      - **已发布**：存储库已由分配的负责机构审核，并被认为是准确且最新的。记录已在 IRD 服务上发布。
+      - **等待审核**：已确定的存储库已被判定为“在范围内”，已通过一些初步的自动检查，但尚未分配给负责组织。
+      - **审核中**：已确定的存储库正在由分配的负责组织审核。
+      - **已发布**：存储库已由分配的负责组织审核，并被验证为准确且最新。
       - **已存档**：存储库不再处于活动状态，或超出范围。记录已存档，不再在 IRD 服务上发布。
 
       #### 许可证
-      IRD 中的数据可以不受限制地重复使用。更正式地说，它是根据 [CC0 许可证](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1) 授权的。
+      IRD 中的数据可以不受限制地重复使用。更正式地说，它是根据 [CC0 许可证](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1) 获得许可的。
 
       #### 软件开发和维护
-      IRD 的软件由 [Antleaf](https://www.antleaf.com/) 开发、部署和维护。此软件的 [开源代码](https://github.com/coar-repositories/IRD) 已获得 [MIT 许可](https://opensource.org/license/mit)。
+      IRD 软件由 [Antleaf](https://www.antleaf.com/) 开发、部署和维护。此软件的 [开源代码](https://github.com/coar-repositories/IRD) 已根据 [MIT 许可证](https://opensource.org/license/mit) 获得许可。
 
       ### 致谢
 
       #### IRD 工作组
-      COAR 谨感谢 IRD 工作组对 IRD 开发的宝贵贡献：
+      COAR 谨感谢 IRD 工作组对 IRD 发展的宝贵贡献：
 
       - Iryna Kuchma，EIFL
       - Pierre Lasou，拉瓦尔大学
@@ -41,7 +42,7 @@ zh-CN:
       - Kazu Yamaji，国家信息学研究所
       - Kathleen Shearer，COAR
       - Paul Walk，Antleaf
-      - Virginia Barbour，Open Access Australasia（前成员）
+      - Virginia Barbour，开放获取澳大利亚（前成员）
 
       #### 研究组织注册表 (ROR)
       IRD 使用经许可从 [研究组织注册表 (ROR)](https://ror.org/) 下载的数据。

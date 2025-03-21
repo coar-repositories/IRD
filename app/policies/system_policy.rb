@@ -1,16 +1,16 @@
 class SystemPolicy < ApplicationPolicy
 
   def show?
-    @record.published? || (User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.can_curate?(@record)))
+    @record.publicly_viewable? || (User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.can_curate?(@record)))
   end
 
   def suggest_new_system?
     User.valid_user?(@user)
   end
 
-  def access_unpublished_records?
-    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
-  end
+  # def access_unpublished_records?
+  #   User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
+  # end
 
   def admin?
     User.valid_user?(@user) && @user.has_role?(:administrator)
@@ -33,7 +33,7 @@ class SystemPolicy < ApplicationPolicy
     # User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
-  def publish?
+  def verify?
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record))
   end
 
@@ -44,6 +44,10 @@ class SystemPolicy < ApplicationPolicy
   def draft?
     # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record))
     # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
+    User.valid_user?(@user) && @user.has_role?(:administrator)
+  end
+
+  def change_record_status_to_awaiting_review?
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 

@@ -44,11 +44,13 @@
       %div.form-label
         Record Status
     %div.col
-      = link_to t('buttons.publish_record'), admin_path(request.query_parameters.except(:lang).merge({operation: 'publish'})), class: 'btn btn-success btn-sm operations-button'
+      = link_to t('buttons.verify_record'), admin_path(request.query_parameters.except(:lang).merge({operation: 'verify'})), class: 'btn btn-success btn-sm operations-button'
       = link_to t('buttons.archive_record'), admin_path(request.query_parameters.except(:lang).merge({operation: 'archive'})), class: 'btn btn-danger btn-sm operations-button'
+      = link_to t('buttons.make_record_awaiting_review'), admin_path(request.query_parameters.except(:lang).merge({operation: 'make_record_awaiting_review'})), class: 'btn btn-warning btn-sm operations-button'
       = link_to t('buttons.make_record_under_review'), admin_path(request.query_parameters.except(:lang).merge({operation: 'make_record_under_review'})), class: 'btn btn-warning btn-sm operations-button'
       = link_to t('buttons.make_record_draft'), admin_path(request.query_parameters.except(:lang).merge({operation: 'make_draft'})), class: 'btn btn-secondary btn-sm operations-button'
       %br
+      -# i18n-tasks-use t('buttons.set_record_reviewed') # this lets i18n-tasks know the key is used
       -# = link_to t('buttons.set_record_reviewed'), admin_path(request.query_parameters.except(:lang).merge({operation: 'set_record_reviewed'})), class: 'btn btn-primary btn-sm operations-button'
 
   %div.row

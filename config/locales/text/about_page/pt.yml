@@ -19,9 +19,10 @@ pt:
       O diretório contém registros de metadados sobre repositórios. A qualquer momento, cada registro está em um dos quatro "estados":
 
       - **Rascunho**: Um repositório foi identificado, mas ainda não foi avaliado ou verificado pelo serviço IRD.
-      - **Em revisão**: O repositório identificado passou por algumas verificações automatizadas iniciais, mas agora está esperando para ser revisado pela Organização Responsável alocada.
-      - **Publicado**: O repositório foi revisado pela Organização Responsável alocada e é considerado preciso e atualizado. O registro é publicado no serviço IRD.
-      - **Arquivado**: O repositório não está mais ativo ou está fora do escopo. O registro é arquivado e não mais publicado no serviço IRD.
+      - **Aguardando revisão**: O repositório identificado foi considerado "dentro do escopo", passou por algumas verificações automatizadas iniciais, mas ainda não foi alocado a uma Organização Responsável.
+      - **Em revisão**: O repositório identificado está sendo revisado pela Organização Responsável alocada.
+      - **Publicado**: O repositório foi revisado pela Organização Responsável alocada e é verificado como preciso e atualizado.
+      - **Arquivado**: O repositório não está mais ativo ou está fora do escopo. O registro é arquivado e não é mais publicado no serviço IRD.
 
       #### Licença
       Os dados no IRD podem ser reutilizados sem restrições. Mais formalmente, ele é licenciado sob a [Licença CC0](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1).

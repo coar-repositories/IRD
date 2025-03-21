@@ -39,12 +39,12 @@
       %div.col-5
         = image_tag(rails_blob_url(system.thumbnail),:class=>"website-thumbnail-search-results shadowed") if system.thumbnail.attached?
         = link_to t('buttons.edit'), url_for([:edit,system]),:class=>"btn btn-primary btn-sm"
-        - if system.record_status_published?
+        - if system.record_status_verified?
           = link_to t('buttons.mark_reviewed'), mark_reviewed_url(system.id), :class => 'btn btn-success btn-sm'
           = link_to t('buttons.archive_record'), archive_url(system.id), :class => 'btn btn-danger btn-sm'
           = link_to t('buttons.make_record_draft'), draft_url(system.id), :class => 'btn btn-secondary btn-sm'
         - elsif system.record_status_draft?
-          = link_to t('buttons.publish_record'), publish_url(system.id), :class => 'btn btn-success btn-sm'
+          = link_to t('buttons.verify_record'), verify_url(system.id), :class => 'btn btn-success btn-sm'
           = link_to t('buttons.archive_record'), archive_url(system.id), :class => 'btn btn-danger btn-sm'
         - else
           = link_to t('buttons.make_record_draft'),  draft_url(system.id), :class => 'btn btn-secondary btn-sm'
@@ -63,21 +63,24 @@
     %div.row
       %div.col
         %div.card-system-details-right
+          %b= "#{t(:reviewed)}:"
           - if system.reviewed
-            %b= "#{t(:reviewed)}:"
             = system.reviewed.strftime('%Y-%m-%d')
           - else
             =t(:not_yet_reviewed)
   %div.card-footer
-    %div.card-footer-status-bar
-      = record_status_flags system.record_status
-      = system_status_flags system.system_status
-      = oai_status_flags system.oai_status
-      - if local_assigns[:duplicate_system_id_array].present?
-        %div.row{style:"text-align: left;"}
-          %div.col-3.field-name
-            %div.form-label{style:"font-size:0.9em;"}
-              DeDuplicate
-          %div.col
-            - duplicate_system_id_array.each do |duplicate_id|
-              = link_to "#{t('buttons.process_as_duplicate_of')} #{duplicate_id}", process_as_duplicate_path(system,request.query_parameters.except(:lang).merge({target_system_id: duplicate_id})),:class=>"btn btn-primary btn-sm"
+    %div.row
+      %div.col-2
+        = record_status_flags system.record_status
+      %div.col-10
+        %div.text-end
+          = system_status_flags system.system_status
+          = oai_status_flags system.oai_status
+          - if local_assigns[:duplicate_system_id_array].present?
+            %div.row{style:"text-align: left;"}
+              %div.col-3.field-name
+                %div.form-label{style:"font-size:0.9em;"}
+                  DeDuplicate
+              %div.col
+                - duplicate_system_id_array.each do |duplicate_id|
+                  = link_to "#{t('buttons.process_as_duplicate_of')} #{duplicate_id}", process_as_duplicate_path(system,request.query_parameters.except(:lang).merge({target_system_id: duplicate_id})),:class=>"btn btn-primary btn-sm"

@@ -62,9 +62,10 @@ zh-CN:
         record_status: 记录状态
         record_status_list:
           archived: 已归档
+          awaiting_review: 等待审核
           draft: 草稿
-          published: 发布
           under_review: 正在审核
+          verified: 已验证
         responsible_party: 负责机构
         subcategory: 范围
         subcategory_list:

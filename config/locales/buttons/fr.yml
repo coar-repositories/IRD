@@ -22,13 +22,13 @@ fr:
     get_thumbnails: Obtenir des vignettes
     make_org_an_rp: Faire de l'organisation une organisation responsable
     make_org_an_rp_for_country: Rendre l'organisation responsable de tous les dépôts dans ce pays
+    make_record_awaiting_review: Créer un enregistrement en attente de révision
     make_record_draft: Créer un brouillon d'enregistrement
     make_record_under_review: Faire un enregistrement en cours de révision
     mark_reviewed: Mark a examiné
     oai_pmh_identify: Identifier OAI-PMH
     oai_pmh_metadata_formats: Formats de métadonnées OAI-PMH
     process_as_duplicate_of: Traiter comme un doublon de
-    publish_record: Publier un enregistrement
     purge_duplicates: Purger les doublons
     purge_statistics_cache: Purger le cache des statistiques
     purge_thumbnail: Purger la vignette
@@ -46,5 +46,6 @@ fr:
     show_duplicates: Afficher les doublons
     start_background_network_checks: Vérifications du réseau
     suggest_new_system: Proposer un nouveau référentiel
+    verify_record: Vérifier l'enregistrement
     view_job_queue: Afficher la file d'attente des travaux
     view_kanban: Voir Kanban

@@ -62,9 +62,10 @@ tr:
         record_status: Kayıt Durumu
         record_status_list:
           archived: Arşivlendi
+          awaiting_review: İnceleme Bekleniyor
           draft: Taslak
-          published: Yayımlandı
           under_review: İnceleniyor
+          verified: Doğrulandı
         responsible_party: Sorumlu Kuruluş
         subcategory: Kapsam
         subcategory_list:

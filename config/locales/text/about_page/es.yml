@@ -18,9 +18,10 @@ es:
 
       El directorio contiene registros de metadatos sobre repositorios. En cualquier momento, cada registro se encuentra en uno de los cuatro estados siguientes:
 
-      - **Borrador**: Se ha identificado un repositorio, pero aún no ha sido evaluado ni verificado por el servicio IRD. - **En revisión**: El repositorio identificado ha superado una comprobación automatizada inicial, pero está a la espera de ser revisado por la Organización Responsable asignada.
-      - **Publicado**: El repositorio ha sido revisado por la Organización Responsable asignada y se considera preciso y actualizado. El registro está publicado en el servicio IRD.
-      - **Archivado**: El repositorio ya no está activo o está fuera de alcance. El registro está archivado y ya no se publica en el servicio IRD.
+      - **Borrador**: Se ha identificado un repositorio, pero aún no ha sido evaluado ni verificado por el servicio IRD. - **En espera de revisión**: El repositorio identificado se considera "dentro del alcance", ha superado una verificación automatizada inicial, pero aún no se ha asignado a una organización responsable.
+      - **En revisión**: El repositorio identificado está siendo revisado por la organización responsable asignada.
+      - **Publicado**: El repositorio ha sido revisado por la organización responsable asignada y se ha verificado su precisión y actualización.
+      - **Archivado**: El repositorio ya no está activo o está fuera del alcance. El registro está archivado y ya no se publica en el servicio IRD.
 
 
       ### Licencia
@@ -53,7 +54,7 @@ es:
       - [ROAR](https://roar.eprints.org)
       - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
       - [Re3data](https://www.re3data.org/)
-      - [Información de colaboración colectiva sobre instalaciones de Dataverse](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
+      - [Información de colaboración abierta sobre instalaciones de Dataverse](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
       - [Hyku Commons](https://hykucommons.org/)
       - [Lista de repositorios de NII (Japón)](https://irdb.nii.ac.jp/en/repositorylist)
 

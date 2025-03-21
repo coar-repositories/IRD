@@ -12,10 +12,11 @@ zh-CN:
     oai_status_for_top_20_countries_by_repository_count: 按存储库数量排名前 20 的国家/地区的 OAI-PMH 状态
     oai_status_percentage_for_all_repositories: 所有存储库的 OAI-PMH 状态 (%)
     records_archived: 存档记录
+    records_awaiting_review: 等待审核的记录
     records_draft: 选秀记录
-    records_published: 已出版记录
     records_total: 总记录数
     records_under_review: 正在审查的记录
+    records_verified: 已验证记录
     repositories_count_by_continent: 各大洲的存储库（数量）
     statistics: 统计数据
     statistics_by_continent: 各大洲统计数据

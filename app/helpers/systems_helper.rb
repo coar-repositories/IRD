@@ -43,7 +43,7 @@ module SystemsHelper
       badge_class = "text-bg-secondary"
     end
     # i18n-tasks-use t("activerecord.attributes.system.system_status_list.#{status}") # this lets i18n-tasks know the key is used
-    "<span class='badge rounded-pill #{badge_class}'>#{System.translated_system_status status_sym}</span>".html_safe
+    "<span class='badge #{badge_class}'>#{System.translated_system_status status_sym}</span>".html_safe
   end
 
   def oai_status_flags(status)
@@ -63,7 +63,7 @@ module SystemsHelper
       badge_class = "text-bg-secondary"
     end
     # i18n-tasks-use t("activerecord.attributes.system.oai_status_list.#{status}") # this lets i18n-tasks know the key is used
-    "<span class='badge rounded-pill #{badge_class}'>#{System.translated_oai_status status_sym}</span>".html_safe
+    "<span class='badge #{badge_class}'>#{System.translated_oai_status status_sym}</span>".html_safe
   end
 
   # def record_status_flags(status, show_drafts = true)
@@ -89,17 +89,19 @@ module SystemsHelper
     case status_sym
     when :draft
       badge_class = "text-bg-secondary"
-    when :published
+    when :verified
       badge_class = "text-bg-success"
     when :archived
       badge_class = "text-bg-danger"
     when :under_review
       badge_class = "text-bg-warning"
+    when :awaiting_review
+      badge_class = "text-bg-secondary"
     else
       badge_class = "text-bg-secondary"
     end
     # badge_class = 'text-bg-secondary'
-    "<span class='badge rounded-pill #{badge_class}'>#{System.translated_record_status status_sym}</span>".html_safe
+    "<span class='badge #{badge_class}'>#{System.translated_record_status status_sym}</span>".html_safe
   end
 
   def network_check_result_flags(network_check)

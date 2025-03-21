@@ -58,8 +58,8 @@
           = link_to 'Archive!', archive_url(@system.id), :class => 'btn btn-danger btn-sm'
         - if policy(@system).draft? && !@system.record_status_draft?
           = link_to 'Return to draft status!', draft_url(@system.id), :class => 'btn btn-secondary btn-sm'
-        - if policy(@system).publish? && !@system.record_status_published?
-          = link_to "#{t('buttons.publish_record')}!", publish_url(@system.id), :class => 'btn btn-success btn-sm'
+        - if policy(@system).verify? && !@system.record_status_verified?
+          = link_to "#{t('buttons.verify_record')}!", verify_url(@system.id), :class => 'btn btn-success btn-sm'
         - if policy(@system).auto_curate?
           = link_to 'Auto-curate', auto_curate_url(@system.id), :class => 'btn btn-primary btn-sm'
     - if policy(@system).check_url? || policy(@system).check_oai_pmh_identify? || policy(@system).check_oai_pmh_formats? || policy(@system).get_thumbnail? || policy(@system).network_check?

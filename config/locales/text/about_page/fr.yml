@@ -19,9 +19,10 @@ fr:
       Le répertoire contient des enregistrements de métadonnées sur les dépôts. Chaque enregistrement est à tout moment dans l'un des quatre « états » suivants :
 
       - **Brouillon** : Un dépôt a été identifié, mais n'a pas encore été évalué ni vérifié par le service IRD.
-      - **En cours de révision** : Le dépôt identifié a passé avec succès une première vérification automatisée, mais attend maintenant d'être examiné par l'organisation responsable désignée.
-      - **Publié** : Le dépôt a été examiné par l'organisation responsable désignée et est considéré comme exact et à jour. L'enregistrement est publié sur le service IRD.
-      - **Archivé** : Le dépôt n'est plus actif ou hors de portée. L'enregistrement est archivé et n'est plus publié sur le service IRD.
+      - **En attente de révision** : Le dépôt identifié a été jugé « dans le champ d'application », a passé avec succès une vérification automatisée initiale, mais n'a pas encore été attribué à une organisation responsable.
+      - **En cours de révision** : Le dépôt identifié est en cours de révision par l'organisation responsable désignée.
+      - **Publié** : Le dépôt a été révisé par l'organisation responsable désignée et son exactitude et sa mise à jour ont été vérifiées.
+      - **Archivé** : Le dépôt n'est plus actif ou est hors champ d'application. L'enregistrement est archivé et n'est plus publié sur le service IRD.
 
       #### Licence
       Les données de l'IRD peuvent être réutilisées sans restriction. Plus formellement, elles sont sous licence [CC0](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1).

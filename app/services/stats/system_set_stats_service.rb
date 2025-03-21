@@ -33,7 +33,8 @@ module Stats
       @stats[:oai_status_offline] = Datum.new "OAI-PMH status: offline", systems.oai_status_offline.count
       @stats[:oai_status_not_enabled] = Datum.new "OAI-PMH status: not enabled", systems.oai_status_not_enabled.count
       @stats[:record_status_draft] = Datum.new "Record status: draft", systems.record_status_draft.count
-      @stats[:record_status_published] = Datum.new "Record status: published", systems.record_status_published.count
+      @stats[:record_status_verified] = Datum.new "Record status: verified", systems.record_status_verified.count
+      @stats[:record_status_awaiting_review] = Datum.new "Record status: awaiting review", systems.record_status_awaiting_review.count
       @stats[:record_status_under_review] = Datum.new "Record status: under review", systems.record_status_under_review.count
       @stats[:record_status_archived] = Datum.new "Record status: archived", systems.record_status_archived.count
       @stats[:no_thumbnail] = Datum.new "Missing thumbnail", systems.no_thumbnail.count

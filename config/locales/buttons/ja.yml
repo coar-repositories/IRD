@@ -22,13 +22,13 @@ ja:
     get_thumbnails: サムネイルを取得
     make_org_an_rp: 組織を責任ある組織にする
     make_org_an_rp_for_country: この国のすべてのリポジトリの責任を組織に負わせる
+    make_record_awaiting_review: 記録をレビュー待ちにする
     make_record_draft: 記録ドラフトを作成する
     make_record_under_review: 記録をレビュー中
     mark_reviewed: レビュー済みをマーク
     oai_pmh_identify: OAI-PMH 識別
     oai_pmh_metadata_formats: OAI-PMH メタデータ形式
     process_as_duplicate_of: 複製として処理
-    publish_record: レコードを公開
     purge_duplicates: 重複を消去
     purge_statistics_cache: 統計キャッシュを消去
     purge_thumbnail: サムネイルを消去
@@ -46,5 +46,6 @@ ja:
     show_duplicates: 重複を表示
     start_background_network_checks: ネットワークチェック
     suggest_new_system: 新しいリポジトリを提案する
+    verify_record: 記録を確認する
     view_job_queue: ジョブキューの表示
     view_kanban: カンバンを表示

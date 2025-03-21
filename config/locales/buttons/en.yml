@@ -22,13 +22,13 @@ en:
     get_thumbnails: Get Thumbnails
     make_org_an_rp: Make Organisation a Responsible Organisation
     make_org_an_rp_for_country: Make Organisation Responsible for all Repositories in this Country
+    make_record_awaiting_review: Make Record Awaiting Review
     make_record_draft: Make Record Draft
     make_record_under_review: Make Record Under Review
     mark_reviewed: Mark Reviewed
     oai_pmh_identify: OAI-PMH Identify
     oai_pmh_metadata_formats: OAI-PMH Metadata Formats
     process_as_duplicate_of: Process as Duplicate of
-    publish_record: Publish Record
     purge_duplicates: Purge Duplicates
     purge_statistics_cache: Purge Statistics Cache
     purge_thumbnail: Purge Thumbnail
@@ -46,5 +46,6 @@ en:
     show_duplicates: Show Duplicates
     start_background_network_checks: Network Checks
     suggest_new_system: Suggest a New Repository
+    verify_record: Verify Record
     view_job_queue: View Job Queue
     view_kanban: View Kanban

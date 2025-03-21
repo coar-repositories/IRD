@@ -22,13 +22,13 @@ es:
     get_thumbnails: Obtener miniaturas
     make_org_an_rp: Hacer de la organización una organización responsable
     make_org_an_rp_for_country: Hacer que la organización sea responsable de todos los repositorios en este país
+    make_record_awaiting_review: Hacer registro en espera de revisión
     make_record_draft: Hacer borrador de registro
     make_record_under_review: Hacer registro bajo revisión
     mark_reviewed: Marcar revisado
     oai_pmh_identify: OAI-PMH Identificar
     oai_pmh_metadata_formats: Formatos de metadatos OAI-PMH
     process_as_duplicate_of: Proceso como Duplicado de
-    publish_record: Publicar registro
     purge_duplicates: Purgar duplicados
     purge_statistics_cache: Purgar la caché de estadísticas
     purge_thumbnail: Purgar miniatura
@@ -46,5 +46,6 @@ es:
     show_duplicates: Mostrar duplicados
     start_background_network_checks: Comprobaciones de red
     suggest_new_system: Sugerir un nuevo repositorio
+    verify_record: Verificar registro
     view_job_queue: Ver cola de trabajos
     view_kanban: Ver Kanban
