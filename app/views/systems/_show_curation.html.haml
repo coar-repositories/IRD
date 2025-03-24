@@ -49,29 +49,30 @@
       -# %h6= t(:ird_metadata_record)
       %div.property-value
         = render '_shared/record_action_buttons', model_instance: @system
-
-        - if policy(@system).mark_reviewed?
-          = link_to 'Mark as reviewed', mark_reviewed_url(@system.id), :class => 'btn btn-primary btn-sm'
-        - if policy(@system).change_record_status_to_under_review? && !@system.record_status_under_review?
-          = link_to 'Change to under review!', change_record_status_to_under_review_url(@system.id), :class => 'btn btn-sm btn-warning'
-        - if policy(@system).archive? && !@system.record_status_archived?
-          = link_to 'Archive!', archive_url(@system.id), :class => 'btn btn-danger btn-sm'
-        - if policy(@system).draft? && !@system.record_status_draft?
-          = link_to 'Return to draft status!', draft_url(@system.id), :class => 'btn btn-secondary btn-sm'
+        %br
         - if policy(@system).verify? && !@system.record_status_verified?
-          = link_to "#{t('buttons.verify_record')}!", verify_url(@system.id), :class => 'btn btn-success btn-sm'
+          = link_to t('buttons.change_to_verified'), verify_url(@system.id), :class => 'btn btn-success btn-sm'
+          %br
+        - if policy(@system).change_record_status_to_under_review? && !@system.record_status_under_review?
+          = link_to t("buttons.change_to_under_review"), change_record_status_to_under_review_url(@system.id), :class => 'btn btn-sm btn-warning'
+          %br
+        - if policy(@system).archive? && !@system.record_status_archived?
+          = link_to t("buttons.archive_record_defunct"), archive_url(@system.id, archive_label: "defunct"), :class => 'btn btn-danger btn-sm'
+          %br
+          = link_to t("buttons.archive_record_out_of_scope"), archive_url(@system.id, archive_label: "out-of-scope"), :class => 'btn btn-danger btn-sm'
+          %br
+        - if policy(@system).draft? && !@system.record_status_draft?
+          = link_to t("buttons.change_to_draft"), draft_url(@system.id), :class => 'btn btn-secondary btn-sm'
+          %br
         - if policy(@system).auto_curate?
           = link_to 'Auto-curate', auto_curate_url(@system.id), :class => 'btn btn-primary btn-sm'
     - if policy(@system).check_url? || policy(@system).check_oai_pmh_identify? || policy(@system).check_oai_pmh_formats? || policy(@system).get_thumbnail? || policy(@system).network_check?
       %div.property
-        -# %h5.property-name= t(:check_repository_functionality)
         %div.property-value
           - if policy(@system).check_url?
             = link_to t('buttons.check_url'), check_website_url(@system.id), :class => 'btn btn-primary btn-sm'
           - if policy(@system).check_oai_pmh_combined?
             = link_to t('buttons.check_oai'), check_oai_combined_url(@system.id), :class => 'btn btn-primary btn-sm'
-          -# - if policy(@system).check_oai_pmh_formats?
-          -#   = link_to t('buttons.check_oai_formats'), check_oai_formats_url(@system.id), :class => 'btn btn-primary btn-sm'
           - if policy(@system).get_thumbnail?
             = link_to t('buttons.get_thumbnail'), get_thumbnail_url(@system.id), :class => 'btn btn-primary btn-sm'
           - if policy(@system).network_check?

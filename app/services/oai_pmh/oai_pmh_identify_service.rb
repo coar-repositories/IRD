@@ -87,12 +87,13 @@ module OaiPmh
       rescue Faraday::ConnectionFailed => e
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, 0)
-        @system.oai_base_url = nil
-        if @system.metadata["unconfirmed_oai_pmh_url_base_url"].blank?
-          @system.oai_status = :unsupported
-        else
-          @system.oai_status = :not_enabled
-        end
+        @system.oai_status = :not_enabled
+        # @system.oai_base_url = nil
+        # if @system.metadata["unconfirmed_oai_pmh_url_base_url"].blank?
+        #   @system.oai_status = :unsupported
+        # else
+        #   @system.oai_status = :not_enabled
+        # end
       rescue Faraday::Error, StandardError => e
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, 0)

@@ -4,9 +4,14 @@ ja:
     allocate_rp_by_country: 国別にRPを割り当てる
     allocate_rp_by_country_replace_existing: 国別にRPを割り当てる（既存のRPを置き換える）
     archive_record: アーカイブ記録
+    archive_record_defunct: このレコードをアーカイブする (リポジトリは廃止されています)
+    archive_record_out_of_scope: このレコードをアーカイブする (リポジトリは IRD の範囲外です)
     authorise_a_user: ユーザーを承認する
     auto_curate: 自動キュレーション
     cancel_operation: 操作をキャンセル
+    change_to_draft: レコードのステータスを「下書き」に変更
+    change_to_under_review: レコードのステータスを「レビュー中」に変更する
+    change_to_verified: レコードのステータスを「確認済み」に変更する
     check_oai: OAI-PMH を確認する
     check_url: ウェブサイトを確認する
     check_urls: URLを確認する
@@ -46,6 +51,5 @@ ja:
     show_duplicates: 重複を表示
     start_background_network_checks: ネットワークチェック
     suggest_new_system: 新しいリポジトリを提案する
-    verify_record: 記録を確認する
     view_job_queue: ジョブキューの表示
     view_kanban: カンバンを表示

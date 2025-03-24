@@ -44,7 +44,7 @@
           = link_to t('buttons.archive_record'), archive_url(system.id), :class => 'btn btn-danger btn-sm'
           = link_to t('buttons.make_record_draft'), draft_url(system.id), :class => 'btn btn-secondary btn-sm'
         - elsif system.record_status_draft?
-          = link_to t('buttons.verify_record'), verify_url(system.id), :class => 'btn btn-success btn-sm'
+          = link_to t('buttons.change_to_verified'), verify_url(system.id), :class => 'btn btn-success btn-sm'
           = link_to t('buttons.archive_record'), archive_url(system.id), :class => 'btn btn-danger btn-sm'
         - else
           = link_to t('buttons.make_record_draft'),  draft_url(system.id), :class => 'btn btn-secondary btn-sm'

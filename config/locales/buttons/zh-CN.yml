@@ -4,9 +4,14 @@ zh-CN:
     allocate_rp_by_country: 按国家分配 RP
     allocate_rp_by_country_replace_existing: 按国家分配 RP（替换现有的）
     archive_record: 档案记录
+    archive_record_defunct: 存档此记录（存储库已不存在）
+    archive_record_out_of_scope: 归档此记录（存储库超出了 IRD 的范围）
     authorise_a_user: 授权用户
     auto_curate: 自动策划
     cancel_operation: 取消操作
+    change_to_draft: 将记录状态更改为“草稿”
+    change_to_under_review: 将记录状态更改为“审核中”
+    change_to_verified: 将记录状态更改为“已验证”
     check_oai: 检查OAI-PMH
     check_url: 查看网站
     check_urls: 检查 URL
@@ -46,6 +51,5 @@ zh-CN:
     show_duplicates: 显示重复项
     start_background_network_checks: 网络检查
     suggest_new_system: 建议新的存储库
-    verify_record: 核实记录
     view_job_queue: 查看作业队列
     view_kanban: 查看看板

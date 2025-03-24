@@ -4,9 +4,14 @@ pt:
     allocate_rp_by_country: Alocar RP por país
     allocate_rp_by_country_replace_existing: Alocar RP por país (substituir existente)
     archive_record: Registro de arquivo
+    archive_record_defunct: Arquivar este registro (o repositório está extinto)
+    archive_record_out_of_scope: Arquivar este registro (o repositório está fora do escopo do IRD)
     authorise_a_user: Autorizar um usuário
     auto_curate: Auto-Curadoria
     cancel_operation: Cancelar operação
+    change_to_draft: Alterar status do registro para 'Rascunho'
+    change_to_under_review: Alterar status do registro para 'Em revisão'
+    change_to_verified: Alterar status do registro para 'Verificado'
     check_oai: Verifique OAI-PMH
     check_url: Verifique o site
     check_urls: Verificar URLs
@@ -46,6 +51,5 @@ pt:
     show_duplicates: Mostrar Duplicatas
     start_background_network_checks: Verificações de rede
     suggest_new_system: Sugira um novo repositório
-    verify_record: Verificar registro
     view_job_queue: Ver fila de trabalhos
     view_kanban: Ver Kanban

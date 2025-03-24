@@ -44,7 +44,7 @@
       %div.form-label
         Record Status
     %div.col
-      = link_to t('buttons.verify_record'), admin_path(request.query_parameters.except(:lang).merge({operation: 'verify'})), class: 'btn btn-success btn-sm operations-button'
+      = link_to t('buttons.change_to_verified'), admin_path(request.query_parameters.except(:lang).merge({operation: 'verify'})), class: 'btn btn-success btn-sm operations-button'
       = link_to t('buttons.archive_record'), admin_path(request.query_parameters.except(:lang).merge({operation: 'archive'})), class: 'btn btn-danger btn-sm operations-button'
       = link_to t('buttons.make_record_awaiting_review'), admin_path(request.query_parameters.except(:lang).merge({operation: 'make_record_awaiting_review'})), class: 'btn btn-warning btn-sm operations-button'
       = link_to t('buttons.make_record_under_review'), admin_path(request.query_parameters.except(:lang).merge({operation: 'make_record_under_review'})), class: 'btn btn-warning btn-sm operations-button'

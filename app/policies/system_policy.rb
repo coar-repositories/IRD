@@ -28,10 +28,10 @@ class SystemPolicy < ApplicationPolicy
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
   end
 
-  def mark_reviewed?
-    update?
-    # User.valid_user?(@user) && @user.has_role?(:administrator)
-  end
+  # def mark_reviewed?
+  #   update?
+  #   # User.valid_user?(@user) && @user.has_role?(:administrator)
+  # end
 
   def verify?
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record))

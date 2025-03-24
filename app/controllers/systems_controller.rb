@@ -1,7 +1,7 @@
 require "ostruct"
 
 class SystemsController < ApplicationController
-  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label flag_as_archived add_repo_id process_as_duplicate mark_reviewed verify archive draft auto_curate change_record_status_to_awaiting_review change_record_status_to_under_review]
+  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label flag_as_archived add_repo_id process_as_duplicate verify archive draft auto_curate change_record_status_to_awaiting_review change_record_status_to_under_review]
   after_action :verify_authorized
 
   def suggest_new_system
@@ -64,16 +64,16 @@ class SystemsController < ApplicationController
     end
   end
 
-  def mark_reviewed
-    authorize @system
-    begin
-      @system.mark_reviewed!
-      @system.save!
-      redirect_back fallback_location: root_path, notice: "Repository marked as reviewed."
-    rescue Exception => e
-      redirect_back fallback_location: root_path, flash: { error: "Unable to mark repository as reviewed: #{e.message}" }
-    end
-  end
+  # def mark_reviewed
+  #   authorize @system
+  #   begin
+  #     @system.mark_reviewed!
+  #     @system.save!
+  #     redirect_back fallback_location: root_path, notice: "Repository marked as reviewed."
+  #   rescue Exception => e
+  #     redirect_back fallback_location: root_path, flash: { error: "Unable to mark repository as reviewed: #{e.message}" }
+  #   end
+  # end
 
   # def publish
   #   authorize @system
@@ -100,6 +100,9 @@ class SystemsController < ApplicationController
   def archive
     authorize @system
     begin
+      if params[:archive_label]
+        @system.label_list.add params[:archive_label].to_s
+      end
       @system.archive!
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record archived."
@@ -385,7 +388,7 @@ class SystemsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def system_params
-    params.require(:system).permit(:name, :short_name, :url, :description, :contact, :subcategory, :system_status, :oai_status, :platform_id, :country_id, :platform_version, :record_status, :record_source, :primary_subject, :owner_id, :rp_id, :oai_base_url, :system_category, :tag_list, :label_list => [], :media_types => [], :aliases => [], :user_ids => [], :repoids_attributes => [[:id, :identifier_scheme, :identifier_value, :_destroy]])
+    params.require(:system).permit(:name, :short_name, :url, :description, :contact, :subcategory, :system_status, :oai_status, :platform_id, :country_id, :platform_version, :record_status, :record_source, :primary_subject, :owner_id, :rp_id, :oai_base_url, :system_category, :tag_list, :archive_label, :label_list => [], :media_types => [], :aliases => [], :user_ids => [], :repoids_attributes => [[:id, :identifier_scheme, :identifier_value, :_destroy]])
   end
 
   # def suggested_new_system_params

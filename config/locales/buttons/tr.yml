@@ -4,9 +4,14 @@ tr:
     allocate_rp_by_country: RP'yi Ülkeye Göre Tahsis Et
     allocate_rp_by_country_replace_existing: RP'yi Ülkeye Göre Tahsis Et (Mevcut Olanı Değiştir)
     archive_record: Arşiv Kaydı
+    archive_record_defunct: Bu kaydı arşivle (depo geçersizdir)
+    archive_record_out_of_scope: Bu kaydı arşivleyin (depo IRD için kapsam dışıdır)
     authorise_a_user: Bir Kullanıcıyı Yetkilendirin
     auto_curate: Otomatik Düzenleme
     cancel_operation: İşlemi İptal Et
+    change_to_draft: Kayıt durumunu 'Taslak' olarak değiştir
+    change_to_under_review: Kayıt durumunu 'İnceleniyor' olarak değiştirin
+    change_to_verified: Kayıt durumunu 'Doğrulandı' olarak değiştirin
     check_oai: OAI-PMH'yi kontrol edin
     check_url: Web Sitesini Kontrol Edin
     check_urls: URL'leri kontrol edin
@@ -46,6 +51,5 @@ tr:
     show_duplicates: Yinelenenleri Göster
     start_background_network_checks: Ağ Kontrolleri
     suggest_new_system: Yeni Bir Depo Önerin
-    verify_record: Kaydı Doğrula
     view_job_queue: İş Kuyruğunu Görüntüle
     view_kanban: Kanban'ı görüntüle
