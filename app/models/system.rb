@@ -1,23 +1,3 @@
-# class PublishedSystemValidator < ActiveModel::Validator
-#   def validate(record)
-#     if record.record_status == "published"
-#       # i18n-tasks-use t('activerecord.errors.models.system.attributes.system_status.not_online') # this lets i18n-tasks know the key is used
-#       record.errors.add(:system_status, :not_online) unless record.system_status_online?
-#       # i18n-tasks-use t('activerecord.errors.models.system.attributes.oai_status.not_supported') # this lets i18n-tasks know the key is used
-#       record.errors.add(:oai_status, :not_supported) if record.oai_status_unsupported? || record.oai_status_unknown?
-#       if record.subcategory == "unknown"
-#         record.errors.add :subcategory, :missing
-#       end
-#       if record.primary_subject == "unknown"
-#         record.errors.add :primary_subject, :missing
-#       end
-#       if record.media_types.count == 0
-#         record.errors.add :media_types, :missing
-#       end
-#     end
-#   end
-# end
-
 class VerifiedSystemValidator < ActiveModel::Validator
   def validate(record)
     if record.record_status == "verified"
