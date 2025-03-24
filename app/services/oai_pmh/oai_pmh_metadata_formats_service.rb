@@ -25,6 +25,7 @@ module OaiPmh
         end
       rescue StandardError => e
         Rails.logger.warn "CheckOaiPmhFormatsJob: #{e.message}"
+        failure e
       end
       success @system
     end

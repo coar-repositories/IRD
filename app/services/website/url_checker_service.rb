@@ -29,34 +29,42 @@ module Website
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, e.response[:status])
         @system.system_status = :missing
+        failure e
       rescue Faraday::ForbiddenError => e # 403
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, e.response[:status])
         @system.system_status = :online
+        failure e
       rescue Faraday::FollowRedirects::RedirectLimitReached => e
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :offline
+        failure e
       rescue Faraday::ClientError => e # 4xx
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, e.response[:status])
         @system.system_status = :unknown
+        failure e
       rescue Faraday::TimeoutError => e
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :offline
+        failure e
       rescue Faraday::NilStatusError => e
         Rails.logger.warn("#{e} for OAI-PMH Identify #{original_url}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, 0)
         @system.oai_status = :unknown
+        failure e
       rescue Faraday::ServerError => e # 5xx
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, e.response[:status])
         @system.system_status = :offline
+        failure e
       rescue Faraday::SSLError => e
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :offline
+        failure e
       rescue Faraday::ConnectionFailed => e
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
@@ -78,14 +86,17 @@ module Website
         else
           @system.system_status = :unknown
         end
+        failure e
       rescue Faraday::Error => e
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :unknown
+        failure e
       rescue StandardError => e
         Rails.logger.error("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :unknown
+        failure e
       end
       success @system
     end
