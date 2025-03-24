@@ -40,10 +40,11 @@ module OaiPmh
         # unless conn.redirect_url_chain.empty?
         #   conn.redirect_url_chain.each { |prev_url| @system.add_normalid_for_url(prev_url) }
         # end
-        
+
         @system.write_network_check(:oai_pmh_identify, true, "", response.status)
         @system.oai_status = :online
-        @system.metadata.except!("unconfirmed_oai_pmh_url_base_url")# if @system.metadata["unconfirmed_oai_pmh_url_base_url"]
+        Utilities::HttpHeadersProcessor.process_tags_from_headers(@system.tag_list, response.headers, :oai_pmh)
+        @system.metadata.except!("unconfirmed_oai_pmh_url_base_url") # if @system.metadata["unconfirmed_oai_pmh_url_base_url"]
         parse_metadata(response)
 
       rescue Faraday::ResourceNotFound => e # 404
@@ -60,6 +61,7 @@ module OaiPmh
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, e.response[:status])
         @system.oai_status = :offline
+        Utilities::HttpHeadersProcessor.process_tags_from_headers(@system.tag_list, e.response[:headers], :oai_pmh)
         failure e
       rescue Faraday::FollowRedirects::RedirectLimitReached => e
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
@@ -108,8 +110,16 @@ module OaiPmh
         @system.write_network_check(:oai_pmh_identify, false, e.message, 0)
         @system.oai_status = :unknown
         failure e
+      else
+        success @system
+      ensure
+        begin
+          @system.save!
+        rescue Exception => e2
+          Rails.logger.error("OAI-PMH Identify: #{e2.message}")
+        end
       end
-      success @system
+
     end
 
     private

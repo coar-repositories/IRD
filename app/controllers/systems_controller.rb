@@ -197,7 +197,6 @@ class SystemsController < ApplicationController
     service_result = Website::UrlCheckerService.call(@system.id, true)
     if service_result.success?
       @system = service_result.payload
-      @system.save!
       if @system.system_status_online?
         redirect_back fallback_location: root_path, notice: "URL check completed successfully - system is online"
       else
@@ -213,11 +212,9 @@ class SystemsController < ApplicationController
     service_result = OaiPmh::OaiPmhIdentifyService.call(@system.id)
     if service_result.success?
       @system = service_result.payload
-      @system.save!
       service_result2 = OaiPmh::OaiPmhMetadataFormatsService.call(@system.id)
       if service_result2.success?
         @system = service_result2.payload
-        @system.save!
         Curation::SystemMetadataFormatAssociationService.call(@system)
         if @system.oai_status_online?
           redirect_back fallback_location: root_path, notice: "OAI-PMH check completed successfully - OAI-PMH is functioning correctly"
@@ -235,7 +232,6 @@ class SystemsController < ApplicationController
     service_result = OaiPmh::OaiPmhIdentifyService.call(@system.id)
     if service_result.success?
       @system = service_result.payload
-      @system.save!
       if @system.oai_status_online?
         redirect_back fallback_location: root_path, notice: "OAI-PMH Identify check completed successfully - OAI-PMH is functioning correctly"
       else
@@ -251,7 +247,6 @@ class SystemsController < ApplicationController
     service_result = OaiPmh::OaiPmhMetadataFormatsService.call(@system.id)
     if service_result.success?
       @system = service_result.payload
-      @system.save!
       Curation::SystemMetadataFormatAssociationService.call(@system)
       if @system.oai_status_online?
         redirect_back fallback_location: root_path, notice: "OAI-PMH Metadata Formats check completed successfully - OAI-PMH is functioning correctly"

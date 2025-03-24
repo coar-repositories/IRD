@@ -22,6 +22,7 @@ module Website
         end
         @system.write_network_check(:homepage_url, true, "", response.status)
         @system.system_status = :online
+        Utilities::HttpHeadersProcessor.process_tags_from_headers(@system.tag_list, response.headers, :website)
         if parse_metadata_flag
           parse_metadata(response)
         end
@@ -34,6 +35,7 @@ module Website
         Rails.logger.warn("#{e} for URL #{original_url}")
         @system.write_network_check(:homepage_url, false, e.message, e.response[:status])
         @system.system_status = :online
+        Utilities::HttpHeadersProcessor.process_tags_from_headers(@system.tag_list, e.response[:headers], :website)
         failure e
       rescue Faraday::FollowRedirects::RedirectLimitReached => e
         Rails.logger.warn("#{e} for URL #{original_url}")
@@ -97,8 +99,15 @@ module Website
         @system.write_network_check(:homepage_url, false, e.message, 0)
         @system.system_status = :unknown
         failure e
+      else
+        success @system
+      ensure
+        begin
+          @system.save!
+        rescue Exception => e2
+          Rails.logger.error("CheckWebsite: #{e2.message}")
+        end
       end
-      success @system
     end
 
     private
