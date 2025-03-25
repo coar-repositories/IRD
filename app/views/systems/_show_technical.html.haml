@@ -5,10 +5,13 @@
       %div.property
         %h5.property-name= t(:software)
         %div.property-value
-          = link_to @system.platform.name, @system.platform
-          - if @system.platform_version && !@system.platform_version.empty?
-            = surround '(', ')' do
-              =@system.platform_version
+          - if %w[bespoke _unknown].include? @system.platform.id
+            = @system.platform.name
+          - else
+            = link_to @system.platform.name, @system.platform
+            - if @system.platform_version && !@system.platform_version.empty?
+              = surround '(', ')' do
+                =@system.platform_version
       = print_field_name_and_value('OAI-PMH Base URL',@system.oai_base_url)
       %div.property
         %h5.property-name= t(:identifiers)
