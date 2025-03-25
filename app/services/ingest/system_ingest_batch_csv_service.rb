@@ -33,11 +33,11 @@ module Ingest
             candidate_system.add_attribute("oai_base_url", row["oai_base_url"])
             candidate_system.add_attribute("primary_subject", row["primary_subject"])
             candidate_system.add_attribute("record_status", row["record_status"])
-            candidate_system.add_attribute("media_types", row["media_types"].split("|")) if row["media_types"] && !row["media_types"].blank?
+            candidate_system.add_attribute("media_types", process_array_cell(row["media_types"])) if row["media_types"] && !row["media_types"].blank?
             org = find_organisation(row["owner_ror"], row["owner_url"], row["owner_name"])
             candidate_system.add_attribute("owner_id", org.id) if org
             if row["other_registry_identifiers"]
-              identifiers = row["other_registry_identifiers"].strip.split("|")
+              identifiers = process_array_cell(row["other_registry_identifiers"])
               identifiers.each do |identifier|
                 scheme, value = identifier.split(":")
                 candidate_system.add_identifier(scheme, value)
@@ -75,6 +75,11 @@ module Ingest
     end
 
     private
+
+    def process_array_cell(cell)
+      cell.strip!.delete_prefix!("|").delete_suffix!("|")
+      cell.split("|")
+    end
 
     def find_organisation(ror, url, name)
       begin

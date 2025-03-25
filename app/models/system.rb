@@ -139,7 +139,7 @@ class System < ApplicationRecord
                                                                   MachineReadableAttribute.new(:country, :string, "entity.country_id", false),
                                                                   MachineReadableAttribute.new(:responsible_organisation, :string, "entity.rp.name if entity.rp", false),
                                                                   MachineReadableAttribute.new(:other_registry_identifiers, :array, "entity.repoids.third_party.collect(&:to_s)", false),
-                                                                  MachineReadableAttribute.new(:oai_base_url, :string, "entity.oai_base_url", true),
+                                                                  MachineReadableAttribute.new(:oai_pmh_base_url, :string, "entity.oai_base_url", true),
                                                                   MachineReadableAttribute.new(:oai_status, :string, "entity.oai_status", false),
                                                                   MachineReadableAttribute.new(:media_types, :array, "entity.media_types", true),
                                                                   MachineReadableAttribute.new(:primary_subject, :string, "entity.primary_subject", true),
