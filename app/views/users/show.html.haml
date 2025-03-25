@@ -16,19 +16,19 @@
   = link_to t('buttons.generate_new_api_key'), generate_api_key_url(@user.id), :class => 'btn btn-primary btn-sm'
 %div.row
   %div.col.md-6
-    = print_field_name_and_value2('User ID',@user.id)
-    = print_field_name_and_value2(t(:email),@user.email)
-    -# = print_field_name_and_value2(t(:fore_name),@user.fore_name)
-    -# = print_field_name_and_value2(t(:last_name),@user.last_name)
+    = print_field_name_and_value('User ID',@user.id)
+    = print_field_name_and_value(t(:email),@user.email)
+    -# = print_field_name_and_value(t(:fore_name),@user.fore_name)
+    -# = print_field_name_and_value(t(:last_name),@user.last_name)
     - if policy(@user).inspect_user?
-      = print_field_name_and_value2(t(:verified),(@user.verified? ? 'yes' : ''))
-      = print_field_name_and_value2(t('activerecord.attributes.user.access_revoked'),@user.access_revoked?)
-      = print_field_name_and_value2(t(:roles),@user.roles.map(&:name).join(', '))
+      = print_field_name_and_value(t(:verified),(@user.verified? ? 'yes' : ''))
+      = print_field_name_and_value(t('activerecord.attributes.user.access_revoked'),@user.access_revoked?)
+      = print_field_name_and_value(t(:roles),@user.roles.map(&:name).join(', '))
   %div.col.md-6
     -# - if @user.organisations.count > 0
     = render 'table_organisations',title: t(:managing_agent_for_these_organisations), organisations: @user.organisations, data_downloadable: false
-    = print_field_name_and_value2(t('authorised_curator_for_these_repositories'),(link_to authorised_systems.uniq.count, authorised_systems_path(@user))) if authorised_systems.present?
-    = print_field_name_and_value2(t("repositories_requiring_review"),(link_to systems_requiring_review.uniq.count, systems_requiring_review_path(@user))) if systems_requiring_review.present?
+    = print_field_name_and_value(t('authorised_curator_for_these_repositories'),(link_to authorised_systems.uniq.count, authorised_systems_path(@user))) if authorised_systems.present?
+    = print_field_name_and_value(t("repositories_requiring_review"),(link_to systems_requiring_review.uniq.count, systems_requiring_review_path(@user))) if systems_requiring_review.present?
 
 = link_to t("buttons.suggest_new_system"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#suggestSystemModal"
 

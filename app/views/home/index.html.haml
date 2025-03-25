@@ -4,15 +4,15 @@
     = bar_chart @continent_graph_data,title: t('statistics_and_graphs.repositories_count_by_continent')
   %div.col-lg-2
     %h3= t(:records_in_ird)
-    = print_field_name_and_value2(t('statistics_and_graphs.records_total'),@stats.total)
+    = print_field_name_and_value(t('statistics_and_graphs.records_total'),@stats.total)
     -# i18n-tasks-use t('statistics_and_graphs.records_draft') # this lets i18n-tasks know the key is used
-    -# = print_field_name_and_value2(t('statistics_and_graphs.records_draft'),@stats.value(:record_status_draft))
-    = print_field_name_and_value2(t('statistics_and_graphs.records_verified'),@stats.value(:record_status_verified))
-    = print_field_name_and_value2(t('statistics_and_graphs.records_awaiting_review'),@stats.value(:record_status_awaiting_review))
-    = print_field_name_and_value2(t('statistics_and_graphs.records_under_review'),@stats.value(:record_status_under_review))
+    -# = print_field_name_and_value(t('statistics_and_graphs.records_draft'),@stats.value(:record_status_draft))
+    = print_field_name_and_value(t('statistics_and_graphs.records_verified'),@stats.value(:record_status_verified))
+    = print_field_name_and_value(t('statistics_and_graphs.records_awaiting_review'),@stats.value(:record_status_awaiting_review))
+    = print_field_name_and_value(t('statistics_and_graphs.records_under_review'),@stats.value(:record_status_under_review))
     -# i18n-tasks-use t('statistics_and_graphs.records_archived') # this lets i18n-tasks know the key is used
-    -# = print_field_name_and_value2(t('statistics_and_graphs.records_archived'),@stats.value(:record_status_archived))
+    -# = print_field_name_and_value(t('statistics_and_graphs.records_archived'),@stats.value(:record_status_archived))
     -# %br
     -# %h3= t(:repositories)
-    -# = print_field_name_and_value2(t('statistics_and_graphs.currently_online'),"#{@stats.value(:status_online)} (#{@stats.value_percentage(:status_online)}%)")
-    -# = print_field_name_and_value2(t('statistics_and_graphs.functioning_oai_pmh'),"#{@stats.value(:oai_status_online)} (#{@stats.value_percentage(:oai_status_online)}%)")
+    -# = print_field_name_and_value(t('statistics_and_graphs.currently_online'),"#{@stats.value(:status_online)} (#{@stats.value_percentage(:status_online)}%)")
+    -# = print_field_name_and_value(t('statistics_and_graphs.functioning_oai_pmh'),"#{@stats.value(:oai_status_online)} (#{@stats.value_percentage(:oai_status_online)}%)")

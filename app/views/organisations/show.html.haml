@@ -14,50 +14,33 @@
 = print_field_name_and_value(t('attributes.name'),@organisation.name)
 -# = print_field_name_and_value(t('attributes.short_name'),@organisation.short_name)
 = print_field_name_and_value(t('attributes.aliases'),@organisation.aliases.join(', '))
-%div.row.field
-  %div.col-3.field-name
-    .form-label Website
-  %div.col
-    = link_to(@organisation.website,@organisation.website, class: "external-link") unless @organisation.website.blank?
-%div.row.field
-  %div.col-3.field-name
-    .form-label ROR
-  %div.col
-    = link_to(@organisation.ror,@organisation.ror, class: "external-link") unless @organisation.ror.blank?
+
+= print_field_name_and_value(t('attributes.url'),link_to(@organisation.website,@organisation.website, class: "external-link")) unless @organisation.website.blank?
+= print_field_name_and_value("ROR",link_to(@organisation.ror,@organisation.ror, class: "external-link")) unless @organisation.ror.blank?
 
 = print_field_name_and_value('Location',@organisation.location)
 = print_field_name_and_value('Country',@organisation.country.name)
 
-
-%div.row.field
-  %div.col-3.field-name
-    .form-label Repositories owned
-  %div.col
-    - if policy(@organisation).systems?
-      - if @organisation.ownerships.publicly_viewable.count > 0
-        = link_to @organisation.ownerships.publicly_viewable.count, organisation_ownerships_url
-    - else
-      = @organisation.ownerships.publicly_viewable.count
-
-%div.row.field
-  %div.col-3.field-name
-    .form-label= "#{t('attributes.responsible_party')}?"
-  %div.col
-    - if @organisation.rp
-      yes -
-      - if @organisation.responsibilities.publicly_viewable.count > 0
-        - if policy(@organisation).responsibilities?
-          = link_to @organisation.responsibilities.publicly_viewable.count, organisation_responsibilities_url(@organisation)
-        - else
-          = @organisation.responsibilities.publicly_viewable.count
-      - else
-        = @organisation.responsibilities.publicly_viewable.count
+- if policy(@organisation).systems?
+  - if @organisation.ownerships.publicly_viewable.count > 0
+    = print_field_name_and_value("Repositories owned",link_to(@organisation.ownerships.publicly_viewable.count, organisation_ownerships_url))
+  - else
+    = print_field_name_and_value("Repositories owned", @organisation.ownerships.publicly_viewable.count)
 
 - if @organisation.rp
-  %div.row.field
-    %div.col-3.field-name
-      .form-label Agents
-    %div.col
+  - if @organisation.responsibilities.publicly_viewable.count > 0
+    - if policy(@organisation).responsibilities?
+      = print_field_name_and_value(t('attributes.responsible_party'),link_to(@organisation.responsibilities.publicly_viewable.count, organisation_responsibilities_url(@organisation)))
+    - else
+      = print_field_name_and_value(t('attributes.responsible_party'),@organisation.responsibilities.publicly_viewable.count)
+  - else
+    = print_field_name_and_value(t('attributes.responsible_party'),@organisation.responsibilities.publicly_viewable.count)
+
+
+- if @organisation.rp
+  %div.property
+    %h5.property-name Agents
+    %div.property-value
       %ul
         - @organisation.users.each do |user|
           %li
@@ -65,4 +48,5 @@
               = link_to user.display_name,user
             - else
               = user.display_name
+
 = render 'add_user_as_agent_modal'

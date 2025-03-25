@@ -50,18 +50,7 @@ module ApplicationHelper
     end
   end
 
-  def print_field_name_and_value(name, value, field_name_cols = 3, include_fields_with_empty_values = false)
-    unless value.blank? && !include_fields_with_empty_values
-      inner_content1 = content_tag :div, class: "col-#{field_name_cols} field-name" do
-        content_tag :div, name, class: 'form-label'
-      end
-      inner_content2 = content_tag :div, value, class: 'col'
-      inner_content1 << inner_content2
-      content_tag :div, inner_content1, class: 'row field'
-    end
-  end
-
-  def print_field_name_and_value2(name, value,include_fields_with_empty_values = true)
+  def print_field_name_and_value(name, value,include_fields_with_empty_values = true)
     content = ''
     unless value.blank? && !include_fields_with_empty_values
       value = 'None' if value.nil?
