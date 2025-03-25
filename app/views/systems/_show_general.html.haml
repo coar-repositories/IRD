@@ -6,7 +6,7 @@
       -# = print_field_name_and_value(t('attributes.short_name'),@system.short_name)
       = print_field_name_and_value(t('attributes.aliases'),@system.aliases.join(', ')) unless @system.aliases.nil? || @system.aliases.empty?
       = print_field_name_and_value(t(:homepage),link_to(@system.url,@system.url, class: "external-link"))
-      = print_field_name_and_value(t(:contact),@system.contact) if @system.contact.present?
+      = print_field_name_and_value(t(:contact),auto_link(@system.contact,:html => {class: "external-link"})) if @system.contact.present?
       = print_field_name_and_value(t('activerecord.attributes.system.owner'),(link_to(@system.owner.name, @system.owner) unless @system.owner.nil?),true)
       %div.property
         %h5.property-name= t('activerecord.models.country.one')

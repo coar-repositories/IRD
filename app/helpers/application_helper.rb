@@ -50,9 +50,9 @@ module ApplicationHelper
     end
   end
 
-  def print_field_name_and_value(name, value,include_fields_with_empty_values = true)
+  def print_field_name_and_value(name, value,include_empty_values = true)
     content = ''
-    unless value.blank? && !include_fields_with_empty_values
+    unless value.blank? && !include_empty_values
       value = 'None' if value.nil?
       content = "<div class=\"property\">"
       content += "<h5 class=\"property-name\">#{name}</h5>"
