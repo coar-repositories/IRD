@@ -31,7 +31,7 @@ gem "active_snapshot"
 gem "rails_autolink"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.0"
+gem "rails", "~> 8.0.2"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 gem "sqlite3", ">= 2.4"
