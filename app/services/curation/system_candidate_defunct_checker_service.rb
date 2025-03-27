@@ -7,13 +7,13 @@ module Curation
         nc_oai = system.network_checks.oai_pmh_identify_failed.first
         if nc_homepage&.errors_past_threshold? && nc_oai&.errors_past_threshold?
           system.label_list.add("candidate-defunct")
-          system.review! if system.record_status_verified?
+          system.set_record_under_review! if system.record_status_verified?
         else
           system.label_list.remove("candidate-defunct")
         end
         if nc_oai&.errors_past_threshold?
           system.label_list.add("candidate-out-of-scope")
-          system.review! if system.record_status_verified?
+          system.set_record_under_review! if system.record_status_verified?
         else
           system.label_list.remove("candidate-out-of-scope")
         end

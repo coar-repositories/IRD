@@ -78,7 +78,7 @@ class SystemsController < ApplicationController
   def set_record_verified
     authorize @system
     begin
-      @system.verify!
+      @system.set_record_verified!
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record verified."
     rescue Exception => e
@@ -92,7 +92,7 @@ class SystemsController < ApplicationController
       if params[:archive_label]
         @system.label_list.add params[:archive_label].to_s
       end
-      @system.archive!
+      @system.set_record_archived!
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record archived."
     rescue Exception => e
@@ -103,7 +103,7 @@ class SystemsController < ApplicationController
   def set_record_draft
     authorize @system
     begin
-      @system.draft!
+      @system.set_record_draft!
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record made draft."
     rescue Exception => e
@@ -114,7 +114,7 @@ class SystemsController < ApplicationController
   def set_record_awaiting_review
     authorize @system
     begin
-      @system.awaiting_review!
+      @system.set_record_awaiting_review!
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record set to 'awaiting review'."
     rescue Exception => e
@@ -125,7 +125,7 @@ class SystemsController < ApplicationController
   def set_record_under_review
     authorize @system
     begin
-      @system.review!
+      @system.set_record_under_review!
       @system.save!
       redirect_back fallback_location: root_path, notice: "Repository record set to 'under review'."
     rescue Exception => e

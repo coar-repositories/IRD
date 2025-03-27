@@ -5,7 +5,7 @@ class SetRecordVerifiedJob < ApplicationJob
 
   def perform(system_id)
     system = System.includes(:network_checks,:repoids,:users).find(system_id)
-    system.verify!
+    system.set_record_verified!
     system.save!
   end
 end

@@ -180,35 +180,27 @@ class System < ApplicationRecord
     self.reviewed.nil? || self.reviewed < Rails.configuration.ird[:system_review_period].days.ago
   end
 
-  def awaiting_review?
-    self.record_status == "awaiting_review"
-  end
-
-  def awaiting_review!
+  def set_record_awaiting_review!
     self.record_status = :awaiting_review
   end
 
-  def verified?
-    self.record_status == "verified"
-  end
-
-  def verify!
+  def set_record_verified!
     self.record_status = :verified
     self.mark_reviewed!
   end
 
-  def archive!
+  def set_record_archived!
     self.record_status = :archived
     self.rp_id = Organisation.default_rp_id
     self.users.clear
     self.mark_reviewed!
   end
 
-  def review!
+  def set_record_under_review!
     self.record_status = :under_review
   end
 
-  def draft!
+  def set_record_draft!
     self.record_status = :draft
     self.rp_id = Organisation.default_rp_id
   end
