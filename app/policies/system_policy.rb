@@ -33,25 +33,25 @@ class SystemPolicy < ApplicationPolicy
   #   # User.valid_user?(@user) && @user.has_role?(:administrator)
   # end
 
-  def verify?
+  def set_record_verified?
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record))
   end
 
-  def archive?
+  def set_record_archived?
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
   end
 
-  def draft?
+  def set_record_draft?
     # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record))
     # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
-  def change_record_status_to_awaiting_review?
+  def set_record_awaiting_review?
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
-  def change_record_status_to_under_review?
+  def set_record_under_review?
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.can_curate?(@record))
   end
 

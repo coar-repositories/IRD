@@ -50,19 +50,19 @@
       %div.property-value
         = render '_shared/record_action_buttons', model_instance: @system
         %br
-        - if policy(@system).verify? && !@system.record_status_verified?
-          = link_to t('buttons.change_to_verified'), verify_url(@system.id), :class => 'btn btn-success btn-sm'
+        - if policy(@system).set_record_verified? && !@system.record_status_verified?
+          = link_to t('buttons.change_to_verified'), set_record_verified_url(@system.id), :class => 'btn btn-success btn-sm'
           %br
-        - if policy(@system).change_record_status_to_under_review? && !@system.record_status_under_review?
-          = link_to t("buttons.change_to_under_review"), change_record_status_to_under_review_url(@system.id), :class => 'btn btn-sm btn-warning'
+        - if policy(@system).set_record_under_review? && !@system.record_status_under_review?
+          = link_to t("buttons.change_to_under_review"), set_record_under_review_url(@system.id), :class => 'btn btn-sm btn-warning'
           %br
-        - if policy(@system).archive? && !@system.record_status_archived?
-          = link_to t("buttons.archive_record_defunct"), archive_url(@system.id, archive_label: "defunct"), :class => 'btn btn-danger btn-sm'
+        - if policy(@system).set_record_archived? && !@system.record_status_archived?
+          = link_to t("buttons.archive_record_defunct"), set_record_archived_url(@system.id, archive_label: "defunct"), :class => 'btn btn-danger btn-sm'
           %br
-          = link_to t("buttons.archive_record_out_of_scope"), archive_url(@system.id, archive_label: "out-of-scope"), :class => 'btn btn-danger btn-sm'
+          = link_to t("buttons.archive_record_out_of_scope"), set_record_archived_url(@system.id, archive_label: "out-of-scope"), :class => 'btn btn-danger btn-sm'
           %br
-        - if policy(@system).draft? && !@system.record_status_draft?
-          = link_to t("buttons.change_to_draft"), draft_url(@system.id), :class => 'btn btn-secondary btn-sm'
+        - if policy(@system).set_record_draft? && !@system.record_status_draft?
+          = link_to t("buttons.change_to_draft"), set_record_draft_url(@system.id), :class => 'btn btn-secondary btn-sm'
           %br
         - if policy(@system).auto_curate?
           = link_to 'Auto-curate', auto_curate_url(@system.id), :class => 'btn btn-primary btn-sm'

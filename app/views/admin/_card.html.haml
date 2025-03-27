@@ -41,13 +41,13 @@
         = link_to t('buttons.edit'), url_for([:edit,system]),:class=>"btn btn-primary btn-sm"
         - if system.record_status_verified?
           = link_to t('buttons.mark_reviewed'), mark_reviewed_url(system.id), :class => 'btn btn-success btn-sm'
-          = link_to t('buttons.archive_record'), archive_url(system.id), :class => 'btn btn-danger btn-sm'
-          = link_to t('buttons.make_record_draft'), draft_url(system.id), :class => 'btn btn-secondary btn-sm'
+          = link_to t('buttons.archive_record'), set_record_archived_url(system.id), :class => 'btn btn-danger btn-sm'
+          = link_to t('buttons.make_record_draft'), set_record_draft_url(system.id), :class => 'btn btn-secondary btn-sm'
         - elsif system.record_status_draft?
-          = link_to t('buttons.change_to_verified'), verify_url(system.id), :class => 'btn btn-success btn-sm'
-          = link_to t('buttons.archive_record'), archive_url(system.id), :class => 'btn btn-danger btn-sm'
+          = link_to t('buttons.change_to_verified'), set_record_verified_url(system.id), :class => 'btn btn-success btn-sm'
+          = link_to t('buttons.archive_record'), set_record_archived_url(system.id), :class => 'btn btn-danger btn-sm'
         - else
-          = link_to t('buttons.make_record_draft'),  draft_url(system.id), :class => 'btn btn-secondary btn-sm'
+          = link_to t('buttons.make_record_draft'),  set_record_draft_url(system.id), :class => 'btn btn-secondary btn-sm'
     %div.row
       %div.col
         = render '_shared/label_buttons', system: system

@@ -1,7 +1,7 @@
 require "ostruct"
 
 class SystemsController < ApplicationController
-  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label flag_as_archived add_repo_id process_as_duplicate verify archive draft auto_curate change_record_status_to_awaiting_review change_record_status_to_under_review]
+  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label add_repo_id process_as_duplicate set_record_verified set_record_archived set_record_draft auto_curate set_record_awaiting_review set_record_under_review]
   after_action :verify_authorized
 
   def suggest_new_system
@@ -75,18 +75,7 @@ class SystemsController < ApplicationController
   #   end
   # end
 
-  # def publish
-  #   authorize @system
-  #   begin
-  #     @system.publish!
-  #     @system.save!
-  #     redirect_back fallback_location: root_path, notice: "Repository record published."
-  #   rescue Exception => e
-  #     redirect_back fallback_location: root_path, flash: { error: "Unable to publish repository record: #{e.message}" }
-  #   end
-  # end
-
-  def verify
+  def set_record_verified
     authorize @system
     begin
       @system.verify!
@@ -97,7 +86,7 @@ class SystemsController < ApplicationController
     end
   end
 
-  def archive
+  def set_record_archived
     authorize @system
     begin
       if params[:archive_label]
@@ -111,7 +100,7 @@ class SystemsController < ApplicationController
     end
   end
 
-  def draft
+  def set_record_draft
     authorize @system
     begin
       @system.draft!
@@ -122,7 +111,7 @@ class SystemsController < ApplicationController
     end
   end
 
-  def change_record_status_to_awaiting_review
+  def set_record_awaiting_review
     authorize @system
     begin
       @system.awaiting_review!
@@ -133,7 +122,7 @@ class SystemsController < ApplicationController
     end
   end
 
-  def change_record_status_to_under_review
+  def set_record_under_review
     authorize @system
     begin
       @system.review!
@@ -286,13 +275,6 @@ class SystemsController < ApplicationController
       Rails.logger.error "Unable to label system with " + t("labels.#{label}") + ": #{e.message}"
       redirect_back fallback_location: root_path, notice: "Unable to label system with " + t("labels.#{label}")
     end
-  end
-
-  def flag_as_archived
-    authorize @system
-    @system.record_status = :archived
-    @system.save!
-    redirect_back fallback_location: root_path, notice: "Record archived."
   end
 
   # GET /systems or /systems.json

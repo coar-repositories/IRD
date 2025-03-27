@@ -79,22 +79,22 @@ class AdminController < ApplicationController
       #   ActiveJob.perform_all_later(@unpaginated_systems.map { |system| RecordPublishJob.new(system.id) })
       #   redirect_back fallback_location: root_path, notice: "Started publishing record for #{@unpaginated_systems.count} systems..."
       when :verify
-        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| RecordVerifyJob.new(system.id) })
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| SetRecordVerifiedJob.new(system.id) })
         redirect_back fallback_location: root_path, notice: "Started verifying record for #{@unpaginated_systems.count} systems..."
       when :archive
-        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| RecordArchiveJob.new(system.id) })
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| SetRecordArchivedJob.new(system.id) })
         redirect_back fallback_location: root_path, notice: "Started archiving record for #{@unpaginated_systems.count} systems..."
       when :make_draft
-        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| RecordMakeDraftJob.new(system.id) })
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| SetRecordDraftJob.new(system.id) })
         redirect_back fallback_location: root_path, notice: "Started making record draft for #{@unpaginated_systems.count} systems..."
       when :make_record_awaiting_review
-        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| RecordAwaitingReviewJob.new(system.id) })
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| SetRecordAwaitingReviewJob.new(system.id) })
         redirect_back fallback_location: root_path, notice: "Started making record awaiting review for #{@unpaginated_systems.count} systems..."
       when :make_record_under_review
-        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| RecordMakeUnderReviewJob.new(system.id) })
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| SetRecordUnderReviewJob.new(system.id) })
         redirect_back fallback_location: root_path, notice: "Started making record under review for #{@unpaginated_systems.count} systems..."
       when :set_record_reviewed
-        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| SetRecordReviewedJob.new(system.id) })
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| MarkRecordReviewedJob.new(system.id) })
         redirect_back fallback_location: root_path, notice: "Started setting record reviewed for #{@unpaginated_systems.count} systems..."
       when :auto_curate
         # @unpaginated_systems.each { |system| AutoCurateJob.perform_later(system.id) }

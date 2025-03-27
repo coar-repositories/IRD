@@ -47,13 +47,13 @@
         = link_to 'Edit', url_for([:edit,system]),:class=>"btn btn-primary btn-sm"
         - if system.record_status_verified?
           = link_to 'Mark as reviewed!', mark_reviewed_url(system.id), :class => 'btn btn-success btn-sm'
-          = link_to 'Archive!', archive_url(system.id), :class => 'btn btn-danger btn-sm'
-          = link_to 'Return to draft status!', draft_url(system.id), :class => 'btn btn-secondary btn-sm'
+          = link_to 'Archive!', set_record_archived_url(system.id), :class => 'btn btn-danger btn-sm'
+          = link_to 'Return to draft status!', set_record_draft_url(system.id), :class => 'btn btn-secondary btn-sm'
         - elsif system.record_status_draft?
-          = link_to 'Verify!', verify_url(system.id), :class => 'btn btn-success btn-sm'
-          = link_to 'Archive!', archive_url(system.id), :class => 'btn btn-danger btn-sm'
+          = link_to 'Verify!', set_record_verified_url(system.id), :class => 'btn btn-success btn-sm'
+          = link_to 'Archive!', set_record_archived_url(system.id), :class => 'btn btn-danger btn-sm'
         - else
-          = link_to 'Return to draft status!',  draft_url(system.id), :class => 'btn btn-secondary btn-sm'
+          = link_to 'Return to draft status!',  set_record_draft_url(system.id), :class => 'btn btn-secondary btn-sm'
     %div.row
       %div.col
         = render '_shared/label_buttons', system: system

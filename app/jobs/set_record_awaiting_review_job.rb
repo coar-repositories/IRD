@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RecordAwaitingReviewJob < ApplicationJob
+class SetRecordAwaitingReviewJob < ApplicationJob
   queue_as :default
 
   def perform(system_id)
