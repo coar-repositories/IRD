@@ -12,22 +12,12 @@
           -# = render(:partial => '_shared/facets_for_searchkick/facet_system_status',:locals => {filter_name: 'system_status', title: t('repository_status'),facet: @facets['system_status']})
           -# = render(:partial => '_shared/facets_for_searchkick/facet_oai_status',:locals => {filter_name: 'oai_status', title: t('oai_status'),facet: @facets['oai_status']})
           = render(:partial => '_shared/facets_for_searchkick/facet_subcategory',:locals => {filter_name: 'subcategory', title: t('repository_scope'),facet: @facets['subcategory']})
-          = render(:partial => '_shared/facets_for_searchkick/facet_media_type',:locals => {filter_name: 'media_types', title: t('media_type'),facet: @facets['media_types']})
         %div.col
           = render(:partial => '_shared/facets_for_searchkick/facet_primary_subject',:locals => {filter_name: 'primary_subject', title: t('primary_subject'),facet: @facets['primary_subject']})
-          = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'metadata_formats', title: t('activerecord.models.metadata_format.other'),facet: @facets['metadata_formats']})
-
-      %div.row
-        %div.col
-          = render(:partial => '_shared/facets_for_searchkick/facet_platform',:locals => {filter_name: 'platform', title: t('activerecord.attributes.system.platform'),facet: @facets['platform']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_media_type',:locals => {filter_name: 'media_types', title: t('media_type'),facet: @facets['media_types']})
       %div.row
         %div.col
           = render(:partial => '_shared/facets_for_searchkick/facet_continent',:locals => {filter_name: 'continent', title: t('activerecord.attributes.country.continent'),facet: @facets['continent']})
-      %div.row
-        %div.col
           = render(:partial => '_shared/facets_for_searchkick/facet_country',:locals => {filter_name: 'country', title: t('activerecord.models.country.one'),facet: @facets['country']})
-
-
-
-
-
+          = render(:partial => '_shared/facets_for_searchkick/facet_platform',:locals => {filter_name: 'platform', title: t('activerecord.attributes.system.platform'),facet: @facets['platform']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'metadata_formats', title: t('activerecord.models.metadata_format.other'),facet: @facets['metadata_formats']})
