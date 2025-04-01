@@ -1,6 +1,6 @@
 %div#footer
   - version = ''
-  - version = "(v#{ENV['APP_VERSION']})" unless ENV['APP_VERSION'].blank?
+  - version = "(#{ENV['APP_VERSION']})" unless ENV['APP_VERSION'].blank?
   = process_md(t('footer.footer_text', version: version))
   %p
     =t('footer.footer_license_statement')
