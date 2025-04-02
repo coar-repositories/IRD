@@ -1,4 +1,4 @@
 ---
 tr:
   login_page:
-    login_page_intro_text: IRD, herhangi bir kullanıcı hesabına ihtiyaç duyulmadan kullanılmak üzere tasarlanmıştır. Kullanıcı hesapları yalnızca idari amaçlar için gereklidir. Ancak sistem geliştirilirken, kamuya açık hiçbir veri bulunmamaktadır.
+    login_page_intro_text: IRD, herhangi bir kullanıcı hesabına ihtiyaç duyulmadan kullanılmak üzere tasarlanmıştır. Kullanıcı hesapları yalnızca idari amaçlar için gereklidir.
