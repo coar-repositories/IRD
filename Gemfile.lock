@@ -392,8 +392,8 @@ GEM
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
-    searchkick (5.4.0)
-      activemodel (>= 6.1)
+    searchkick (5.5.0)
+      activemodel (>= 7.1)
       hashie
     securerandom (0.4.1)
     selenium-webdriver (4.30.1)
